@@ -5,8 +5,8 @@
  */
 
  const path = require(`path`)
- const remark = require(`remark`)
- const html = require(`remark-html`)
+ // const remark = require(`remark`)
+ // const html = require(`remark-html`)
  const dateformat = require(`dateformat`)
  const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
  const { makeBlogPath } = require(`./src/utils`)
@@ -14,25 +14,39 @@
  exports.createPages = async ({ actions, graphql }) => {
    const { data } = await graphql(`
      query {
-       cms {
-         blogPosts(where: { status: PUBLISHED }) {
-           id
-           createdAt
-           slug
+       maas {
+         narrativeById (_id: 6761) {
+           _id
+           title
+           summary
+           description
+           narrativeObjects {
+             _id
+             notes2
+             notes3
+             object {
+               _id
+               parentId
+               title
+               summary
+               productionNotes
+             }
+           }
          }
        }
      }
    `)
 
-   data.cms.blogPosts.forEach(blog => {
-     actions.createPage({
-       path: makeBlogPath(blog),
-       component: path.resolve(`./src/components/blog-post.js`),
-       context: {
-         blogId: blog.id,
-       },
-     })
-   })
+   console.log(data);
+   // data.maas.narratives.forEach(gallery => {
+   // //   actions.createPage({
+   // //     path: makeBlogPath(blog),
+   // //     component: path.resolve(`./src/components/blog-post.js`),
+   // //     context: {
+   // //       blogId: blog.id,
+   // //     },
+   // //   })
+   // })
  }
 
 
@@ -45,35 +59,37 @@
  }) => {
    const { createNode } = actions
    createResolvers({
-     GraphCMS_BlogPost: {
-       createdAt: {
-         type: `String`,
-         resolve(source, args, context, info) {
-           return dateformat(source.date, `fullDate`)
-         },
-       },
-       post: {
-         resolve(source, args, context, info) {
-           return remark()
-             .use(html)
-             .processSync(source.post).contents
-         },
-       },
-     },
-     GraphCMS_Asset: {
-       imageFile: {
-         type: `File`,
-         projection: { url: true },
-         resolve(source, args, context, info) {
-           return createRemoteFileNode({
-             url: source.url,
-             store,
-             cache,
-             createNode,
-             createNodeId,
-           })
-         },
-       },
-     },
+
+     // GraphCMS_BlogPost: {
+     //   createdAt: {
+     //     type: `String`,
+     //     resolve(source, args, context, info) {
+     //       return dateformat(source.date, `fullDate`)
+     //     },
+     //   },
+     //   post: {
+     //     resolve(source, args, context, info) {
+     //       return remark()
+     //         .use(html)
+     //         .processSync(source.post).contents
+     //     },
+     //   },
+     // },
+
+     // GraphCMS_Asset: {
+     //   imageFile: {
+     //     type: `File`,
+     //     projection: { url: true },
+     //     resolve(source, args, context, info) {
+     //       return createRemoteFileNode({
+     //         url: source.url,
+     //         store,
+     //         cache,
+     //         createNode,
+     //         createNodeId,
+     //       })
+     //     },
+     //   },
+     // },
    })
  }

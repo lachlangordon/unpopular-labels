@@ -15,12 +15,10 @@ const SecondPage = ({ data }) => (
         Using gatsby-source-graphql
       </a>
     </p>
-    {data.cms.blogPosts.map((blog, i) => (
-      <Link key={i} to={makeBlogPath(blog)}>
+    {data.maas.narratives.map((section, i) => (
         <h2>
-          {dateformat(blog.createdAt, `fullDate`)} - {blog.title}
+          {section.title}
         </h2>
-      </Link>
     ))}
     <Link to="/">Go back to the homepage</Link>
   </Layout>
@@ -30,11 +28,12 @@ export default SecondPage
 
 export const query = graphql`
   query {
-    cms {
-      blogPosts(where: { status: PUBLISHED }, orderBy: createdAt_DESC) {
+    maas {
+      narratives (filter: { _ids: [6761, 6762] }) {
+        _id
         title
-        createdAt
-        slug
+        summary
+        description
       }
     }
   }

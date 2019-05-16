@@ -18,24 +18,24 @@ export default ({ data }) => {
   )
 }
 
-export const query = graphql`
-  query($blogId: ID!) {
-    cms {
-      blogPost(where: { id: $blogId }) {
-        title
-        createdAt
-        post
-        titleImage {
-          url
-          imageFile {
-            childImageSharp {
-              fixed {
-                ...GatsbyImageSharpFixed
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query($blogId: ID!) {
+//     cms {
+//       blogPost(where: { id: $blogId }) {
+//         title
+//         createdAt
+//         post
+//         titleImage {
+//           url
+//           imageFile {
+//             childImageSharp {
+//               fixed {
+//                 ...GatsbyImageSharpFixed
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
