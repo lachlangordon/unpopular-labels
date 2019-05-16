@@ -9,7 +9,7 @@
  // const html = require(`remark-html`)
  const dateformat = require(`dateformat`)
  const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
- const { makeBlogPath } = require(`./src/utils`)
+ const { buildPath } = require(`./src/utils`)
 
  exports.createPages = async ({ actions, graphql }) => {
    const { data } = await graphql(`
@@ -38,12 +38,12 @@
    `)
 
    console.log(data);
-   // data.maas.narratives.forEach(gallery => {
+   // data.maas.narratives.forEach(section => {
    // //   actions.createPage({
-   // //     path: makeBlogPath(blog),
+   // //     path: buildPath(section),
    // //     component: path.resolve(`./src/components/blog-post.js`),
    // //     context: {
-   // //       blogId: blog.id,
+   // //       sectionId: section.id,
    // //     },
    // //   })
    // })
@@ -60,6 +60,14 @@
    const { createNode } = actions
    createResolvers({
 
+     MAAS_Section: {
+       id: {
+         type: `Int`,
+         resolve(source, args, context, info) {
+           return parseInt(source._id)
+         }
+       }
+     }
      // GraphCMS_BlogPost: {
      //   createdAt: {
      //     type: `String`,

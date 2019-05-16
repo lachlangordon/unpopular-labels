@@ -1,6 +1,6 @@
 import { graphql, Link } from "gatsby"
 import React from "react"
-import { makeBlogPath } from "../utils"
+import { buildPath } from "../utils"
 import dateformat from "dateformat"
 
 import Layout from "../components/layout"
@@ -16,9 +16,11 @@ const SecondPage = ({ data }) => (
       </a>
     </p>
     {data.maas.narratives.map((section, i) => (
+      <Link key={i} to={buildPath(section)}>
         <h2>
           {section.title}
         </h2>
+      </Link>
     ))}
     <Link to="/">Go back to the homepage</Link>
   </Layout>
@@ -29,7 +31,7 @@ export default SecondPage
 export const query = graphql`
   query {
     maas {
-      narratives (filter: { _ids: [6761, 6762] }) {
+      narratives (filter: { _ids: [6761, 6762, 6763, 6764] }) {
         _id
         title
         summary
