@@ -10,8 +10,8 @@ import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
 // layout.css
-import '../assets/css/basic-layout.css'
-// import '../assets/scss/main.scss'
+// import '../assets/css/basic-layout.css'
+import '../assets/scss/main.scss'
 
 import Header from './header'
 import Menu from './menu'
