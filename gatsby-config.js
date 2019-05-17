@@ -38,12 +38,6 @@ module.exports = {
         fieldName: `maas`,
         refetchInterval: 60,
 
-        // createSchema: async () => {
-        //     const json = JSON.parse(
-        //       fs.readFileSync(`${__dirname}/introspection.json`)
-        //     )
-        //     return buildClientSchema(json.data)
-        // },
       },
     },
     `gatsby-transformer-sharp`,

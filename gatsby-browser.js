@@ -6,16 +6,10 @@
 
 // You can delete this file if you're not using it
 
+import React from 'react'
+import { ApolloProvider } from 'react-apollo'
+import { client } from './src/store/apolloClient'
 
-exports.onRouteUpdate = ({ location, prevLocation }) => {
-  console.log('new pathname', location.pathname)
-  console.log('old pathname', prevLocation ? prevLocation.pathname : null)
-
-  // // Track pageview with google analytics
-  // window.ga(
-  //   `set`,
-  //   `page`,
-  //   location.pathname + location.search + location.hash,
-  // )
-  // window.ga(`send`, `pageview`)
-}
+export const wrapRootElement = ({ element }) => (
+  <ApolloProvider client={client}>{element}</ApolloProvider>
+)
