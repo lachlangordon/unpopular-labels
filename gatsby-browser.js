@@ -4,12 +4,11 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
-
+/*
 import React from 'react'
 import { ApolloProvider } from 'react-apollo'
 import { client } from './src/store/apolloClient'
 
 export const wrapRootElement = ({ element }) => (
   <ApolloProvider client={client}>{element}</ApolloProvider>
-)
+)*/

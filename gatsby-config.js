@@ -36,8 +36,7 @@ module.exports = {
         url: `${ process.env.GRAPHQL_URL }`,
         // This is field under which it's accessible
         fieldName: `maas`,
-        refetchInterval: 60,
-
+        // refetchInterval: 60,
       },
     },
     `gatsby-transformer-sharp`,

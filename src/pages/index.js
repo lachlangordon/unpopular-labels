@@ -13,9 +13,6 @@ import pic05 from '../assets/images/pic05.jpg'
 import pic06 from '../assets/images/pic06.jpg'
 
 function buildImgPath(i) {
-  // let imgPic =  'pic0'.concat(++i);
-  // console.log(imgPic)
-  // return `url(${imgPic})`
   switch(i) {
     case 0:
       return `url(${pic01})`
@@ -69,16 +66,67 @@ const IndexPage = ({ data }) => (
 
 export default IndexPage
 
-
-export const query = graphql`
-  query {
-    maas {
-      narratives (filter: { _ids: [6761, 6762, 6763, 6764] }) {
+// This query is executed at build time by Gatsby.
+// filter: {
+//    masterNarrative: 6761
+// }
+// at this point in time 6764 is still not linked to masterNarrative 6761
+export const GatsbyQuery = graphql`
+query {
+  maas {
+    narrativeById (_id: 6761) {
+      _id
+      title
+      summary
+      description
+      subjects
+      associations
+      keywords
+      location
+      lastUpdated
+    }
+    narratives (filter: {
+      _ids: [6761, 6762, 6763, 6764]
+    }) {
+      _id
+      title
+      summary
+      description
+      subjects
+      associations
+      keywords
+      location
+      lastUpdated
+      tileImages
+      relatedNarratives {
         _id
-        title
-        summary
-        description
+      }
+      mainImage {
+  			_id
+        url
+        width
+        height
+      }
+      images {
+  			_id
+        url
+        width
+        height
+        caption
+      }
+      narrativeObjects {
+        _id
+        notes2
+        notes3
+        object {
+          _id
+          parentId
+          title
+          summary
+          productionNotes
+        }
       }
     }
   }
-`
+}
+`;
