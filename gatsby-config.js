@@ -13,8 +13,8 @@ console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`)
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Step Into Paradise`,
+    description: `Step into Paradise Gallery Guide.`,
     author: `@gatsbyjs`,
   },
   plugins: [

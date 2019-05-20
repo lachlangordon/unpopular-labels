@@ -1,9 +1,12 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React from 'react'
+import { graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet'
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+
+import Layout from '../components/layout'
+import Image from '../components/image'
+import SEO from '../components/seo'
 
 import pic01 from '../assets/images/pic01.jpg'
 import pic02 from '../assets/images/pic02.jpg'
@@ -24,47 +27,6 @@ function buildImgPath(i) {
       return `url(${pic04})`
   }
 }
-
-const IndexPage = ({ data }) => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Helmet
-        title="Gatsby Starter"
-        meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-        ]}
-    >
-    </Helmet>
-    <div id="main">
-        <section id="one" className="tiles">
-          {data.maas.narratives.map((section, i) => (
-              <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
-                  <header className="major">
-                      <h3> {section.title} </h3>
-                      <p> {section.summary }</p>
-                  </header>
-                  <Link to="/landing" className="link primary"></Link>
-              </article>
-          ))}
-        </section>
-        <section id="two">
-            <div className="inner">
-                <header className="major">
-                    <h2>Massa libero</h2>
-                </header>
-                <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-                <ul className="actions">
-                    <li><Link to="/page-2/" className="button next">Get Started</Link></li>
-                </ul>
-            </div>
-        </section>
-    </div>
-
-  </Layout>
-)
-
-export default IndexPage
 
 // This query is executed at build time by Gatsby.
 // filter: {
@@ -128,5 +90,69 @@ query {
       }
     }
   }
-}
-`;
+}`;
+
+// This query is executed at run time by Apollo.
+const APOLLO_QUERY = gql`
+query {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}`;
+
+const IndexPage = ({ data }) => (
+  <Layout>
+    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <Helmet
+        title="Gatsby Starter"
+        meta={[
+            { name: 'description', content: 'Sample' },
+            { name: 'keywords', content: 'sample, something' },
+        ]}
+    >
+    </Helmet>
+    <div id="main">
+        <section id="one" className="tiles">
+          {data.maas.narratives.map((section, i) => (
+              <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
+                  <header className="major">
+                      <h3> {section.title} </h3>
+                      <p> {section.summary }</p>
+                  </header>
+                  <Link to="/landing" className="link primary"></Link>
+              </article>
+          ))}
+        </section>
+
+        {/* <!-- client side query --> */}
+        <Query query={APOLLO_QUERY}>
+          {({ data, loading, error }) => {
+              if (loading) return <span> Loading... </span>
+              if (error) return <span> Error: { error.message } </span>
+
+              const { site } = data
+              return (
+                <section id="two">
+                    <div className="inner">
+                        <header className="major">
+                            <h2> { site.siteMetadata.title } </h2>
+                        </header>
+                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
+                        <ul className="actions">
+                            <li><Link to="/page-2/" className="button next">Get Started</Link></li>
+                        </ul>
+                    </div>
+                </section>
+              )
+          }}
+        </Query>
+
+
+    </div>
+
+  </Layout>
+)
+
+export default IndexPage

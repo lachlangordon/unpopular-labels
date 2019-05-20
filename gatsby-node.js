@@ -5,8 +5,6 @@
  */
 
  const path = require(`path`)
- // const remark = require(`remark`)
- // const html = require(`remark-html`)
  const dateformat = require(`dateformat`)
  const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
  const { buildPath } = require(`./src/utils`)
