@@ -13,7 +13,6 @@ const Narrative = (
   pageContext: {
     name,
     narrativeId,
-    masterNarrative,
   },
   location,
 ) => (
