@@ -8,30 +8,12 @@ require('dotenv').config({
  * Request a query from a client.
  */
 const GQLClientWrapper = async ( query ) => {
-  console.log('inside GQL wrapper')
   // used to populate node narrative data on starters
   const client = process.env.GRAPHQL_URL
     ? new GraphQLClient(`${ process.env.GRAPHQL_URL }`)
     : null
 
   return await client.request(query)
-
-  // return new Promise((resolve, reject) => {
-  //     client.request(query, function(error, response, data) {
-  //           console.log(query)
-  //            // check errors because graphql doesn't throw an error
-  //           if (error) {
-  //             console.log('hey error')
-  //             throw error
-  //             reject(error)
-  //           }
-  //
-  //           console.log(data && 'hey not error')
-  //
-  //           const content = JSON.parse(data)
-  //           resolve(content)
-  //         })
-  //    })
 }
 
 /**

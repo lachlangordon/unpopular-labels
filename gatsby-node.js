@@ -35,9 +35,8 @@ const setNodeNarrative = ( _narrative ) => {
   }
 }
 
-exports.sourceNodes = async ({ boundActionCreators }) => {
-  console.log('in sourceNodes')
-  const { createNode } = boundActionCreators
+exports.sourceNodes = async ({ actions }) => {
+  const { createNode } = actions
 
   // init query to populate nodes
   const query = `
@@ -64,28 +63,28 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
 }
 
 // take the pages from src/pages and re-generate pages for all
-exports.onCreatePage = ({ page, actions }) => {
-  console.log('in onCreatePage')
-  const { createPage, deletePage } = actions
-
-  // Remove the leading AND traling slash from path, e.g. --> blog
-  const name = page.path && setPageName(page.path)
-
-  // only create a single 404 page and don't delete index page
-  if ( page.path.includes('404') || name === 'index' ) { return }
-  console.log(name)
-
-  // first delete pages to re-create them
-  deletePage(page)
-
-  return createPage({
-     ...page,
-     context: {
-       name,
-       masterNarrativeId: __MASTER_NARRATIVE,
-     }
-  })
-}
+// exports.onCreatePage = ({ page, actions }) => {
+//   console.log('in onCreatePage')
+//   const { createPage, deletePage } = actions
+//
+//   // Remove the leading AND traling slash from path, e.g. --> blog
+//   const name = page.path && setPageName(page.path)
+//
+//   // only create a single 404 page and don't delete index page
+//   if ( page.path.includes('404') || name === 'index' ) { return }
+//   console.log(name)
+//
+//   // first delete pages to re-create them
+//   deletePage(page)
+//
+//   return createPage({
+//      ...page,
+//      context: {
+//        name,
+//        masterNarrativeId: __MASTER_NARRATIVE,
+//      }
+//   })
+// }
 
 exports.createPages = async ({ actions, graphql }) => {
   console.log('in createPages')
@@ -101,5 +100,5 @@ exports.createPages = async ({ actions, graphql }) => {
   console.log( allNarrative )
 
   // create pages with templates and helper functions
-  // createNarratives(result.data.allNarrative, createPage, narrativeTemplate)
+  createNarratives( allNarrative.edges, createPage, narrativeTemplate )
 }
