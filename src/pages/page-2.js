@@ -16,11 +16,9 @@ const SecondPage = ({ data }) => (
       </a>
     </p>
     {data.maas.narratives.map((section, i) => (
-      <Link key={i} to={buildPath(section)}>
         <h2>
           {section.title}
         </h2>
-      </Link>
     ))}
     <Link to="/">Go back to the homepage</Link>
   </Layout>

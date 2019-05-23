@@ -28,11 +28,79 @@ function buildImgPath(i) {
   }
 }
 
+const IndexPage = ({
+  data,
+  pageContext: {
+    name,
+    narrativeId,
+    masterNarrativeId,
+  },
+  location,
+}) => (
+  <Layout>
+    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <Helmet
+        title="Gatsby Starter"
+        meta={[
+            { name: 'description', content: 'Sample' },
+            { name: 'keywords', content: 'sample, something' },
+        ]}
+    >
+    </Helmet>
+    <div id="main">
+        <section id="one" className="tiles">
+          {data.maas.narratives.map((section, i) => (
+              <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
+                  <header className="major">
+                      <h3> {section.title} </h3>
+                      <p> {section.summary }</p>
+                  </header>
+                  <Link to="/landing" className="link primary"></Link>
+              </article>
+          ))}
+        </section>
+        { console.log(data) }
+
+        {/* <!-- client side query --> */}
+        <Query query={APOLLO_QUERY}>
+          {({ data, loading, error }) => {
+              if (loading) return <span> Loading... </span>
+              if (error) return <span> Error: { error.message } </span>
+
+              const { site } = data
+              return (
+                <section id="two">
+                    <div className="inner">
+                        <header className="major">
+                            <h2> { site.siteMetadata.title } </h2>
+                        </header>
+                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
+                        <ul className="actions">
+                            <li><Link to="/page-2/" className="button next">Get Started</Link></li>
+                        </ul>
+                    </div>
+                </section>
+              )
+          }}
+        </Query>
+
+    </div>
+  </Layout>
+)
+
+export default IndexPage
+
+// This query is executed at run time by Apollo.
+const APOLLO_QUERY = gql`
+query {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}`
+
 // This query is executed at build time by Gatsby.
-// filter: {
-//    masterNarrative: 6761
-// }
-// at this point in time 6764 is still not linked to masterNarrative 6761
 export const GatsbyQuery = graphql`
 query {
   maas {
@@ -90,69 +158,4 @@ query {
       }
     }
   }
-}`;
-
-// This query is executed at run time by Apollo.
-const APOLLO_QUERY = gql`
-query {
-  site {
-    siteMetadata {
-      title
-    }
-  }
-}`;
-
-const IndexPage = ({ data }) => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Helmet
-        title="Gatsby Starter"
-        meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-        ]}
-    >
-    </Helmet>
-    <div id="main">
-        <section id="one" className="tiles">
-          {data.maas.narratives.map((section, i) => (
-              <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
-                  <header className="major">
-                      <h3> {section.title} </h3>
-                      <p> {section.summary }</p>
-                  </header>
-                  <Link to="/landing" className="link primary"></Link>
-              </article>
-          ))}
-        </section>
-
-        {/* <!-- client side query --> */}
-        <Query query={APOLLO_QUERY}>
-          {({ data, loading, error }) => {
-              if (loading) return <span> Loading... </span>
-              if (error) return <span> Error: { error.message } </span>
-
-              const { site } = data
-              return (
-                <section id="two">
-                    <div className="inner">
-                        <header className="major">
-                            <h2> { site.siteMetadata.title } </h2>
-                        </header>
-                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-                        <ul className="actions">
-                            <li><Link to="/page-2/" className="button next">Get Started</Link></li>
-                        </ul>
-                    </div>
-                </section>
-              )
-          }}
-        </Query>
-
-
-    </div>
-
-  </Layout>
-)
-
-export default IndexPage
+}`
