@@ -70,11 +70,14 @@ query NodeNarratives {
 // This query is executed at build time by Gatsby.
 const GatsbyAllNarrativeQuery = `
 {
-  allNarrative {
+  allNarrative(sort:{ fields: id, order:ASC }) {
     edges {
       node {
         id
         name
+        summary
+        description
+        tileImages
       }
     }
   }
