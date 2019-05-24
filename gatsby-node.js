@@ -64,10 +64,10 @@ const setNodeNarrativeObject = ( _narrative_obj , parentId ) => {
 }
 
 // object itself
-const setNodeObject = ( _object ) => {
+const setNodeObject = ( _object, parentId ) => {
     return {
       id: `${ _object._id }`,
-      parent: `${ _object.parentId }`,
+      parent: `${ _object.parentId }` || `${ parentId }`,
       internal: {
         type: `Object`,
         contentDigest: crypto
@@ -83,6 +83,26 @@ const setNodeObject = ( _object ) => {
 }
 
 // to do: preprocess images
+const setNodeImage = ( _img, parentId ) => {
+    // don't process if it does not have url
+    if ( !_img.url ) { return }
+
+    return {
+      id: `${ _img._id }`,
+      parent: `${ _img.parentId }` || `${ parentId }`,
+      internal: {
+        type: `Image`,
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(JSON.stringify(_img))
+          .digest(`hex`),
+      },
+      url: _img.url,
+      width: _img.width || 300,   // set min width
+      height: _img.height,
+      caption: _img.caption || '',
+    }
+}
 
 exports.sourceNodes = async ({ actions }) => {
   const { createNode } = actions
@@ -115,12 +135,21 @@ exports.sourceNodes = async ({ actions }) => {
 
           n.narrativeObjects.forEach(nobj => {
             const _nobj = setNodeNarrativeObject(nobj, _cid)
-            console.log(nobj.object)
+            // console.log(nobj.object)
 
             // check for linked objects
             if ( nobj.object ) {
-              const _obj = setNodeObject(nobj.object)
+              const _obj = setNodeObject(nobj.object, _nobj.id)
               console.log(_obj)
+
+              // check for images
+              if ( nobj.object.images.length ) {
+                const { images } = nobj.object
+                images.forEach (img => {
+                  const _img = setNodeImage(img, _obj.id)
+                  console.log(_img)
+                })
+              }
             }
           })
         }
