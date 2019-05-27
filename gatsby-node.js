@@ -14,6 +14,20 @@ const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/utils`)
 // later move it to config
 const __MASTER_NARRATIVE = 6761
 
+const getIds = ( _objects ) => {
+  // console.log( Array.isArray(_objects) )
+  //
+  if ( Array.isArray(_objects) ) {
+    return _objects.map(obj => obj._id)
+  } else {
+    let objArray = []
+    Object.entries(_objects).map( ([ key, value ])  => {
+      if ( key === '_id' ) {  objArray[objArray.length] = value }
+    })
+    return objArray
+  }
+}
+
 // top level phase
 const setNodeNarrative = ( _narrative ) => {
   return {
@@ -35,8 +49,8 @@ const setNodeNarrative = ( _narrative ) => {
     keywords: _narrative.keywords || [],
     location: _narrative.location || [],
     associations: _narrative.associations || [],
-    // todo: narrative object - neeeded to be normalised (_id to id String!)
-    // narrativeObjects: _narrative.narrativeObjects || [],
+    // narrative objects: an array of objects in narrative
+    narrativeObjects: _narrative.narrativeObjects ? getIds(_narrative.narrativeObjects) : [],
     relatedNarratives: _narrative.relatedNarratives || [],
     images: _narrative.images || [],
     tileImages: _narrative.tileImages || [],
@@ -56,8 +70,8 @@ const setNodeNarrativeObject = ( _narrative_obj , parentId ) => {
           .update(JSON.stringify(_narrative_obj))
           .digest(`hex`),
       },
-      // todo: object - neeeded to be normalised (_id to id String!)
-      // object : _narrative_obj.object || {},
+      // object: this is an object instead of Array
+      object : _narrative_obj.object ? getIds(_narrative_obj.object) : [],
       notes2: _narrative_obj.notes2,
       notes3: _narrative_obj.notes3,
     }
@@ -67,7 +81,7 @@ const setNodeNarrativeObject = ( _narrative_obj , parentId ) => {
 const setNodeObject = ( _object, parentId ) => {
     return {
       id: `${ _object._id }`,
-      parent: `${ _object.parentId }` || `${ parentId }`,
+      parent: `${ _object.parentId || parentId }`,
       internal: {
         type: `Object`,
         contentDigest: crypto
@@ -77,7 +91,8 @@ const setNodeObject = ( _object, parentId ) => {
       },
       name: _object.title || '',
       summary: _object.summary || '',
-      images: _object.images || [],
+      // images: an array of images
+      images: _object.images ? getIds(_object.images) : [],
       productionNotes: _object.productionNotes || '',
     }
 }
@@ -89,7 +104,7 @@ const setNodeImage = ( _img, parentId ) => {
 
     return {
       id: `${ _img._id }`,
-      parent: `${ _img.parentId }` || `${ parentId }`,
+      parent: `${ _img.parentId || parentId }`,
       internal: {
         type: `Image`,
         contentDigest: crypto
@@ -122,47 +137,44 @@ exports.sourceNodes = async ({ actions }) => {
 
     // create nodes
     return new Promise((resolve, reject) => {
-      let child_ids = []
+
+      // create master narrative
+      const _master =  {
+        ...setNodeNarrative(masterNarrative),
+        children: childNarratives ? getIds(childNarratives) : [],
+        parent: `null`,
+      }
+      createNode(_master)
+
+      // create child narrative nodes
       childNarratives.forEach(n => {
-        // create child narrative nodes
         const _node = setNodeNarrative(n)
-        const _cid = _node.id
         createNode(_node)
-        child_ids.push(_cid)
 
         // check for linked narrative objects
         if ( n.narrativeObjects.length ) {
 
           n.narrativeObjects.forEach(nobj => {
-            const _nobj = setNodeNarrativeObject(nobj, _cid)
-            // console.log(nobj.object)
+            const _nobj = setNodeNarrativeObject(nobj, _node.id)
+            createNode(_nobj)
 
             // check for linked objects
             if ( nobj.object ) {
               const _obj = setNodeObject(nobj.object, _nobj.id)
-              console.log(_obj)
+              createNode(_obj)
 
               // check for images
               if ( nobj.object.images.length ) {
                 const { images } = nobj.object
                 images.forEach (img => {
                   const _img = setNodeImage(img, _obj.id)
-                  console.log(_img)
+                  createNode(_img)
                 })
               }
             }
           })
         }
       })
-
-      // console.log(child_ids)
-      // create master narrative
-      const _master =  {
-        ...setNodeNarrative(masterNarrative),
-        children: child_ids,
-        parent: `null`,
-      }
-      createNode(_master)
 
       console.log(`finished fetching data`)
       resolve()
