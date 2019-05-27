@@ -83,59 +83,66 @@ const GatsbyAllNarrativeQuery = `
   }
 }
 `
-
-const GatsbyPageQuery = `
-query NarrativePage( $narrativeId: Float! ) {
-  maas {
-    narrative: narrativeById ( $narrativeId ) {
-      _id
-      title
-      summary
-      description
-      subjects
-      associations
-      keywords
-      location
-      lastUpdated
-      tileImages
-      relatedNarratives {
-        _id
+const GatsbyAllNarrativeObjectQuery = `
+{
+  allNarrativeObject (sort:{ fields: id, order:ASC }) {
+    edges {
+      node {
+        id
+        object
+        notes2
+        notes3
       }
-      mainImage {
-  			_id
-        url
-        width
-        height
+    }
+  }
+}
+`
+const GatsbyAllObjectQuery = `
+{
+  allObject (sort:{ fields: id, order:ASC }) {
+    edges {
+      node {
+        id
+        name
+        summary
+        images
+        productionNotes
       }
-      images {
-  			_id
+    }
+  }
+}
+`
+const GatsbyAllImageQuery = `
+{
+  allImage (sort:{ fields: id, order:ASC }) {
+    edges {
+      node {
+        id
         url
         width
         height
         caption
-      }
-      narrativeObjects {
-        _id
-        notes2
-        notes3
-        object {
-          _id
-          parentId
-          title
-          summary
-          images {
-            _id
-            url
-            width
-            height
-            caption
-          }
-          productionNotes
-        }
       }
     }
   }
 }
 `
 
-module.exports = { GatsbyNodeQuery, GatsbyAllNarrativeQuery, GatsbyPageQuery }
+const GatsbyNarrativePageQuery = `
+query NarrativePage( $narrativeId: String! ) {
+  narrative( id: { eq: $narrativeId } ) {
+    id
+    name
+    summary
+    description
+  }
+}
+`
+module.exports = {
+  GatsbyNodeQuery,
+  GatsbyAllNarrativeQuery,
+  GatsbyAllNarrativeObjectQuery,
+  GatsbyAllObjectQuery,
+  GatsbyAllImageQuery,
+  GatsbyNarrativePageQuery,
+}

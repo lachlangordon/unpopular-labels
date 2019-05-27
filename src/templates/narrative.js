@@ -1,18 +1,19 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+// import { GatsbyNarrativePageQuery } from '../queries/ServerQuery'
 import Layout from '../components/layout'
 import Image from '../components/image'
 
 import pic11 from '../assets/images/pic11.jpg'
 
  // Narrative
-export const Narrative = ({
+const Narrative = ({
   data: { narrative },
   pageContext,
   location,
 }) => {
-  console.log(narrative)
+
   return (
     <Layout>
       <div id="main" className="alt">
@@ -31,6 +32,9 @@ export const Narrative = ({
     </Layout>
   )
 }
+// ${GatsbyNarrativePageQuery}
+
+export default Narrative
 
 export const pageQuery = graphql`
 query NarrativePage( $narrativeId: String! ) {

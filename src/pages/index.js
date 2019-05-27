@@ -59,7 +59,6 @@ const IndexPage = ({
               </article>
           ))}
         </section>
-        { console.log(data) }
 
         {/* <!-- client side query --> */}
         <Query query={APOLLO_QUERY}>

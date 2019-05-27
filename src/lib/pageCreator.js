@@ -5,7 +5,6 @@ const createNarratives = (list, createPage, template) =>
     console.log('in createNarratives')
     const narrativeId = data.node.id
     const path = `/narrative/${narrativeId}`
-    console.log(path)
     createPage({
       path: path,
       component: template,
