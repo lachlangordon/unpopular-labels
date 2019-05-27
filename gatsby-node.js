@@ -18,11 +18,11 @@ const getIds = ( _objects ) => {
   // console.log( Array.isArray(_objects) )
   //
   if ( Array.isArray(_objects) ) {
-    return _objects.map(obj => obj._id)
+    return _objects.map(obj => `${obj._id}`)
   } else {
     let objArray = []
     Object.entries(_objects).map( ([ key, value ])  => {
-      if ( key === '_id' ) {  objArray[objArray.length] = value }
+      if ( key === '_id' ) {  objArray[objArray.length] = `${value}` }
     })
     return objArray
   }
@@ -186,6 +186,27 @@ exports.sourceNodes = async ({ actions }) => {
     if ( !e.hasOwnProperty(`request`) ) throw e
 
     printGraphQLError(e)
+  }
+}
+
+// re-generate index page
+exports.onCreatePage = ({ page, actions }) => {
+  const { createPage, deletePage } = actions
+
+  // Remove the leading AND traling slash from path, e.g. --> blog
+  const name = page.path && setPageName( page.path )
+
+  // in /pages: only process index page
+  if ( name === 'index' ) {
+    // First delete the page so it can be re-created
+    deletePage(page)
+
+    return createPage({
+      ...page,
+      context: {
+        masterNarrativeId: __MASTER_NARRATIVE,
+      }
+    })
   }
 }
 
