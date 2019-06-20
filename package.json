@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "digital-gallery-guide",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "MAAS Museum digital gallery guide.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Nathanael Utama <nathan.utama@maas.museum>",
   "dependencies": {
     "apollo-boost": "^0.3.1",
     "crypto": "^1.0.1",
