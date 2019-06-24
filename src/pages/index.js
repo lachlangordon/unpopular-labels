@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Helmet from 'react-helmet'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -39,25 +38,18 @@ const IndexPage = ({
 }) => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Helmet
-        title="Gatsby Starter"
-        meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-        ]}
-    >
-    </Helmet>
     <div id="main">
         <section id="one" className="tiles">
-          {data.maas.narratives.map((section, i) => (
-              <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
-                  <header className="major">
-                      <h3> {section.title} </h3>
-                      <p> {section.summary }</p>
-                  </header>
-                  <Link to="/landing" className="link primary"></Link>
-              </article>
-          ))}
+        
+        {data.sets.edges.map((section, i) => (
+            <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
+                <header className="major">
+                    <h3> {section.node.name} </h3>
+                    <p> {section.node.summary }</p>
+                </header>
+                <Link to="/landing" className="link primary"></Link>
+            </article>
+        ))}
         </section>
 
         {/* <!-- client side query --> */}
@@ -99,62 +91,21 @@ query {
   }
 }`
 
+// _id: 6761
+// ( $narrativeId: String! )
 // This query is executed at build time by Gatsby.
-export const GatsbyQuery = graphql`
-query {
-  maas {
-    narrativeById (_id: 6761) {
-      _id
-      title
-      summary
-      description
-      subjects
-      associations
-      keywords
-      location
-      lastUpdated
-    }
-    narratives (filter: {
-      _ids: [6761, 6762, 6763, 6764]
-    }) {
-      _id
-      title
-      summary
-      description
-      subjects
-      associations
-      keywords
-      location
-      lastUpdated
-      tileImages
-      relatedNarratives {
-        _id
-      }
-      mainImage {
-  			_id
-        url
-        width
-        height
-      }
-      images {
-  			_id
-        url
-        width
-        height
-        caption
-      }
-      narrativeObjects {
-        _id
-        notes2
-        notes3
-        object {
-          _id
-          parentId
-          title
+export const pageQuery = graphql`
+  query SetsByMasterId {
+    sets: allNarrative (sort:{ fields: id, order:ASC }) {
+      edges {
+        node {
+          id
+          name
           summary
-          productionNotes
+          description
+          tileImages
         }
       }
     }
   }
-}`
+`

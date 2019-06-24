@@ -26,25 +26,13 @@ module.exports = {
   plugins: [
     /*
      * Gatsby's data processing layer:
-     * data from filesystem, and MAAS API (GraphQL).
+     * data from filesystem
      */
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
         path: `${__dirname}/src/assets`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-graphql',
-      options: {
-        // This type will contain remote schema Query type
-        typeName: `MaasAPI`,
-        // Url to query from
-        url: `${ process.env.GRAPHQL_URL }`,
-        // This is field under which it's accessible
-        fieldName: `maas`,
-        // refetchInterval: 60,
       },
     },
     // site manifest
@@ -62,10 +50,16 @@ module.exports = {
         icon: `src/assets/favicons/MAAS_logo-512x512.png`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'config/typography.js',
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    'gatsby-plugin-sass',
+    `gatsby-plugin-sass`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
