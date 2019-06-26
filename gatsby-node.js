@@ -76,33 +76,21 @@ const setNodeNarrativeObject = ( _narrative_obj ) => {
         .update(JSON.stringify(_narrative_obj))
         .digest(`hex`),
     },
-    // object: this is an object instead of Array
-    object : _narrative_obj.object ? getIds(_narrative_obj.object) : [],
     notes2: _narrative_obj.notes2,
     notes3: _narrative_obj.notes3,
+    // object: this is an object instead of Array
+    object : _narrative_obj.object ? setObject(_narrative_obj.object) : null,
   }
 }
 
 // object itself
-const setNodeObject = ( _object ) => {
-  // don't process if it does not have id
-  if ( !_object._id ) { return }
-
+const setObject = ( _object ) => {
   return {
-    id: `${ _object._id }`,
-    parent: `${ _object.parent || null }`,
-    internal: {
-      type: `Object`,
-      contentDigest: crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(_object))
-        .digest(`hex`),
-    },
     name: _object.title || '',
     summary: _object.summary || '',
+    productionNotes: _object.productionNotes || '',
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],
-    productionNotes: _object.productionNotes || '',
   }
 }
 
@@ -203,19 +191,15 @@ exports.sourceNodes = async ({ actions }) => {
         if ( cn.narrativeObjects.length ) {
 
           cn.narrativeObjects.forEach(nobj => {
-            let _nobj = setNodeNarrativeObject({ ...nobj, parent: _node.id })
+            const _nobj = setNodeNarrativeObject({ ...nobj, parent: _node.id })
 
-            const parentObjId = _nobj.id // narrative object id as parent id
+            // narrative object id as parent id
+            const parentObjId = _nobj.id
 
-            // check for linked objects
-            // objects would have the same id as narrative objects id
-            // because they're essentially the same object
-            // option: to normalise & merge with narrative object or to use id instead of _id
+            // check for linked objects :
+            // object id - same as narrative object id
             if ( nobj.object ) {
               console.log(`testing nobj-id: %s vs. parent: %s`, nobj.object._id, _nobj.id)
-              // const _obj = setNodeObject({ ...nobj.object, parent: _nobj.id })
-              // createNode(_obj)
-
               // check for images
               if ( nobj.object.images.length ) {
                 const { images } = nobj.object
