@@ -30,8 +30,6 @@ function buildImgPath(i) {
 const IndexPage = ({
   data,
   pageContext: {
-    name,
-    narrativeId,
     masterNarrativeId,
   },
   location,
@@ -40,8 +38,8 @@ const IndexPage = ({
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <div id="main">
         <section id="one" className="tiles">
-        
-        {data.sets.edges.map((section, i) => (
+        {data.sets.edges.map((section, i) => {
+          return (
             <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
                 <header className="major">
                     <h3> {section.node.name} </h3>
@@ -49,7 +47,8 @@ const IndexPage = ({
                 </header>
                 <Link to="/landing" className="link primary"></Link>
             </article>
-        ))}
+          )
+        })}
         </section>
 
         {/* <!-- client side query --> */}
@@ -92,13 +91,14 @@ query {
 }`
 
 // _id: 6761
-// ( $narrativeId: String! )
+// fields: { slug: { eq: $slug } }
+// https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
 // This query is executed at build time by Gatsby.
 export const pageQuery = graphql`
-  query SetsByMasterId {
-    sets: allNarrative (sort:{ fields: id, order:ASC }) {
+  query SetsByParentId ($masterNarrativeId : String!) {
+    sets: allNarrative (filter: { parent: { id: { eq:  $masterNarrativeId } } }, sort: { fields: id, order:ASC }) {
       edges {
-        node {
+      	node {
           id
           name
           summary

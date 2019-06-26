@@ -6,6 +6,8 @@
 const path = require(`path`)
 const crypto = require('crypto')
 
+// gatsby-node.js
+const { GraphQLSchema, GraphQLString } = require(`graphql`)
 const { createNarratives } = require('./src/lib/pageCreator')
 const { GatsbyNodeQuery, GatsbyAllNarrativeQuery } = require('./src/queries/ServerQuery')
 const { GQLClientWrapper, GQLServerWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
@@ -15,8 +17,6 @@ const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/utils`)
 const __MASTER_NARRATIVE = 6761
 
 const getIds = ( _objects ) => {
-  // console.log( Array.isArray(_objects) )
-  //
   if ( Array.isArray(_objects) ) {
     return _objects.map(obj => `${obj._id}`)
   } else {
@@ -30,10 +30,13 @@ const getIds = ( _objects ) => {
 
 // top level phase
 const setNodeNarrative = ( _narrative ) => {
+  // don't process if it does not have id
+  if ( !_narrative._id ) { return }
+
   return {
     id: `${ _narrative._id }`,
-    parent: `${ __MASTER_NARRATIVE }`,
-    children: [],
+    parent: `${ _narrative.parent || null }`,
+    children: _narrative.children || [],
     internal: {
       type: `Narrative`,
       contentDigest: crypto
@@ -59,68 +62,110 @@ const setNodeNarrative = ( _narrative ) => {
 }
 
 // collections in phase
-const setNodeNarrativeObject = ( _narrative_obj , parentId ) => {
-    return {
-      id: `${ _narrative_obj._id }`,
-      parent: `${ parentId }`,
-      internal: {
-        type: `NarrativeObject`,
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(JSON.stringify(_narrative_obj))
-          .digest(`hex`),
-      },
-      // object: this is an object instead of Array
-      object : _narrative_obj.object ? getIds(_narrative_obj.object) : [],
-      notes2: _narrative_obj.notes2,
-      notes3: _narrative_obj.notes3,
-    }
+const setNodeNarrativeObject = ( _narrative_obj ) => {
+  // don't process if it does not have id
+  if ( !_narrative_obj._id ) { return }
+
+  return {
+    id: `${ _narrative_obj._id }`,
+    parent: `${ _narrative_obj.parent || null }`,
+    internal: {
+      type: `NarrativeObject`,
+      contentDigest: crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(_narrative_obj))
+        .digest(`hex`),
+    },
+    // object: this is an object instead of Array
+    object : _narrative_obj.object ? getIds(_narrative_obj.object) : [],
+    notes2: _narrative_obj.notes2,
+    notes3: _narrative_obj.notes3,
+  }
 }
 
 // object itself
-const setNodeObject = ( _object, parentId ) => {
-    return {
-      id: `${ _object._id }`,
-      parent: `${ _object.parentId || parentId }`,
-      internal: {
-        type: `Object`,
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(JSON.stringify(_object))
-          .digest(`hex`),
-      },
-      name: _object.title || '',
-      summary: _object.summary || '',
-      // images: an array of images
-      images: _object.images ? getIds(_object.images) : [],
-      productionNotes: _object.productionNotes || '',
-    }
+const setNodeObject = ( _object ) => {
+  // don't process if it does not have id
+  if ( !_object._id ) { return }
+
+  return {
+    id: `${ _object._id }`,
+    parent: `${ _object.parent || null }`,
+    internal: {
+      type: `Object`,
+      contentDigest: crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(_object))
+        .digest(`hex`),
+    },
+    name: _object.title || '',
+    summary: _object.summary || '',
+    // images: an array of images
+    images: _object.images ? getIds(_object.images) : [],
+    productionNotes: _object.productionNotes || '',
+  }
 }
 
 // to do: preprocess images
-const setNodeImage = ( _img, parentId ) => {
-    // don't process if it does not have url
-    if ( !_img.url ) { return }
+const setNodeImage = ( _img ) => {
+  // don't process if it does not have url/id
+  if ( !_img.url || !_img._id ) { return }
 
-    return {
-      id: `${ _img._id }`,
-      parent: `${ _img.parentId || parentId }`,
-      internal: {
-        type: `Image`,
-        contentDigest: crypto
-          .createHash(`md5`)
-          .update(JSON.stringify(_img))
-          .digest(`hex`),
-      },
-      url: _img.url,
-      width: _img.width || 300,   // set min width
-      height: _img.height,
-      caption: _img.caption || '',
-    }
+  return {
+    id: `${ _img._id }`,
+    parent: `${ _img.parent || null }`,
+    internal: {
+      type: `Image`,
+      contentDigest: crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(_img))
+        .digest(`hex`),
+    },
+    url: _img.url,
+    width: _img.width || 300,   // set min width
+    height: _img.height,
+    caption: _img.caption || '',
+  }
 }
 
+/*
+exports.onPostBootstrap = ({ store, reporter }) => {
+  const { schema } = store.getState()
+  // console.log(schema)
+
+  reporter.info(
+    schema instanceof GraphQLSchema
+      ? `Hooray, a GraphQLSchema!`
+      : `Boo, where's the Schema?`
+  )
+}
+
+exports.setFieldsOnGraphQLNodeType = ({ type }) => {
+  console.log( type.name )
+  if (type.name === `Narrative`) {
+    return {
+      parentId: {
+        type: GraphQLString,
+        args: {
+          myArgument: {
+            type: GraphQLString,
+          }
+        },
+        resolve: (source, fieldArgs) => {
+          console.log(source)
+          return `Id of this node is ${source.id}.
+                  Field was called with argument: ${fieldArgs.myArgument}`
+        }
+      }
+    }
+  }
+
+  // by default return empty object
+  return {}
+}*/
+
 exports.sourceNodes = async ({ actions }) => {
-  const { createNode } = actions
+  const { createNode, createParentChildLink } = actions
 
   // init query to populate nodes
   const query = `
@@ -139,39 +184,50 @@ exports.sourceNodes = async ({ actions }) => {
     return new Promise((resolve, reject) => {
 
       // create master narrative
-      const _master =  {
-        ...setNodeNarrative(masterNarrative),
+      const _master = setNodeNarrative({
+        ...masterNarrative,
         children: childNarratives ? getIds(childNarratives) : [],
-        parent: `null`,
-      }
+        parent: null
+      })
       createNode(_master)
 
       // create child narrative nodes
-      childNarratives.forEach(n => {
-        const _node = setNodeNarrative(n)
+      childNarratives.forEach(cn => {
+        const _node = setNodeNarrative({
+          ...cn,
+          parent: __MASTER_NARRATIVE
+        })
         createNode(_node)
 
         // check for linked narrative objects
-        if ( n.narrativeObjects.length ) {
+        if ( cn.narrativeObjects.length ) {
 
-          n.narrativeObjects.forEach(nobj => {
-            const _nobj = setNodeNarrativeObject(nobj, _node.id)
-            createNode(_nobj)
+          cn.narrativeObjects.forEach(nobj => {
+            let _nobj = setNodeNarrativeObject({ ...nobj, parent: _node.id })
+
+            const parentObjId = _nobj.id // narrative object id as parent id
 
             // check for linked objects
+            // objects would have the same id as narrative objects id
+            // because they're essentially the same object
+            // option: to normalise & merge with narrative object or to use id instead of _id
             if ( nobj.object ) {
-              const _obj = setNodeObject(nobj.object, _nobj.id)
-              createNode(_obj)
+              console.log(`testing nobj-id: %s vs. parent: %s`, nobj.object._id, _nobj.id)
+              // const _obj = setNodeObject({ ...nobj.object, parent: _nobj.id })
+              // createNode(_obj)
 
               // check for images
               if ( nobj.object.images.length ) {
                 const { images } = nobj.object
-                images.forEach (img => {
-                  const _img = setNodeImage(img, _obj.id)
+                images.forEach(img => {
+                  const _img = setNodeImage({ ...img, parent: parentObjId })
                   createNode(_img)
                 })
               }
             }
+
+            // create narrative object node
+            createNode(_nobj)
           })
         }
       })
@@ -204,7 +260,7 @@ exports.onCreatePage = ({ page, actions }) => {
     return createPage({
       ...page,
       context: {
-        masterNarrativeId: __MASTER_NARRATIVE,
+        masterNarrativeId: `${ __MASTER_NARRATIVE }`,
       }
     })
   }
