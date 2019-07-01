@@ -14,5 +14,6 @@
    <ApolloProvider client={client}>{element}</ApolloProvider>
  ) */
 
+// m = module
  const preferDefault = m => (m && m.default) || m
  exports.wrapRootElement = preferDefault(require(`./src/store/withData`))

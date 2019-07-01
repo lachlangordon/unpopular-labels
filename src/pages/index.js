@@ -38,12 +38,12 @@ const IndexPage = ({
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <div id="main">
         <section id="one" className="tiles">
-        {data.sets.edges.map((section, i) => {
+        {data.sets.map((section, i) => {
           return (
             <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
                 <header className="major">
-                    <h3> {section.node.name} </h3>
-                    <p> {section.node.summary }</p>
+                    <h3> { section.name } </h3>
+                    <p> {section.summary } </p>
                 </header>
                 <Link to="/landing" className="link primary"></Link>
             </article>
@@ -95,17 +95,13 @@ query {
 // https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
 // This query is executed at build time by Gatsby.
 export const pageQuery = graphql`
-  query SetsByParentId ($masterNarrativeId : String!) {
-    sets: allNarrative (filter: { parent: { id: { eq:  $masterNarrativeId } } }, sort: { fields: id, order:ASC }) {
-      edges {
-      	node {
-          id
-          name
-          summary
-          description
-          tileImages
-        }
-      }
+  query {
+    sets: SetsByMasterId {
+      id
+      name
+      summary
+      description
+      tileImages
     }
   }
 `

@@ -5,6 +5,18 @@ require('dotenv').config({
 });
 
 /**
+ * Request a query from a Gatsby GraphQL Server.
+ */
+const GQLGatsbyWrapper = promise =>
+  promise.then( result => {
+    if ( result.errors ) {
+      throw result.errors
+    }
+    return result
+  })
+
+
+/**
  * Request a query from a client.
  */
 const GQLClientWrapper = async ( query ) => {
@@ -17,17 +29,6 @@ const GQLClientWrapper = async ( query ) => {
 }
 
 /**
- * Request a query from a Gatsby GraphQL Server.
- */
-const GQLServerWrapper = promise =>
-  promise.then( result => {
-    if ( result.errors ) {
-      throw result.errors
-    }
-    return result
-  })
-
-/**
  * Print an error from a GraphQL client
  * check errors because graphql doesn't throw an error
  */
@@ -38,4 +39,4 @@ const printGraphQLError = e => {
   if (e.request) console.error(e.request)
 }
 
-module.exports = { GQLClientWrapper, GQLServerWrapper, printGraphQLError }
+module.exports = { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError }

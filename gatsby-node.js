@@ -11,7 +11,7 @@ const crypto = require('crypto')
 const { GraphQLSchema, GraphQLString } = require(`graphql`)
 const { createNarratives } = require('./src/lib/pageCreator')
 const { GatsbyNodeQuery, GatsbyAllNarrativeQuery } = require('./src/queries/ServerQuery')
-const { GQLClientWrapper, GQLServerWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
+const { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`)
 
 // later move it to config
@@ -195,6 +195,37 @@ exports.sourceNodes = async ({ actions }) => {
   }
 }
 
+exports.createResolvers = ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
+
+  createResolvers({
+    // Create a new root query field.
+    Query: {
+      // Field resolvers can use all of Gatsby's querying capabilities
+      SetsByMasterId: {
+        type: [`Narrative`],
+        resolve(source, args, context, info) {
+          console.log('inside create resolvers')
+          console.log(args)
+          return context.nodeModel.runQuery({
+            query: { filter: { parent: { id: { eq:  `${ __MASTER_NARRATIVE }` } } } },
+            type: `Narrative`,
+            firstOnly: false,
+          })
+        }
+      }
+    }
+  })
+}
+
+/*
+// re-create index page with injected masterNarrativeId is no longer necessary
 // re-generate index page
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions
@@ -214,13 +245,13 @@ exports.onCreatePage = ({ page, actions }) => {
       }
     })
   }
-}
+} */
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   const narrativeTemplate = require.resolve('./src/templates/narrative.js')
-  const result = await GQLServerWrapper(
+  const result = await GQLGatsbyWrapper(
     graphql(`
       ${ GatsbyAllNarrativeQuery }
     `)
