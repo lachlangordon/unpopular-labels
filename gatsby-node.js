@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+const fs = require(`fs`)
 const path = require(`path`)
 const crypto = require('crypto')
 
@@ -11,7 +12,7 @@ const { GraphQLSchema, GraphQLString } = require(`graphql`)
 const { createNarratives } = require('./src/lib/pageCreator')
 const { GatsbyNodeQuery, GatsbyAllNarrativeQuery } = require('./src/queries/ServerQuery')
 const { GQLClientWrapper, GQLServerWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
-const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/utils`)
+const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`)
 
 // later move it to config
 const __MASTER_NARRATIVE = 6761
@@ -116,44 +117,8 @@ const setNodeImage = ( _img ) => {
   }
 }
 
-/*
-exports.onPostBootstrap = ({ store, reporter }) => {
-  const { schema } = store.getState()
-  // console.log(schema)
-
-  reporter.info(
-    schema instanceof GraphQLSchema
-      ? `Hooray, a GraphQLSchema!`
-      : `Boo, where's the Schema?`
-  )
-}
-
-exports.setFieldsOnGraphQLNodeType = ({ type }) => {
-  console.log( type.name )
-  if (type.name === `Narrative`) {
-    return {
-      parentId: {
-        type: GraphQLString,
-        args: {
-          myArgument: {
-            type: GraphQLString,
-          }
-        },
-        resolve: (source, fieldArgs) => {
-          console.log(source)
-          return `Id of this node is ${source.id}.
-                  Field was called with argument: ${fieldArgs.myArgument}`
-        }
-      }
-    }
-  }
-
-  // by default return empty object
-  return {}
-}*/
-
 exports.sourceNodes = async ({ actions }) => {
-  const { createNode, createParentChildLink } = actions
+  const { createNode, createTypes, createParentChildLink } = actions
 
   // init query to populate nodes
   const query = `
@@ -186,6 +151,7 @@ exports.sourceNodes = async ({ actions }) => {
           parent: __MASTER_NARRATIVE
         })
         createNode(_node)
+        // createParentChildLink({ parent: _master, child: _node })
 
         // check for linked narrative objects
         if ( cn.narrativeObjects.length ) {
