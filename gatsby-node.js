@@ -204,15 +204,7 @@ exports.createResolvers = ({
   reporter,
 }) => {
 
-  // // Construct a schema, using GraphQL schema language
-  // var schema = buildSchema(`
-  //   type Query {
-  //     SetObjectById( id: String! ): [NarrativeObject]
-  //   }
-  // `);
-  //
-  // console.log(schema)
-
+  // create resolvers
   createResolvers({
     // Create a new root query field.
     // Field resolvers can use all of Gatsby's querying capabilities
@@ -282,32 +274,24 @@ exports.createResolvers = ({
           return images.filter(img => img.parent == `${ args.parentId }`)
         }
       },
+      ImagesByIds: {
+        type: [`Image`],
+        args: {
+          ids: {
+            name: `ids`,
+            type: [GraphQLString],
+          }
+        },
+        resolve (source, args, context, info) {
+
+          return context.nodeModel.getNodesByIds({
+            ids: args.ids
+          })
+        }
+      }
     }
   })
 }
-
-/*
-// re-create index page with injected masterNarrativeId is no longer necessary
-// re-generate index page
-exports.onCreatePage = ({ page, actions }) => {
-  const { createPage, deletePage } = actions
-
-  // Remove the leading AND traling slash from path, e.g. --> blog
-  const name = page.path && setPageName( page.path )
-
-  // in /pages: only process index page
-  if ( name === 'index' ) {
-    // First delete the page so it can be re-created
-    deletePage(page)
-
-    return createPage({
-      ...page,
-      context: {
-        masterNarrativeId: `${ __MASTER_NARRATIVE }`,
-      }
-    })
-  }
-} */
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
