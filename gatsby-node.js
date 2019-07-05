@@ -3,122 +3,22 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
-const fs = require(`fs`)
-const path = require(`path`)
-const crypto = require('crypto')
 
 // gatsby-node.js
-const { GraphQLSchema, GraphQLString, GraphQLInt, GraphQLList } = require(`graphql`)
-const { createNarratives } = require('./src/lib/pageCreator')
-const { GatsbyNodeQuery, GatsbyAllNarrativeQuery } = require('./src/queries/ServerQuery')
 const { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
+const { GatsbyNodeQuery, GatsbyAllSetQuery } = require('./bootstrap/queries')
+
+const { getIds, setNodeNarrative, setNodeNarrativeObject, setNodeImage } = require('./bootstrap/normalise')
+const { GatsbyResolvers } = require('./bootstrap/resolvers')
+
+const { createNarratives } = require('./src/lib/pageCreator')
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`)
 
 // later move it to config
 const __MASTER_NARRATIVE = 6761
 
-const getIds = ( _objects ) => {
-  if ( Array.isArray(_objects) ) {
-    return _objects.map(obj => `${obj._id}`)
-  } else {
-    let objArray = []
-    Object.entries(_objects).map( ([ key, value ])  => {
-      if ( key === '_id' ) {  objArray[objArray.length] = `${value}` }
-    })
-    return objArray
-  }
-}
-
-// top level phase
-const setNodeNarrative = ( _narrative ) => {
-  // don't process if it does not have id
-  if ( !_narrative._id ) { return }
-
-  return {
-    id: `${ _narrative._id }`,
-    parent: `${ _narrative.parent || null }`,
-    children: _narrative.children || [],
-    internal: {
-      type: `Narrative`,
-      contentDigest: crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(_narrative))
-        .digest(`hex`),
-    },
-    name: _narrative.title || '',
-    summary: _narrative.summary || '',
-    description: _narrative.description || '',
-    lastUpdated: _narrative.lastUpdated || '',
-    subjects: _narrative.subjects || [],
-    keywords: _narrative.keywords || [],
-    location: _narrative.location || [],
-    associations: _narrative.associations || [],
-    // narrative objects: an array of objects in narrative
-    narrativeObjects: _narrative.narrativeObjects ? getIds(_narrative.narrativeObjects) : [],
-    relatedNarratives: _narrative.relatedNarratives || [],
-    images: _narrative.images || [],
-    tileImages: _narrative.tileImages || [],
-    mainImage: _narrative.mainImage || null,
-  }
-}
-
-// collections in phase
-const setNodeNarrativeObject = ( _narrative_obj ) => {
-  // don't process if it does not have id
-  if ( !_narrative_obj._id ) { return }
-
-  return {
-    id: `${ _narrative_obj._id }`,
-    parent: `${ _narrative_obj.parent || null }`,
-    internal: {
-      type: `NarrativeObject`,
-      contentDigest: crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(_narrative_obj))
-        .digest(`hex`),
-    },
-    notes2: _narrative_obj.notes2,
-    notes3: _narrative_obj.notes3,
-    // object: this is an object instead of Array
-    object : _narrative_obj.object ? setObject(_narrative_obj.object) : null,
-  }
-}
-
-// object itself
-const setObject = ( _object ) => {
-  return {
-    name: _object.title || '',
-    summary: _object.summary || '',
-    productionNotes: _object.productionNotes || '',
-    // images: an array of images
-    images: _object.images ? getIds(_object.images) : [],
-  }
-}
-
-// to do: preprocess images
-const setNodeImage = ( _img ) => {
-  // don't process if it does not have url/id
-  if ( !_img.url || !_img._id ) { return }
-
-  return {
-    id: `${ _img._id }`,
-    parent: `${ _img.parent || null }`,
-    internal: {
-      type: `Image`,
-      contentDigest: crypto
-        .createHash(`md5`)
-        .update(JSON.stringify(_img))
-        .digest(`hex`),
-    },
-    url: _img.url,
-    width: _img.width || 300,   // set min width
-    height: _img.height,
-    caption: _img.caption || '',
-  }
-}
-
 exports.sourceNodes = async ({ actions }) => {
-  const { createNode, createTypes, createParentChildLink } = actions
+  const { createNode, createParentChildLink } = actions
 
   // init query to populate nodes
   const query = `
@@ -204,93 +104,7 @@ exports.createResolvers = ({
   reporter,
 }) => {
 
-  // create resolvers
-  createResolvers({
-    // Create a new root query field.
-    // Field resolvers can use all of Gatsby's querying capabilities
-    Query: {
-      getMasterSetId: {
-        type: `String`,
-        resolve(source, args, context, info) {
-          return `${ __MASTER_NARRATIVE }`
-        }
-      },
-      getMasterSet: {
-        type: `Narrative`,
-        resolve(source, args, context, info) {
-          return context.nodeModel.getNodeById({
-              id: `${ __MASTER_NARRATIVE }`,
-              type: `Narrative`,
-            })
-        }
-      },
-      SetsByMasterId: {
-        type: [`Narrative`],
-        resolve(source, args, context, info) {
-          // console.log('inside create resolvers')
-          // console.log(args)
-          return context.nodeModel.runQuery({
-            query: {
-              filter: { parent: { id: { eq:  `${ __MASTER_NARRATIVE }` } } },
-              sort: { fields: ['id'], order: ['ASC'] }
-            },
-            type: `Narrative`,
-            firstOnly: false,
-          })
-        }
-      },
-      SetObjectsByParentId: {
-        type: [`NarrativeObject`],
-        args: {
-          parentId: {
-            name: `parentId`,
-            type: GraphQLString,
-          },
-        },
-        resolve(source, args, context, info) {
-          // console.log(args)
-          const setObjects = context.nodeModel.getAllNodes({
-              type: `NarrativeObject`,
-            })
-
-          return setObjects.filter(setObj => setObj.parent == `${ args.parentId }`)
-        }
-      },
-      ImagesByParentId: {
-        type: [`Image`],
-        args: {
-          parentId: {
-            name: `parentId`,
-            type: GraphQLString,
-          },
-        },
-        resolve (source, args, context, info) {
-          // console.log("context - path")
-          // console.log(context.path)
-          const images = context.nodeModel.getAllNodes({
-              type: `Image`,
-            })
-
-          return images.filter(img => img.parent == `${ args.parentId }`)
-        }
-      },
-      ImagesByIds: {
-        type: [`Image`],
-        args: {
-          ids: {
-            name: `ids`,
-            type: [GraphQLString],
-          }
-        },
-        resolve (source, args, context, info) {
-
-          return context.nodeModel.getNodesByIds({
-            ids: args.ids
-          })
-        }
-      }
-    }
-  })
+  createResolvers(GatsbyResolvers)
 }
 
 exports.createPages = async ({ actions, graphql }) => {
@@ -299,7 +113,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const narrativeTemplate = require.resolve('./src/templates/narrative.js')
   const result = await GQLGatsbyWrapper(
     graphql(`
-      ${ GatsbyAllNarrativeQuery }
+      ${ GatsbyAllSetQuery }
     `)
   )
   const { allNarrative } = result.data

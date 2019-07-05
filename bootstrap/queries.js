@@ -1,3 +1,8 @@
+/**
+ * Server Queries to bootstrap Gatsby
+ *
+ */
+
 // later move it to config
 const __MASTER_NARRATIVE = 6761
 
@@ -68,7 +73,7 @@ query NodeNarratives {
 `
 
 // This query is executed at build time by Gatsby.
-const GatsbyAllNarrativeQuery = `
+const GatsbyAllSetQuery = `
 {
   allNarrative(sort:{ fields: id, order:ASC }) {
     edges {
@@ -83,7 +88,7 @@ const GatsbyAllNarrativeQuery = `
   }
 }
 `
-const GatsbyAllNarrativeObjectQuery = `
+const GatsbyAllSetObjectQuery = `
 {
   allNarrativeObject(sort:{ fields: id, order:ASC }) {
     edges {
@@ -97,21 +102,7 @@ const GatsbyAllNarrativeObjectQuery = `
   }
 }
 `
-const GatsbyAllObjectQuery = `
-{
-  allObject (sort:{ fields: id, order:ASC }) {
-    edges {
-      node {
-        id
-        name
-        summary
-        images
-        productionNotes
-      }
-    }
-  }
-}
-`
+
 const GatsbyAllImageQuery = `
 {
   allImage (sort:{ fields: id, order:ASC }) {
@@ -128,21 +119,9 @@ const GatsbyAllImageQuery = `
 }
 `
 
-const GatsbyNarrativePageQuery = `
-query NarrativePage( $narrativeId: String! ) {
-  narrative( id: { eq: $narrativeId } ) {
-    id
-    name
-    summary
-    description
-  }
-}
-`
 module.exports = {
   GatsbyNodeQuery,
-  GatsbyAllNarrativeQuery,
-  GatsbyAllNarrativeObjectQuery,
-  GatsbyAllObjectQuery,
+  GatsbyAllSetQuery,
+  GatsbyAllSetObjectQuery,
   GatsbyAllImageQuery,
-  GatsbyNarrativePageQuery,
 }
