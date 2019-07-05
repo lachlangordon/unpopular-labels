@@ -8,8 +8,8 @@ const __MASTER_NARRATIVE = 6761
 
 // initial GQL query to generate dynamic content nodes
 const GatsbyNodeQuery = `
-query NodeNarratives {
-  masterNarrative: narrativeById(_id: ${__MASTER_NARRATIVE}) {
+query NodeSets {
+  masterSet: narrativeById(_id: ${__MASTER_NARRATIVE}) {
     _id
     title
     summary
@@ -20,7 +20,7 @@ query NodeNarratives {
     location
     lastUpdated
   }
-  childNarratives: narratives (filter: {
+  childSets: narratives (filter: {
     masterNarrative: ${__MASTER_NARRATIVE}
   }) {
     _id
@@ -75,7 +75,7 @@ query NodeNarratives {
 // This query is executed at build time by Gatsby.
 const GatsbyAllSetQuery = `
 {
-  allNarrative(sort:{ fields: id, order:ASC }) {
+  allSet(sort:{ fields: id, order:ASC }) {
     edges {
       node {
         id
@@ -90,7 +90,7 @@ const GatsbyAllSetQuery = `
 `
 const GatsbyAllSetObjectQuery = `
 {
-  allNarrativeObject(sort:{ fields: id, order:ASC }) {
+  allSetObject(sort:{ fields: id, order:ASC }) {
     edges {
       node {
         id

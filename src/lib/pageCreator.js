@@ -1,17 +1,17 @@
-// const _ = require('lodash')
 
-const createNarratives = (list, createPage, template) =>
+const createSetPages = (list, createPage, template) =>
   list.forEach( data => {
-    console.log('in createNarratives')
-    const narrativeId = data.node.id
-    const path = `/narrative/${narrativeId}`
+    const setId = data.node.id
+    const path = `/set/${setId}`
+
+    console.log(`Create set pages: ${path}`)
     createPage({
       path: path,
       component: template,
       context: {
-        narrativeId,
+        setId,
       },
     })
   })
 
-module.exports = { createNarratives }
+module.exports = { createSetPages }

@@ -8,10 +8,10 @@
 const { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
 const { GatsbyNodeQuery, GatsbyAllSetQuery } = require('./bootstrap/queries')
 
-const { getIds, setNodeNarrative, setNodeNarrativeObject, setNodeImage } = require('./bootstrap/normalise')
+const { getIds, setNodeSet, setNodeSetObject, setNodeImage } = require('./bootstrap/normalise')
 const { GatsbyResolvers } = require('./bootstrap/resolvers')
 
-const { createNarratives } = require('./src/lib/pageCreator')
+const { createSetPages } = require('./src/lib/pageCreator')
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`)
 
 // later move it to config
@@ -28,25 +28,25 @@ exports.sourceNodes = async ({ actions }) => {
   try {
     console.log(`starting to fetch data from MAAS_API`)
 
-    const { masterNarrative, childNarratives } = await GQLClientWrapper( query )
+    const { masterSet, childSets } = await GQLClientWrapper( query )
 
     // if there is no master narrative don't create nodes
-    if ( masterNarrative.length ) { return }
+    if ( masterSet.length ) { return }
 
     // create nodes
     return new Promise((resolve, reject) => {
 
       // create master narrative
-      const _master = setNodeNarrative({
-        ...masterNarrative,
-        children: childNarratives ? getIds(childNarratives) : [],
+      const _master = setNodeSet({
+        ...masterSet,
+        children: childSets ? getIds(childSets) : [],
         parent: null
       })
       createNode(_master)
 
       // create child narrative nodes
-      childNarratives.forEach(cn => {
-        const _node = setNodeNarrative({
+      childSets.forEach(cn => {
+        const _node = setNodeSet({
           ...cn,
           parent: __MASTER_NARRATIVE
         })
@@ -56,19 +56,19 @@ exports.sourceNodes = async ({ actions }) => {
         // check for linked narrative objects
         if ( cn.narrativeObjects.length ) {
 
-          cn.narrativeObjects.forEach(nobj => {
-            const _nobj = setNodeNarrativeObject({ ...nobj, parent: _node.id })
+          cn.narrativeObjects.forEach(sobj => {
+            const _sobj = setNodeSetObject({ ...sobj, parent: _node.id })
 
             // narrative object id as parent id
-            const parentObjId = _nobj.id
+            const parentObjId = _sobj.id
 
             // check for linked objects :
             // object id - same as narrative object id
-            if ( nobj.object ) {
-              console.log(`testing nobj-id: %s vs. parent: %s`, nobj.object._id, _nobj.id)
+            if ( sobj.object ) {
+              console.log(`testing sobj-id: %s vs. parent: %s`, sobj.object._id, _sobj.id)
               // check for images
-              if ( nobj.object.images.length ) {
-                const { images } = nobj.object
+              if ( sobj.object.images.length ) {
+                const { images } = sobj.object
                 images.forEach(img => {
                   const _img = setNodeImage({ ...img, parent: parentObjId })
                   createNode(_img)
@@ -77,7 +77,7 @@ exports.sourceNodes = async ({ actions }) => {
             }
 
             // create narrative object node
-            createNode(_nobj)
+            createNode(_sobj)
           })
         }
       })
@@ -85,6 +85,7 @@ exports.sourceNodes = async ({ actions }) => {
       console.log(`finished fetching data`)
       resolve()
     })
+
 
   } catch (e) {
 
@@ -110,14 +111,14 @@ exports.createResolvers = ({
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const narrativeTemplate = require.resolve('./src/templates/narrative.js')
+  const setTemplate = require.resolve('./src/templates/SetPage.js')
   const result = await GQLGatsbyWrapper(
     graphql(`
       ${ GatsbyAllSetQuery }
     `)
   )
-  const { allNarrative } = result.data
 
-  // create pages with templates and helper functions
-  createNarratives( allNarrative.edges, createPage, narrativeTemplate )
+  const { allSet } = result.data
+  // // create pages with templates and helper functions
+  createSetPages( allSet.edges, createPage, setTemplate )
 }

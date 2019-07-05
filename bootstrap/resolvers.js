@@ -18,16 +18,16 @@ const GatsbyResolvers = {
       }
     },
     getMasterSet: {
-      type: `Narrative`,
+      type: `Set`,
       resolve(source, args, context, info) {
         return context.nodeModel.getNodeById({
             id: `${ __MASTER_NARRATIVE }`,
-            type: `Narrative`,
+            type: `Set`,
           })
       }
     },
     SetsByMasterId: {
-      type: [`Narrative`],
+      type: [`Set`],
       resolve(source, args, context, info) {
         // console.log('inside create resolvers')
         // console.log(args)
@@ -36,13 +36,13 @@ const GatsbyResolvers = {
             filter: { parent: { id: { eq:  `${ __MASTER_NARRATIVE }` } } },
             sort: { fields: ['id'], order: ['ASC'] }
           },
-          type: `Narrative`,
+          type: `Set`,
           firstOnly: false,
         })
       }
     },
     SetObjectsByParentId: {
-      type: [`NarrativeObject`],
+      type: [`SetObject`],
       args: {
         parentId: {
           name: `parentId`,
@@ -52,7 +52,7 @@ const GatsbyResolvers = {
       resolve(source, args, context, info) {
         // console.log(args)
         const setObjects = context.nodeModel.getAllNodes({
-            type: `NarrativeObject`,
+            type: `SetObject`,
           })
 
         return setObjects.filter(setObj => setObj.parent == `${ args.parentId }`)
