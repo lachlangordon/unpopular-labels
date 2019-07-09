@@ -4,98 +4,121 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
- const path = require(`path`)
- const dateformat = require(`dateformat`)
- const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
- const { buildPath } = require(`./src/utils`)
+// gatsby-node.js
+const { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
+const { GatsbyNodeQuery, GatsbyAllSetQuery } = require('./bootstrap/queries')
 
- exports.createPages = async ({ actions, graphql }) => {
-   const { data } = await graphql(`
-     query {
-       maas {
-         narrativeById (_id: 6761) {
-           _id
-           title
-           summary
-           description
-           narrativeObjects {
-             _id
-             notes2
-             notes3
-             object {
-               _id
-               parentId
-               title
-               summary
-               productionNotes
-             }
-           }
-         }
-       }
-     }
-   `)
+const { getIds, setNodeSet, setNodeSetObject, setNodeImage } = require('./bootstrap/normalise')
+const { GatsbyResolvers } = require('./bootstrap/resolvers')
 
-   console.log(data);
-   // data.maas.narratives.forEach(section => {
-   // //   actions.createPage({
-   // //     path: buildPath(section),
-   // //     component: path.resolve(`./src/components/blog-post.js`),
-   // //     context: {
-   // //       sectionId: section.id,
-   // //     },
-   // //   })
-   // })
- }
+const { createSetPages } = require('./src/lib/pageCreator')
+const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`)
+
+// later move it to config
+const __MASTER_NARRATIVE = 6761
+
+exports.sourceNodes = async ({ actions }) => {
+  const { createNode, createParentChildLink } = actions
+
+  // init query to populate nodes
+  const query = `
+    ${GatsbyNodeQuery}
+  `
+
+  try {
+    console.log(`starting to fetch data from MAAS_API`)
+
+    const { masterSet, childSets } = await GQLClientWrapper( query )
+
+    // if there is no master narrative don't create nodes
+    if ( masterSet.length ) { return }
+
+    // create nodes
+    return new Promise((resolve, reject) => {
+
+      // create master narrative
+      const _master = setNodeSet({
+        ...masterSet,
+        children: childSets ? getIds(childSets) : [],
+        parent: null
+      })
+      createNode(_master)
+
+      // create child narrative nodes
+      childSets.forEach(cn => {
+        const _node = setNodeSet({
+          ...cn,
+          parent: __MASTER_NARRATIVE
+        })
+        createNode(_node)
+        // createParentChildLink({ parent: _master, child: _node })
+
+        // check for linked narrative objects
+        if ( cn.narrativeObjects.length ) {
+
+          cn.narrativeObjects.forEach(sobj => {
+            const _sobj = setNodeSetObject({ ...sobj, parent: _node.id })
+
+            // narrative object id as parent id
+            const parentObjId = _sobj.id
+
+            // check for linked objects :
+            // object id - same as narrative object id
+            if ( sobj.object ) {
+              console.log(`testing sobj-id: %s vs. parent: %s`, sobj.object._id, _sobj.id)
+              // check for images
+              if ( sobj.object.images.length ) {
+                const { images } = sobj.object
+                images.forEach(img => {
+                  const _img = setNodeImage({ ...img, parent: parentObjId })
+                  createNode(_img)
+                })
+              }
+            }
+
+            // create narrative object node
+            createNode(_sobj)
+          })
+        }
+      })
+
+      console.log(`finished fetching data`)
+      resolve()
+    })
 
 
- exports.createResolvers = ({
-   actions,
-   cache,
-   createNodeId,
-   createResolvers,
-   store,
- }) => {
-   const { createNode } = actions
-   createResolvers({
+  } catch (e) {
 
-     MAAS_Section: {
-       id: {
-         type: `Int`,
-         resolve(source, args, context, info) {
-           return parseInt(source._id)
-         }
-       }
-     }
-     // GraphCMS_BlogPost: {
-     //   createdAt: {
-     //     type: `String`,
-     //     resolve(source, args, context, info) {
-     //       return dateformat(source.date, `fullDate`)
-     //     },
-     //   },
-     //   post: {
-     //     resolve(source, args, context, info) {
-     //       return remark()
-     //         .use(html)
-     //         .processSync(source.post).contents
-     //     },
-     //   },
-     // },
+    // If not a GraphQL request error, let Gatsby print the error.
+    if ( !e.hasOwnProperty(`request`) ) throw e
 
-     // GraphCMS_Asset: {
-     //   imageFile: {
-     //     type: `File`,
-     //     projection: { url: true },
-     //     resolve(source, args, context, info) {
-     //       return createRemoteFileNode({
-     //         url: source.url,
-     //         store,
-     //         cache,
-     //         createNode,
-     //         createNodeId,
-     //       })
-     //     },
-     //   },
-     // },
-   })
- }
+    printGraphQLError(e)
+  }
+}
+
+exports.createResolvers = ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
+
+  createResolvers(GatsbyResolvers)
+}
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+
+  const setTemplate = require.resolve('./src/templates/SetPage.js')
+  const result = await GQLGatsbyWrapper(
+    graphql(`
+      ${ GatsbyAllSetQuery }
+    `)
+  )
+
+  const { allSet } = result.data
+  // // create pages with templates and helper functions
+  createSetPages( allSet.edges, createPage, setTemplate )
+}

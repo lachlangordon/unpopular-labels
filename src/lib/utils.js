@@ -1,5 +1,4 @@
 
-
 // remove trailing slashes unless it's only "/"
 const replaceSlash = _path => ( _path === `/` ? _path : _path.replace(/\/$/, `` ))
 // remove slashes at the begining and end
@@ -11,15 +10,6 @@ const setPageName = _path => {
   return _name === '' ? 'index' : _name
 }
 
-// check result.errors because graphql doesn't throw an error
-const GQLwrapper = promise =>
-  promise.then( result => {
-    if ( result.errors ) {
-      throw result.errors
-    }
-    return result
-  })
-
 // not used just yet
 const buildPath = ({ title }) => {
   // remove special chars
@@ -29,4 +19,4 @@ const buildPath = ({ title }) => {
   return `/${slug}`
 }
 
-module.exports = { replaceSlash, replaceBothSlash, setPageName, GQLwrapper }
+module.exports = { replaceSlash, replaceBothSlash, setPageName }

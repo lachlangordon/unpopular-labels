@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Helmet from 'react-helmet'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -28,102 +27,28 @@ function buildImgPath(i) {
   }
 }
 
-// This query is executed at build time by Gatsby.
-// filter: {
-//    masterNarrative: 6761
-// }
-// at this point in time 6764 is still not linked to masterNarrative 6761
-export const GatsbyQuery = graphql`
-query {
-  maas {
-    narrativeById (_id: 6761) {
-      _id
-      title
-      summary
-      description
-      subjects
-      associations
-      keywords
-      location
-      lastUpdated
-    }
-    narratives (filter: {
-      _ids: [6761, 6762, 6763, 6764]
-    }) {
-      _id
-      title
-      summary
-      description
-      subjects
-      associations
-      keywords
-      location
-      lastUpdated
-      tileImages
-      relatedNarratives {
-        _id
-      }
-      mainImage {
-  			_id
-        url
-        width
-        height
-      }
-      images {
-  			_id
-        url
-        width
-        height
-        caption
-      }
-      narrativeObjects {
-        _id
-        notes2
-        notes3
-        object {
-          _id
-          parentId
-          title
-          summary
-          productionNotes
-        }
-      }
-    }
-  }
-}`;
-
-// This query is executed at run time by Apollo.
-const APOLLO_QUERY = gql`
-query {
-  site {
-    siteMetadata {
-      title
-    }
-  }
-}`;
-
-const IndexPage = ({ data }) => (
+const IndexPage = ({
+  data,
+  pageContext: {
+    masterNarrativeId,
+  },
+  location,
+}) => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Helmet
-        title="Gatsby Starter"
-        meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-        ]}
-    >
-    </Helmet>
     <div id="main">
         <section id="one" className="tiles">
-          {data.maas.narratives.map((section, i) => (
-              <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
-                  <header className="major">
-                      <h3> {section.title} </h3>
-                      <p> {section.summary }</p>
-                  </header>
-                  <Link to="/landing" className="link primary"></Link>
-              </article>
-          ))}
+        {data.sets.map((section, i) => {
+          return (
+            <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
+                <header className="major">
+                    <h3> { section.name } </h3>
+                    <p> {section.summary } </p>
+                </header>
+                <Link to="/landing" className="link primary"></Link>
+            </article>
+          )
+        })}
         </section>
 
         {/* <!-- client side query --> */}
@@ -149,10 +74,34 @@ const IndexPage = ({ data }) => (
           }}
         </Query>
 
-
     </div>
-
   </Layout>
 )
 
 export default IndexPage
+
+// This query is executed at run time by Apollo.
+const APOLLO_QUERY = gql`
+query {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}`
+
+// _id: 6761
+// fields: { slug: { eq: $slug } }
+// https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
+// This query is executed at build time by Gatsby.
+export const pageQuery = graphql`
+  query {
+    sets: SetsByMasterId {
+      id
+      name
+      summary
+      description
+      tileImages
+    }
+  }
+`
