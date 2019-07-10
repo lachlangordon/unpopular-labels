@@ -59,7 +59,7 @@ const GatsbyResolvers = {
       }
     },
     ImagesByParentId: {
-      type: [`Image`],
+      type: [`SetImage`],
       args: {
         parentId: {
           name: `parentId`,
@@ -70,14 +70,14 @@ const GatsbyResolvers = {
         // console.log("context - path")
         // console.log(context.path)
         const images = context.nodeModel.getAllNodes({
-            type: `Image`,
+            type: `SetImage`,
           })
 
         return images.filter(img => img.parent == `${ args.parentId }`)
       }
     },
     ImagesByIds: {
-      type: [`Image`],
+      type: [`SetImage`],
       args: {
         ids: {
           name: `ids`,

@@ -5,11 +5,11 @@
   "version": "0.1.0",
   "author": "MAAS Developer <developer@maas.museum>",
   "dependencies": {
-    "apollo-boost": "^0.4.3",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.6.3",
     "apollo-link": "^1.2.12",
+    "apollo-link-error": "^1.1.11",
     "apollo-link-http": "^1.5.15",
     "apollo-link-state": "^0.4.2",
     "crypto": "^1.0.1",
