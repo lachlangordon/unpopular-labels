@@ -92,7 +92,7 @@ const setNodeImage = ( _img ) => {
   return {
     id: `${ _img._id }`,
     parent: `${ _img.parent || null }`,
-    internal: setInternal( `Image`, _img ),
+    internal: setInternal( `SetImage`, _img ),
     url: _img.url,
     width: _img.width || 300,   // set min width
     height: _img.height,

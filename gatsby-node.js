@@ -3,6 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 // gatsby-node.js
 const { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
@@ -93,6 +94,40 @@ exports.sourceNodes = async ({ actions }) => {
     if ( !e.hasOwnProperty(`request`) ) throw e
 
     printGraphQLError(e)
+  }
+}
+
+exports.onCreateNode = async ({
+  node,
+  actions,
+  createNodeId,
+  store,
+  cache,
+}) => {
+  // console.log(node)
+  const { createNodeField, createNode } = actions
+
+  if (node.internal.type === 'SetImage') {
+    console.log(`process image: `, node.url)
+    try {
+      const fileNode = await createRemoteFileNode({
+        url: node.url,
+        store,
+        cache,
+        createNode,
+        createNodeId,
+      })
+      console.log(`NodeId: %s`, fileNode.id)
+      if (fileNode) {
+        createNodeField({
+          node,
+          name: 'localFile___NODE',
+          value: fileNode.id,
+        })
+      }
+    } catch (err) {
+      console.log(`error SetImage node link: %s`, err)
+    }
   }
 }
 
