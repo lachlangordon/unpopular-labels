@@ -12,6 +12,7 @@ const Footer = (props) => (
             </ul>
             <ul className="copyright">
                 <li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+                <li>Lachlan added a new list element here</li>
             </ul>
         </div>
     </footer>
