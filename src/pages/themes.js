@@ -6,6 +6,7 @@ import gql from 'graphql-tag'
 import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
+import {handleBack, handleScrollToTop} from "../lib/navUtils";
 
 const themesPage = ({
                      data,
@@ -32,7 +33,10 @@ const themesPage = ({
           )
         })}
       </section>
-
+      <section id="two">
+        <button onClick={handleBack}>Back</button>
+        <button onClick={handleScrollToTop}>Top</button>
+      </section>
     </div>
   </Layout>
 )
