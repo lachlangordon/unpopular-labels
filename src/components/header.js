@@ -4,10 +4,11 @@ import React from "react"
 
 const Header = (props) => (
     <header id="header" className="alt">
-        <Link to="/" className="logo"><strong> { props.siteTitle } </strong> </Link>
-        <nav>
-            <a className="menu-link" onClick={ props.onToggleMenu } href="javascript:;">Menu</a>
-        </nav>
+      <nav>
+        <Link to="/" className="logo"><strong> Home </strong> </Link>
+        <Link to="/all" className="logo"><strong> All </strong> </Link>
+        <Link to="/themes" className="logo"><strong> Themes </strong> </Link>
+      </nav>
     </header>
 )
 

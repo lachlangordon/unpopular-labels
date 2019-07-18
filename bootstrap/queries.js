@@ -56,9 +56,16 @@ query NodeSets {
       object {
         _id
         parentId
-        title
+        displayTitle
         summary
         images {
+          _id
+          url
+          width
+          height
+          caption
+        }
+        mainImage {
           _id
           url
           width

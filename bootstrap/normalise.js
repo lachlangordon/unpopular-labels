@@ -21,11 +21,12 @@ const setInternal = ( _objectType, _object ) => {
 // object itself
 const setObject = ( _object ) => {
   return {
-    name: _object.title || '',
+    name: _object.displayTitle || '',
     summary: _object.summary || '',
     productionNotes: _object.productionNotes || '',
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],
+    mainImage: _object.mainImage || null,
   }
 }
 

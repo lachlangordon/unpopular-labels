@@ -58,6 +58,9 @@ class Layout extends React.Component {
                   title
                 }
               }
+              set: getMasterSet {
+                description
+              }
             }
           `}
           render={data => (
@@ -67,7 +70,7 @@ class Layout extends React.Component {
                       siteTitle={data.site.siteMetadata.title}
                       onToggleMenu={this.handleToggleMenu} />
                   {children}
-                  <Footer />
+                  <Footer description={data.set.description}/>
                 </div>
                 <Menu onToggleMenu={this.handleToggleMenu} />
             </div>

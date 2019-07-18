@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import Image from '../components/image'
@@ -8,7 +8,7 @@ import pic11 from '../assets/images/pic11.jpg'
 
  // Narrative
 const SetPage = ({
-  data: { set },
+  data: { set, objects },
   pageContext,
   location,
 }) => {
@@ -27,6 +27,31 @@ const SetPage = ({
                   <p> { set.description }</p>
               </div>
           </section>
+          <section id="two" className="tiles">
+            {
+              objects.map((object, i) => {
+                return (
+                  <article key={i}>
+                    {
+                      object.object
+                        ? (
+                          <Link to={'/object/' + object.id}>
+                            {
+                              object.object.mainImage ? (
+                                <img src={object.object.mainImage.url}/>
+                              ) : <div>{object.object.name}</div>
+                            }
+                          </Link>
+                        )
+                        : (
+                          <div>{"Unpublished object IRN " + object.id}</div>
+                        )
+                    }
+                  </article>
+                )
+              })
+            }
+          </section>
       </div>
     </Layout>
   )
@@ -41,6 +66,16 @@ query SetPage( $setId: String! ) {
     name
     summary
     description
+  }
+  
+  objects: SetObjectsByParentId(parentId: $setId) {
+    id
+    object {
+      name
+      mainImage {
+        url
+      }
+    }
   }
 }
 `
