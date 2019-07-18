@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import Image from '../components/image'
+import SEO from '../components/seo';
 
 import pic11 from '../assets/images/pic11.jpg'
 
@@ -15,6 +16,7 @@ const SetPage = ({
 
   return (
     <Layout>
+      <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
       <div id="main" className="alt">
           <section id="one">
               <div className="inner">
