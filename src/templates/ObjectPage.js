@@ -18,7 +18,11 @@ const ObjectPage = ({
       <div id="main" className="alt">
         <section id="one">
           <div className="inner">
-            <span className="image main"><img src={object.object.mainImage.url} alt="" /></span>
+            {
+              object.object.mainImage && (
+                <span className="image main"><img src={object.object.mainImage.url} alt="" /></span>
+              )
+            }
             <header>
               <h1>{object.object.name}</h1>
             </header>
