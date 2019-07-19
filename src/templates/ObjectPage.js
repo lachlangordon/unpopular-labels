@@ -12,13 +12,15 @@ const ObjectPage = ({
   location,
 }) => {
 
+  if (!object.object) {
+    return (<div>Not Web Published</div>)
+  }
+
   let title = object.object.name;
   if (object.object.production[0]) {
     title += `, ${object.object.production[0].date}`;
   }
 
-  console.log(typeof object.parent.setObjects);
-  console.log(typeof object.id);
   let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
 
   return (
