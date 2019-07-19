@@ -39,7 +39,7 @@ const themesPage = ({
       </section>
     </div>
   </Layout>
-)
+);
 
 export default themesPage
 

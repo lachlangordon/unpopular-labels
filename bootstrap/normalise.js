@@ -27,6 +27,8 @@ const setObject = ( _object ) => {
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],
     mainImage: _object.mainImage || null,
+    production: _object.production || null,
+    acquisitionCreditLine: _object.acquisitionCreditLine || ','
   }
 }
 

@@ -1,17 +1,16 @@
-
-const createSetPages = (list, createPage, template) =>
+const createDynamicPages = (type, list, createPage, template) =>
   list.forEach( data => {
-    const setId = data.node.id
-    const path = `/set/${setId}`
+    const id = data.node.id
+    const path = `/${type}/${id}`
 
-    console.log(`Create set pages: ${path}`)
+    console.log(`Creating page: ${path}`)
     createPage({
       path: path,
       component: template,
       context: {
-        setId,
+        id,
       },
     })
   })
 
-module.exports = { createSetPages }
+module.exports = { createDynamicPages }

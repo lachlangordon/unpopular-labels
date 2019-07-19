@@ -1,8 +1,8 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/layout'
-import Image from '../components/image'
+import Layout from '../components/layout';
+import Image from '../components/image';
 import SEO from '../components/seo';
 
 import {handleBack, handleScrollToTop} from '../lib/navUtils';
@@ -40,7 +40,7 @@ const SetPage = ({
                   {
                     object.object
                       ? (
-                        <Link to={'/object/' + object.id}>
+                        <Link to={'/object/' + object.id} className="link primary">
                           {
                             object.object.mainImage ? (
                               <img src={object.object.mainImage.url}/>
@@ -69,15 +69,15 @@ const SetPage = ({
 export default SetPage
 
 export const pageQuery = graphql`
-query SetPage( $setId: String! ) {
-  set( id: { eq: $setId } ) {
+query SetPage( $id: String! ) {
+  set( id: { eq: $id } ) {
     id
     name
     summary
     description
   }
   
-  objects: SetObjectsByParentId(parentId: $setId) {
+  objects: SetObjectsByParentId(parentId: $id) {
     id
     object {
       name

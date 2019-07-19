@@ -7,12 +7,12 @@ const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 // gatsby-node.js
 const { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError } = require(`./src/lib/graphQL`)
-const { GatsbyNodeQuery, GatsbyAllSetQuery } = require('./bootstrap/queries')
+const { GatsbyNodeQuery, GatsbyAllSetQuery, GatsbyAllSetObjectQuery } = require('./bootstrap/queries')
 
 const { getIds, setNodeSet, setNodeSetObject, setNodeImage } = require('./bootstrap/normalise')
 const { GatsbyResolvers } = require('./bootstrap/resolvers')
 
-const { createSetPages } = require('./src/lib/pageCreator')
+const { createDynamicPages } = require('./src/lib/pageCreator')
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`)
 
 // later move it to config
@@ -144,16 +144,26 @@ exports.createResolvers = ({
 }
 
 exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
-  const setTemplate = require.resolve('./src/templates/SetPage.js')
-  const result = await GQLGatsbyWrapper(
+  const setTemplate = require.resolve('./src/templates/SetPage.js');
+  const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
+
+  const sets = await GQLGatsbyWrapper(
     graphql(`
       ${ GatsbyAllSetQuery }
     `)
-  )
+  );
+  const { allSet } = sets.data;
 
-  const { allSet } = result.data
+  const objects = await GQLGatsbyWrapper(
+    graphql(`
+      ${ GatsbyAllSetObjectQuery }
+    `)
+  );
+  const { allSetObject } = objects.data;
+
   // // create pages with templates and helper functions
-  createSetPages( allSet.edges, createPage, setTemplate )
-}
+  createDynamicPages('set', allSet.edges, createPage, setTemplate )
+  createDynamicPages('object', allSetObject.edges, createPage, objectTemplate )
+};

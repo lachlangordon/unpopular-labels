@@ -58,6 +58,10 @@ query NodeSets {
         parentId
         displayTitle
         summary
+        acquisitionCreditLine
+        production {
+		      date
+		    }
         images {
           _id
           url
@@ -77,7 +81,7 @@ query NodeSets {
     }
   }
 }
-`
+`;
 
 // This query is executed at build time by Gatsby.
 const GatsbyAllSetQuery = `
@@ -101,7 +105,16 @@ const GatsbyAllSetObjectQuery = `
     edges {
       node {
         id
-        object
+        object {
+          name
+          production {
+            date
+          }
+          acquisitionCreditLine
+          mainImage {
+            url
+          }
+        }
         notes2
         notes3
       }
