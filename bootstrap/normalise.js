@@ -64,7 +64,7 @@ const setNodeSet = ( _set ) => {
     location: _set.location || [],
     associations: _set.associations || [],
     // narrative objects: an array of objects in narrative
-    setObjects: _set.narrativeObjects ? getIds(_set.narrativeObjects) : [],
+    setObjects: _set.narrativeObjects ? _set.narrativeObjects : [],
     relatedSets: _set.relatedNarratives || [],
     images: _set.images || [],
     tileImages: _set.tileImages || [],

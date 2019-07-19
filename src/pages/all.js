@@ -18,7 +18,7 @@ const allObjectsPage = ({
               <article key={i}>
                 {object.node.object
                   ? (
-                    <Link to={'/object/' + object.node.id}>
+                    <Link to={'/object/' + object.node.id} className="link primary">
                       {
                         object.node.object.mainImage ? (
                           <img src={object.node.object.mainImage.url}/>
@@ -27,7 +27,7 @@ const allObjectsPage = ({
                     </Link>
                 )
                   : (
-                    <div>{"Unpublished object IRN " + object.node.id}</div>
+                    <div>{`Unpublished object IRN ${object.node.id}`}</div>
                   )
                 }
 

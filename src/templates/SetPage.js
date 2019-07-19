@@ -28,7 +28,6 @@ const SetPage = ({
                 </header>
                 <span className="image main"><img src={pic11} alt="" /></span>
 
-                <p> { set.summary }</p>
                 <p> { set.description }</p>
             </div>
         </section>

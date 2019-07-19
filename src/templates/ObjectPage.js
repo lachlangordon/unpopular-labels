@@ -12,6 +12,15 @@ const ObjectPage = ({
   location,
 }) => {
 
+  let title = object.object.name;
+  if (object.object.production[0]) {
+    title += `, ${object.object.production[0].date}`;
+  }
+
+  console.log(typeof object.parent.setObjects);
+  console.log(typeof object.id);
+  let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
+
   return (
     <Layout>
       <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
@@ -24,14 +33,45 @@ const ObjectPage = ({
               )
             }
             <header>
-              <h1>{object.object.name}</h1>
+              <h1>{title}</h1>
             </header>
+            <p>Part of <Link to={`/theme/${object.parent.id}`}>{object.parent.name}</Link></p>
             <p>{object.notes2}</p>
             <p>{object.notes3}</p>
             <p>{object.object.acquisitionCreditLine}</p>
           </div>
         </section>
         <section id="two">
+          <header>
+            <h2>{`More in ${object.parent.name}`}</h2>
+            <div className="tiles">
+              {
+                related.map((object, i) => {
+                  return(
+                    <article key={i}>
+                      {
+                        object.object
+                        ? (
+                            <Link to={`/object/${object.id}`} className="link primary">
+                              {
+                                object.object.mainImage ? (
+                                  <img src={object.object.mainImage.url}/>
+                                ) : <div>{object.object.displayTitle}</div>
+                              }
+                            </Link>
+                          )
+                        : (
+                            <div>{"Unpublished object IRN " + object.id}</div>
+                          )
+                      }
+                    </article>
+                  )
+                })
+              }
+            </div>
+          </header>
+        </section>
+        <section id="three">
           <button onClick={handleBack}>Back</button>
           <button onClick={handleScrollToTop}>Top</button>
         </section>
@@ -46,6 +86,7 @@ export default ObjectPage
 export const pageQuery = graphql`
   query ObjectPage($id: String!) {
     object: setObject(id: { eq: $id }) {
+      id
       notes2
       notes3
       object {
@@ -58,6 +99,21 @@ export const pageQuery = graphql`
           url
         }
       }
+      parent {
+        ... on Set {
+          id
+          name
+          setObjects {
+            id: _id
+            object {
+              displayTitle
+              mainImage {
+                url
+              }
+            }
+          }
+        }
+      }
     }
   }
-`
+`;
