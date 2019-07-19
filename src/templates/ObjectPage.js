@@ -37,7 +37,7 @@ const ObjectPage = ({
             <header>
               <h1>{title}</h1>
             </header>
-            <p>Part of <Link to={`/theme/${object.parent.id}`}>{object.parent.name}</Link></p>
+            <p>Part of <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link></p>
             <p>{object.notes2}</p>
             <p>{object.notes3}</p>
             <p>{object.object.acquisitionCreditLine}</p>
