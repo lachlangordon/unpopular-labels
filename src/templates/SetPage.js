@@ -9,7 +9,6 @@ import {handleBack, handleScrollToTop} from '../lib/navUtils';
 
 import pic11 from '../assets/images/pic11.jpg'
 
-
  // Narrative
 const SetPage = ({
   data: { set, objects },
