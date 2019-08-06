@@ -12,7 +12,7 @@ const { GatsbyNodeQuery, GatsbyAllSetQuery, GatsbyAllSetObjectQuery } = require(
 const { getIds, setNodeSet, setNodeSetObject, setNodeImage } = require('./bootstrap/normalise')
 const { GatsbyResolvers } = require('./bootstrap/resolvers')
 
-const { createDynamicPages } = require('./src/lib/pageCreator')
+const { createDynamicPages, createPaginatedPages, createPaginatedSetPages } = require('./src/lib/pageCreator')
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`)
 
 // later move it to config
@@ -148,6 +148,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const setTemplate = require.resolve('./src/templates/SetPage.js');
   const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
+  const allTemplate = require.resolve('./src/templates/AllPage.js');
 
   const sets = await GQLGatsbyWrapper(
     graphql(`
@@ -155,6 +156,7 @@ exports.createPages = async ({ actions, graphql }) => {
     `)
   );
   const { allSet } = sets.data;
+  console.log(allSet.edges);
 
   const objects = await GQLGatsbyWrapper(
     graphql(`
@@ -164,6 +166,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const { allSetObject } = objects.data;
 
   // // create pages with templates and helper functions
-  createDynamicPages('set', allSet.edges, createPage, setTemplate )
-  createDynamicPages('object', allSetObject.edges, createPage, objectTemplate )
+  createPaginatedSetPages('set', allSet.edges, createPage, setTemplate, 3, 'setObjects' );
+  createPaginatedPages('all', allSet.edges, createPage, allTemplate, 2);
+  createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
 };

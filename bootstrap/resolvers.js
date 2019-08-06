@@ -2,7 +2,8 @@
  * Gatsby's resolver for imported nodes
  *
  */
-const { GraphQLSchema, GraphQLString, GraphQLInt, GraphQLList } = require(`graphql`)
+const { GraphQLSchema, GraphQLString, GraphQLInt, GraphQLList } = require(`graphql`);
+const { paginate } = require('gatsby/dist/schema/resolvers');
 
  // later move it to config
 const __MASTER_NARRATIVE = 6761
@@ -28,17 +29,38 @@ const GatsbyResolvers = {
     },
     SetsByMasterId: {
       type: [`Set`],
+      args: {
+        skip: {
+          name: `skip`,
+          type: GraphQLInt,
+        },
+        limit: {
+          name: `limit`,
+          type: GraphQLInt
+        },
+      },
       resolve(source, args, context, info) {
-        // console.log('inside create resolvers')
-        // console.log(args)
-        return context.nodeModel.runQuery({
+        const sets = context.nodeModel.runQuery({
           query: {
             filter: { parent: { id: { eq:  `${ __MASTER_NARRATIVE }` } } },
             sort: { fields: ['id'], order: ['ASC'] }
           },
           type: `Set`,
           firstOnly: false,
-        })
+        });
+
+        return sets.then((sets) => {
+          if (args.skip) {
+            sets = sets.slice(args.skip);
+          }
+
+          if (args.limit) {
+            sets = sets.slice(0, args.limit);
+          }
+          return sets;
+        });
+
+
       }
     },
     SetObjectsByParentId: {
@@ -48,14 +70,31 @@ const GatsbyResolvers = {
           name: `parentId`,
           type: GraphQLString,
         },
+        skip: {
+          name: `skip`,
+          type: GraphQLInt,
+        },
+        limit: {
+          name: `limit`,
+          type: GraphQLInt
+        },
       },
       resolve(source, args, context, info) {
         // console.log(args)
         const setObjects = context.nodeModel.getAllNodes({
             type: `SetObject`,
-          })
+          });
 
-        return setObjects.filter(setObj => setObj.parent == `${ args.parentId }`)
+        let filteredObjects = setObjects.filter(setObj => setObj.parent == `${ args.parentId }`);
+
+        if (args.skip) {
+          filteredObjects = filteredObjects.slice(args.skip);
+        }
+
+        if (args.limit) {
+          filteredObjects = filteredObjects.slice(0, args.limit);
+        }
+        return filteredObjects;
       }
     },
     ImagesByParentId: {

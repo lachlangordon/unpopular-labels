@@ -16,6 +16,12 @@ const SetPage = ({
   location,
 }) => {
 
+  let paginationItems = [];
+
+  for(let i = 1; i <= pageContext.numPages; i++) {
+    paginationItems.push(<Link to={`/set/${pageContext.id}/${i > 1 ? i : ''}`}>{i}</Link>)
+  }
+
   return (
     <Layout>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
@@ -58,6 +64,9 @@ const SetPage = ({
         <section id="three">
           <button onClick={handleBack}>Back</button>
           <button onClick={handleScrollToTop}>Top</button>
+          <div>
+            {paginationItems}
+          </div>
         </section>
       </div>
     </Layout>
@@ -67,7 +76,7 @@ const SetPage = ({
 export default SetPage
 
 export const pageQuery = graphql`
-query SetPage( $id: String! ) {
+query SetPage( $id: String!, $skip: Int!, $limit: Int!) {
   set( id: { eq: $id } ) {
     id
     name
@@ -75,7 +84,7 @@ query SetPage( $id: String! ) {
     description
   }
   
-  objects: SetObjectsByParentId(parentId: $id) {
+  objects: SetObjectsByParentId(parentId: $id, limit: $limit, skip: $skip) {
     id
     object {
       name

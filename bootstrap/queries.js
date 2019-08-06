@@ -94,6 +94,14 @@ const GatsbyAllSetQuery = `
         summary
         description
         tileImages
+        setObjects {
+          object {
+            displayTitle
+            mainImage {
+              url
+            }
+          }
+        }
       }
     }
   }
