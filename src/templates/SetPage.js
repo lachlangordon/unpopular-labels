@@ -1,9 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/layout'
-import Image from '../components/image'
-
+import Layout from '../components/Layout/Layout'
 import pic11 from '../assets/images/pic11.jpg'
 
  // Narrative

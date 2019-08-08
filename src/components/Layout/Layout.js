@@ -11,12 +11,12 @@ import { StaticQuery, graphql } from "gatsby"
 
 // layout.css
 // import '../assets/css/basic-layout.css'
-import '../assets/scss/main.scss'
+import '../../assets/scss/main.scss'
 
-import Header from './header'
-import Menu from './menu'
+import Header from './Header'
+import Menu from '../Menu/Menu'
 // import Contact from './contact'
-import Footer from './footer'
+import Footer from './Footer'
 
 class Layout extends React.Component {
     constructor(props) {

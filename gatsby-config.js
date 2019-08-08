@@ -17,6 +17,8 @@ console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`)
 module.exports = {
   siteMetadata: {
     title: config.siteTitle,
+    siteUrl: config.siteUrl,
+    headline: config.siteHeadline,
     description: config.siteDescription,
     twitter: config.twitter,
     instagram: config.instagram,

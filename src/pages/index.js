@@ -1,107 +1,61 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
 
-import Layout from '../components/layout'
-import Image from '../components/image'
+import Layout from '../components/Layout/Layout'
+import Image from '../components/Image/Image'
 import SEO from '../components/seo'
 
-import pic01 from '../assets/images/pic01.jpg'
-import pic02 from '../assets/images/pic02.jpg'
-import pic03 from '../assets/images/pic03.jpg'
-import pic04 from '../assets/images/pic04.jpg'
-import pic05 from '../assets/images/pic05.jpg'
-import pic06 from '../assets/images/pic06.jpg'
-
-function buildImgPath(i) {
-  switch(i) {
-    case 0:
-      return `url(${pic01})`
-    case 1:
-      return `url(${pic02})`
-    case 2:
-      return `url(${pic03})`
-    case 3:
-      return `url(${pic04})`
-  }
-}
+import sip_backdrop from '../assets/images/sip_backdrop.jpg'
 
 const IndexPage = ({
-  data,
+  data: { site, masterSet },
   pageContext: {
     masterNarrativeId,
   },
   location,
-}) => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <div id="main">
-        <section id="one" className="tiles">
-        {data.sets.map((section, i) => {
-          return (
-            <article key={i} style={{ backgroundImage: buildImgPath(i) }}>
+}) => {
+  // console.log(window)
+  // return ( typeof window !== `undefined` && window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE ) ? (
+  return (
+    <Layout>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <div id="main">
+        <section id="one">
+            <div className="inner">
+                <img src={sip_backdrop}/>
                 <header className="major">
-                    <h3> { section.name } </h3>
-                    <p> {section.summary } </p>
+                    <h2> { site.siteMetadata.title } </h2>
                 </header>
-                <Link to="/landing" className="link primary"></Link>
-            </article>
-          )
-        })}
+                <p> { masterSet.description }</p>
+                <ul className="actions">
+                    <li><Link to="/themes" className="button next">Get Started</Link></li>
+                </ul>
+            </div>
         </section>
-
-        {/* <!-- client side query --> */}
-        <Query query={APOLLO_QUERY}>
-          {({ data, loading, error }) => {
-              if (loading) return <span> Loading... </span>
-              if (error) return <span> Error: { error.message } </span>
-
-              const { site } = data
-              return (
-                <section id="two">
-                    <div className="inner">
-                        <header className="major">
-                            <h2> { site.siteMetadata.title } </h2>
-                        </header>
-                        <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-                        <ul className="actions">
-                            <li><Link to="/page-2/" className="button next">Get Started</Link></li>
-                        </ul>
-                    </div>
-                </section>
-              )
-          }}
-        </Query>
-
-    </div>
-  </Layout>
-)
+      </div>
+    </Layout>
+  )
+  // ) : '<p> Loading </p>'
+}
 
 export default IndexPage
 
-// This query is executed at run time by Apollo.
-const APOLLO_QUERY = gql`
-query {
-  site {
-    siteMetadata {
-      title
-    }
-  }
-}`
-
 // _id: 6761
-// fields: { slug: { eq: $slug } }
-// https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
 // This query is executed at build time by Gatsby.
 export const pageQuery = graphql`
   query {
-    sets: SetsByMasterId {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+        description
+      }
+    }
+    masterSet: getMasterSet {
       id
       name
       summary
       description
-      tileImages
     }
   }
 `
