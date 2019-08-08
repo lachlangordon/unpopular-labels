@@ -26,6 +26,10 @@ const setObject = ( _object ) => {
     productionNotes: _object.productionNotes || '',
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],
+    mainImage: _object.mainImage || null,
+    production: _object.production || null,
+    acquisitionCreditLine: _object.acquisitionCreditLine || ',',
+    isLoan: _object.isLoan || false
   }
 }
 

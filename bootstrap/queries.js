@@ -18,6 +18,12 @@ query NodeSets {
     associations
     keywords
     location
+    mainImage {
+      _id
+      url
+      width
+      height
+    }
     lastUpdated
   }
   childSets: narratives (filter: {
@@ -56,9 +62,20 @@ query NodeSets {
       object {
         _id
         parentId
-        title
+        displayTitle
         summary
+        acquisitionCreditLine
+        production {
+		      date
+		    }
         images {
+          _id
+          url
+          width
+          height
+          caption
+        }
+        mainImage {
           _id
           url
           width
@@ -94,7 +111,16 @@ const GatsbyAllSetObjectQuery = `
     edges {
       node {
         id
-        object
+        object {
+          name
+          production {
+            date
+          }
+          acquisitionCreditLine
+          mainImage {
+            url
+          }
+        }
         notes2
         notes3
       }
@@ -113,6 +139,31 @@ const GatsbyAllImageQuery = `
         width
         height
         caption
+      }
+    }
+  }
+}
+`
+const GastbyAllLocalImageQuery = `
+{
+  localImages: allFile (
+    filter: {
+      sourceInstanceName: { ne: "__PROGRAMMATIC__" }
+      extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
+    }
+    sort: { fields: name, order: ASC }
+  ) {
+    edges {
+      node {
+        id
+        url
+        parent {
+          id
+        }
+        sourceInstanceName
+        publicURL
+        name
+        absolutePath
       }
     }
   }

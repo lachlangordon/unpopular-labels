@@ -76,6 +76,21 @@ const GatsbyResolvers = {
         return images.filter(img => img.parent == `${ args.parentId }`)
       }
     },
+    ImageById: {
+      type: `SetImage`,
+      args: {
+        id: {
+          name: `id`,
+          type: GraphQLString,
+        }
+      },
+      resolve (source, args, context, info) {
+
+        return context.nodeModel.getNodeById({
+          id: args.id
+        })
+      }
+    },
     ImagesByIds: {
       type: [`SetImage`],
       args: {
