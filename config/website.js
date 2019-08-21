@@ -7,7 +7,7 @@ const meta = {
   siteDescription: 'Step into Paradise Gallery Guide.',
   siteHeadline: 'Digital Gallery Guide',
   siteUrl: 'https://sip-guide.maas.museum', // No trailing slash!
-}
+};
 
 const social = {
   siteLogo: `${meta.siteUrl}/social/avatar.png`,
@@ -18,7 +18,7 @@ const social = {
   twitter: '@maasmuseum',
   instagram: '@powerhousemuseum',
   facebook: 'powerhousemuseum',
-}
+};
 
 const website = {
   ...meta,
@@ -28,6 +28,6 @@ const website = {
   // Manifest
   backgroundColor: '#663399',
   themeColor: '#663399',
-}
+};
 
-module.exports = website
+module.exports = website;

@@ -3,10 +3,10 @@
  *
  */
 
-const crypto = require('crypto')
+const crypto = require('crypto');
 
 // later move it to config
-const __MASTER_NARRATIVE = 6761
+const __MASTER_NARRATIVE = 6761;
 
 const setInternal = ( _objectType, _object ) => {
   return {
@@ -16,22 +16,22 @@ const setInternal = ( _objectType, _object ) => {
       .update(JSON.stringify(_object))
       .digest(`hex`),
   }
-}
+};
 
 // object itself
 const setObject = ( _object ) => {
   return {
-    name: _object.title || '',
+    name: _object.displayTitle || '',
     summary: _object.summary || '',
     productionNotes: _object.productionNotes || '',
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],
-    mainImage: _object.mainImage || null,
+    mainImage:  _object.mainImage || null,
     production: _object.production || null,
     acquisitionCreditLine: _object.acquisitionCreditLine || ',',
     isLoan: _object.isLoan || false
   }
-}
+};
 
 // exported functions
 const getIds = ( _objects ) => {
@@ -44,7 +44,7 @@ const getIds = ( _objects ) => {
     })
     return objArray
   }
-}
+};
 
 // narrative = top level phase
 const setNodeSet = ( _set ) => {
@@ -65,13 +65,13 @@ const setNodeSet = ( _set ) => {
     location: _set.location || [],
     associations: _set.associations || [],
     // narrative objects: an array of objects in narrative
-    setObjects: _set.narrativeObjects ? getIds(_set.narrativeObjects) : [],
+    setObjects: _set.narrativeObjects ? _set.narrativeObjects : [],
     relatedSets: _set.relatedNarratives || [],
     images: _set.images || [],
     tileImages: _set.tileImages || [],
     mainImage: _set.mainImage || null,
   }
-}
+};
 
 // collections in phase
 const setNodeSetObject = ( _set_obj ) => {
@@ -87,7 +87,7 @@ const setNodeSetObject = ( _set_obj ) => {
     // object: this is an object instead of Array
     object : _set_obj.object ? setObject(_set_obj.object) : null,
   }
-}
+};
 
 const setNodeImage = ( _img ) => {
   // don't process if it does not have url/id
@@ -102,11 +102,11 @@ const setNodeImage = ( _img ) => {
     height: _img.height,
     caption: _img.caption || '',
   }
-}
+};
 
 module.exports = {
   getIds,
   setNodeSet,
   setNodeSetObject,
   setNodeImage,
-}
+};

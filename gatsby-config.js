@@ -9,10 +9,10 @@ require('dotenv').config({
 });
 
 // load website config
-const config = require('./config/website')
+const config = require('./config/website');
 
-console.log(`Gatsby in : '${activeEnv}' mode.`)
-console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`)
+console.log(`Gatsby in : '${activeEnv}' mode.`);
+console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`);
 
 module.exports = {
   siteMetadata: {
@@ -66,4 +66,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

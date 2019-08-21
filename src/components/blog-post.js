@@ -1,6 +1,6 @@
-import { graphql } from "gatsby"
-import React from "react"
-import Image from "gatsby-image"
+import { graphql } from "gatsby";
+import React from "react";
+import Image from "gatsby-image";
 
 export default ({ data }) => {
   const blogPost = data.cms.blogPost
@@ -15,7 +15,7 @@ export default ({ data }) => {
       <div>Posted at: {blogPost.createdAt}</div>
       <div dangerouslySetInnerHTML={{ __html: blogPost.post }} />
     </div>
-  )
+  );
 }
 
 // export const query = graphql`

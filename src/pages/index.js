@@ -1,11 +1,11 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/Layout/Layout'
-import Image from '../components/Image/Image'
-import SEO from '../components/seo'
+import Layout from '../components/Layout/Layout';
+import Image from '../components/Image/Image';
+import SEO from '../components/seo';
 
-import sip_backdrop from '../assets/images/sip_backdrop.jpg'
+import sip_backdrop from '../assets/images/sip_backdrop.jpg';
 
 const IndexPage = ({
   data: { site, masterSet },
@@ -36,9 +36,9 @@ const IndexPage = ({
     </Layout>
   )
   // ) : '<p> Loading </p>'
-}
+};
 
-export default IndexPage
+export default IndexPage;
 
 // _id: 6761
 // This query is executed at build time by Gatsby.
@@ -58,4 +58,4 @@ export const pageQuery = graphql`
       description
     }
   }
-`
+`;

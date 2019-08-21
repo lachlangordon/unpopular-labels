@@ -1,6 +1,6 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
 
 const Header = (props) => (
     <header id="header" className="alt">
@@ -9,14 +9,14 @@ const Header = (props) => (
             <a className="menu-link" onClick={ props.onToggleMenu } href="javascript:;">Menu</a>
         </nav>
     </header>
-)
+);
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;

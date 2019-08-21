@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import GatsbyImage from "gatsby-image"
+import React, { Component } from "react";
+import GatsbyImage from "gatsby-image";
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -14,14 +14,14 @@ import GatsbyImage from "gatsby-image"
 
 class Image extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
-    const { imgNode } = this.props
+    const { imgNode } = this.props;
 
-    const { fields } = imgNode.node
-    const isImgSharp = fields !== null && fields.localFile.childImageSharp
+    const { fields } = imgNode.node;
+    const isImgSharp = fields !== null && fields.localFile.childImageSharp;
 
     // const {
     //   image: {
@@ -48,4 +48,4 @@ class Image extends Component {
 //   imgNode: PropTypes.object.isRequired,
 // }
 
-export default Image
+export default Image;

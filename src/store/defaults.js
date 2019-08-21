@@ -4,4 +4,4 @@ export defaults {
   showMenu: false,
   darkMode: false,
   NetworkStatus: false,
-}
+};

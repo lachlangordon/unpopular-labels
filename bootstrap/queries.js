@@ -4,7 +4,7 @@
  */
 
 // later move it to config
-const __MASTER_NARRATIVE = 6761
+const __MASTER_NARRATIVE = 6761;
 
 // initial GQL query to generate dynamic content nodes
 const GatsbyNodeQuery = `
@@ -18,13 +18,14 @@ query NodeSets {
     associations
     keywords
     location
+    lastUpdated
     mainImage {
       _id
       url
       width
       height
+      caption
     }
-    lastUpdated
   }
   childSets: narratives (filter: {
     masterNarrative: ${__MASTER_NARRATIVE}
@@ -43,10 +44,11 @@ query NodeSets {
       _id
     }
     mainImage {
-			_id
+      _id
       url
       width
       height
+      caption
     }
     images {
 			_id
@@ -87,7 +89,7 @@ query NodeSets {
     }
   }
 }
-`
+`;
 
 // This query is executed at build time by Gatsby.
 const GatsbyAllSetQuery = `
@@ -100,11 +102,22 @@ const GatsbyAllSetQuery = `
         summary
         description
         tileImages
+        setObjects {
+          object {
+            displayTitle
+            mainImage {
+              url
+              width
+              height
+            }
+          }
+        }
       }
     }
   }
 }
-`
+`;
+
 const GatsbyAllSetObjectQuery = `
 {
   allSetObject(sort:{ fields: id, order:ASC }) {
@@ -127,7 +140,7 @@ const GatsbyAllSetObjectQuery = `
     }
   }
 }
-`
+`;
 
 const GatsbyAllImageQuery = `
 {
@@ -138,41 +151,15 @@ const GatsbyAllImageQuery = `
         url
         width
         height
-        caption
       }
     }
   }
 }
-`
-const GastbyAllLocalImageQuery = `
-{
-  localImages: allFile (
-    filter: {
-      sourceInstanceName: { ne: "__PROGRAMMATIC__" }
-      extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
-    }
-    sort: { fields: name, order: ASC }
-  ) {
-    edges {
-      node {
-        id
-        url
-        parent {
-          id
-        }
-        sourceInstanceName
-        publicURL
-        name
-        absolutePath
-      }
-    }
-  }
-}
-`
+`;
 
 module.exports = {
   GatsbyNodeQuery,
   GatsbyAllSetQuery,
   GatsbyAllSetObjectQuery,
   GatsbyAllImageQuery,
-}
+};

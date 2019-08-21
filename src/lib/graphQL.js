@@ -1,4 +1,4 @@
-const { GraphQLClient } = require(`graphql-request`)
+const { GraphQLClient } = require(`graphql-request`);
 
 require('dotenv').config({
   path: '.env',
@@ -10,10 +10,10 @@ require('dotenv').config({
 const GQLGatsbyWrapper = promise =>
   promise.then( result => {
     if ( result.errors ) {
-      throw result.errors
+      throw result.errors;
     }
-    return result
-  })
+    return result;
+  });
 
 
 /**
@@ -23,9 +23,9 @@ const GQLClientWrapper = async ( query ) => {
   // used to populate node narrative data on starters
   const client = process.env.GRAPHQL_URL
     ? new GraphQLClient(`${ process.env.GRAPHQL_URL }`)
-    : null
+    : null ;
 
-  return await client.request(query)
+  return await client.request(query);
 }
 
 /**
@@ -34,9 +34,9 @@ const GQLClientWrapper = async ( query ) => {
  */
 const printGraphQLError = e => {
   if (e.response && e.response.errors)
-    console.error(e.response.errors)
+    console.error(e.response.errors);
 
-  if (e.request) console.error(e.request)
+  if (e.request) console.error(e.request);
 }
 
-module.exports = { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError }
+module.exports = { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError };

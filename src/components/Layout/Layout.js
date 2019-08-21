@@ -5,26 +5,26 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+import React from "react";
+import PropTypes from "prop-types";
+import { StaticQuery, graphql } from "gatsby";
 
 // layout.css
 // import '../assets/css/basic-layout.css'
-import '../../assets/scss/main.scss'
+import '../../assets/scss/main.scss';
 
-import Header from './Header'
-import Menu from '../Menu/Menu'
+import Header from './Header';
+import Menu from '../Menu/Menu';
 // import Contact from './contact'
-import Footer from './Footer'
+import Footer from './Footer';
 
 class Layout extends React.Component {
     constructor(props) {
-      super(props)
+      super(props);
       this.state = {
           isMenuVisible: false,
           loading: 'is-loading'
-      }
+      };
       // this.handleToggleMenu = this.handleToggleMenu.bind(this)
     }
 
@@ -43,11 +43,11 @@ class Layout extends React.Component {
     handleToggleMenu = () => {
         this.setState({
             isMenuVisible: !this.state.isMenuVisible
-        })
+        });
     }
 
     render() {
-      const { children } = this.props
+      const { children } = this.props;
 
       return (
         <StaticQuery
@@ -79,6 +79,6 @@ class Layout extends React.Component {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

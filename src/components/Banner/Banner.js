@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // className="style2"
 
@@ -17,6 +17,6 @@ const Banner = (props) => (
           </div>
       </div>
   </section>
-)
+);
 
-export default Banner
+export default Banner;

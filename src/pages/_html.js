@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class HTML extends Component {
   render() {
-    const { headComponents , htmlAttributes, bodyAttributes, preBodyComponents, body, postBodyComponents} = this.props
+    const { headComponents , htmlAttributes, bodyAttributes, preBodyComponents, body, postBodyComponents} = this.props;
     return (
       <html {...htmlAttributes}>  {/* eslint-disable-line */}
         <head>
@@ -34,7 +34,7 @@ export default class HTML extends Component {
           {postBodyComponents}
         </body>
       </html>
-    )
+    );
   }
 }
 
@@ -45,4 +45,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,  // eslint-disable-line
   body: PropTypes.string,                // eslint-disable-line
   postBodyComponents: PropTypes.array, // eslint-disable-line
-}
+};
