@@ -32,10 +32,6 @@ const getIds = ( _objects ) => {
 };
 
 // === new normalise methods
-const isMasterSet = _object =>
-  _object.id === __MASTER_NARRATIVE &&
-  _object.hasOwnProperty('children') &&
-  _object.hasOwnProperty('parent') && _object.parent === null;
 
 const hasImageField = _object =>
   _object.hasOwnProperty('images') || _object.hasOwnProperty('mainImage');

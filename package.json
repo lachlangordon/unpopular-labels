@@ -35,6 +35,9 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
+    "maas-style-guide": "git+https://git@bitbucket.org/maasmuseum/maas-style-guide",
+    "maas-js-utils": "git+https://git@bitbucket.org/maasmuseum/maas-js-utils.git#v1.1.0",
+    "maas-react-components": "git+https://git@bitbucket.org/maasmuseum/maas-react-components.git#v1.3.4",
     "typography": "^0.16.19"
   },
   "devDependencies": {

@@ -100,6 +100,7 @@ exports.onCreateNode = async ({
   }
 }
 
+/*
 // re-create index page with injected masterNarrativeId is no longer necessary
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions;
@@ -122,7 +123,7 @@ exports.onCreatePage = ({ page, actions }) => {
     //   }
     // })
   }
-}
+}*/
 
 exports.createResolvers = ({
   actions,
