@@ -2,7 +2,7 @@
 const createDynamicPages = (type, list, createPage, template) =>
   list.forEach( data => {
     const id = data.node.id;
-    const path = `/set/${id}`;
+    const path = `/${type}/${id}`;
 
     console.log(`Creating page: ${path}`);
     createPage({

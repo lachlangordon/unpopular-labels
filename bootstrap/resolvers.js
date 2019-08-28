@@ -47,17 +47,17 @@ const GatsbyResolvers = {
           },
           type: `Set`,
           firstOnly: false,
-        })
+        });
 
         return sets.then((sets) => {
           if (args.skip) {
-            sets = sets.slice(args.skip)
+            sets = sets.slice(args.skip);
           }
 
           if (args.limit) {
-            sets = sets.slice(0, args.limit)
+            sets = sets.slice(0, args.limit);
           }
-          return sets
+          return sets;
         })
       }
     },
@@ -81,18 +81,18 @@ const GatsbyResolvers = {
         // console.log(args)
         const setObjects = context.nodeModel.getAllNodes({
             type: `SetObject`,
-          })
+          });
 
-          let filteredObjects = setObjects.filter(setObj => setObj.parent == `${ args.parentId }`)
+          let filteredObjects = setObjects.filter(setObj => setObj.parent == `${ args.parentId }`);
 
           if (args.skip) {
-            filteredObjects = filteredObjects.slice(args.skip)
+            filteredObjects = filteredObjects.slice(args.skip);
           }
 
           if (args.limit) {
-            filteredObjects = filteredObjects.slice(0, args.limit)
+            filteredObjects = filteredObjects.slice(0, args.limit);
           }
-          return filteredObjects
+          return filteredObjects;
       }
     },
     ImagesByParentId: {
@@ -125,7 +125,7 @@ const GatsbyResolvers = {
 
         return context.nodeModel.getNodeById({
           id: args.id
-        })
+        });
       }
     },
     ImagesByIds: {
@@ -140,7 +140,7 @@ const GatsbyResolvers = {
 
         return context.nodeModel.getNodesByIds({
           ids: args.ids
-        })
+        });
       }
     }
   }

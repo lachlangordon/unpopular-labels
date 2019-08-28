@@ -33,7 +33,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 })
 
-// { dataIdFromObject: o => (o._id ? `${o.__typename}:${o._id}` : null) }
+// { dataIdFromObject: o => (o.id ? `${o.__typename}:${o.id}` : null) }
 const cache = new InMemoryCache();
 
 if (process.browser) {

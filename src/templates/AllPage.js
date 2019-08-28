@@ -31,7 +31,7 @@ const allObjectsPage = ({
                       <article key={i}>
                         {object.object
                           ? (
-                            <Link to={'/object/' + object.object._id} className="link primary">
+                            <Link to={'/object/' + object.object.id} className="link primary">
                               {
                                 object.object.mainImage ? (
                                   <img src={object.object.mainImage.url}/>
@@ -40,7 +40,7 @@ const allObjectsPage = ({
                             </Link>
                           )
                           : (
-                            <div>{`Unpublished object IRN ${object._id}`}</div>
+                            <div>{`Unpublished object IRN ${object.id}`}</div>
                           )
                         }
                       </article>
@@ -68,9 +68,9 @@ export const pageQuery = graphql`
       id
       name
       setObjects {
-        _id
+        id
         object {
-          _id
+          id
           displayTitle
           mainImage {
             url

@@ -35,7 +35,7 @@ const themesPage = ({
 
 export default themesPage;
 
-// _id: 6761
+// id: 6761
 // fields: { slug: { eq: $slug } }
 // https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
 // This query is executed at build time by Gatsby.

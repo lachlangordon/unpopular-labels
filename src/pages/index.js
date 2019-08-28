@@ -40,7 +40,7 @@ const IndexPage = ({
 
 export default IndexPage;
 
-// _id: 6761
+// id: 6761
 // This query is executed at build time by Gatsby.
 export const pageQuery = graphql`
   query {
