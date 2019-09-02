@@ -1,39 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
+// import Loader from '../components/Loader/Loader';
 import SEO from '../components/seo';
 
-const themesPage = ({
-  data,
-  pageContext: {
-    masterNarrativeId,
-  },
-  location,
-}) => (
-  <Layout>
-    <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
-    <div id="main">
-      <section id="one" className="tiles">
-        {data.sets.map((section, i) => {
-          return (
 
-              <article key={i}>
-                <Link to={"/set/" + section.id} className="link primary">
-                <header className="major">
-                  <h3> { section.name } </h3>
-                </header>
-                </Link>
-              </article>
+class ThemesPage extends Component {
 
-          )
-        })}
-      </section>
-    </div>
-  </Layout>
-);
+  render() {
+    const { data, pageContext, location } = this.props;
+    const { masterNarrativeId } = pageContext;
 
-export default themesPage;
+    return (
+      <Layout>
+        <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
+
+        <div id="main">
+          <section id="one" >
+            {data.sets.map((section, i) => {
+              return (
+                  <article key={i}>
+                    <Link to={"/set/" + section.id} className="link primary">
+                    <header className="major">
+                      <h3> { section.name } </h3>
+                    </header>
+                    </Link>
+                  </article>
+              )
+            })}
+          </section>
+        </div>
+      </Layout>
+    )
+  }
+}
+
+
+export default ThemesPage;
 
 // id: 6761
 // fields: { slug: { eq: $slug } }

@@ -16,6 +16,8 @@ import '../../assets/scss/main.scss';
 import Header from './Header';
 import Menu from '../Menu/Menu';
 // import Contact from './contact'
+
+import Loader from '../Loader/Loader';
 import Footer from './Footer';
 
 class Layout extends React.Component {
@@ -48,7 +50,6 @@ class Layout extends React.Component {
 
     render() {
       const { children } = this.props;
-
       return (
         <StaticQuery
           query={graphql`
@@ -66,10 +67,20 @@ class Layout extends React.Component {
                   <Header
                       siteTitle={data.site.siteMetadata.title}
                       onToggleMenu={this.handleToggleMenu} />
+
+                  <Loader
+                    isLoading={this.props.loading}
+                    error={this.props.error}
+                    redirectUrl="/search"
+                    redirectUrlText="Try searching for something else"
+                  />
+
+
                   {children}
                   <Footer />
                 </div>
                 <Menu onToggleMenu={this.handleToggleMenu} />
+
             </div>
           )}
         />
