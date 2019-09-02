@@ -7700,6 +7700,12 @@ ltcdr@^2.2.1:
     react-router "^3.0.0"
     youtube-embed-video "^1.0.2"
 
+"maas-style-guide@git+https://git@bitbucket.org/maasmuseum/maas-style-guide":
+  version "1.0.8"
+  resolved "git+https://git@bitbucket.org/maasmuseum/maas-style-guide#9f6f006d74237f3b5ee21454d489d417b8fa388f"
+  dependencies:
+    normalize.css "^7.0.0"
+
 "maas-style-guide@git+https://git@bitbucket.org/maasmuseum/maas-style-guide.git#v1.0.1":
   version "1.0.1"
   resolved "git+https://git@bitbucket.org/maasmuseum/maas-style-guide.git#a1389bad06f1c789d7187a6726d0ec8242c1bcf1"

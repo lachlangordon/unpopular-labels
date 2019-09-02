@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 import Layout from '../components/Layout/Layout'
-// import Image from '../components/Image/Image'
+import Image from '../components/Image/Image'
 import SEO from '../components/seo'
 
 import pic03 from '../assets/images/pic03.jpg'
@@ -31,17 +31,21 @@ const ImagePage = ({
       <div className="inner">
         <div className="box alt">
           <div className="grid-wrapper" >
-          { setImages.edges.map(imgNode => {
+          { setImages.edges.map((imgNode, i) => {
 
-            console.log(imgNode);
-            // const { fields } = imgNode.node;
-            // const isImgSharp = fields !== null && fields.localFile.childImageSharp;
-
-            // return  (
-            //     <div key={imgNode.node.id} className="col-4">
-            //       <span className="image fit"> <Image object={imgNode} /> </span>
-            //     </div>
-            // )
+            // image node
+            const imageObject = imgNode.node;
+            return  (
+                <div key={imageObject.id} className="col-4">
+                  <span className="image fit">
+                    <Image className="image-object"
+                           imgObject={imageObject}
+                           // fallback url for images
+                           src={imageObject.url}
+                           height={300}  />
+                  </span>
+                </div>
+            )
           })}
           </div>
         </div>

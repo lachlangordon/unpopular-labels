@@ -28,6 +28,10 @@
     "graphql-request": "^1.8.2",
     "graphql-tag": "^2.10.1",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.17.15",
+    "maas-js-utils": "git+https://git@bitbucket.org/maasmuseum/maas-js-utils.git#v1.1.0",
+    "maas-react-components": "git+https://git@bitbucket.org/maasmuseum/maas-react-components.git#v1.3.4",
+    "maas-style-guide": "git+https://git@bitbucket.org/maasmuseum/maas-style-guide",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -35,9 +39,6 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
-    "maas-style-guide": "git+https://git@bitbucket.org/maasmuseum/maas-style-guide",
-    "maas-js-utils": "git+https://git@bitbucket.org/maasmuseum/maas-js-utils.git#v1.1.0",
-    "maas-react-components": "git+https://git@bitbucket.org/maasmuseum/maas-react-components.git#v1.3.4",
     "typography": "^0.16.19"
   },
   "devDependencies": {
