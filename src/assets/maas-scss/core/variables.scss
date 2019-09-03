@@ -1,0 +1,150 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+/*
+ * Colors
+ * ========================================================================== */
+
+$colour-white: #fff;
+/* $colour-grey-lightest: #f1f1f5; */
+$colour-grey-lightest: #f5f5f9;
+$colour-grey-lightest2: #efeff3;
+$colour-grey-lighter: #d9d7de;
+$colour-grey-light: #bbbabf;
+$colour-grey: #aaaaaf;
+$colour-grey-dark: #939296;
+$colour-grey-darker: #676364;
+$colour-grey-darkest: #5b5a5f;
+$colour-black: #393939;
+
+$colour-pink: #e30066;
+$colour-pink-dark: #cf005d;
+$colour-teal: #157F79;
+$colour-teal-dark: #126B66;
+
+$colour-primary: $colour-pink;
+$colour-secondary: $colour-teal;
+$colour-highlight: $colour-grey-light;
+
+$colour-facebook: #3b5998;
+$colour-facebook-highlight: #486bb8;
+$colour-twitter: #4099ff;
+$colour-twitter-highlight: #3784db;
+$colour-pinterest: #cb2027;
+
+/*
+ * Typography
+ * ========================================================================== */
+
+$font-family-base: 'Circular-Book';
+
+/* Major Third */
+$font-size-xxxs: 0.4096em;
+$font-size-xxs: 0.512em;
+$font-size-xs: 0.64em;
+$font-size-sm: 0.8em;
+$font-size-md: 1em;
+$font-size-lg: 1.25em;
+$font-size-xlg: 1.563em;
+$font-size-xxlg: 1.953em;
+$font-size-xxxlg: 2.441em;
+$font-size-xxxxlg: 3.05125em;
+
+$font-size-xxxs-rem: 0.4096em;
+$font-size-xxs-rem: 0.512rem;
+$font-size-xs-rem: 0.64rem;
+$font-size-sm-rem: 0.8rem;
+$font-size-md-rem: 1rem;
+$font-size-lg-rem: 1.25rem;
+$font-size-xlg-rem: 1.563rem;
+$font-size-xxlg-rem: 1.953rem;
+$font-size-xxxlg-rem: 2.441rem;
+$font-size-xxxxlg-rem: 3.05125em;
+
+$line-height-sm: 1.2;
+$line-height-md: 1.563;
+
+/*
+ * Spacing (gutters, paddings, margin)
+ * ========================================================================== */
+
+/* Major Third */
+$spacing-xxxxxs: 0.262144em;
+$spacing-xxxxs: 0.32768em;
+$spacing-xxxs: 0.4096em;
+$spacing-xxs: 0.512em;
+$spacing-xs: 0.64em;
+$spacing-sm: 0.8em;
+$spacing-md: 1em;
+$spacing-lg: 1.25em;
+$spacing-xlg: 1.563em;
+$spacing-xxlg: 1.953em;
+$spacing-xxxlg: 2.441em;
+$spacing-xxxxlg: 3.05125em;
+
+$spacing-xxxs-rem: 0.4096rem;
+$spacing-xxs-rem: 0.512rem;
+$spacing-xs-rem: 0.64rem;
+$spacing-sm-rem: 0.8rem;
+$spacing-md-rem: 1rem;
+$spacing-lg-rem: 1.25rem;
+$spacing-xlg-rem: 1.563rem;
+$spacing-xxlg-rem: 1.953rem;
+$spacing-xxxlg-rem: 2.441rem;
+$spacing-xxxxlg-rem: 3.05125em;
+
+$line-width-sm: 1px;
+$line-width-md: 3px;
+
+$paragraph-width: 31em;
+
+/*
+ * Layout
+ * ========================================================================== */
+
+$max-content-width:     1440px;
+
+$container-width-xs:    480px;
+/* $container-width-sm:    768px; */
+$container-width-sm:    31em;
+$container-width-md:    1024px;
+$container-width-lg:    1366px;
+$container-width-xlg:   1920px;
+
+/*
+ * Media queries breakpoints
+ * ========================================================================== */
+
+$screen-xs-min:         30em;  /* 480px Extra small screen / phone */
+$screen-sm-min:         48em;  /* 768px Small screen / tablet */
+$screen-md-min:         64em;  /* 1024px Medium screen / desktop */
+/* $screen-lg-min:         90em; /* 1440 Large screen / wide desktop */
+$screen-lg-min:         85.375em; /* 1366 Large screen / wide desktop / iPad Pro */
+$screen-xlg-min:        120em; /* 1920 HD TV screen */
+
+$screen-laptop-min: 1322px;
+$screen-laptop-max: 1321px;
+
+$screen-height-sm: 900px;
+
+/*
+ * Borders
+ * ========================================================================== */
+
+$border-normal: $line-width-md solid $colour-grey-lightest;
+
+/*
+ * Animations
+ * ========================================================================== */
+
+$animation-swift-out:   .45s cubic-bezier(0.3, 1, 0.4, 1) 0s;
+
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/*
+ * Lost Grid Globals
+ * ========================================================================== */
+
+@lost gutter 1em;

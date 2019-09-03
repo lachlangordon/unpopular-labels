@@ -1,0 +1,18 @@
+/*
+ * MIXINS
+ * ========================================================================== */
+
+/*
+ * #GRADIENT-BG
+ * Create a hard background gradient in classic MAAS style
+ * ========================================================================== */
+
+@define-mixin gradient-bg $colour1, $pos1, $colour2, $pos2 {
+  background-color: $colour1;
+  background-image:
+    linear-gradient(
+      110deg,
+      $colour1 $pos1,
+      $colour2 $pos2
+    );
+}

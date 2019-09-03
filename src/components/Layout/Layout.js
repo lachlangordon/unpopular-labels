@@ -10,12 +10,16 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 
 // layout.css
-// import '../assets/css/basic-layout.css'
+// import '../../assets/css/basic-layout.css'
 import '../../assets/scss/main.scss';
+
+// base maas-style-guide
+// import '../../assets/css/circular.css'
+// import '../../assets/css/normalize.css'
+// import '../../assets/maas-scss/main.scss';
 
 import Header from './Header';
 import Menu from '../Menu/Menu';
-// import Contact from './contact'
 
 import Loader from '../Loader/Loader';
 import Footer from './Footer';
