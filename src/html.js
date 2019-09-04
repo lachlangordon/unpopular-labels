@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class HTML extends Component {
   render() {
-    const { headComponents , htmlAttributes, bodyAttributes, preBodyComponents, body, postBodyComponents} = this.props;
+    const { headComponents , htmlAttributes, bodyAttributes, preBodyComponents, body, postBodyComponents} = this.props
     return (
       <html {...htmlAttributes}>  {/* eslint-disable-line */}
         <head>
@@ -12,10 +12,6 @@ export default class HTML extends Component {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
           {/* Add custom css or scripts here */}
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
-          />
           <script
             defer
             src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"
@@ -34,7 +30,7 @@ export default class HTML extends Component {
           {postBodyComponents}
         </body>
       </html>
-    );
+    )
   }
 }
 
@@ -45,4 +41,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,  // eslint-disable-line
   body: PropTypes.string,                // eslint-disable-line
   postBodyComponents: PropTypes.array, // eslint-disable-line
-};
+}
