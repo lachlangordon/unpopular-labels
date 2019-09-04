@@ -1,6 +1,7 @@
 // maas-style-guide requires normalize.css ^7.0.0
 // importing css inside Layout component
-// @import './normalize.css';
+@import '../css/normalize.css';
+@import '../css/circular.css';
 @import './variables.scss';
 
 /*

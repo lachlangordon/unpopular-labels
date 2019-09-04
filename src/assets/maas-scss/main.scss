@@ -14,3 +14,9 @@
    position: absolute !important;
    clip: rect(1px, 1px, 1px, 1px);
  }
+
+// import gallery-guide CSS
+@import 'guide/page.scss';
+
+// components
+@import 'guide/components/header.scss';

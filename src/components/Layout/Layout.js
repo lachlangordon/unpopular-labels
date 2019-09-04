@@ -14,8 +14,6 @@ import { StaticQuery, graphql } from "gatsby";
 import '../../assets/scss/main.scss';
 
 // base maas-style-guide
-// import '../../assets/css/circular.css'
-// import '../../assets/css/normalize.css'
 // import '../../assets/maas-scss/main.scss';
 
 import Header from './Header';
