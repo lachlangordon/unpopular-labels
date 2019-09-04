@@ -100,7 +100,7 @@ export const pageQuery = graphql`
           id
           name
           setObjects {
-            id: id
+            id
             object {
               displayTitle
               mainImage {

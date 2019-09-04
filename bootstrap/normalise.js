@@ -184,7 +184,7 @@ const setNodeSetObject = ( _set_obj ) => {
     notes2: _set_obj.notes2,
     notes3: _set_obj.notes3,
     // object: this is an object instead of Array
-    object : _set_obj.object ? setObject(_set_obj.object) : {},
+    object : _set_obj.object ? setObject(_set_obj.object) : null,
   }
 };
 
