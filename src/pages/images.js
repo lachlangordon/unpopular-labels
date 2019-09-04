@@ -34,14 +34,18 @@ const ImagePage = ({
           { setImages.edges.map((imgNode, i) => {
 
             // image node
-            const imageObject = imgNode.node;
+            const imageObject = imgNode.node.fields.localFile;
+            const cropCenter = imageObject.cropCenter;
+            console.log(imageObject);
+
             return  (
                 <div key={imageObject.id} className="col-4">
                   <span className="image fit">
-                    <Image className="image-object"
-                           imgObject={imageObject}
+                    <Image className="image--object"
                            // fallback url for images
-                           src={imageObject.url}
+                           src={cropCenter.resize.src || ''}
+                           imgObject={imageObject}
+                           defImgMode="fluid"
                            height={300}  />
                   </span>
                 </div>
@@ -80,9 +84,17 @@ export const pageQuery = graphql`
               publicURL
               name
               absolutePath
+              cropCenter: childImageSharp {
+                resize(width: 300, height: 300, cropFocus: CENTER) {
+                  src
+                }
+              }
               childImageSharp {
-                fluid(maxWidth: 300) {
+                fluid(maxHeight: 740) {
                   ...GatsbyImageSharpFluid
+                }
+                fixed(height: 500, width: 400) {
+                  ...GatsbyImageSharpFixed_withWebp
                 }
               }
             }

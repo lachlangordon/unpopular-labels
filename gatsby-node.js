@@ -100,31 +100,6 @@ exports.onCreateNode = async ({
   }
 }
 
-/*
-// re-create index page with injected masterNarrativeId is no longer necessary
-exports.onCreatePage = ({ page, actions }) => {
-  const { createPage, deletePage } = actions;
-
-  // Remove the leading AND traling slash from path, e.g. --> blog
-  // pages = local pages injected with pageContext
-  const name = page.path && setPageName( page.path );
-  // const pages = [ 'index', 'images' ]
-  const pages = [ 'images' ];
-
-  // check entry in pages array
-  if ( pages.includes(name) ) {
-    // First delete the page so it can be re-created
-    deletePage(page);
-
-    // return createPage({
-    //   ...page,
-    //   context: {
-    //     masterNarrativeId: `${ __MASTER_NARRATIVE }`,
-    //   }
-    // })
-  }
-}*/
-
 exports.createResolvers = ({
   actions,
   cache,

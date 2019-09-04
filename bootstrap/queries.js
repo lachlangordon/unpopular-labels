@@ -23,7 +23,7 @@ query NodeSets {
       id: _id
       refId: id
       filename: identifier
-      url
+      url(width: 0, height: 2000, smart: true)
       width
       height
       caption
@@ -49,7 +49,7 @@ query NodeSets {
       id: _id
       refId: id
       filename: identifier
-      url
+      url(width: 0, height: 2000, smart: true)
       width
       height
       caption
@@ -81,7 +81,7 @@ query NodeSets {
           id: _id
           refId: id
           filename: identifier
-          url
+          url(width: 0, height: 2000, smart: true)
           width
           height
           caption
@@ -90,7 +90,7 @@ query NodeSets {
           id: _id
           refId: id
           filename: identifier
-          url
+          url(width: 0, height: 2000, smart: true)
           width
           height
           caption

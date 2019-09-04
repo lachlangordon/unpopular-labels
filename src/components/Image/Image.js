@@ -20,10 +20,10 @@ import { isEmpty } from 'lodash';
    _img.hasOwnProperty('src') && _img.src !== '';
 
 const hasFluid = _img =>
-  _img.hasOwnProperty('fields') && _img.fields.localFile.childImageSharp.fluid;
+  _img.hasOwnProperty('childImageSharp') && _img.childImageSharp.fluid;
 
 const hasFixed = _img =>
-  _img.hasOwnProperty('fields') && _img.fields.localFile.childImageSharp.fixed;
+  _img.hasOwnProperty('childImageSharp') && _img.childImageSharp.fixed;
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -46,10 +46,10 @@ class Image extends Component {
 
     // GatsbyImage
     if ( defImgMode === 'fluid' && hasFluid(_image) ) {
-      const { childImageSharp } = _image.fields.localFile;
+      const { childImageSharp } = _image;
       return <GatsbyImage name={name} alt={alt} fluid={childImageSharp.fluid} />
     } else if ( defImgMode === 'fixed' && hasFixed(_image) ) {
-      const { childImageSharp } = _image.fields.localFile;
+      const { childImageSharp } = _image;
       return <GatsbyImage name={name} alt={alt} fixed={childImageSharp.fixed} />
     } else { // otherwise return no image ?
       return noImageContent;
