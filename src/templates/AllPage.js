@@ -13,7 +13,7 @@ const allObjectsPage = ({
   let paginationItems = [];
 
   for(let i = 1; i <= pageContext.numPages; i++) {
-    paginationItems.push(<Link to={`/all/${i > 1 ? i : ''}`}>{i}</Link>);
+    paginationItems.push(<Link key={i} to={`/all/${i > 1 ? i : ''}`}>{i}</Link>);
   }
 
   return (
@@ -22,13 +22,13 @@ const allObjectsPage = ({
       {
         data.sets.map((set, i) => {
           return (
-            <section key={i}>
+            <section key={`set-${i}`}>
               <h2>{set.name}</h2>
               <div className="tiles">
                 {
                   set.setObjects.map((object, j) => {
                     return (
-                      <article key={i}>
+                      <article key={`object-${j}`}>
                         {object.object
                           ? (
                             <Link to={'/object/' + object.object.id} className="link primary">

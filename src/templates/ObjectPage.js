@@ -48,7 +48,7 @@ const ObjectPage = ({
               {
                 related.map((object, i) => {
                   return(
-                    <article key={i}>
+                    <article key={`object-${i}`}>
                       {
                         object.object
                         ? (

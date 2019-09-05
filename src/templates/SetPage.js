@@ -16,7 +16,7 @@ const SetPage = ({
   let paginationItems = [];
 
   for(let i = 1; i <= pageContext.numPages; i++) {
-    paginationItems.push(<Link to={`/set/${pageContext.id}/${i > 1 ? i : ''}`}>{i}</Link>);
+    paginationItems.push(<Link key={i} to={`/set/${pageContext.id}/${i > 1 ? i : ''}`}>{i}</Link>);
   }
 
   return (
@@ -37,7 +37,7 @@ const SetPage = ({
           {
             objects.map((object, i) => {
               return (
-                <article key={i}>
+                <article key={`object-${i}`}>
                   {
                     object.object
                       ? (

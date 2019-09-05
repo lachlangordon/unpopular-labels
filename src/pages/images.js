@@ -39,7 +39,7 @@ const ImagePage = ({
             console.log(imageObject);
 
             return  (
-                <div key={imageObject.id} className="col-4">
+                <div key={i} className="col-4">
                   <span className="image fit">
                     <Image className="image--object"
                            // fallback url for images
