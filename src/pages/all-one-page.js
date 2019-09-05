@@ -3,6 +3,7 @@ import {graphql, Link} from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
 import SEO from '../components/seo';
+import {handleBack, handleScrollToTop} from "../lib/navUtils";
 
 const allObjectsPage = ({
   data: { objects }
@@ -33,6 +34,10 @@ const allObjectsPage = ({
             )
           })
         }
+      </section>
+      <section id="two">
+        <button onClick={handleBack}>Back</button>
+        <button onClick={handleScrollToTop}>Top</button>
       </section>
     </Layout>
 );
