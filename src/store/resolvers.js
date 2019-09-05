@@ -1,5 +1,5 @@
 // import fetch from 'isomorphic-fetch'
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
 const clientResolvers = {
   Mutation: {
@@ -40,6 +40,6 @@ const clientResolvers = {
       return null
     },
   },
-}
+};
 
-export default clientResolvers
+export default clientResolvers;

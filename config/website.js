@@ -6,8 +6,8 @@ const meta = {
   siteShortName: 'SIP',
   siteDescription: 'Step into Paradise Gallery Guide.',
   siteHeadline: 'Digital Gallery Guide',
-  siteUrl: 'https://sip-guide.maas.museum', // No trailing slash!
-}
+  siteUrl: 'https://maas.museum/guide', // No trailing slash!
+};
 
 const social = {
   siteLogo: `${meta.siteUrl}/social/avatar.png`,
@@ -18,16 +18,17 @@ const social = {
   twitter: '@maasmuseum',
   instagram: '@powerhousemuseum',
   facebook: 'powerhousemuseum',
-}
+};
 
 const website = {
   ...meta,
   ...social,
   // googleAnalyticsID: 'UA-47519312-1',
 
+  author: 'developer@maas.museum',
   // Manifest
   backgroundColor: '#663399',
   themeColor: '#663399',
-}
+};
 
-module.exports = website
+module.exports = website;

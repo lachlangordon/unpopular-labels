@@ -1,0 +1,309 @@
+// The core folder is derived from maas-style-guide
+// maas-style-guide requires normalize.css ^7.0.0
+// injecting styles inside Layout component
+@import '../css/normalize.css';
+// fonts
+@import '../css/bebas-neue.css';
+@import '../css/circular.css';
+// vars
+@import './variables.scss';
+@import './mixins.scss';
+
+/*
+ * BASE CSS STYLES
+ * Only for HTML tags, do not add classes or ids here.
+ * ========================================================================== */
+
+html {
+  height: 100%;
+  color: $colour-black;
+  font-weight: normal;
+  font-size: 1rem; /* ~16px; */
+  font-family: $font-family-base;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: $line-height-md;
+  letter-spacing: -0.03em;
+  position: relative;
+  min-height: 100%;
+  box-sizing: border-box;
+  background-color: $colour-white;
+  touch-action: pan-y;
+
+  /* iPad */
+  @media (min-width: $screen-sm-min) {
+    font-size: 1.25rem;
+  }
+
+  /* iPad Pro */
+  @media (min-width: $screen-lg-min) {
+    font-size: 1.4rem;
+  }
+
+  /* HD TV */
+  @media (min-width: $screen-xlg-min) {
+    font-size: 1.6rem;
+  }
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+}
+
+a:link, a:visited {
+  color: $colour-pink;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: $spacing-lg;
+  color: $colour-black;
+}
+
+i {
+  font-family: $font-italic-base;
+}
+
+h1 {
+  font-family: $font-family-black;
+  font-size: $font-size-xxlg;
+  font-weight: normal;
+  line-height: $line-height-sm;
+
+  i {
+    font-family: $font-italic-black;
+  }
+}
+
+h1 + h2 {
+  margin-top: -$spacing-md;
+  margin-bottom: $spacing-xlg;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: $font-family-bold;
+  font-weight: normal;
+  margin-bottom: $spacing-xs;
+
+  i {
+    font-family: $font-italic-bold;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.small {
+  font-size: $font-size-sm;
+}
+
+input[type=text], input[type=email], input[type=submit] {
+  font-family: "Circular-Book";
+  border: 3px solid $colour-grey-lighter;
+  padding: 0.6rem;
+  border-radius: 0;
+  -webkit-appearance: none;
+  transition: all 0.30s ease-in-out;
+  outline: none;
+}
+
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 8px $colour-grey-darkest;
+}
+
+input:-ms-input-placeholder {
+  color: $colour-grey-light;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+input, textarea, keygen, select, button {
+  font-family: inherit;
+  letter-spacing: -0.03em;
+}
+
+input, textarea, keygen, select, button, a, div {
+  &:focus {
+    outline-style: solid !important;
+    outline: #296EF5 solid 5px;
+  }
+}
+
+
+button {
+  border: none;
+  background-color: transparent;
+  letter-spacing: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+strong {
+  font-family: $font-family-bold;
+  font-weight: normal;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/*
+ * Browser upgrade prompt
+ * ========================================================================== */
+
+.browserupgrade {
+  margin: 0.4rem 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.4rem 0;
+}
+
+/*
+ * Print styles
+ * Inlined to avoid the additional HTTP request:
+ * http://www.phpied.com/delay-loading-your-print-css/
+ * ========================================================================== */
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster: http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Printing Tables:
+   * http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

@@ -1,14 +1,10 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/layout';
-import Image from '../components/image';
+import Layout from '../components/Layout/Layout';
 import SEO from '../components/seo';
 
-import {handleBack, handleScrollToTop} from '../lib/navUtils';
-
-import pic11 from '../assets/images/pic11.jpg'
-
+import pic11 from '../assets/images/pic11.jpg';
 
  // Narrative
 const SetPage = ({
@@ -16,6 +12,12 @@ const SetPage = ({
   pageContext,
   location,
 }) => {
+
+  let paginationItems = [];
+
+  for(let i = 1; i <= pageContext.numPages; i++) {
+    paginationItems.push(<Link key={i} to={`/set/${pageContext.id}/${i > 1 ? i : ''}`}>{i}</Link>);
+  }
 
   return (
     <Layout>
@@ -35,7 +37,7 @@ const SetPage = ({
           {
             objects.map((object, i) => {
               return (
-                <article key={i}>
+                <article key={`object-${i}`}>
                   {
                     object.object
                       ? (
@@ -57,26 +59,27 @@ const SetPage = ({
           }
         </section>
         <section id="three">
-          <button onClick={handleBack}>Back</button>
-          <button onClick={handleScrollToTop}>Top</button>
+          <div>
+            {paginationItems}
+          </div>
         </section>
       </div>
     </Layout>
-  )
+  );
 }
 
-export default SetPage
+export default SetPage;
 
 export const pageQuery = graphql`
-query SetPage( $id: String! ) {
+query SetPage( $id: String!, $skip: Int!, $limit: Int!) {
   set( id: { eq: $id } ) {
     id
     name
     summary
     description
   }
-  
-  objects: SetObjectsByParentId(parentId: $id) {
+
+  objects: SetObjectsByParentId(parentId: $id, limit: $limit, skip: $skip) {
     id
     object {
       name
@@ -86,4 +89,4 @@ query SetPage( $id: String! ) {
     }
   }
 }
-`
+`;

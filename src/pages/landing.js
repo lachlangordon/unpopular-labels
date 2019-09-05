@@ -1,23 +1,23 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Helmet from 'react-helmet'
-import Layout from '../components/layout'
-import BannerLanding from '../components/banner-landing'
+import React from 'react';
+import { Link } from 'gatsby';
+import Helmet from 'react-helmet';
 
-import pic08 from '../assets/images/pic08.jpg'
-import pic09 from '../assets/images/pic09.jpg'
-import pic10 from '../assets/images/pic10.jpg'
+import Layout from '../components/Layout/Layout';
+// import BannerLanding from '../components/banner-landing'
+import Banner from '../components/Banner/Banner';
+
+import pic08 from '../assets/images/pic08.jpg';
+import pic09 from '../assets/images/pic09.jpg';
+import pic10 from '../assets/images/pic10.jpg';
 
 const Landing = (props) => (
     <Layout>
         <Helmet>
             <title>Landing - Forty by HTML5 UP</title>
             <meta name="description" content="Landing Page" />
-
-            {console.log(props)}
         </Helmet>
 
-        <BannerLanding />
+        <Banner />
 
         <div id="main">
             <section id="one">
@@ -81,6 +81,6 @@ const Landing = (props) => (
         </div>
 
     </Layout>
-)
+);
 
-export default Landing
+export default Landing;

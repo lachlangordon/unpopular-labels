@@ -1,0 +1,22 @@
+@import 'core/base.scss';
+
+/*
+ * Add new or override base CSS Styles here
+ * Only for HTML Tags, do not add classes or ids here.
+ * Consider moving these into maas-style-guide/base.scss if appropriate.
+ */
+
+ .sr-only {
+   height: 1p\x !important;
+   width: 1px !important;
+   padding: 0 !important;
+   border: 0 !important;
+   position: absolute !important;
+   clip: rect(1px, 1px, 1px, 1px);
+ }
+
+// import gallery-guide CSS
+@import 'guide/page.scss';
+
+// components
+@import 'guide/components/header.scss';
