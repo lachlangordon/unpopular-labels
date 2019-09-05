@@ -1,46 +1,74 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
-import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/layout'
-import Image from '../components/image'
-import SEO from '../components/seo'
-
-import sip_backdrop from '../assets/images/sip_backdrop.jpg';
+import Layout from '../components/Layout/Layout';
+import Image from '../components/Image/Image';
+import SEO from '../components/seo';
 
 const IndexPage = ({
-  data,
+  data: { site, masterSet, heroImage },
   pageContext: {
     masterNarrativeId,
   },
   location,
-}) => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <div id="main">
+}) => {
+  // return ( typeof window !== `undefined` && window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE ) ? (
+
+  return (
+    <Layout>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <div id="main">
         <section id="one">
-          <img src={sip_backdrop}/>
-          <Link to="/themes">Start</Link>
+            <div className="inner">
+
+                <Image className="hero--image" imgObject={heroImage}  />
+
+                <header className="major">
+                    <h2> { site.siteMetadata.title } </h2>
+                </header>
+                <p> { masterSet.description }</p>
+                <ul className="actions">
+                    <li><Link to="/themes" className="button next">Get Started</Link></li>
+                </ul>
+            </div>
         </section>
-    </div>
-  </Layout>
-)
+      </div>
+    </Layout>
+  )
+  // ) : '<p> Loading </p>'
+};
 
-export default IndexPage
+export default IndexPage;
 
-// _id: 6761
-// fields: { slug: { eq: $slug } }
-// https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
+// id: 6761
 // This query is executed at build time by Gatsby.
 export const pageQuery = graphql`
   query {
-    sets: SetsByMasterId {
+    site {
+      siteMetadata {
+        siteUrl
+        title
+        description
+      }
+    }
+    masterSet: getMasterSet {
       id
       name
       summary
       description
-      tileImages
+    }
+    heroImage: file(relativePath: { regex: "/sip_backdrop.jpg/" }) {
+      id
+      url
+      sourceInstanceName
+      publicURL
+      name
+      absolutePath
+      childImageSharp {
+        fluid(maxWidth: 1140) {
+          ...GatsbyImageSharpFluid
+        }
+      }
     }
   }
-`
+`;

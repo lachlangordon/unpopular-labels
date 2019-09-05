@@ -9,19 +9,21 @@ require('dotenv').config({
 });
 
 // load website config
-const config = require('./config/website')
+const config = require('./config/website');
 
-console.log(`Gatsby in : '${activeEnv}' mode.`)
-console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`)
+console.log(`Gatsby in : '${activeEnv}' mode.`);
+console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`);
 
 module.exports = {
   siteMetadata: {
     title: config.siteTitle,
+    siteUrl: config.siteUrl,
+    headline: config.siteHeadline,
     description: config.siteDescription,
     twitter: config.twitter,
     instagram: config.instagram,
     facebook: config.facebook,
-    author: `developer@maas.museum`,
+    author: config.author,
   },
   plugins: [
     /*
@@ -53,7 +55,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'config/typography.js',
+        pathToConfigModule: 'src/lib/typography.js',
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -64,4 +66,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

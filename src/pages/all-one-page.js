@@ -1,19 +1,18 @@
 import React from 'react';
 import {graphql, Link} from 'gatsby';
-import gql from 'graphql-tag';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout/Layout';
 import SEO from '../components/seo';
 import {handleBack, handleScrollToTop} from "../lib/navUtils";
 
 const allObjectsPage = ({
-  data
-  }) => (
+  data: { objects }
+}) => (
     <Layout>
       <SEO title="All Objects"/>
       <section id="one" className="tiles">
         {
-          data.objects.edges.map((object, i) => {
+          objects.edges.map((object, i) => {
             return (
               <article key={i}>
                 {object.node.object

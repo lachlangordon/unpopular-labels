@@ -1,6 +1,6 @@
-import Typography from 'typography'
+import Typography from 'typography';
 
-const typography = new Typography({
+const options = {
   title: 'MAAS',
   // baseFontSize: '18px',
   baseFontSize: 1.2,
@@ -8,13 +8,13 @@ const typography = new Typography({
   includeNormalize: false,
   /* Use the system font stack as fallback */
   headerFontFamily: [
-    'Circular',
+    'Bebas-Neue',
     'Helvetica',
     'Arial',
     'sans-serif',
   ],
   bodyFontFamily: [
-    'Circular',
+    'Circular-Pro-Book',
     'Helvetica',
     'Arial',
     'sans-serif',
@@ -26,6 +26,15 @@ const typography = new Typography({
       marginBottom: 0,
     },
   }),
-})
+};
 
-export default typography
+const typography = new Typography(options);
+
+// Hot reload typography in development.
+if (process.env.NODE_ENV !== `production`) {
+  typography.injectStyles()
+}
+
+export default typography;
+export const scale = typography.scale;
+export const rhythm = typography.rhythm;

@@ -4,14 +4,14 @@
  */
 
 // later move it to config
-const __MASTER_NARRATIVE = 6761
+const __MASTER_NARRATIVE = 6761;
 
 // initial GQL query to generate dynamic content nodes
 const GatsbyNodeQuery = `
 query NodeSets {
   masterSet: narrativeById(_id: ${__MASTER_NARRATIVE}) {
-    _id
-    title
+    id: _id
+    name: title
     summary
     description
     subjects
@@ -19,12 +19,21 @@ query NodeSets {
     keywords
     location
     lastUpdated
+    mainImage {
+      id: _id
+      refId: id
+      filename: identifier
+      url(width: 0, height: 2000, smart: true)
+      width
+      height
+      caption
+    }
   }
   childSets: narratives (filter: {
     masterNarrative: ${__MASTER_NARRATIVE}
   }) {
-    _id
-    title
+    id: _id
+    name: title
     summary
     description
     subjects
@@ -34,44 +43,54 @@ query NodeSets {
     lastUpdated
     tileImages
     relatedNarratives {
-      _id
+      id: _id
     }
     mainImage {
-			_id
-      url
+      id: _id
+      refId: id
+      filename: identifier
+      url(width: 0, height: 2000, smart: true)
       width
       height
+      caption
     }
     images {
-			_id
+      id: _id
+      refId: id
+      filename: identifier
       url
       width
       height
       caption
     }
     narrativeObjects {
-      _id
+      id: _id
       notes2
       notes3
       object {
-        _id
+        id: _id
         parentId
         displayTitle
         summary
+        isLoan
         acquisitionCreditLine
         production {
 		      date
 		    }
         images {
-          _id
-          url
+          id: _id
+          refId: id
+          filename: identifier
+          url(width: 0, height: 2000, smart: true)
           width
           height
           caption
         }
         mainImage {
-          _id
-          url
+          id: _id
+          refId: id
+          filename: identifier
+          url(width: 0, height: 2000, smart: true)
           width
           height
           caption
@@ -94,11 +113,22 @@ const GatsbyAllSetQuery = `
         summary
         description
         tileImages
+        setObjects {
+          object {
+            displayTitle
+            mainImage {
+              url
+              width
+              height
+            }
+          }
+        }
       }
     }
   }
 }
-`
+`;
+
 const GatsbyAllSetObjectQuery = `
 {
   allSetObject(sort:{ fields: id, order:ASC }) {
@@ -121,7 +151,7 @@ const GatsbyAllSetObjectQuery = `
     }
   }
 }
-`
+`;
 
 const GatsbyAllImageQuery = `
 {
@@ -132,16 +162,15 @@ const GatsbyAllImageQuery = `
         url
         width
         height
-        caption
       }
     }
   }
 }
-`
+`;
 
 module.exports = {
   GatsbyNodeQuery,
   GatsbyAllSetQuery,
   GatsbyAllSetObjectQuery,
   GatsbyAllImageQuery,
-}
+};

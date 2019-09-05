@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Contact = (props) => (
     <section id="contact">
@@ -50,6 +50,6 @@ const Contact = (props) => (
             </section>
         </div>
     </section>
-)
+);
 
-export default Contact
+export default Contact;

@@ -1,10 +1,8 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout/Layout';
 import SEO from '../components/seo';
-
-import {handleBack, handleScrollToTop} from '../lib/navUtils';
 
 const ObjectPage = ({
   data: {object},
@@ -13,7 +11,7 @@ const ObjectPage = ({
 }) => {
 
   if (!object.object) {
-    return (<div>Not Web Published</div>)
+    return (<div>Not Web Published</div>);
   }
 
   let title = object.object.name;
@@ -50,7 +48,7 @@ const ObjectPage = ({
               {
                 related.map((object, i) => {
                   return(
-                    <article key={i}>
+                    <article key={`object-${i}`}>
                       {
                         object.object
                         ? (
@@ -73,17 +71,13 @@ const ObjectPage = ({
             </div>
           </header>
         </section>
-        <section id="three">
-          <button onClick={handleBack}>Back</button>
-          <button onClick={handleScrollToTop}>Top</button>
-        </section>
       </div>
     </Layout>
-  );
+  )
 
-};
+}
 
-export default ObjectPage
+export default ObjectPage;
 
 export const pageQuery = graphql`
   query ObjectPage($id: String!) {
@@ -106,7 +100,7 @@ export const pageQuery = graphql`
           id
           name
           setObjects {
-            id: _id
+            id
             object {
               displayTitle
               mainImage {
