@@ -11,10 +11,10 @@ import { StaticQuery, graphql } from "gatsby";
 
 // layout.css
 // import '../../assets/css/basic-layout.css'
-import '../../assets/scss/main.scss';
+// import '../../assets/scss/main.scss';
 
 // base maas-style-guide
-// import '../../assets/maas-scss/main.scss';
+import '../../assets/maas-scss/main.scss';
 
 import Header from './Header';
 import Menu from '../Menu/Menu';
@@ -52,6 +52,8 @@ class Layout extends React.Component {
 
     render() {
       const { children } = this.props;
+      const appClassName = 'gallery-guide-app';
+
       return (
         <StaticQuery
           query={graphql`
@@ -64,11 +66,11 @@ class Layout extends React.Component {
             }
           `}
           render={data => (
-            <div className={`body ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
+            <div className={`body ${appClassName} ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
                 <div id="wrapper">
                   <Header
-                      siteTitle={data.site.siteMetadata.title}
-                      onToggleMenu={this.handleToggleMenu} />
+                    siteTitle={data.site.siteMetadata.title}
+                    onToggleMenu={this.handleToggleMenu} />
 
                   <Loader
                     isLoading={this.props.loading}
@@ -77,8 +79,10 @@ class Layout extends React.Component {
                     redirectUrlText="Try searching for something else"
                   />
 
+                  <div className="app__content">
+                    {children}
+                  </div>
 
-                  {children}
                   <Footer />
                 </div>
                 <Menu onToggleMenu={this.handleToggleMenu} />

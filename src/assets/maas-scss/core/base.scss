@@ -1,5 +1,6 @@
+// The core folder is derived from maas-style-guide
 // maas-style-guide requires normalize.css ^7.0.0
-// importing css inside Layout component
+// injecting styles inside Layout component
 @import '../css/normalize.css';
 @import '../css/circular.css';
 @import './variables.scss';
@@ -61,17 +62,17 @@ p {
 }
 
 i {
-  font-family: "Circular-BookItalic";
+  font-family: $font-italic-base;
 }
 
 h1 {
-  font-family: "Circular-Black";
+  font-family: $font-family-black;
   font-size: $font-size-xxlg;
   font-weight: normal;
   line-height: $line-height-sm;
 
   i {
-    font-family: "Circular-BlackItalic";
+    font-family: $font-italic-black;
   }
 }
 
@@ -81,12 +82,12 @@ h1 + h2 {
 }
 
 h2, h3, h4, h5, h6 {
-  font-family: "Circular-Bold";
+  font-family: $font-family-bold;
   font-weight: normal;
   margin-bottom: $spacing-xs;
 
   i {
-    font-family: "Circular-BoldItalic";
+    font-family: $font-italic-bold;
   }
 }
 
@@ -148,7 +149,7 @@ button {
 }
 
 strong {
-  font-family: "Circular-Bold";
+  font-family: $font-family-bold;
   font-weight: normal;
 }
 

@@ -35,7 +35,17 @@ $colour-pinterest: #cb2027;
  * Typography
  * ========================================================================== */
 
-$font-family-base: 'Circular-Book';
+ // font variables added for Circular-Pro
+ // Circular-Pro-Book
+ $font-family-base: 'Circular-Pro-Book';
+ $font-family-medium: 'Circular-Pro-Medium';
+ $font-family-bold: 'Circular-Pro-Bold';
+ $font-family-black: 'Circular-Pro-Black';
+
+ $font-italic-base: 'Circular-Pro-BookItalic';
+ $font-italic-medium: 'Circular-Pro-MediumItalic';
+ $font-italic-bold: 'Circular-Pro-BookItalic';
+ $font-italic-black: 'Circular-Pro-BlackItalic';
 
 /* Major Third */
 $font-size-xxxs: 0.4096em;

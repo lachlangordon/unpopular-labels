@@ -6,7 +6,7 @@ const meta = {
   siteShortName: 'SIP',
   siteDescription: 'Step into Paradise Gallery Guide.',
   siteHeadline: 'Digital Gallery Guide',
-  siteUrl: 'https://sip-guide.maas.museum', // No trailing slash!
+  siteUrl: 'https://maas.museum/guide', // No trailing slash!
 };
 
 const social = {
@@ -25,6 +25,7 @@ const website = {
   ...social,
   // googleAnalyticsID: 'UA-47519312-1',
 
+  author: 'developer@maas.museum',
   // Manifest
   backgroundColor: '#663399',
   themeColor: '#663399',

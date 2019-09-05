@@ -5,8 +5,6 @@ import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 
-// import sip_backdrop from '../assets/images/sip_backdrop.jpg';
-
 const IndexPage = ({
   data: { site, masterSet, heroImage },
   pageContext: {
@@ -14,7 +12,6 @@ const IndexPage = ({
   },
   location,
 }) => {
-  console.log(JSON.stringify(heroImage));
   // return ( typeof window !== `undefined` && window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE ) ? (
 
   return (

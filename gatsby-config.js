@@ -23,7 +23,7 @@ module.exports = {
     twitter: config.twitter,
     instagram: config.instagram,
     facebook: config.facebook,
-    author: `developer@maas.museum`,
+    author: config.author,
   },
   plugins: [
     /*
@@ -55,7 +55,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'config/typography.js',
+        pathToConfigModule: 'src/lib/typography.js',
       },
     },
     `gatsby-plugin-react-helmet`,
