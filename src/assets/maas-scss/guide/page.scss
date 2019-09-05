@@ -1,4 +1,33 @@
+///
+/// MAAS Gallery Guide - Page styles
+/// developer@maas.museum
+///
 
+/* Base Override */
+
+$font-family-header: 'Bebas-Neue';
+h1 {
+  font-family: $font-family-header;
+  font-size: $font-size-xxlg;
+  font-weight: normal;
+  line-height: $line-height-sm;
+
+  i {
+    font-family: $font-family-header;
+  }
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: $font-family-header;
+  font-weight: normal;
+  margin-bottom: $spacing-xs;
+
+  i {
+    font-family: $font-family-header;
+  }
+}
+
+/* Page */
 
 // MSIE: Required for IEMobile.
   @-ms-viewport {
@@ -9,3 +38,15 @@
   body {
     -ms-overflow-style: scrollbar;
   }
+
+  body {
+
+		// Prevents animation/transition "flicker" on page load.
+		// Automatically added/removed by js/main.js.
+		&.is-loading {
+			*, *:before, *:after {
+				@include vendor('animation', 'none !important');
+				@include vendor('transition', 'none !important');
+			}
+		}
+	}

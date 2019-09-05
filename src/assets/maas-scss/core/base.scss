@@ -2,8 +2,12 @@
 // maas-style-guide requires normalize.css ^7.0.0
 // injecting styles inside Layout component
 @import '../css/normalize.css';
+// fonts
+@import '../css/bebas-neue.css';
 @import '../css/circular.css';
+// vars
 @import './variables.scss';
+@import './mixins.scss';
 
 /*
  * BASE CSS STYLES

@@ -5,9 +5,9 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react";
-import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
 
 // layout.css
 // import '../../assets/css/basic-layout.css'
@@ -15,6 +15,8 @@ import { StaticQuery, graphql } from "gatsby";
 
 // base maas-style-guide
 import '../../assets/maas-scss/main.scss';
+
+import { rhythm, scale } from '../../lib/typography';
 
 import Header from './Header';
 import Menu from '../Menu/Menu';
@@ -26,6 +28,7 @@ class Layout extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+          error: false,
           isMenuVisible: false,
           loading: 'is-loading'
       };
@@ -66,24 +69,30 @@ class Layout extends React.Component {
             }
           `}
           render={data => (
-            <div className={`body ${appClassName} ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
-                <div id="wrapper">
+            <div className={`${appClassName} body ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
+                <div id="wrapper" style={{
+                  background: `rgba(0,0,0,0.03)`,
+                  minHeight: `100vh`,
+                }}>
                   <Header
                     siteTitle={data.site.siteMetadata.title}
                     onToggleMenu={this.handleToggleMenu} />
 
                   <Loader
-                    isLoading={this.props.loading}
-                    error={this.props.error}
+                    isLoading={this.state.loading}
+                    error={this.state.error}
                     redirectUrl="/search"
                     redirectUrlText="Try searching for something else"
                   />
 
-                  <div className="app__content">
+                  <div className="app__content"  style={{
+                        maxWidth: 960,
+                        margin: `0 auto`
+                      }}>
                     {children}
                   </div>
 
-                  <Footer />
+                  {/* <Footer /> */}
                 </div>
                 <Menu onToggleMenu={this.handleToggleMenu} />
 

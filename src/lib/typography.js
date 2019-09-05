@@ -8,7 +8,7 @@ const options = {
   includeNormalize: false,
   /* Use the system font stack as fallback */
   headerFontFamily: [
-    'Circular-Pro-Black',
+    'Bebas-Neue',
     'Helvetica',
     'Arial',
     'sans-serif',
