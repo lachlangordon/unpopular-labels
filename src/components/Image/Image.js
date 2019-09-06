@@ -1,6 +1,7 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
 import GatsbyImage from 'gatsby-image';
 
+import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 // import { Image as Img } from 'maas-react-components/dist/Image';
 
@@ -47,10 +48,10 @@ class Image extends Component {
     // GatsbyImage
     if ( defImgMode === 'fluid' && hasFluid(_image) ) {
       const { childImageSharp } = _image;
-      return <GatsbyImage name={name} alt={alt} fluid={childImageSharp.fluid} />
+      return <GatsbyImage name={name} title={alt} fluid={childImageSharp.fluid} />
     } else if ( defImgMode === 'fixed' && hasFixed(_image) ) {
       const { childImageSharp } = _image;
-      return <GatsbyImage name={name} alt={alt} fixed={childImageSharp.fixed} />
+      return <GatsbyImage name={name} title={alt} fixed={childImageSharp.fixed} />
     } else { // otherwise return no image ?
       return noImageContent;
     }
