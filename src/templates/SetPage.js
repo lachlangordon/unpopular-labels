@@ -25,10 +25,10 @@ const SetPage = ({
       <div id="main" className="alt">
         <section id="one">
             <div className="inner">
+                <span className="image main"><img src={pic11} alt="" /></span>
                 <header className="major">
                     <h1> { set.name } </h1>
                 </header>
-                <span className="image main"><img src={pic11} alt="" /></span>
 
                 <p> { set.description }</p>
             </div>
