@@ -11,10 +11,10 @@ import { StaticQuery, graphql } from 'gatsby';
 
 // layout.css
 // import '../../assets/css/basic-layout.css'
-import '../../assets/scss/main.scss';
+// import '../../assets/scss/main.scss';
 
 // base maas-style-guide
-// import '../../assets/maas-scss/main.scss';
+import '../../assets/maas-scss/main.scss';
 
 import { rhythm, scale } from '../../lib/typography';
 
@@ -94,7 +94,7 @@ class Layout extends React.Component {
 
                   {/* <Footer /> */}
                 </div>
-                <Menu onToggleMenu={this.handleToggleMenu} />
+                {/* <Menu onToggleMenu={this.handleToggleMenu} /> */}
 
             </div>
           )}

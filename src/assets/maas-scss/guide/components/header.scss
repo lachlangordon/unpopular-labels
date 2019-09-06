@@ -3,11 +3,19 @@
 \*------------------------------------*/
 
 .header {
-  position: relative;
-  z-index: 60;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  flex: none;
+  // position: relative;
+  // z-index: 60;
+  // padding: 0;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: baseline;
+  // flex: none;
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+
+  .header__wrapper {
+    max-width: 960px; // change this with break points
+    margin: 0 auto;
+    overflow: hidden;
+  }
 }
