@@ -21,49 +21,54 @@ const Header = (props) => {
           paddingBottom: `calc(${rhythm(3 / 4)} - 1px)`,
         }}>
 
-        <Link to="/" style={{
-            display: `inline-block`,
-            float: `left`,
-            textDecoration: `none`,
-          }}>
+        <nav className="header__navigation">
+          <Link to="/" style={{
+              display: `inline-block`,
+              float: `left`,
+              textDecoration: `none`,
+            }}>
 
-            <img style={{
-              // not working well - need to use gatsby image for scaling
-              display: `block`,
-              width: `100%`,
-            }} src={logo} alt="Step Into Paradise" />
+              <img style={{
+                // not working well - need to use gatsby image for scaling
+                display: `block`,
+              }} src={logo} alt="Step Into Paradise" />
 
-        </Link>
+          </Link>
 
-        { headerLinks.map((linkItem, i) => {
-          return (
-            <Link key={`link-${i}`} to={linkItem.location} style={{
-                display: `inline-block`,
-                float: `right`,
-                textDecoration: `none`,
-              }}>
-
-              <h1 style={{
-                  ...scale(4 / 5),
-                  color: `inherit`,
-                  lineHeight: 1,
-                  margin: 0,
-                  overflow: `hidden`,
-                }}>
-
-                <span style={{
-                    paddingRight: `calc(${rhythm(1)} - 10px)`,
-                    borderRight: `1px solid rgba(0,0,0,0.3)`,
-                    lineHeight: 1,
-                    marginLeft: rhythm(1),
+          <ul role="navigation">
+          { headerLinks.map((item, i) => {
+            return (
+              <li className="header__navigation-button">
+                <Link key={`link-${i}`} to={item.location} style={{
+                    display: `inline-block`,
+                    float: `right`,
+                    textDecoration: `none`,
                   }}>
-                  {linkItem.name}
-                </span>
 
-              </h1>
-            </Link>
-          )
-        })}
+                  <h1 style={{
+                      ...scale(4 / 5),
+                      color: `inherit`,
+                      lineHeight: 1,
+                      margin: 0,
+                      overflow: `hidden`,
+                    }}>
+
+                    <span style={{
+                        paddingRight: `calc(${rhythm(1)} - 10px)`,
+                        borderRight: `1px solid rgba(0,0,0,0.3)`,
+                        lineHeight: 1,
+                        marginLeft: rhythm(1),
+                      }}>
+                      {item.name}
+                    </span>
+
+                  </h1>
+                </Link>
+              </li>
+            )
+          })}
+          </ul>
+        </nav>
 
       </div>
 

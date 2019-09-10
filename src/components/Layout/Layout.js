@@ -9,14 +9,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
+import { rhythm, scale } from '../../lib/typography';
+
 // layout.css
 // import '../../assets/css/basic-layout.css'
 // import '../../assets/scss/main.scss';
 
 // base maas-style-guide
 import '../../assets/maas-scss/main.scss';
-
-import { rhythm, scale } from '../../lib/typography';
 
 import Header from './Header';
 import Menu from '../Menu/Menu';
@@ -55,7 +55,7 @@ class Layout extends React.Component {
 
     render() {
       const { children } = this.props;
-      const appClassName = 'gallery-guide-app';
+      const appClassName = 'guide-app';
 
       return (
         <StaticQuery
@@ -64,19 +64,20 @@ class Layout extends React.Component {
               site {
                 siteMetadata {
                   title
+                  description
                 }
               }
             }
           `}
           render={data => (
-            <div className={`${appClassName} body ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
-                <div id="wrapper" style={{
-                  background: `rgba(0,0,0,0.03)`,
-                  minHeight: `100vh`,
-                }}>
-                  <Header
-                    siteTitle={data.site.siteMetadata.title}
-                    onToggleMenu={this.handleToggleMenu} />
+            <div className={`${appClassName} body
+                            ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
+
+                <Header className={`${appClassName}__header`}
+                        siteTitle={data.site.siteMetadata.title}
+                        onToggleMenu={this.handleToggleMenu} />
+
+                <div className={`${appClassName}__wrapper`}>
 
                   <Loader
                     isLoading={this.state.loading}
@@ -85,15 +86,25 @@ class Layout extends React.Component {
                     redirectUrlText="Try searching for something else"
                   />
 
-                  <div className="app__content"  style={{
-                        maxWidth: 960,
-                        margin: `0 auto`
-                      }}>
+                  <main className={`${appClassName}__content`}>
                     {children}
-                  </div>
+                  </main>
 
-                  {/* <Footer /> */}
+                  <nav className={`${appClassName}__sidenav`}>
+
+                  </nav>
+
+                  <aside className={`${appClassName}__sidepanel`}>
+
+                    <p className="section__description"
+                       style={{ color: '#fff'}}
+                       dangerouslySetInnerHTML={{__html: data.site.siteMetadata.description}}></p>
+
+                  </aside>
+
                 </div>
+
+                {/* <Footer /> */}
                 {/* <Menu onToggleMenu={this.handleToggleMenu} /> */}
 
             </div>

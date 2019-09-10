@@ -1,0 +1,65 @@
+///
+/// MAAS Gallery Guide - Layout styles
+/// developer@maas.museum
+///
+
+@import '../core/variables.scss';
+
+$colour-black: #000;
+
+.guide-app {
+  display: flex;
+  height: 100%; /* 1, 3 */
+  flex-direction: column;
+}
+
+.guide-app__header,
+.guide-app__footer {
+  flex: none; /* 2 */
+}
+
+.guide-app__wrapper {
+  background: rgba(0,0,0,0.03);
+  min-height: 100vh;
+
+  display: flex;
+  flex: 1 0 auto; /* 2 */
+  flex-direction: column;
+  // padding: $spacing-md;
+}
+
+.guide-app__content {
+  margin-top: $spacing-md;
+}
+
+.guide-app__sidenav {
+  order: -1;
+}
+
+.guide-app__sidenav,
+.guide-app__sidepanel {
+  padding: 1em;
+  border-radius: 3px;
+  background: rgba(147, 128, 108, 0.1);
+}
+
+.guide-app__sidepanel {
+  background-color: $colour-black;
+}
+
+@media (min-width: $screen-lg-min) {
+  .guide-app__wrapper {
+    flex-direction: row;
+  }
+
+  .guide-app__content{
+    flex: 1;
+    padding: 0 $spacing-lg;
+    margin: 0;
+  }
+
+  .guide-app__sidenav,
+  .guide-app__sidepanel {
+    flex: 0 0 12em;
+  }
+}
