@@ -25,7 +25,6 @@ $colour-black: #000;
   display: flex;
   flex: 1 0 auto; /* 2 */
   flex-direction: column;
-  // padding: $spacing-md;
 }
 
 .guide-app__content {
@@ -39,7 +38,6 @@ $colour-black: #000;
 .guide-app__sidenav,
 .guide-app__sidepanel {
   padding: 1em;
-  border-radius: 3px;
   background: rgba(147, 128, 108, 0.1);
 }
 
@@ -58,8 +56,11 @@ $colour-black: #000;
     margin: 0;
   }
 
-  .guide-app__sidenav,
+  .guide-app__sidenav {
+    flex: 0 0 5em;
+  }
+
   .guide-app__sidepanel {
-    flex: 0 0 12em;
+    flex: 0 0 17em;
   }
 }

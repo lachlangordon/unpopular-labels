@@ -17,9 +17,7 @@ const IndexPage = ({
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-
       <main className="guide-index-page">
-        <div className="guide-index-page__main">
 
           <div className="container container--lg no-padding">
             <BgImage title="before"
@@ -35,9 +33,7 @@ const IndexPage = ({
             </BgImage>
           </div>
 
-        </div>
       </main>
-
     </Layout>
   )
 
@@ -62,7 +58,7 @@ export const pageQuery = graphql`
       summary
       description
     }
-    heroImage: file(relativePath: { regex: "/sip_backdrop.jpg/" }) {
+    heroImage: file(relativePath: { regex: "/MAAS_SIP_MAIN.jpg/" }) {
       id
       url
       sourceInstanceName
