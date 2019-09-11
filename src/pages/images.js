@@ -2,10 +2,9 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 
 import Layout from '../components/Layout/Layout'
-import Image from '../components/Image/Image'
+// import Image from '../components/Image/Image'
+import ImgGallery from '../components/Image/ImgGallery'
 import SEO from '../components/seo'
-
-import pic03 from '../assets/images/pic03.jpg'
 
 const ImagePage = ({
   data: { localImages, setImages },
@@ -27,35 +26,56 @@ const ImagePage = ({
       </div>
     </section>
 
-    <section>
-      <div className="inner">
-        <div className="box alt">
-          <div className="grid-wrapper" >
-          { setImages.edges.map((imgNode, i) => {
+    {/*
+      <section>
+        <div className="inner">
+          <div className="box alt">
+            <div className="grid-wrapper" >
+            { setImages.edges.map((imgNode, i) => {
 
-            // image node
-            const imageObject = imgNode.node.fields.localFile;
-            const cropCenter = imageObject.cropCenter;
-            console.log(imageObject);
+              // image node
+              const imageObject = imgNode.node.fields.localFile;
+              const cropCenter = imageObject.cropCenter;
+              console.log(imageObject);
 
-            return  (
-                <div key={i} className="col-4">
-                  <span className="image fit">
-                    <Image className="image--object"
-                           // fallback url for images
-                           src={cropCenter.resize.src || ''}
-                           imgObject={imageObject}
-                           defImgMode="fluid"
-                           height={300}  />
-                  </span>
-                </div>
-            )
-          })}
+              return  (
+                  <div key={i} className="col-4">
+                    <span className="image fit">
+                      <Image className="image--object"
+                             // fallback url for images
+                             src={cropCenter.resize.src || ''}
+                             imgObject={imageObject}
+                             defImgMode="fluid"
+                             height={300}  />
+                    </span>
+                  </div>
+              )
+            })}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
+    */}
+
+    <div className="section">
+      <div className="set-page__objects container container--lg">
+        <a name="objects" id="objects"></a>
+        <h2>Objects in this Set</h2>
+
+        <div className="set-page__items">
+
+          <ImgGallery
+            images={setImages.edges}
+            isBreakout={true}
+            type="object"
+            imageTag={'On Display'}
+          />
+
+        </div>
+
+      </div>
+    </div>
 
 
     </div>

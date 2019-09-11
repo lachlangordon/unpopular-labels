@@ -1,4 +1,5 @@
 @import 'core/base.scss';
+@import 'core/helpers.scss';
 
 /*
  * Add new or override base CSS Styles here
@@ -15,8 +16,40 @@
    clip: rect(1px, 1px, 1px, 1px);
  }
 
+
+/* Base Override */
+$font-family-header: 'Bebas-Neue';
+h1 {
+   font-family: $font-family-header;
+   font-size: $font-size-xxlg;
+   font-weight: normal;
+   line-height: $line-height-sm;
+
+   i {
+     font-family: $font-family-header;
+   }
+}
+
+h2, h3, h4, h5, h6 {
+   font-family: $font-family-header;
+   font-weight: normal;
+   margin-bottom: $spacing-xs;
+
+   i {
+     font-family: $font-family-header;
+   }
+}
+
 // import gallery-guide CSS
 @import 'guide/page.scss';
+@import 'guide/layout.scss';
 
 // components
 @import 'guide/components/header.scss';
+@import 'guide/components/button.scss';
+@import 'guide/components/image.scss';
+@import 'guide/components/item-tile.scss';
+
+// BETA
+// @import 'guide/components/icons.scss';
+// @import 'guide/components/list.scss';

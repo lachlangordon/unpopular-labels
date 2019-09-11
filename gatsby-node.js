@@ -115,8 +115,15 @@ exports.createResolvers = ({
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
+  // setTemplate
   const setTemplate = require.resolve('./src/templates/SetPage.js');
+  // const setPaginatedTemplate = require.resolve('./src/templates/SetPaginatedPage.js');
+
+  // allTemplate
   const allTemplate = require.resolve('./src/templates/AllPage.js');
+  // const allPaginatedTemplate = require.resolve('./src/templates/AllPaginatedPage.js');
+
+  // objectTemplate
   const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
 
   const sets = await GQLGatsbyWrapper(
@@ -136,7 +143,10 @@ exports.createPages = async ({ actions, graphql }) => {
   const { allSetObject } = objects.data;
 
   // create pages with templates and helper functions
-  createPaginatedSetPages('set', allSet.edges, createPage, setTemplate, 3, 'setObjects' );
-  createPaginatedPages('all', allSet.edges, createPage, allTemplate, 2);
+  // createPaginatedSetPages('set', allSet.edges, createPage, setPaginatedTemplate, 3, 'setObjects' );
+  // createPaginatedPages('all', allSet.edges, createPage, allPaginatedTemplate, 2);
+
+  createDynamicPages('set', allSet.edges, createPage, setTemplate );
+  createDynamicPages('all', allSet.edges, createPage, allTemplate );
   createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
 }
