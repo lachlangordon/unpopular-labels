@@ -27,7 +27,7 @@ const allObjectsPage = ({
                       if (object.object)
                         return object.object.mainImage && (
                                     <ItemTile
-                                          url={'/object/' + object.object.id}
+                                          url={'/object/' + object.id}
                                           imageUrl={object.object.mainImage.url}/>
                                   )
 
