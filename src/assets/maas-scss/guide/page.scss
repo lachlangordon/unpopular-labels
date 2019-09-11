@@ -4,6 +4,7 @@
 ///
 
 /* Page */
+  @import '../core/variables.scss';
 
 // MSIE: Required for IEMobile.
   @-ms-viewport {
@@ -16,7 +17,6 @@
   }
 
   body {
-
 		// Prevents animation/transition "flicker" on page load.
 		// Automatically added/removed by js/main.js.
 		&.is-loading {
@@ -26,3 +26,24 @@
 			}
 		}
 	}
+
+  /*------------------------------------*\
+      #ALL-PAGE
+  \*------------------------------------*/
+
+  /* Body */
+  .all-page__body {
+    lost-utility: clearfix;
+
+    min-height: 20em;
+    padding-top: $spacing-md;
+  }
+
+  .all-page__content-title {
+    float: left;
+  }
+
+
+  .all-page__content {
+    lost-utility: clearfix;
+  }

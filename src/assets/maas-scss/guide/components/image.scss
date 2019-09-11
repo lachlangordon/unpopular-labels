@@ -2,6 +2,8 @@
     #IMGGALLERY
 \*------------------------------------*/
 
+@import '../../core/variables.scss';
+
 $offset: 45vw;
 $offset-xlg: 45rem;
 
@@ -156,4 +158,77 @@ $element-margin: 2em;
 			width: 100%;
 		}
 	}
+}
+
+/*------------------------------------*\
+    #MAAS-IMAGE
+\*------------------------------------*/
+
+.maas-image {
+	position: relative;
+	display: flex;
+	justify-content: center;
+
+
+	img {
+		transition: opacity 0.3s;
+	}
+
+	&.is-loaded {
+		img {
+			opacity: 1;
+		}
+	}
+
+	&.is-loading {
+		background-color: $colour-grey-lightest;
+		img {
+			opacity: 0;
+		}
+	}
+
+	&.has-aspect-ratio {
+		position: relative;
+		height: 0px;
+		width: 100%;
+
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.maas-image__status {
+	position: absolute;
+	top: 50%;
+	width: 75%;
+	text-align: center;
+	font-size: $font-size-md;
+	margin-top: calc(-0.5 * $font-size-md);
+	color: $colour-grey;
+
+	div {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+
+		i {
+			padding-bottom: $font-size-sm;
+		}
+
+		span {
+			font-size: $font-size-xs;
+		}
+	}
+}
+
+.gallery__thumbnail--is-hidden {
+	display: none;
 }

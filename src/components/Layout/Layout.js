@@ -98,7 +98,7 @@ class Layout extends React.Component {
 
                     <p className="section__description"
                        style={{ color: '#fff'}}
-                       dangerouslySetInnerHTML={{__html: data.site.siteMetadata.description}}></p>
+                       dangerouslySetInnerHTML={{__html: data.site.siteMetadata.description}} />
 
                   </aside>
 
