@@ -10,6 +10,7 @@ require('dotenv').config({
 
 // load website config
 const config = require('./config/website');
+const postCSSPlugins = require('./postcss-config.js');
 
 console.log(`Gatsby in : '${activeEnv}' mode.`);
 console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`);
@@ -61,7 +62,17 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        // postCSS plugin to load lostgrid.css
+        // http://lostgrid.org/docs.html
+        postCssPlugins: [...postCSSPlugins],
+        cssLoaderOptions: {
+          camelCase: false,
+        }
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

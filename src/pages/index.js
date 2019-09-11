@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
-import Image from '../components/Image/Image';
+import BgImage from '../components/Image/BgImage';
 import SEO from '../components/seo';
 
 const IndexPage = ({
@@ -12,30 +12,31 @@ const IndexPage = ({
   },
   location,
 }) => {
-  // return ( typeof window !== `undefined` && window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE ) ? (
 
+  let pageTitle = `JENNY KEE&nbsp; &nbsp;LINDA JACKSON<br>`;
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <div id="main">
-        <section id="one">
-            <div className="inner">
+      <main className="guide-index-page">
 
-                <Image className="hero--image" imgObject={heroImage}  />
+          <div className="container container--lg no-padding">
+            <BgImage title="before"
+                     fluid={heroImage.childImageSharp.fluid}>
 
-                <header className="major">
-                    <h2> { site.siteMetadata.title } </h2>
-                </header>
-                <p> { masterSet.description }</p>
+                <h2 className="guide-index-page__title" style={{ color: '#fff'}}>
+                    { site.siteMetadata.title }
+                </h2>
+
                 <ul className="actions">
                     <li><Link to="/themes" className="button next">Get Started</Link></li>
                 </ul>
-            </div>
-        </section>
-      </div>
+            </BgImage>
+          </div>
+
+      </main>
     </Layout>
   )
-  // ) : '<p> Loading </p>'
+
 };
 
 export default IndexPage;
@@ -57,7 +58,7 @@ export const pageQuery = graphql`
       summary
       description
     }
-    heroImage: file(relativePath: { regex: "/sip_backdrop.jpg/" }) {
+    heroImage: file(relativePath: { regex: "/MAAS_SIP_MAIN.jpg/" }) {
       id
       url
       sourceInstanceName

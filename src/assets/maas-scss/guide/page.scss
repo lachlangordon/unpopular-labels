@@ -3,31 +3,8 @@
 /// developer@maas.museum
 ///
 
-/* Base Override */
-
-$font-family-header: 'Bebas-Neue';
-h1 {
-  font-family: $font-family-header;
-  font-size: $font-size-xxlg;
-  font-weight: normal;
-  line-height: $line-height-sm;
-
-  i {
-    font-family: $font-family-header;
-  }
-}
-
-h2, h3, h4, h5, h6 {
-  font-family: $font-family-header;
-  font-weight: normal;
-  margin-bottom: $spacing-xs;
-
-  i {
-    font-family: $font-family-header;
-  }
-}
-
 /* Page */
+  @import '../core/variables.scss';
 
 // MSIE: Required for IEMobile.
   @-ms-viewport {
@@ -40,7 +17,6 @@ h2, h3, h4, h5, h6 {
   }
 
   body {
-
 		// Prevents animation/transition "flicker" on page load.
 		// Automatically added/removed by js/main.js.
 		&.is-loading {
@@ -50,3 +26,24 @@ h2, h3, h4, h5, h6 {
 			}
 		}
 	}
+
+  /*------------------------------------*\
+      #ALL-PAGE
+  \*------------------------------------*/
+
+  /* Body */
+  .all-page__body {
+    lost-utility: clearfix;
+
+    min-height: 20em;
+    padding-top: $spacing-md;
+  }
+
+  .all-page__content-title {
+    float: left;
+  }
+
+
+  .all-page__content {
+    lost-utility: clearfix;
+  }

@@ -730,6 +730,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.0.tgz#4fc1d642a9fd0299754e8b5de62c631cf5568205"
+  integrity sha512-89eSBLJsxNxOERC0Op4vd+0Bqm6wRMqMbFtV3i0/fbaWw/mJ8Q3eBvgX0G4SyrOOLCtbu98HspF8o09MRT+KzQ==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.1.0", "@babel/template@^7.4.4":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.4.4.tgz#f4b88d1225689a08f5bc3a17483545be9e4ed237"
@@ -5386,12 +5393,12 @@ gatsby-plugin-react-helmet@^3.0.12:
   dependencies:
     "@babel/runtime" "^7.5.5"
 
-gatsby-plugin-sass@^2.0.11:
-  version "2.1.12"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-2.1.12.tgz#4a98e4b9697e6f57adb3f0678ad5cbce7b86a552"
-  integrity sha512-GGkdviAbPMSIOC/3hfSu+1LW2F4V3JRmiPxlNvX6p27Sve77stGuYjI55zC4GSZZEDQW1pXb3rZ5DAnHf0tXhQ==
+gatsby-plugin-sass@^2.1.14:
+  version "2.1.14"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-2.1.14.tgz#16c21f9bfdded165c5bd0f7b46b6ff6f1801d627"
+  integrity sha512-ly9iy6wdd9oojP5XupZTvcBjwxDsvY7lXcZDQmhVNMWJPSw9O2AHjLEW2BSa7pSL4p/SOGdHdIboSDAZJtZMyg==
   dependencies:
-    "@babel/runtime" "^7.5.5"
+    "@babel/runtime" "^7.6.0"
     sass-loader "^7.3.1"
 
 gatsby-plugin-sharp@^2.0.37:
@@ -7623,6 +7630,14 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lost@^8.3.1:
+  version "8.3.1"
+  resolved "https://registry.yarnpkg.com/lost/-/lost-8.3.1.tgz#9fc6cbfff831264466cc30ab8fba5741945add7a"
+  integrity sha512-J+TgSVo9VVf4Y9lVGaI5DMN0BMqQTIabEJuEQGlK4vte+EZq9eDcvwGx9DfrkCUMqs0CvzAPE5dsnj18Zbjf6g==
+  dependencies:
+    object-assign "^4.1.1"
+    postcss "7.0.14"
+
 loud-rejection@^1.0.0, loud-rejection@^1.2.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/loud-rejection/-/loud-rejection-1.6.0.tgz#5b46f80147edee578870f086d04821cf998e551f"
@@ -9531,6 +9546,15 @@ postcss-value-parser@^4.0.0:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.0.2.tgz#482282c09a42706d1fc9a069b73f44ec08391dc9"
   integrity sha512-LmeoohTpp/K4UiyQCwuGWlONxXamGzCMtFxLq4W1nZVGIQLYvMCJx3yAF9qyyuFpflABI9yVdtJAqbihOsCsJQ==
+
+postcss@7.0.14:
+  version "7.0.14"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.14.tgz#4527ed6b1ca0d82c53ce5ec1a2041c2346bbd6e5"
+  integrity sha512-NsbD6XUUMZvBxtQAJuWDJeeC4QFsmWsfozWxCJPWf3M55K9iu2iMDaKqyoOdTJ1R4usBXuxlVFAIo8rZPQD4Bg==
+  dependencies:
+    chalk "^2.4.2"
+    source-map "^0.6.1"
+    supports-color "^6.1.0"
 
 postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.23:
   version "6.0.23"

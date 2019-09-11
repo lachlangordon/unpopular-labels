@@ -2,9 +2,8 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
+import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
-
-import pic11 from '../assets/images/pic11.jpg';
 
  // Narrative
 const SetPage = ({
@@ -13,57 +12,80 @@ const SetPage = ({
   location,
 }) => {
 
-  let paginationItems = [];
-
-  for(let i = 1; i <= pageContext.numPages; i++) {
-    paginationItems.push(<Link key={i} to={`/set/${pageContext.id}/${i > 1 ? i : ''}`}>{i}</Link>);
-  }
-
   return (
     <Layout>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
-      <div id="main" className="alt">
-        <section id="one">
-            <div className="inner">
-                <header className="major">
-                    <h1> { set.name } </h1>
-                </header>
-                <span className="image main"><img src={pic11} alt="" /></span>
 
-                <p> { set.description }</p>
+      <main id="main" className="set-page main">
+
+          <section className="section">
+            <div className="container container--lg">
+
+              <h1 className="set-page__title">
+                { set.name }
+              </h1>
+
+              <p className="set-page__description"
+                 dangerouslySetInnerHTML={{ __html: set.description }} />
+
             </div>
-        </section>
-        <section id="two" className="tiles">
-          {
-            objects.map((object, i) => {
-              return (
-                <article key={`object-${i}`}>
-                  {
-                    object.object
-                      ? (
-                        <Link to={'/object/' + object.id} className="link primary">
-                          {
-                            object.object.mainImage ? (
-                              <img src={object.object.mainImage.url}/>
-                            ) : <div>{object.object.name}</div>
-                          }
-                        </Link>
-                      )
-                      : (
-                        <div>{"Unpublished object IRN " + object.id}</div>
-                      )
-                  }
-                </article>
-              )
-            })
-          }
-        </section>
-        <section id="three">
-          <div>
-            {paginationItems}
-          </div>
-        </section>
-      </div>
+          </section>
+
+          <section className="section section--alt">
+  					<div className="container container--lg">
+
+              <div className="all-page__content">
+              {
+                objects.map((object, j) => {
+                  console.log(object.id);
+
+                  if (object.object)
+                    return object.object.mainImage && (
+                                <ItemTile
+                                      url={'/object/' + object.id}
+                                      imageUrl={object.object.mainImage.url}/>
+                              )
+
+
+                })
+              }
+              </div>
+
+              {/*
+                <div className="flex-grid">
+                {
+                  objects.map((object, i) => {
+                    return (
+                      <article key={`object-${i}`} className="flex-grid-item">
+                        {
+                          object.object
+                            ? (
+                                <Link to={'/object/' + object.id} className="link primary">
+                                  {
+                                    object.object.mainImage ? (
+                                      <Image className="image--object box crop-to-fit"
+                                              // fallback url for images
+                                              src={object.object.mainImage.url} />
+                                    ) : <div>{object.object.name}</div>
+                                  }
+                                </Link>
+                            )
+                            : (
+                              <div>{"Unpublished object IRN " + object.id}</div>
+                            )
+                        }
+                      </article>
+                    )
+                  })
+                }
+                </div>
+              */}
+
+
+  					</div>
+      		</section>
+
+      </main>
     </Layout>
   );
 }
@@ -71,7 +93,7 @@ const SetPage = ({
 export default SetPage;
 
 export const pageQuery = graphql`
-query SetPage( $id: String!, $skip: Int!, $limit: Int!) {
+query SetPage( $id: String!) {
   set( id: { eq: $id } ) {
     id
     name
@@ -79,7 +101,7 @@ query SetPage( $id: String!, $skip: Int!, $limit: Int!) {
     description
   }
 
-  objects: SetObjectsByParentId(parentId: $id, limit: $limit, skip: $skip) {
+  objects: SetObjectsByParentId(parentId: $id) {
     id
     object {
       name

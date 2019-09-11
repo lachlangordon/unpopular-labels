@@ -112,9 +112,8 @@ $paragraph-width: 31em;
  * ========================================================================== */
 
 $max-content-width:     1440px;
+$container-width-xs:    360px;
 
-$container-width-xs:    480px;
-/* $container-width-sm:    768px; */
 $container-width-sm:    31em;
 $container-width-md:    1024px;
 $container-width-lg:    1366px;
@@ -124,10 +123,9 @@ $container-width-xlg:   1920px;
  * Media queries breakpoints
  * ========================================================================== */
 
-$screen-xs-min:         30em;  /* 480px Extra small screen / phone */
+$screen-xs-min:         22.500em;  /* 360px Extra small screen / phone */
 $screen-sm-min:         48em;  /* 768px Small screen / tablet */
 $screen-md-min:         64em;  /* 1024px Medium screen / desktop */
-/* $screen-lg-min:         90em; /* 1440 Large screen / wide desktop */
 $screen-lg-min:         85.375em; /* 1366 Large screen / wide desktop / iPad Pro */
 $screen-xlg-min:        120em; /* 1920 HD TV screen */
 

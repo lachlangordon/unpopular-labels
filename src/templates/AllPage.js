@@ -10,11 +10,6 @@ const allObjectsPage = ({
   pageContext,
   location,
   }) => {
-  let paginationItems = [];
-
-  for(let i = 1; i <= pageContext.numPages; i++) {
-    paginationItems.push(<Link key={i} to={`/all/${i > 1 ? i : ''}`}>{i}</Link>);
-  }
 
   return (
     <Layout>
@@ -52,19 +47,14 @@ const allObjectsPage = ({
           )
         })
       }
-      <section id="two">
-        <div>
-          {paginationItems}
-        </div>
-      </section>
     </Layout>
 )};
 
 export default allObjectsPage;
 
 export const pageQuery = graphql`
-  query Sets($skip: Int!, $limit: Int!) {
-    sets: SetsByMasterId(limit: $limit, skip: $skip) {
+  query Sets {
+    sets: SetsByMasterId {
       id
       name
       setObjects {

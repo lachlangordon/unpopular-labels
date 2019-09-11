@@ -73,7 +73,6 @@ html, body {
   position: relative;
   background-color: $colour-black;
   padding: $spacing-xxxs $spacing-xs;
-  font-family: "Circular-Medium";
   line-height: 3;
 
   &:link, &:visited {
@@ -81,7 +80,7 @@ html, body {
     text-decoration: none;
   }
 
-  /* TODO: Create mixin */
+  /* TODO: Create mixin
   &:after {
     top: 0;
     right: -0.77em;
@@ -91,7 +90,7 @@ html, body {
     content: '';
     border-left: 0.7828em solid $colour-black;
     border-bottom: 2.06em solid transparent;
-  }
+  }*/
 }
 
 .button--sm {
@@ -118,7 +117,7 @@ html, body {
   cursor: pointer;
   color: $colour-white;
   font-size: $font-size-sm;
-  font-family: "Circular-Medium";
+  // font-family: "Circular-Medium";
   text-align: center;
   transition: 0.3s;
   text-decoration: none;
@@ -178,25 +177,21 @@ html, body {
 
 .section {
   lost-utility: clearfix;
-
   padding: $spacing-lg 0 $spacing-lg;
 }
 
 .section--alt {
-  // background-image: url('/assets/images/bg-lines@2x.gif');
-  // background-size: 4px 11px;
   background-color: $colour-grey-lightest;
 }
 
 .section--dividers {
   border-top: 6px solid $colour-grey-lightest;
-  // border-bottom: 3px solid $colour-grey-lightest;
 }
 
   .section__title {
     margin-top: 0.3em;
     margin-bottom: $spacing-xs;
-    font-family: 'Circular-Black';
+    font-family: $font-family-black;
     font-size: $font-size-lg;
     text-transform: uppercase;
     letter-spacing: -0.02em;
@@ -241,7 +236,6 @@ html, body {
 .breakout {
   line-height: $line-height-sm;
   font-size: $font-size-xlg;
-  font-family: 'Circular-Black';
   text-align: center;
   margin-top: $spacing-md;
   margin-bottom: $spacing-md;
@@ -261,8 +255,16 @@ html, body {
 }
 
 /*
- * Javascript states
+ * Javascript states and other
  * ========================================================================== */
+
+ .no-padding {
+   padding: 0 !important;
+ }
+
+ .no-margin {
+   margin: 0 !important;
+ }
 
 .is-hidden {
   display: none;
