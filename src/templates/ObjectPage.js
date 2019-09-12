@@ -33,7 +33,7 @@ const ObjectPage = ({
 
             <div className="object-page__mainImg">
             {
-              images[0].fields.localFile && (
+              images.length && (
                 <Image className="image--object"
                        imgObject={ images[0].fields.localFile }
                        defImgMode="fluid"
