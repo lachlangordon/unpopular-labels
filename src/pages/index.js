@@ -5,6 +5,8 @@ import Layout from '../components/Layout/Layout';
 import BgImage from '../components/Image/BgImage';
 import SEO from '../components/seo';
 
+import { siteMeta } from '../queries/fragments';
+
 const IndexPage = ({
   data: { site, masterSet, heroImage },
   pageContext: {
@@ -17,7 +19,7 @@ const IndexPage = ({
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <main className="guide-index-page">
+      <main className="index-page">
 
           <div className="container container--lg no-padding">
             <BgImage title="before"
@@ -46,11 +48,7 @@ export default IndexPage;
 export const pageQuery = graphql`
   query {
     site {
-      siteMetadata {
-        siteUrl
-        title
-        description
-      }
+      ...siteMeta
     }
     masterSet: getMasterSet {
       id

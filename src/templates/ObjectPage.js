@@ -2,10 +2,11 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
+import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 
 const ObjectPage = ({
-  data: {object},
+  data: { images, object },
   pageContext,
   location,
 }) => {
@@ -24,54 +25,86 @@ const ObjectPage = ({
   return (
     <Layout>
       <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
-      <div id="main" className="alt">
-        <section id="one">
-          <div className="inner">
+
+      <main className="object-page">
+
+        <section className="section">
+          <div className="container container--lg">
+
+            <div className="object-page__mainImg">
             {
-              object.object.mainImage && (
-                <span className="image main"><img src={object.object.mainImage.url} alt="" /></span>
+              images[0].fields.localFile && (
+                <Image className="image--object"
+                       imgObject={ images[0].fields.localFile }
+                       defImgMode="fluid"
+                       />
               )
             }
-            <header>
-              <h1>{title}</h1>
-            </header>
-            <p>Part of <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link></p>
-            <p>{object.notes2}</p>
-            <p>{object.notes3}</p>
-            <p>{object.object.acquisitionCreditLine}</p>
+            </div>
+
+            <h1 className="object-page__title">
+              { title }
+            </h1>
+
+            <div className="object-page__content">
+
+
+              { object.notes2 &&
+                <p className="set-page__notes2"
+                   dangerouslySetInnerHTML={{ __html: object.notes2 }} />
+              }
+
+              { object.notes3 &&
+                <p className="set-page__notes3"
+                   dangerouslySetInnerHTML={{ __html: object.notes3 }} />
+              }
+
+              { object.acquisitionCreditLine &&
+                <p className="set-page__credit-line"
+                   dangerouslySetInnerHTML={{ __html: object.acquisitionCreditLine }} />
+              }
+
+              <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link></strong>
+            </div>
+
           </div>
         </section>
-        <section id="two">
-          <header>
-            <h2>{`More in ${object.parent.name}`}</h2>
-            <div className="tiles">
-              {
-                related.map((object, i) => {
-                  return(
-                    <article key={`object-${i}`}>
-                      {
-                        object.object
-                        ? (
-                            <Link to={`/object/${object.id}`} className="link primary">
-                              {
-                                object.object.mainImage ? (
-                                  <img src={object.object.mainImage.url}/>
-                                ) : <div>{object.object.displayTitle}</div>
-                              }
-                            </Link>
-                          )
-                        : (
-                            <div>{"Unpublished object IRN " + object.id}</div>
-                          )
-                      }
-                    </article>
-                  )
-                })
-              }
-            </div>
-          </header>
-        </section>
-      </div>
+
+        {/*
+          <section id="two">
+            <header>
+              <h2>{`More in ${object.parent.name}`}</h2>
+              <div className="tiles">
+                {
+                  related.map((object, i) => {
+                    return(
+                      <article key={`object-${i}`}>
+                        {
+                          object.object
+                          ? (
+                              <Link to={`/object/${object.id}`} className="link primary">
+                                {
+                                  object.object.mainImage ? (
+                                    <img src={object.object.mainImage.url}/>
+                                  ) : <div>{object.object.displayTitle}</div>
+                                }
+                              </Link>
+                            )
+                          : (
+                              <div>{"Unpublished object IRN " + object.id}</div>
+                            )
+                        }
+                      </article>
+                    )
+                  })
+                }
+              </div>
+            </header>
+          </section>
+
+        */}
+
+      </main>
     </Layout>
   )
 
@@ -106,6 +139,27 @@ export const pageQuery = graphql`
               mainImage {
                 url
               }
+            }
+          }
+        }
+      }
+    }
+    images: ImagesByParentId(parentId: $id) {
+      id
+      url
+      width
+      height
+      filename
+      caption
+      fields {
+        localFile {
+          sourceInstanceName
+          publicURL
+          name
+          absolutePath
+          childImageSharp {
+            fluid(maxWidth: 480) {
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }
