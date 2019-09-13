@@ -2,8 +2,6 @@ import React from 'react';
 import GatsbyImage from 'gatsby-image';
 import PropTypes from 'prop-types';
 
-import { isEmpty } from 'lodash';
-
 const BgImage = ({
    fluid,
    title,
@@ -15,7 +13,7 @@ const BgImage = ({
  }) => {
 
   return (
-     <div className="bg-image" style={{ backgroundColor: overlayColor }}>
+   <div className="bg-image" style={{ backgroundColor: overlayColor }}>
        <GatsbyImage className="bg-image__gatsby-img" style={{
            height: `${({ height }) => height}`,
           }}
@@ -25,7 +23,7 @@ const BgImage = ({
        />
        <div className="bg-image__content">
         {children}
-      </div>
+       </div>
      </div>
    );
 }

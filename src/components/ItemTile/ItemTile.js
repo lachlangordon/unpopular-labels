@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { graphql, Link } from 'gatsby';
+import { Link } from 'gatsby';
 
 import ImageById from '../Image/ImageById';
 

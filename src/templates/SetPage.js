@@ -43,37 +43,6 @@ const SetPage = ({
               }
               </div>
 
-              {/*
-                <div className="flex-grid">
-                {
-                  objects.map((object, i) => {
-                    return (
-                      <article key={`object-${i}`} className="flex-grid-item">
-                        {
-                          object.object
-                            ? (
-                                <Link to={'/object/' + object.id} className="link primary">
-                                  {
-                                    object.object.mainImage ? (
-                                      <Image className="image--object box crop-to-fit"
-                                              // fallback url for images
-                                              src={object.object.mainImage.url} />
-                                    ) : <div>{object.object.name}</div>
-                                  }
-                                </Link>
-                            )
-                            : (
-                              <div>{"Unpublished object IRN " + object.id}</div>
-                            )
-                        }
-                      </article>
-                    )
-                  })
-                }
-                </div>
-              */}
-
-
   					</div>
       		</section>
 
