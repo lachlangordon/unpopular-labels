@@ -2,34 +2,24 @@
 import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 
-import Image from '../Image/Image';
-// import getThumborImageUrl from 'maas-js-utils/dist/getThumborImageUrl';
+import ImageById from '../Image/ImageById';
 
 // import ObjectImage from '../ObjectImage';
 
 class ItemTile extends Component {
 
 	render() {
-    let itemTileClass = this.props.className || 'item-tile';
-		const imageUrl = this.props.imageUrl;
-
+    const itemTileClass = this.props.className || 'item-tile';
+		const { style, url, imageId, imageUrl } = this.props;
 		return (
-      <div  key={this.props.id}
-				    className={itemTileClass}
-			      style={this.props.style}>
+      <div className={itemTileClass}
+			     style={style}>
 
-      	<Link to={this.props.url}>
-
+      	<Link to={url}>
 					<div className="item-tile__image-holder">
-						<Image
-							alt={this.props.alt}
-							className="maas-image object-image"
-							src={imageUrl}
-							// aspectRatio={this.props.type === 'object' ? 1.5 : 1.4}
-						/>
+						<ImageById imageId={imageId} />
 						{this.props.imageTag && <div className="tile-image-tag">{this.props.imageTag}</div>}
 					</div>
-
 				</Link>
 
       </div>

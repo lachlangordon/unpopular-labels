@@ -120,7 +120,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // const setPaginatedTemplate = require.resolve('./src/templates/SetPaginatedPage.js');
 
   // allTemplate
-  const allTemplate = require.resolve('./src/templates/AllPage.js');
+  // const allTemplate = require.resolve('./src/templates/AllPage.js');
   // const allPaginatedTemplate = require.resolve('./src/templates/AllPaginatedPage.js');
 
   // objectTemplate
@@ -147,6 +147,6 @@ exports.createPages = async ({ actions, graphql }) => {
   // createPaginatedPages('all', allSet.edges, createPage, allPaginatedTemplate, 2);
 
   createDynamicPages('set', allSet.edges, createPage, setTemplate );
-  createDynamicPages('all', allSet.edges, createPage, allTemplate );
+  // createDynamicPages('all', allSet.edges, createPage, allTemplate );
   createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
 }
