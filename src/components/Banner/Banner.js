@@ -1,22 +1,31 @@
 import React from 'react';
+import ImageByPath from '../Image/ImageByPath';
 
-// className="style2"
+const Banner = ({ size, themeId, style }) => {
+	return (
+    <div className="banner-img" style={style}>
+				<div className="banner-img__image-holder">
+					<ImageByPath directory={`images/themes/` + size } filename={themeId} />
+				</div>
+    </div>
+	);
+}
 
-const Banner = (props) => (
-  <section id="banner" className="major">
-      <div className="inner">
-          <header className="major">
-              <h1>Landing</h1>
-          </header>
-          <div className="content">
-              <p>Lorem ipsum dolor sit amet nullam consequat<br />
-              sed veroeros. tempus adipiscing nulla.</p>
-              <ul className="actions">
-                  <li><a href="#one" className="button next scrolly">Get Started</a></li>
-              </ul>
-          </div>
-      </div>
-  </section>
-);
+/*
+Banner.propTypes = {
+  title: PropTypes.string,
+  summary: PropTypes.string,
+  subtitle: PropTypes.string,
+  url: PropTypes.string,
+  imageUrl: PropTypes.string,
+  type: PropTypes.string,
+  isBreakout: PropTypes.bool, // NOTE: WIP, may just create a new component
+  className: PropTypes.string,
+  imageTag: PropTypes.string,
+};
+
+Banner.default = {
+  isBreakout: false,
+}*/
 
 export default Banner;

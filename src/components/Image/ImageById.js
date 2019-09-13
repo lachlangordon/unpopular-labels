@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from './Image';
 // import { Image as Img } from 'maas-react-components/dist/Image';
 
- const ImageById = ({ imageId }) => (
+const ImageById = ({ imageId }) => (
    <StaticQuery
      query={graphql`
        query {
@@ -32,16 +32,16 @@ import Image from './Image';
        }
      `}
      render={data => {
-       const setImg = data.allSetImage.edges.find(
-         edge => {
-           return ( parseInt(edge.node.id) === parseInt(imageId) );
+       const imgFound = data.allSetImage.edges.find(
+         image => {
+           return ( parseInt(image.node.id) === parseInt(imageId) );
          }
        )
-       if (!setImg) {
+       if (!imgFound) {
          return null;
        }
-       const { id, filename, caption } = setImg.node;
-       const imgObject = setImg.node.fields.localFile;
+       const { id, filename, caption } = imgFound.node;
+       const imgObject = imgFound.node.fields.localFile;
        return <Image imgObject={imgObject}
                      title={caption || filename} />
      }}
