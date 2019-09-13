@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
-// import Loader from '../components/Loader/Loader';
+import Banner from '../components/Banner/Banner';
 
-import BgImage from '../components/Image/BgImage';
+// import BgImage from '../components/Image/BgImage';
 import SEO from '../components/seo';
 
 class ThemesPage extends Component {
@@ -20,28 +20,22 @@ class ThemesPage extends Component {
       <Layout>
         <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
 
-        <div id="themes-page">
+        <main id="themes-page">
           <section id="one" >
 
             {data.sets.map((section, i) => {
               return (
-                  <article key={i}>
-                  <BgImage title="before"
-                      fluid={fluid}
-                      overlayColor="#04040454"
-                      >
-                      <h2 style={{ color: "white" }}>Look at me!</h2>
-                    </BgImage>
+                  <article key={`theme-item-${i}`}>
                     <Link to={"/set/" + section.id} className="link primary">
-                    <header className="major">
-                      <h3> { section.name } </h3>
-                    </header>
+                      <Banner size="mobile" themeId={`${i + 1}`} />
+                      <h3 className="major"> { section.name } </h3>
                     </Link>
                   </article>
               )
             })}
+
           </section>
-        </div>
+        </main>
       </Layout>
     )
   }
