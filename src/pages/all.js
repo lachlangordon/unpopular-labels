@@ -25,13 +25,7 @@ const allObjectsPage = ({
                   {
                     set.setObjects.map((object, j) => {
                       if (object.object)
-                        return object.object.mainImage && (
-                                    <ItemTile
-                                          url={'/object/' + object.id}
-                                          imageUrl={object.object.mainImage.url}/>
-                                  )
-
-
+                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} />
                     })
                   }
                   </div>
@@ -59,6 +53,7 @@ export const pageQuery = graphql`
           id
           displayTitle
           mainImage {
+            id
             url
           }
         }

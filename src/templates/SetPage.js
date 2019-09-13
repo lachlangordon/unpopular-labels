@@ -37,16 +37,8 @@ const SetPage = ({
               <div className="all-page__content">
               {
                 objects.map((object, j) => {
-                  console.log(object.id);
-
                   if (object.object)
-                    return object.object.mainImage && (
-                                <ItemTile
-                                      url={'/object/' + object.id}
-                                      imageUrl={object.object.mainImage.url}/>
-                              )
-
-
+                    return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} />
                 })
               }
               </div>
@@ -100,12 +92,12 @@ query SetPage( $id: String!) {
     summary
     description
   }
-
   objects: SetObjectsByParentId(parentId: $id) {
     id
     object {
       name
       mainImage {
+        id
         url
       }
     }
