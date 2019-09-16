@@ -19,4 +19,19 @@ const buildPath = ({ title }) => {
   return `/${slug}`;
 }
 
-module.exports = { replaceSlash, replaceBothSlash, setPageName };
+const convertToSID = (narrativeId) => {
+  if ( narrativeId === '6762' ) return 1;
+  else if ( narrativeId === '6763' ) return 2;
+  else if ( narrativeId === '6764' ) return 3;
+  else if ( narrativeId === '6912' ) return 4;
+  else if ( narrativeId === '6913' ) return 5;
+  else if ( narrativeId === '6914' ) return 6;
+  else if ( narrativeId === '6915' ) return 7;
+  else if ( narrativeId === '6916' ) return 8;
+  else if ( narrativeId === '6917' ) return 9;
+  else if ( narrativeId === '6918' ) return 10;
+  else if ( narrativeId === '6919' ) return 11;
+  else if ( narrativeId === '6920' ) return 12;
+}
+
+module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID };
