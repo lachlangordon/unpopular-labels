@@ -2,8 +2,11 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
+import Banner from '../components/Banner/Banner';
 import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
+
+import { convertToSID } from '../lib/utils';
 
  // Narrative
 const SetPage = ({
@@ -17,6 +20,14 @@ const SetPage = ({
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
 
       <main id="main" className="set-page main">
+
+          <div className="no-padding">
+            {
+              set.id && (
+                  <Banner type="ribbon" size="hi-res" themeId={ convertToSID(set.id) } />
+              )
+            }
+          </div>
 
           <section className="section">
             <div className="container container--lg">
