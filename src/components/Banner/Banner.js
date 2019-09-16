@@ -1,14 +1,19 @@
 import React from 'react';
 import ImageByPath from '../Image/ImageByPath';
+import PropTypes from 'prop-types';
 
-const Banner = ({ size, themeId, style }) => {
-	return (
-    <div className="banner-img" style={style}>
-				<div className="banner-img__image-holder">
-					<ImageByPath directory={`images/themes/` + size } filename={themeId} />
+// two types of banner image: ribbon or themes
+const Banner = ({ size, type, themeId, style }) => {
+
+  const className =  ( type === 'themes' ? 'banner-img' : 'ribbon-img' );
+  const path = `images/${type}/${size}`;
+	return themeId ? (
+    <div className={className} style={style}>
+				<div className={ className + `__image-holder` }>
+					<ImageByPath path={path} filename={themeId} />
 				</div>
     </div>
-	);
+	) : null;
 }
 
 /*
@@ -23,9 +28,11 @@ Banner.propTypes = {
   className: PropTypes.string,
   imageTag: PropTypes.string,
 };
+*/
 
-Banner.default = {
-  isBreakout: false,
-}*/
+Banner.defaultProps = {
+  type: 'themes',
+  size: 'hi-res',
+}
 
 export default Banner;

@@ -13,21 +13,18 @@ class ThemesPage extends Component {
     const { data, pageContext, location } = this.props;
     const { masterNarrativeId } = pageContext;
 
-    const { bgImage } = data;
-    const fluid = bgImage.childImageSharp.fluid;
-
     return (
       <Layout>
         <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
 
         <main id="themes-page">
-          <section id="one" >
+          <section className="themes-page__body">
 
             {data.sets.map((section, i) => {
               return (
                   <article key={`theme-item-${i}`}>
                     <Link to={"/set/" + section.id} className="link primary">
-                      <Banner size="mobile" themeId={`${i + 1}`} />
+                      <Banner size="hi-res" themeId={`${i + 1}`} />
                       <h3 className="major"> { section.name } </h3>
                     </Link>
                   </article>
@@ -55,19 +52,6 @@ export const pageQuery = graphql`
       name
       summary
       description
-    }
-    bgImage: file(relativePath: { regex: "/before.png/" }) {
-      id
-      url
-      sourceInstanceName
-      publicURL
-      name
-      absolutePath
-      childImageSharp {
-        fluid(maxWidth: 320) {
-          ...GatsbyImageSharpFluid
-        }
-      }
     }
   }
 `;

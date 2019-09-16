@@ -3,45 +3,16 @@ import { StaticQuery, graphql } from 'gatsby';
 import Image from './Image';
 // import { Image as Img } from 'maas-react-components/dist/Image';
 
-const ImageByPath = ({ directory, filename }) => (
+const ImageByPath = ({ path, filename }) => (
    <StaticQuery
-     query={graphql`
-       query {
-         localImages: allFile (
-           filter: {
-             sourceInstanceName: { ne: "__PROGRAMMATIC__" }
-             extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
-           }
-           sort: { fields: name, order: ASC }
-         ) {
-           edges {
-             node {
-               id
-               url
-               sourceInstanceName
-               publicURL
-               name
-               relativePath
-               relativeDirectory
-               absolutePath
-               childImageSharp {
-                 fluid(maxHeight: 740) {
-                   ...GatsbyImageSharpFluid
-                   originalName
-                 }
-               }
-             }
-           }
-         }
-       }
-     `}
+     query={localImgQuery}
      render={data => {
        let filteredImgs, imageFound = null;
 
-       if (directory) {
+       if (path) {
          filteredImgs = data.localImages.edges.filter(image => {
-           // console.log(directory);
-           return image.node.relativeDirectory === `${ directory }`;
+           // console.log(path);
+           return image.node.relativeDirectory === `${ path }`;
          });
        }
 
@@ -65,3 +36,34 @@ const ImageByPath = ({ directory, filename }) => (
  );
 
  export default ImageByPath;
+
+ export const localImgQuery = graphql`
+   query {
+     localImages: allFile (
+       filter: {
+         sourceInstanceName: { ne: "__PROGRAMMATIC__" }
+         extension: { regex: "/(jpg)|(png)|(tif)|(tiff)|(webp)|(jpeg)/" }
+       }
+       sort: { fields: name, order: ASC }
+     ) {
+       edges {
+         node {
+           id
+           url
+           sourceInstanceName
+           publicURL
+           name
+           relativePath
+           relativeDirectory
+           absolutePath
+           childImageSharp {
+             fluid(maxHeight: 740) {
+               ...GatsbyImageSharpFluid
+               originalName
+             }
+           }
+         }
+       }
+     }
+   }
+ `;
