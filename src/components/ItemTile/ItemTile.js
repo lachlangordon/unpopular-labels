@@ -10,7 +10,7 @@ class ItemTile extends Component {
 
 	render() {
     const itemTileClass = this.props.className || 'item-tile';
-		const { style, url, imageId, imageUrl } = this.props;
+		const { style, url, imageId, imageUrl, imageTag } = this.props;
 		return (
       <div className={itemTileClass}
 			     style={style}>
@@ -18,7 +18,7 @@ class ItemTile extends Component {
       	<Link to={url}>
 					<div className="item-tile__image-holder">
 						<ImageById imageId={imageId} />
-						{this.props.imageTag && <div className="tile-image-tag">{this.props.imageTag}</div>}
+						{ imageTag && <div className="tile-image-tag">{imageTag}</div> }
 					</div>
 				</Link>
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 
+import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
@@ -59,12 +60,19 @@ const ObjectPage = ({
                    dangerouslySetInnerHTML={{ __html: object.notes3 }} />
               }
 
-              { object.acquisitionCreditLine &&
+              <hr />
+
+              { object.object.acquisitionCreditLine &&
                 <p className="set-page__credit-line"
                    dangerouslySetInnerHTML={{ __html: object.acquisitionCreditLine }} />
               }
 
-              <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link></strong>
+              { related.length &&
+                <div className="set-page__related-items">
+                  <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
+                  <ItemSwipe relatedItems={related} />
+                </div>
+              }
             </div>
 
           </div>
@@ -137,6 +145,7 @@ export const pageQuery = graphql`
             object {
               displayTitle
               mainImage {
+                id
                 url
               }
             }

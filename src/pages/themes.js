@@ -3,8 +3,6 @@ import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
-
-// import BgImage from '../components/Image/BgImage';
 import SEO from '../components/seo';
 
 class ThemesPage extends Component {
@@ -25,8 +23,8 @@ class ThemesPage extends Component {
                   <article key={`theme-item-${i}`}>
                     <Link to={"/set/" + section.id} className="link primary">
                       <Banner size="hi-res" themeId={`${i + 1}`} />
-                      <h3 className="major"> { section.name } </h3>
                     </Link>
+                    <h3 className="theme-item__title"> { section.name } </h3>
                   </article>
               )
             })}
