@@ -77,22 +77,27 @@ exports.onCreateNode = async ({
   const { createNodeField, createNode } = actions;
 
   if (node.internal.type === 'SetImage') {
-    console.log(`process image: `, node.url);
     try {
-      const fileNode = await createRemoteFileNode({
-        url: node.url,
-        store,
-        cache,
-        createNode,
-        createNodeId,
-      });
-      console.log(`NodeId: %s`, fileNode.id);
-      if (fileNode) {
-        createNodeField({
-          node,
-          name: 'localFile___NODE',
-          value: fileNode.id,
+      if (node.id && node.url) {
+        console.log(`process image: `, node.url);
+        const fileNode = await createRemoteFileNode({
+          url: node.url,
+          store,
+          cache,
+          createNode,
+          createNodeId,
         });
+
+        if (fileNode) {
+          console.log(`fileNodeId: %s`, fileNode.id);
+          // console.log(`NodeId:%s`, node.id)
+          // console.log(`fileURL:%s`, node.url)
+          createNodeField({
+            node,
+            name: 'localFile___NODE',
+            value: fileNode.id,
+          });
+        }
       }
     } catch (err) {
       console.log(`error SetImage node link: %s`, err);

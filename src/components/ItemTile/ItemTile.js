@@ -17,7 +17,7 @@ class ItemTile extends Component {
 
       	<Link to={url}>
 					<div className="item-tile__image-holder">
-						<ImageById imageId={imageId} />
+						<ImageById size="thumbnail" imageId={imageId} />
 						{ imageTag && <div className="tile-image-tag">{imageTag}</div> }
 					</div>
 				</Link>

@@ -139,8 +139,10 @@ const setNodeImage = ( _img ) => {
     id: `${ _img.id }`,
     parent: `${ _img.parent || null }`,
     internal: setInternal( IMG_TYPE, _img ),
-    url: _img.url,
-    width: _img.width || 300,   // set min width
+    url: _img.url || null,
+    thumbnail: _img.thumbnailURL || null,
+    serverCrop: _img.serverCropURL|| null,
+    width: _img.width,   // set min width
     height: _img.height,
     filename: _img.filename,
     caption: _img.caption || '',

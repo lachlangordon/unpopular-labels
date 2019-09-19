@@ -1,7 +1,9 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from './Image';
-// import { Image as Img } from 'maas-react-components/dist/Image';
+
+// fragment to fetch GatsbyImageSharp
+import { default_GatsbyImageSharp } from '../../queries/fragments';
 
 const ImageByPath = ({ path, filename }) => (
    <StaticQuery
@@ -11,14 +13,12 @@ const ImageByPath = ({ path, filename }) => (
 
        if (path) {
          filteredImgs = data.localImages.edges.filter(image => {
-           // console.log(path);
            return image.node.relativeDirectory === `${ path }`;
          });
        }
 
        if (filteredImgs) {
          imageFound = filteredImgs.find(image => {
-           console.log(image.node);
            return image.node.name == `${filename}`;
          });
        } else {
@@ -48,20 +48,7 @@ const ImageByPath = ({ path, filename }) => (
      ) {
        edges {
          node {
-           id
-           url
-           sourceInstanceName
-           publicURL
-           name
-           relativePath
-           relativeDirectory
-           absolutePath
-           childImageSharp {
-             fluid(maxHeight: 740) {
-               ...GatsbyImageSharpFluid
-               originalName
-             }
-           }
+           ...default_GatsbyImageSharp
          }
        }
      }

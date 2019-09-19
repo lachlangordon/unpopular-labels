@@ -8,7 +8,7 @@ import ImageById from '../Image/ImageById';
 
 const ItemSwipe = ({ relatedItems }) => {
   let reactSwipeEl;
-
+// 										 <div className="tile-info--is-breakout"> {object.object.displayTitle} </div>
   return (
     <div>
       <ReactSwipe
@@ -23,8 +23,8 @@ const ItemSwipe = ({ relatedItems }) => {
 							 return object.object.mainImage && (
 								 <div key={`item-tile-${j}`} >
 									 <Link to={'/object/' + object.id}>
-									 	 <ImageById imageId={object.object.mainImage.id} size="thumbnail" />
-										 <div className="tile-info--is-breakout"> {object.object.displayTitle} </div>
+									 	 <ImageById size="thumbnail" imageId={object.object.mainImage.id} />
+
 									 </Link>
 								 </div>
 							 )
