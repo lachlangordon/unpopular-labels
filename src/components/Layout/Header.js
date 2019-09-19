@@ -38,8 +38,8 @@ const Header = (props) => {
           <ul role="navigation">
           { headerLinks.map((item, i) => {
             return (
-              <li className="header__navigation-button">
-                <Link key={`link-${i}`} to={item.location} style={{
+              <li key={`nav-${i}`} className="header__navigation-button">
+                <Link to={item.location} style={{
                     display: `inline-block`,
                     float: `right`,
                     textDecoration: `none`,
