@@ -24,6 +24,8 @@ query NodeSets {
       refId: id
       filename: identifier
       url(width: 0, height: 2000, smart: true)
+      thumbnailURL: url(width: 320, height: 0, smart: true)
+      serverCropURL: url(width: 400, height: 400, smart: true)
       width
       height
       caption
@@ -50,15 +52,8 @@ query NodeSets {
       refId: id
       filename: identifier
       url(width: 0, height: 2000, smart: true)
-      width
-      height
-      caption
-    }
-    images {
-      id: _id
-      refId: id
-      filename: identifier
-      url
+      thumbnailURL: url(width: 320, height: 0, smart: true)
+      serverCropURL: url(width: 400, height: 400, smart: true)
       width
       height
       caption
@@ -77,20 +72,13 @@ query NodeSets {
         production {
 		      date
 		    }
-        images {
-          id: _id
-          refId: id
-          filename: identifier
-          url(width: 0, height: 2000, smart: true)
-          width
-          height
-          caption
-        }
         mainImage {
           id: _id
           refId: id
           filename: identifier
           url(width: 0, height: 2000, smart: true)
+          thumbnailURL: url(width: 320, height: 0, smart: true)
+          serverCropURL: url(width: 400, height: 400, smart: true)
           width
           height
           caption
