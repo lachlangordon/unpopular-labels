@@ -9,12 +9,51 @@ export const siteMeta = graphql`
     }
   }
 `
-// export const cropCenter = graphql`
-//   fragment cropCenter on localFile {
-//     childImageSharp {
-//       resize(width: 300, height: 300, cropFocus: CENTER) {
-//         src
-//       }
-//     }
-//   }
-// `
+
+// used by ImageByPath
+// relativeDirectory is important
+export const default_GatsbyImageSharp = graphql`
+  fragment default_GatsbyImageSharp on File {
+    id
+    url
+    sourceInstanceName
+    publicURL
+    name
+    relativePath
+    relativeDirectory
+    absolutePath
+    childImageSharp {
+      fluid(maxHeight: 740) {
+        ...GatsbyImageSharpFluid
+        originalName
+      }
+    }
+  }
+`
+
+// cropFocus: CENTER, fit: CONTAIN, background: "#393939"
+// cropFluid - thumbnail is important
+// used by ImageById
+export const default_GatsbyImageSharpWithThumb = graphql`
+  fragment default_GatsbyImageSharpWithThumb on File {
+    id
+    url
+    sourceInstanceName
+    publicURL
+    name
+    relativePath
+    relativeDirectory
+    absolutePath
+    thumbnail: childImageSharp {
+      fluid(maxWidth: 400, maxHeight: 400) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+    childImageSharp {
+      fluid(maxHeight: 740) {
+        ...GatsbyImageSharpFluid
+        originalName
+      }
+    }
+  }
+`

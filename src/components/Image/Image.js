@@ -17,14 +17,17 @@ import { isEmpty } from 'lodash';
    return <Image className={`${className} ${orientation}`} {...props} />
  } */
 
- const isValidImage = _img =>
-   _img.hasOwnProperty('src') && _img.src !== '';
+const hasThumb = _img =>
+  _img.hasOwnProperty('thumbnail');
 
-const hasFluid = _img =>
-  _img.hasOwnProperty('childImageSharp') && _img.childImageSharp.fluid;
+const isValidImage = _img =>
+  _img.hasOwnProperty('src') && _img.src !== '';
 
-const hasFixed = _img =>
-  _img.hasOwnProperty('childImageSharp') && _img.childImageSharp.fixed;
+const getFluid = _img =>
+  _img.hasOwnProperty('childImageSharp') ? _img.childImageSharp.fluid : _img.fluid;
+
+const getFixed = _img =>
+  _img.hasOwnProperty('childImageSharp') ? _img.childImageSharp.fixed : _img.fixed;
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -40,25 +43,33 @@ class Image extends Component {
     const { defImgMode, noImageContent } = this.props;
     const { name, src, alt, width, height } = _props;
 
+    // When there is only src no GatsbyImage
     // MAAS image doesn't work, use std img
     if ( isEmpty(_image) && isValidImage(_props) ) {
       return <img {..._props} />
     }
 
     // GatsbyImage
-    if ( defImgMode === 'fluid' && hasFluid(_image) ) {
-      const { childImageSharp } = _image;
-      return <GatsbyImage name={name} title={alt} fluid={childImageSharp.fluid} />
-    } else if ( defImgMode === 'fixed' && hasFixed(_image) ) {
-      const { childImageSharp } = _image;
-      return <GatsbyImage name={name} title={alt} fixed={childImageSharp.fixed} />
-    } else { // otherwise return no image ?
-      return noImageContent;
+    let GatsbyImgProp = null;
+    if ( defImgMode === 'fluid' && !isEmpty( getFluid(_image) )) {
+      GatsbyImgProp = {
+        name,
+        title: alt,
+        fluid: getFluid(_image),
+      };
+    } else if ( defImgMode === 'fixed' && !isEmpty( getFixed(_image) )) {
+      GatsbyImgProp = {
+        name,
+        title: alt,
+        fixed: getFixed(_image),
+      };
     }
+
+    return GatsbyImgProp ? <GatsbyImage {...GatsbyImgProp} /> : noImageContent;
 	}
 
   render() {
-    const { imgObject, className, style } = this.props;
+    const { isThumb, imgObject, className, style } = this.props;
 
     // dont forget to append props
     let imgProps = {
@@ -70,10 +81,14 @@ class Image extends Component {
       height: this.props.height,
     };
 
-    //
+    // todo: for thumbnail - set default width & height
     return (
 			<div className={className} style={style}>
-        { this.getImage(imgObject, imgProps) }
+        {
+          this.getImage( isThumb && hasThumb(imgObject) ?
+                            imgObject.thumbnail : imgObject
+                        , imgProps)
+        }
       </div>
     );
   }
