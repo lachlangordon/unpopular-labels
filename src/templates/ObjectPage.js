@@ -6,6 +6,9 @@ import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 
+// fragment to fetch GatsbyImageSharp
+import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
+
 const ObjectPage = ({
   data: { images, object },
   pageContext,
@@ -162,15 +165,7 @@ export const pageQuery = graphql`
       caption
       fields {
         localFile {
-          sourceInstanceName
-          publicURL
-          name
-          absolutePath
-          childImageSharp {
-            fluid(maxWidth: 480) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
-          }
+          ...default_GatsbyImageSharp
         }
       }
     }

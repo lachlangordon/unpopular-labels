@@ -4,8 +4,6 @@ import { Link } from 'gatsby';
 
 import ImageById from '../Image/ImageById';
 
-// import ObjectImage from '../ObjectImage';
-
 class ItemTile extends Component {
 
 	render() {

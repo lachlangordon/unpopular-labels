@@ -31,7 +31,8 @@ export const default_GatsbyImageSharp = graphql`
   }
 `
 
-// cropFocus: CENTER, fit: CONTAIN, background: "#393939"
+// cropFocus: CENTER or cropFocus: NORTH, fit: CONTAIN,
+// background: "#1f1f1f" or background: "#fff" or (app) background: "#f7f7f7"
 // cropFluid - thumbnail is important
 // used by ImageById
 export const default_GatsbyImageSharpWithThumb = graphql`
