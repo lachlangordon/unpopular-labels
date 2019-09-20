@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import withViewport from '../../decorators/withViewport';
+// import withViewport from '../../decorators/withViewport';
 
 // layout.css
 // import '../../assets/css/basic-layout.css'
@@ -121,7 +121,7 @@ class Layout extends Component {
 //   children: PropTypes.node.isRequired,
 // };
 
-const AppLayout = withViewport(Layout);
+// const AppLayout = withViewport(Layout);
 
-export default AppLayout;
-// export default Layout;
+// export default AppLayout;
+export default Layout;
