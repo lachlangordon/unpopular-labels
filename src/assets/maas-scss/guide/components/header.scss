@@ -38,6 +38,30 @@
   }
 }
 
+@media (min-width: $screen-lg-min) {
+
+  .header {
+    border-bottom: none !important;
+    border-right: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .header nav.header__navigation > ul {
+    padding-top: 1em;
+    float: left;
+  }
+
+  .header nav.header__navigation > ul > li {
+    float: left;
+  }
+
+  .header__navigation-button > a {
+    float: left !important;
+    h1 > span {
+      margin-left: 0 !important;
+      border-right: none !important;
+    }
+  }
+}
 
 /*
 .header__navigation {
