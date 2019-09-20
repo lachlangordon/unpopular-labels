@@ -1,0 +1,33 @@
+@import '../../core/variables.scss';
+
+/*------------------------------------*\
+    #banner-img
+\*------------------------------------*/
+
+.banner-article {
+	margin-bottom: $spacing-md;
+
+	a:link, a:visited {
+		color: $colour-grey-darker;
+		text-decoration: none;
+		display: block;
+
+		&:focus {
+			background-color: $colour-white;
+		}
+	}
+
+	@media (min-width: $screen-sm-min) {
+		lost-column: 1/2;
+	}
+
+	@media (min-width: $screen-lg-min) {
+		lost-column: 1/3;
+	}
+}
+
+// .banner-img__image-holder {
+// 	display: block;
+// 	position: relative;
+// 	overflow: hidden;
+// }

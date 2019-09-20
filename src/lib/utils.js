@@ -34,4 +34,11 @@ const convertToSID = (narrativeId) => {
   else if ( narrativeId === '6920' ) return 12;
 }
 
-module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID };
+const canUseDOM = () =>
+  !!(
+    typeof window !== 'undefined' &&
+    window.document &&
+    window.document.createElement
+  );
+
+module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, canUseDOM };

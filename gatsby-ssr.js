@@ -17,4 +17,4 @@
  require(`isomorphic-fetch`)
 
  const preferDefault = m => (m && m.default) || m
- exports.wrapRootElement = preferDefault(require(`./src/store/withData`))
+ exports.wrapRootElement = preferDefault(require(`./src/decorators/withData`))

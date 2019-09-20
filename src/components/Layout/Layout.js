@@ -5,11 +5,11 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { rhythm, scale } from '../../lib/typography';
+import withViewport from '../../decorators/withViewport';
 
 // layout.css
 // import '../../assets/css/basic-layout.css'
@@ -24,7 +24,7 @@ import Menu from '../Menu/Menu';
 import Loader from '../Loader/Loader';
 import Footer from './Footer';
 
-class Layout extends React.Component {
+class Layout extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -32,6 +32,7 @@ class Layout extends React.Component {
           isMenuVisible: false,
           loading: 'is-loading'
       };
+      // console.log(props);
       // this.handleToggleMenu = this.handleToggleMenu.bind(this)
     }
 
@@ -39,6 +40,8 @@ class Layout extends React.Component {
         this.timeoutId = setTimeout(() => {
             this.setState({loading: ''});
         }, 100);
+
+        // console.log(window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE);
     }
 
     componentWillUnmount () {
@@ -47,11 +50,13 @@ class Layout extends React.Component {
         }
     }
 
-    handleToggleMenu = () => {
-        this.setState({
-            isMenuVisible: !this.state.isMenuVisible
-        });
-    }
+    //
+    // componentDidUpdate (prevProps) {
+    //   // if (this.props.viewport.width !== prevProps.viewport.width) {
+    //     const { viewport, returnViewportSize } = this.props;
+    //     returnViewportSize(viewport);
+    //   // }
+    // }
 
     render() {
       const { children } = this.props;
@@ -71,11 +76,7 @@ class Layout extends React.Component {
           `}
           render={data => (
             <div className={`${appClassName} body
-                            ${this.state.loading} ${this.state.isMenuVisible ? 'is-menu-visible' : ''}`}>
-
-                <Header className={`${appClassName}__header`}
-                        siteTitle={data.site.siteMetadata.title}
-                        onToggleMenu={this.handleToggleMenu} />
+                            ${this.state.loading} `}>
 
                 <div className={`${appClassName}__wrapper`}>
 
@@ -92,6 +93,9 @@ class Layout extends React.Component {
 
                   <nav className={`${appClassName}__sidenav`}>
 
+                    <Header className={`${appClassName}__header`}
+                            siteTitle={data.site.siteMetadata.title}  />
+
                   </nav>
 
                   <aside className={`${appClassName}__sidepanel`}>
@@ -105,7 +109,6 @@ class Layout extends React.Component {
                 </div>
 
                 {/* <Footer /> */}
-                {/* <Menu onToggleMenu={this.handleToggleMenu} /> */}
 
             </div>
           )}
@@ -114,8 +117,11 @@ class Layout extends React.Component {
     }
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+// Layout.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };
 
-export default Layout;
+const AppLayout = withViewport(Layout);
+
+export default AppLayout;
+// export default Layout;
