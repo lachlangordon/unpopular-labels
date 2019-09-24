@@ -8,10 +8,7 @@ import SEO from '../components/seo';
 import { siteMeta } from '../queries/fragments';
 
 const IndexPage = ({
-  data: { site, masterSet, heroImage },
-  pageContext: {
-    masterNarrativeId,
-  },
+  data: { site, heroImage },
   location,
 }) => {
 
@@ -49,12 +46,6 @@ export const pageQuery = graphql`
   query {
     site {
       ...siteMeta
-    }
-    masterSet: getMasterSet {
-      id
-      name
-      summary
-      description
     }
     heroImage: file(relativePath: { regex: "/MAAS_SIP_MAIN.jpg/" }) {
       id

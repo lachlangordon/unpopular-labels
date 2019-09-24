@@ -87,12 +87,12 @@ class Layout extends Component {
                     {children}
                   </main>
 
-                  <nav className={`${appClassName}__sidenav`}>
+                  <div className={`${appClassName}__sidenav`}>
 
                     <Header className={`${appClassName}__header`}
                             siteTitle={data.site.siteMetadata.title}  />
 
-                  </nav>
+                  </div>
 
                   <aside className={`${appClassName}__sidepanel`}>
 

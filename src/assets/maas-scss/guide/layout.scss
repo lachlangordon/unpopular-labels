@@ -37,8 +37,6 @@ $colour-black: #000;
 
 .guide-app__sidenav,
 .guide-app__sidepanel {
-  // padding: 1em;
-  // background: rgba(147, 128, 108, 0.1);
   background: #fff;
 }
 
@@ -59,9 +57,10 @@ $colour-black: #000;
 
   .guide-app__sidenav {
     flex: 0 0 5em;
+    border-right: 1px solid rgba(0,0,0,.08);
   }
 
   .guide-app__sidepanel {
-    flex: 0 0 17em;
+    flex: 0 0 20em;
   }
 }

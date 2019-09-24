@@ -22,11 +22,7 @@ const Header = (props) => {
         }}>
 
         <nav className="header__navigation">
-          <Link to="/" style={{
-              display: `inline-block`,
-              float: `left`,
-              textDecoration: `none`,
-            }}>
+          <Link to="/" className="menu-links">
 
               <img style={{
                 // not working well - need to use gatsby image for scaling
@@ -39,24 +35,14 @@ const Header = (props) => {
           { headerLinks.map((item, i) => {
             return (
               <li key={`nav-${i}`} className="header__navigation-button">
-                <Link to={item.location} style={{
-                    display: `inline-block`,
-                    float: `right`,
-                    textDecoration: `none`,
-                  }}>
+                <Link to={item.location} className="menu-links">
 
                   <h1 style={{
-                      ...scale(4 / 5),
-                      color: `inherit`,
-                      lineHeight: 1,
-                      margin: 0,
-                      overflow: `hidden`,
+                      ...scale(3 / 5),
                     }}>
 
                     <span style={{
                         paddingRight: `calc(${rhythm(1)} - 10px)`,
-                        borderRight: `1px solid rgba(0,0,0,0.3)`,
-                        lineHeight: 1,
                         marginLeft: rhythm(1),
                       }}>
                       {item.name}
