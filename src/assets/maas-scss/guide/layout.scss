@@ -43,6 +43,9 @@ $colour-black: #000;
 
 .guide-app__sidepanel {
   background-color: $colour-black;
+  @media (min-width: $screen-xs-min) {
+    display: none;
+  }
 }
 
 @media (min-width: $screen-lg-min) {
@@ -63,6 +66,7 @@ $colour-black: #000;
   }
 
   .guide-app__sidepanel {
+    display: block;
     flex: 0 0 22em;
   }
 }

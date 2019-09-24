@@ -12,7 +12,6 @@ const IndexPage = ({
   location,
 }) => {
 
-  let pageTitle = `JENNY KEE&nbsp; &nbsp;LINDA JACKSON<br>`;
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
