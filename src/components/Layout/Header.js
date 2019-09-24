@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { rhythm, scale } from '../../lib/typography';
+import presets from '../../lib/presets';
 import logo from '../../assets/maas-scss/svg/home-red.svg';
 
 const Header = (props) => {
@@ -10,7 +11,7 @@ const Header = (props) => {
   const headerLinks = [
     { 'name' :  'OBJECTS', 'location': '/all' },
     { 'name' :  'THEMES', 'location': '/themes' },
-    { 'name' :  'ABOUT', 'location': '/' },
+    { 'name' :  'ABOUT', 'location': '/about' },
   ];
 
   return (
@@ -18,15 +19,12 @@ const Header = (props) => {
 
       <div className="header__wrapper" style={{
           padding: rhythm(3 / 4),
+          paddingLeft: `0.7em`,
           paddingBottom: `calc(${rhythm(3 / 4)} - 1px)`,
         }}>
 
         <nav className="header__navigation">
-          <Link to="/" style={{
-              display: `inline-block`,
-              float: `left`,
-              textDecoration: `none`,
-            }}>
+          <Link to="/" className="menu-links">
 
               <img style={{
                 // not working well - need to use gatsby image for scaling
@@ -39,24 +37,17 @@ const Header = (props) => {
           { headerLinks.map((item, i) => {
             return (
               <li key={`nav-${i}`} className="header__navigation-button">
-                <Link to={item.location} style={{
-                    display: `inline-block`,
-                    float: `right`,
-                    textDecoration: `none`,
-                  }}>
+                <Link to={item.location} className="menu-links">
 
                   <h1 style={{
-                      ...scale(4 / 5),
-                      color: `inherit`,
-                      lineHeight: 1,
-                      margin: 0,
-                      overflow: `hidden`,
+                      ...scale(3 / 5),
+                      [presets.xlg]: {
+                        ...scale(1),
+                      },
                     }}>
 
                     <span style={{
                         paddingRight: `calc(${rhythm(1)} - 10px)`,
-                        borderRight: `1px solid rgba(0,0,0,0.3)`,
-                        lineHeight: 1,
                         marginLeft: rhythm(1),
                       }}>
                       {item.name}

@@ -21,6 +21,7 @@ $colour-black: #000;
 .guide-app__wrapper {
   background: rgba(0,0,0,0.03);
   min-height: 100vh;
+  min-width: $screen-xs-min;
 
   display: flex;
   flex: 1 0 auto; /* 2 */
@@ -37,8 +38,6 @@ $colour-black: #000;
 
 .guide-app__sidenav,
 .guide-app__sidepanel {
-  // padding: 1em;
-  // background: rgba(147, 128, 108, 0.1);
   background: #fff;
 }
 
@@ -49,6 +48,7 @@ $colour-black: #000;
 @media (min-width: $screen-lg-min) {
   .guide-app__wrapper {
     flex-direction: row;
+    padding: 1em;
   }
 
   .guide-app__content{
@@ -58,10 +58,11 @@ $colour-black: #000;
   }
 
   .guide-app__sidenav {
-    flex: 0 0 5em;
+    flex: 0 0 4em;
+    border-right: 1px solid rgba(0,0,0,.08);
   }
 
   .guide-app__sidepanel {
-    flex: 0 0 17em;
+    flex: 0 0 22em;
   }
 }

@@ -21,30 +21,21 @@ const SetPage = ({
 
       <main id="main" className="set-page main">
 
-          <div className="no-padding">
-            {
-              set.id && (
-                  <Banner type="ribbon" size="hi-res" themeId={ convertToSID(set.id) } />
+          <section className="content-header">
+            { set.id && (
+                  <Banner className="no-padding" type="ribbon" size="hi-res" themeId={ convertToSID(set.id) } />
               )
             }
-          </div>
 
-          <section className="section">
-            <div className="container container--lg">
+            <h1 className="set-page__title">
+              { set.name }
+            </h1>
 
-              <h1 className="set-page__title">
-                { set.name }
-              </h1>
-
-              <p className="set-page__description"
-                 dangerouslySetInnerHTML={{ __html: set.description }} />
-
-            </div>
+            <div className="set-page__description"
+               dangerouslySetInnerHTML={{ __html: set.description }} />
           </section>
 
-          <section className="section section--alt">
-  					<div className="container container--lg">
-
+          <section className="section--alt main-content">
               <div className="all-page__content">
               {
                 objects.map((object, j) => {
@@ -53,9 +44,7 @@ const SetPage = ({
                 })
               }
               </div>
-
-  					</div>
-      		</section>
+          </section>
 
       </main>
     </Layout>
