@@ -9,7 +9,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import withViewport from '../../decorators/withViewport';
+// import withViewport from '../../decorators/withViewport';
+import { rhythm, scale } from '../../lib/typography';
+import presets from '../../lib/presets';
 
 // base maas-style-guide
 import '../../assets/maas-scss/main.scss';
@@ -58,6 +60,9 @@ class Layout extends Component {
       const { children } = this.props;
       const appClassName = 'guide-app';
 
+      const topTitle = `<span>JENNY KEE </span> &nbsp; &nbsp; <span> LINDA JACKSON </span><br> <br>`;
+      const pageTitle = `<span> STEP INTO &nbsp; PARADISE </span><br>`;
+
       return (
         <StaticQuery
           query={graphql`
@@ -96,9 +101,15 @@ class Layout extends Component {
 
                   <aside className={`${appClassName}__sidepanel`}>
 
-                    <p className="section__description"
-                       style={{ color: '#fff'}}
-                       dangerouslySetInnerHTML={{__html: data.site.siteMetadata.description}} />
+                    <h1 className="section__description"
+                       style={{
+                           color: '#fff',
+
+                           padding: `0.3em`,
+                           ...scale(1.7),
+                         }}
+                       dangerouslySetInnerHTML={{__html: topTitle + pageTitle}} />
+
 
                   </aside>
 
@@ -113,11 +124,11 @@ class Layout extends Component {
     }
 }
 
-// Layout.propTypes = {
-//   children: PropTypes.node.isRequired,
-// };
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
-const AppLayout = withViewport(Layout);
+// const AppLayout = withViewport(Layout);
 
-export default AppLayout;
-// export default Layout;
+// export default AppLayout;
+export default Layout;
