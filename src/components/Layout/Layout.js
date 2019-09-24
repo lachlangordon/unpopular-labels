@@ -11,10 +11,6 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import withViewport from '../../decorators/withViewport';
 
-// layout.css
-// import '../../assets/css/basic-layout.css'
-// import '../../assets/scss/main.scss';
-
 // base maas-style-guide
 import '../../assets/maas-scss/main.scss';
 
