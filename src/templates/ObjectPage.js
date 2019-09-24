@@ -32,6 +32,7 @@ const ObjectPage = ({
 
       <main className="object-page main">
 
+        <div className="container container--lg">
             <section className="">
                 <div className="object-page__mainImg">
                 {
@@ -76,6 +77,7 @@ const ObjectPage = ({
                   */}
                 </div>
             </section>
+        </div>
 
         {/*
           <section id="two">

@@ -69,6 +69,10 @@
 
     // about page
     .about-page {
+      .container {
+        padding: 0 !important;
+      }
+
       .content-header {
         lost-column: 2/3;
         lost-move: 1/3;
