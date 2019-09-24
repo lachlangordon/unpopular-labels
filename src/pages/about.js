@@ -16,7 +16,7 @@ const IndexPage = ({
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <main className="about-page">
 
-          <div className="container container--lg no-padding">
+          <div className="container container--lg">
               <section className="section--alt content-header">
                 <div className="about-page__masthead">
                   <Image size="thumbnail" imgObject={ heroImage } defImgMode="fluid" />
