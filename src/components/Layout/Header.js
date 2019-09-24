@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { rhythm, scale } from '../../lib/typography';
+import presets from '../../lib/presets';
 import logo from '../../assets/maas-scss/svg/home-red.svg';
 
 const Header = (props) => {
@@ -10,7 +11,7 @@ const Header = (props) => {
   const headerLinks = [
     { 'name' :  'OBJECTS', 'location': '/all' },
     { 'name' :  'THEMES', 'location': '/themes' },
-    { 'name' :  'ABOUT', 'location': '/' },
+    { 'name' :  'ABOUT', 'location': '/about' },
   ];
 
   return (
@@ -18,6 +19,7 @@ const Header = (props) => {
 
       <div className="header__wrapper" style={{
           padding: rhythm(3 / 4),
+          paddingLeft: `0.7em`,
           paddingBottom: `calc(${rhythm(3 / 4)} - 1px)`,
         }}>
 
@@ -39,6 +41,9 @@ const Header = (props) => {
 
                   <h1 style={{
                       ...scale(3 / 5),
+                      [presets.xlg]: {
+                        ...scale(1),
+                      },
                     }}>
 
                     <span style={{
