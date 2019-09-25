@@ -43,9 +43,27 @@ $colour-black: #000;
 
 .guide-app__sidepanel {
   background-color: $colour-black;
-  @media (min-width: $screen-xs-min) {
-    display: none;
+  padding: $spacing-md 0;
+
+  ul.sidepanel__content {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+    list-style-type: none;
+    color: $colour-white;
+
+    > li {
+      padding: $spacing-sm 0;
+    }
+
+    .sidepanel__top-title { line-height: 3.35rem !important; }
+    .sidepanel__description { line-height: 4.525rem !important; }
+    .sidepanel__date-text { color: $colour-white; }
   }
+
+  // hide it for most screens (xs, sm, md)
+  display: none;
 }
 
 @media (min-width: $screen-lg-min) {
@@ -65,6 +83,7 @@ $colour-black: #000;
     border-right: 1px solid rgba(0,0,0,.08);
   }
 
+  // display sidepanel for lg
   .guide-app__sidepanel {
     display: block;
     flex: 0 0 22em;
