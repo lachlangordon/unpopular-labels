@@ -88,7 +88,9 @@ $element-margin: 2em;
 
 // container
 .bg-image {
+	z-index: 99;
 	position: relative;
+	background-color: transparent;
 
 	.bg-image__gatsby-img {
 		position: absolute;
