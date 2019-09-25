@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
+import { rhythm, scale } from '../lib/typography';
 
 import Layout from '../components/Layout/Layout';
 import BgImage from '../components/Image/BgImage';
@@ -21,12 +22,17 @@ const IndexPage = ({
             <BgImage title="before"
                      fluid={heroImage.childImageSharp.fluid}>
 
-                <h2 className="guide-index-page__title" style={{ color: '#fff'}}>
-                    { site.siteMetadata.title }
+                <h2 className="guide-index-page__title"
+                    style={{ ...scale(2) }}>
+                  <span className="text__fadeIn"> STEP </span>
+                  <span className="text__fadeIn"> INTO </span>
+                  <span className="text__fadeIn"> PARADISE </span>
                 </h2>
 
                 <ul className="actions">
-                    <li><Link to="/themes" className="button next">Get Started</Link></li>
+                    <li><Link to="/themes" className="button" >
+                      <span style={{ ...scale(1) }}> Get Started </span> </Link>
+                    </li>
                 </ul>
             </BgImage>
           </div>
@@ -54,7 +60,7 @@ export const pageQuery = graphql`
       name
       absolutePath
       childImageSharp {
-        fluid(maxWidth: 1140) {
+        fluid(maxWidth: 1024, maxHeight: 1266) {
           ...GatsbyImageSharpFluid
         }
       }
