@@ -28,7 +28,7 @@ const Header = (props) => {
 
               <img style={{
                 // not working well - need to use gatsby image for scaling
-                display: `block`,
+                ...scale(1/5),
               }} src={logo} alt="Step Into Paradise" />
 
           </Link>

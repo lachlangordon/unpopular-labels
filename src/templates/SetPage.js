@@ -35,7 +35,7 @@ const SetPage = ({
                </div>
             </section>
 
-            <section className="section--alt main-content">
+            <section className="section main-content">
               <div className="container container--lg">
                   <div className="all-page__content">
                   {

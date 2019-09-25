@@ -61,8 +61,9 @@ class Layout extends Component {
       const { children } = this.props;
       const appClassName = 'guide-app';
 
-      const topTitle = `<span>JENNY KEE </span> &nbsp; &nbsp; <span> LINDA JACKSON </span><br> <br>`;
-      const pageTitle = `<span> STEP INTO &nbsp; PARADISE </span><br>`;
+      const topTitle = `<span>JENNY KEE </span> &nbsp; &nbsp; &nbsp; <span> LINDA JACKSON </span><br>`;
+      const pageTitle = `<span> STEP INTO &nbsp; PARADISE </span>`;
+      const dateText = `<span> 17 October 2019 - 22 March 2020 </span>`;
 
       return (
         <StaticQuery
@@ -102,15 +103,32 @@ class Layout extends Component {
 
                   <aside className={`${appClassName}__sidepanel`}>
 
-                    <h1 className="section__description"
-                       style={{
-                           color: '#fff',
+                    <div className="container container--sm">
+                        <ul className="sidepanel__content">
+                             <li>
+                               <h2 className="sidepanel__top-title"
+                                   style={{ ...scale(1.6) }}
+                                   dangerouslySetInnerHTML={{ __html: topTitle }} />
+                             </li>
+                             <li>
+                               <h1 className="sidepanel__description"
+                                   style={{ ...scale(2.1) }}
+                                   dangerouslySetInnerHTML={{ __html: pageTitle }} />
+                             </li>
+                             <li>
+                               <div className="view-guide">
+                                 <p className="sidepanel__date-text"
+                                    style={{ ...scale(1/3) }}
+                                    dangerouslySetInnerHTML={{ __html: dateText }} />
+                                   <span> View this guide on your phone: <br />
+                                     <a href="https://maas.museum/guide"> https://maas.museum/guide </a>
+                                   </span>
+                               </div>
+                             </li>
+                        </ul>
 
-                           padding: `0.3em`,
-                           ...scale(1.7),
-                         }}
-                       dangerouslySetInnerHTML={{__html: topTitle + pageTitle}} />
 
+                    </div>
 
                   </aside>
 

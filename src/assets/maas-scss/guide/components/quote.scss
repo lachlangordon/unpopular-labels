@@ -1,0 +1,40 @@
+///
+/// MAAS Gallery Guide - blockquote styles
+/// developer@maas.museum
+///
+
+@import '../../core/variables.scss';
+
+/*------------------------------------*\
+    #blockquote
+\*------------------------------------*/
+
+
+blockquote {
+  quotes: "“" "”" "‘" "’";
+  font-style: italic;
+}
+
+q:before,
+blockquote:before {
+  content: open-quote;
+}
+
+q:after,
+blockquote:after {
+  content: close-quote;
+}
+
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  color: $colour-pink;
+  font-size: 1.2em;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1em;
+  border-left: 5px solid $colour-pink;
+}

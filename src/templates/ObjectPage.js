@@ -58,7 +58,7 @@ const ObjectPage = ({
                   }
 
                   { object.notes3 &&
-                    <p className="set-page__notes3"
+                    <blockquote className="set-page__notes3"
                        dangerouslySetInnerHTML={{ __html: object.notes3 }} />
                   }
 

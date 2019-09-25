@@ -42,6 +42,14 @@
           line-height: 1;
         }
       }
+
+      // image logo - for smaller screens
+      @media (max-width: $screen-md-min) {
+        > img {
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
 
     > ul {
