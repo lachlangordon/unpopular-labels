@@ -3,6 +3,34 @@
 \*------------------------------------*/
 
 $font-family-button: 'Bebas-Neue';
+
+input[type="button"],
+button,
 .button {
 	font-family: $font-family-button;
+	background-color: $colour-white;
+	color: $colour-pink;
+
+	border: 0;
+	box-shadow: inset 0 0 0 2px $colour-white;
+
+	cursor: pointer;
+	display: inline-block;
+
+	height: 3em;
+	line-height: 3em;
+	padding: 0 1.75em;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;
+
+	&.center {
+		margin: 0 auto;
+	}
+
+	&:link, &:visited {
+		color: blue;
+		text-decoration: none;
+	}
 }
