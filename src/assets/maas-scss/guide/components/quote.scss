@@ -9,32 +9,58 @@
     #blockquote
 \*------------------------------------*/
 
-
 blockquote {
-  quotes: "“" "”" "‘" "’";
-  font-style: italic;
+  padding: 36px 50px;
+  font-size: 1.5em;
+  position: relative;
+  background: $colour-white;
+  margin-bottom: 28px;
+  &::before {
+    right: 100%;
+  }
+  &::after {
+    left: 100%;
+  }
+  p {
+    margin: 0;
+    // font-style: italic;
+    font-family:  $font-family-bold;
+    &::before {
+      top: 0;
+      left: 16px;
+      content: '“';
+      font-size: 2em;
+      position: absolute;
+    }
+    &::after {
+      right: 0.1em;
+      content: '”';
+      bottom: -22px;
+      font-size: 2em;
+      position: absolute;
+    }
+  }
 }
 
-q:before,
-blockquote:before {
-  content: open-quote;
-}
-
-q:after,
-blockquote:after {
-  content: close-quote;
-}
-
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  color: $colour-pink;
-  font-size: 1.2em;
-}
-
-blockquote {
-  margin-left: 0;
-  padding-left: 1em;
-  border-left: 5px solid $colour-pink;
-}
+// @media screen and (min-width: 750px) {
+//   h1 {
+//     font-size: 3em;
+//   }
+//   blockquote {
+//     padding-right: 0;
+//     width: calc(100% + 50px);
+//     &::before {
+//       display: none;
+//     }
+//     &::after {
+//       width: 50px;
+//       border-radius: 0 3px 3px 0;
+//     }
+//     p {
+//       font-size: 2.5em;
+//       &::after {
+//         bottom: -56px
+//       }
+//     }
+//   }
+// }
