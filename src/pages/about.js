@@ -17,7 +17,7 @@ const IndexPage = ({
       <main className="about-page">
 
           <div className="container container--lg">
-              <section className="section--alt content-header">
+              <section className="content-header">
                 <div className="about-page__masthead">
                   <Image size="thumbnail" imgObject={ heroImage } defImgMode="fluid" />
                 </div>
