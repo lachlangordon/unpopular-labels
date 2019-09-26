@@ -25,6 +25,7 @@ const ImageById = ({ imageId, size }) => (
          const imgProp = {
            imgObject: imgFound.node.fields.localFile,
            isThumb: size == 'thumbnail' ? true : false,
+           // src: imgFound.node.serverCropSrc,
            name: caption || filename,
          }
          return <Image { ...imgProp } />;
@@ -46,6 +47,8 @@ const ImageById = ({ imageId, size }) => (
            id
            caption
            filename
+           thumbnailSrc
+           serverCropSrc
            fields {
              localFile {
                ...default_GatsbyImageSharpWithThumb

@@ -57,11 +57,14 @@
     padding-bottom: 1em;
   }
 
-  @media (min-width: $screen-sm-min) {
-    .object-page {
-      .main-content, .content-footer {
-        padding-left: $spacing-sm !important;
-      }
+  // object page
+  .object-page {
+    .main-content, .content-footer, .content-related {
+      padding-left: $spacing-sm !important;
+    }
+
+    .object-page__credit-line, .object-page__significance-statement {
+      font-size: 0.7rem;
     }
   }
 

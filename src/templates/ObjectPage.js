@@ -24,6 +24,8 @@ const ObjectPage = ({
     title += `, ${object.object.production[0].date}`;
   }
 
+  console.log(images.length && images[0]);
+
   let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
 
   return (
@@ -52,8 +54,13 @@ const ObjectPage = ({
                     </h1>
 
                     { object.notes2 &&
-                      <p className="set-page__notes2"
+                      <p className="object-page__notes2"
                          dangerouslySetInnerHTML={{ __html: object.notes2 }} />
+                    }
+
+                    { ( object.object.isLoan && object.object.significanceStatement ) &&
+                      <p className="object-page__significance-statement"
+                         dangerouslySetInnerHTML={{ __html: object.object.significanceStatement }} />
                     }
                 </div>
             </section>
@@ -63,22 +70,22 @@ const ObjectPage = ({
             <section className="content-footer">
                 <div className="object-page__bottom-content">
                     { object.notes3 &&
-                      <blockquote className="set-page__notes3"
+                      <blockquote className="object-page__notes3"
                          dangerouslySetInnerHTML={{ __html: object.notes3 }} />
                     }
 
                     <hr />
 
                     { object.object.acquisitionCreditLine &&
-                      <p className="set-page__credit-line"
-                         dangerouslySetInnerHTML={{ __html: object.acquisitionCreditLine }} />
+                      <p className="object-page__credit-line"
+                         dangerouslySetInnerHTML={{ __html: object.object.acquisitionCreditLine }} />
                     }
                 </div>
             </section>
 
             <section className="content-related">
                 { related.length &&
-                  <div className="set-page__related-items">
+                  <div className="object-page__related-items">
                     <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
                   </div>
                 }
@@ -93,6 +100,8 @@ const ObjectPage = ({
 
 export default ObjectPage;
 
+// images[0] = main image
+// parent = to find related items
 export const pageQuery = graphql`
   query ObjectPage($id: String!) {
     object: setObject(id: { eq: $id }) {
@@ -104,6 +113,8 @@ export const pageQuery = graphql`
         production {
           date
         }
+        isLoan
+        significanceStatement
         acquisitionCreditLine
         mainImage {
           url
@@ -129,6 +140,8 @@ export const pageQuery = graphql`
     images: ImagesByParentId(parentId: $id) {
       id
       url
+      thumbnailSrc
+      serverCropSrc
       width
       height
       filename
