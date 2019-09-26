@@ -25,7 +25,7 @@ const IndexPage = ({
 
               <section className="main-content">
                   <div className="about-page__content">
-                    <h1 className="guide-index-page__title">
+                    <h1 className="guide-about-page__title">
                         { site.siteMetadata.title }
                     </h1>
 
