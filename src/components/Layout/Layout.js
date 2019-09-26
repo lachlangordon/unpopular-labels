@@ -83,12 +83,13 @@ class Layout extends Component {
 
                 <div className={`${appClassName}__wrapper`}>
 
+                {/* <!-- disable jumpy loader --> 
                   <Loader
-                    isLoading={this.state.loading}
-                    error={this.state.error}
-                    redirectUrl="/search"
-                    redirectUrlText="Try searching for something else"
-                  />
+                  isLoading={this.state.loading}
+                  error={this.state.error}
+                  redirectUrl="/search"
+                  redirectUrlText="Try searching for something else"
+                /> */}
 
                   <main className={`${appClassName}__content`}>
                     {children}

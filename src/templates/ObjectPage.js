@@ -31,87 +31,59 @@ const ObjectPage = ({
       <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
 
       <main className="object-page main">
-
-        <div className="container container--lg">
-            <section className="">
+          <div className="container container--lg no-padding">
+            <section className="content-header">
                 <div className="object-page__mainImg">
-                {
-                  images.length && (
-                    <Image className="image--object"
-                           imgObject={ images[0].fields.localFile }
-                           defImgMode="fluid"
-                           />
-                  )
-                }
-                </div>
-
-                <h1 className="object-page__title">
-                  { title }
-                </h1>
-            </section>
-
-            <section className="section">
-                <div className="object-page__content">
-                  { object.notes2 &&
-                    <p className="set-page__notes2"
-                       dangerouslySetInnerHTML={{ __html: object.notes2 }} />
-                  }
-
-                  { object.notes3 &&
-                    <blockquote className="set-page__notes3"
-                       dangerouslySetInnerHTML={{ __html: object.notes3 }} />
-                  }
-
-                  <hr />
-
-                  { object.object.acquisitionCreditLine &&
-                    <p className="set-page__credit-line"
-                       dangerouslySetInnerHTML={{ __html: object.acquisitionCreditLine }} />
-                  }
-
-                  {/* related.length &&
-                    <div className="set-page__related-items">
-                      <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
-                      <ItemSwipe relatedItems={related} />
-                    </div>
-                  */}
-                </div>
-            </section>
-        </div>
-
-        {/*
-          <section id="two">
-            <header>
-              <h2>{`More in ${object.parent.name}`}</h2>
-              <div className="tiles">
-                {
-                  related.map((object, i) => {
-                    return(
-                      <article key={`object-${i}`}>
-                        {
-                          object.object
-                          ? (
-                              <Link to={`/object/${object.id}`} className="link primary">
-                                {
-                                  object.object.mainImage ? (
-                                    <img src={object.object.mainImage.url}/>
-                                  ) : <div>{object.object.displayTitle}</div>
-                                }
-                              </Link>
-                            )
-                          : (
-                              <div>{"Unpublished object IRN " + object.id}</div>
-                            )
-                        }
-                      </article>
+                  {
+                    images.length && (
+                      <Image className="image--object"
+                             imgObject={ images[0].fields.localFile }
+                             defImgMode="fluid"
+                             />
                     )
-                  })
-                }
-              </div>
-            </header>
-          </section>
+                  }
+                </div>
+            </section>
 
-        */}
+            <section className="section main-content">
+                <div className="object-page__content">
+                    <h1 className="object-page__title">
+                      { title }
+                    </h1>
+
+                    { object.notes2 &&
+                      <p className="set-page__notes2"
+                         dangerouslySetInnerHTML={{ __html: object.notes2 }} />
+                    }
+                </div>
+            </section>
+          </div>
+
+          <div className="container container--lg no-padding">
+            <section className="content-footer">
+                <div className="object-page__bottom-content">
+                    { object.notes3 &&
+                      <blockquote className="set-page__notes3"
+                         dangerouslySetInnerHTML={{ __html: object.notes3 }} />
+                    }
+
+                    <hr />
+
+                    { object.object.acquisitionCreditLine &&
+                      <p className="set-page__credit-line"
+                         dangerouslySetInnerHTML={{ __html: object.acquisitionCreditLine }} />
+                    }
+                </div>
+            </section>
+
+            <section className="content-related">
+                { related.length &&
+                  <div className="set-page__related-items">
+                    <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
+                  </div>
+                }
+            </section>
+          </div>
 
       </main>
     </Layout>
