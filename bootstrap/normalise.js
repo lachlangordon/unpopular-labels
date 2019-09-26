@@ -140,8 +140,8 @@ const setNodeImage = ( _img ) => {
     parent: `${ _img.parent || null }`,
     internal: setInternal( IMG_TYPE, _img ),
     url: _img.url || null,
-    thumbnail: _img.thumbnailURL || null,
-    serverCrop: _img.serverCropURL|| null,
+    thumbnailSrc: _img.thumbnailURL || null,
+    serverCropSrc: _img.serverCropURL|| null,
     width: _img.width,   // set min width
     height: _img.height,
     filename: _img.filename,
@@ -197,6 +197,7 @@ const setObject = ( _object ) => {
     summary: _object.summary || '',
     productionNotes: _object.productionNotes || '',
     production: _object.production || null,
+    significanceStatement: _object.significanceStatement || '',
     acquisitionCreditLine: _object.acquisitionCreditLine || ',',
     isLoan: _object.isLoan || false,
     // images: an array of images

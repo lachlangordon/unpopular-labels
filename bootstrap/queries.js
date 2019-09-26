@@ -68,6 +68,7 @@ query NodeSets {
         displayTitle
         summary
         isLoan
+        significanceStatement
         acquisitionCreditLine
         production {
 		      date
