@@ -10,35 +10,35 @@
 \*------------------------------------*/
 
 blockquote {
-  padding: 36px 50px;
+  padding: 36px 0px;
   font-size: 1.5em;
   position: relative;
   background: $colour-white;
   margin-bottom: 28px;
+  // &::before {
+  //   right: 100%;
+  // }
+  // &::after {
+  //   left: 100%;
+  // }
   &::before {
-    right: 100%;
+    top: 0;
+    left: -35px;
+    content: '“';
+    font-size: 2em;
+    position: absolute;
   }
   &::after {
-    left: 100%;
+    right: 0.1em;
+    content: '”';
+    bottom: -22px;
+    font-size: 2em;
+    position: absolute;
   }
   p {
     margin: 0;
     // font-style: italic;
     font-family:  $font-family-bold;
-    &::before {
-      top: 0;
-      left: 16px;
-      content: '“';
-      font-size: 2em;
-      position: absolute;
-    }
-    &::after {
-      right: 0.1em;
-      content: '”';
-      bottom: -22px;
-      font-size: 2em;
-      position: absolute;
-    }
   }
 }
 

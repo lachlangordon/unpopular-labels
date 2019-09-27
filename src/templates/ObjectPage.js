@@ -58,6 +58,19 @@ const ObjectPage = ({
                          dangerouslySetInnerHTML={{ __html: object.notes2 }} />
                     }
 
+                    { object.object.acquisitionCreditLine &&
+                      <p className="object-page__credit-line"
+                         dangerouslySetInnerHTML={{ __html: object.object.acquisitionCreditLine }} />
+                    }
+                </div>
+                <div className="object-page__bottom-content">
+                    { object.notes3 &&
+                      <blockquote className="object-page__notes3"
+                         dangerouslySetInnerHTML={{ __html: object.notes3 }} />
+                    }
+
+                    <hr />
+
                     { ( object.object.isLoan && object.object.significanceStatement ) &&
                       <p className="object-page__significance-statement"
                          dangerouslySetInnerHTML={{ __html: object.object.significanceStatement }} />
@@ -67,22 +80,6 @@ const ObjectPage = ({
           </div>
 
           <div className="container container--lg no-padding">
-            <section className="content-footer">
-                <div className="object-page__bottom-content">
-                    { object.notes3 &&
-                      <blockquote className="object-page__notes3"
-                         dangerouslySetInnerHTML={{ __html: object.notes3 }} />
-                    }
-
-                    <hr />
-
-                    { object.object.acquisitionCreditLine &&
-                      <p className="object-page__credit-line"
-                         dangerouslySetInnerHTML={{ __html: object.object.acquisitionCreditLine }} />
-                    }
-                </div>
-            </section>
-
             <section className="content-related">
                 { related.length &&
                   <div className="object-page__related-items">
