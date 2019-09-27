@@ -84,6 +84,7 @@ const ObjectPage = ({
                 { related.length &&
                   <div className="object-page__related-items">
                     <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
+                    <ItemSwipe relatedItems={related} />
                   </div>
                 }
             </section>
@@ -114,7 +115,9 @@ export const pageQuery = graphql`
         significanceStatement
         acquisitionCreditLine
         mainImage {
+          id
           url
+          thumbnailURL
         }
       }
       parent {
@@ -128,6 +131,7 @@ export const pageQuery = graphql`
               mainImage {
                 id
                 url
+                thumbnailURL
               }
             }
           }
