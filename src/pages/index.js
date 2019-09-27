@@ -19,8 +19,8 @@ const IndexPage = ({
       <main className="index-page">
 
           <div className="container container--lg no-padding">
-            <BgImage title="before"
-                     fluid={heroImage.childImageSharp.fluid}>
+            <BgImage height={ 755 }
+                     imgObject={ heroImage }>
 
                 <h2 className="guide-index-page__title"
                     style={{ ...scale(2) }}>
@@ -47,6 +47,7 @@ export default IndexPage;
 
 // id: 6761
 // This query is executed at build time by Gatsby.
+// maxHeight: 1600
 export const pageQuery = graphql`
   query {
     site {

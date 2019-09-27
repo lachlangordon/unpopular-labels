@@ -1,20 +1,29 @@
 
 import React from 'react';
 import { Link } from 'gatsby';
+
 // https://github.com/voronianski/react-swipe
-import ReactSwipe from 'react-swipe';
+// import ReactSwipe from 'react-swipe';
+
+// https://github.com/akiran/react-slick
+import Slider from 'react-slick';
+
 // import ItemTile from '../ItemTile/ItemTile';
 import ImageById from '../Image/ImageById';
 
 const ItemSwipe = ({ relatedItems }) => {
-  let reactSwipeEl;
-// 										 <div className="tile-info--is-breakout"> {object.object.displayTitle} </div>
+  const settings = {
+    // dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1
+  };
+
+  let sliderEl;
   return (
     <div>
-      <ReactSwipe
-        className="carousel"
-        swipeOptions={{ continuous: false }}
-        ref={el => (reactSwipeEl = el)}
+      <Slider { ...settings }
       >
 				{
 					relatedItems.map((object, j) => {
@@ -24,6 +33,7 @@ const ItemSwipe = ({ relatedItems }) => {
 								 <div key={`item-tile-${j}`} >
 									 <Link to={'/object/' + object.id}>
 									 	 <ImageById size="thumbnail" imageId={object.object.mainImage.id} />
+									 	 {/* <img size="thumbnail" src={object.object.mainImage.thumbnailURL} width="70" height="70"/> */}
 
 									 </Link>
 								 </div>
@@ -32,22 +42,15 @@ const ItemSwipe = ({ relatedItems }) => {
 					})
 				}
 
-      </ReactSwipe>
-      <button onClick={() => reactSwipeEl.prev()}>Previous</button>
-			<button onClick={() => reactSwipeEl.next()}>Next</button>
+      </Slider>
+      {/*
+        <button onClick={() => sliderEl.prev()}>Previous</button>
+        <button onClick={() => sliderEl.next()}>Next</button>
+      */}
     </div>
   );
 };
 /*
-
-{
-	relatedItems.map((object, j) => {
-		if (object.object) {
-			 object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} />
-		}
-	})
-}
-
 
 ItemTile.propTypes = {
   title: PropTypes.string,

@@ -59,12 +59,24 @@
 
   // object page
   .object-page {
-    .main-content, .content-footer, .content-related {
+    .main-content, .content-related {
       padding-left: $spacing-sm !important;
     }
 
     .object-page__credit-line, .object-page__significance-statement {
       font-size: 0.7rem;
+    }
+  }
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md-min) {
+    .object-page {
+      .object-page__content {
+        lost-column: 1/2;
+      }
+
+      .object-page__bottom-content {
+        lost-column: 1/2;
+      }
     }
   }
 
@@ -81,9 +93,14 @@
 
       .main-content {
         lost-column: 3/5;
+
+        .set-page__content > .item-tile {
+          lost-column: 1/2;
+        }
       }
     }
 
+    // object page - ipad
     .object-page {
       .content-header {
         lost-column: 2/5;
@@ -98,9 +115,6 @@
 
       hr { lost-utility: clearfix; }
 
-      // .bottom-content {
-      //   lost-column: 1;
-      // }
     }
 
     // about page
