@@ -86,14 +86,14 @@
 
     .object-page {
       .content-header {
-        lost-column: 3/5;
-        lost-move: 2/5;
+        lost-column: 2/5;
+        lost-move: 3/5;
       }
 
       .main-content {
         padding-left: $spacing-md;
-        lost-column: 2/5;
-        lost-move: -3/5;
+        lost-column: 3/5;
+        lost-move: -2/5;
       }
 
       hr { lost-utility: clearfix; }

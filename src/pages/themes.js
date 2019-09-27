@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 class ThemesPage extends Component {
   constructor(props) {
 		super(props);
-    this.state = { bannerSize: "hi-res" }
+    this.state = { bannerSize: "desktop" }
 	}
 
   // input = viewport size
