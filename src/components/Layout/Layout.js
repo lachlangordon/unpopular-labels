@@ -82,7 +82,7 @@ class Layout extends Component {
 
                 <div className={`${appClassName}__wrapper`}>
 
-                {/* <!-- disable jumpy loader --> 
+                {/* <!-- disable jumpy loader -->
                   <Loader
                   isLoading={this.state.loading}
                   error={this.state.error}
@@ -92,6 +92,8 @@ class Layout extends Component {
 
                   <main className={`${appClassName}__content`}>
                     {children}
+
+                    <Footer />
                   </main>
 
                   <div className={`${appClassName}__sidenav`}>
@@ -133,8 +135,6 @@ class Layout extends Component {
                   </aside>
 
                 </div>
-
-                {/* <Footer /> */}
 
             </div>
           )}

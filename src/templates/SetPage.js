@@ -37,7 +37,7 @@ const SetPage = ({
 
             <section className="section main-content">
               <div className="container container--lg">
-                  <div className="all-page__content">
+                  <div className="set-page__content">
                   {
                     objects.map((object, j) => {
                       if (object.object)
