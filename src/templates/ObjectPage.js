@@ -62,14 +62,14 @@ const ObjectPage = ({
                       <p className="object-page__credit-line"
                          dangerouslySetInnerHTML={{ __html: object.object.acquisitionCreditLine }} />
                     }
+                    
+                    <hr />
                 </div>
                 <div className="object-page__bottom-content">
                     { object.notes3 &&
                       <blockquote className="object-page__notes3"
                          dangerouslySetInnerHTML={{ __html: object.notes3 }} />
                     }
-
-                    <hr />
 
                     { ( object.object.isLoan && object.object.significanceStatement ) &&
                       <p className="object-page__significance-statement"
