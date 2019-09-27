@@ -41,7 +41,7 @@ class Image extends Component {
   // _image = gatsby imageNode
   getImage = (_image, _props) => {
     const { defImgMode, noImageContent } = this.props;
-    const { name, src, alt, width, height } = _props;
+    const { imgClassName, imgStyle, name, src, alt, width, height } = _props;
 
     // When there is only src no GatsbyImage
     // MAAS image doesn't work, use std img
@@ -54,13 +54,21 @@ class Image extends Component {
     if ( defImgMode === 'fluid' && !isEmpty( getFluid(_image) )) {
       GatsbyImgProp = {
         name,
+        width,
+        height,
         title: alt,
+        style: imgStyle,
+        className: imgClassName,
         fluid: getFluid(_image),
       };
     } else if ( defImgMode === 'fixed' && !isEmpty( getFixed(_image) )) {
       GatsbyImgProp = {
         name,
+        width,
+        height,
         title: alt,
+        style: imgStyle,
+        className: imgClassName,
         fixed: getFixed(_image),
       };
     }
@@ -74,6 +82,7 @@ class Image extends Component {
     // dont forget to append props
     let imgProps = {
       imgStyle:  this.props.imgStyle || {},
+      imgClassName:  this.props.imgClassName || {},
       name: imgObject ? imgObject.id : this.props.name,
       src: imgObject ? imgObject.url : this.props.src, // get valid local url
       alt: imgObject ? imgObject.caption : this.props.alt,
