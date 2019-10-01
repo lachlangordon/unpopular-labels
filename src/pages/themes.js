@@ -44,7 +44,7 @@ class ThemesPage extends Component {
     //
     // returnViewportSize={ this.getViewportSize }
     return (
-      <Layout >
+      <Layout location={location}>
         <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
 
         <main id="themes-page">

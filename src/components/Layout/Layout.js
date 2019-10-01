@@ -58,7 +58,7 @@ class Layout extends Component {
     // }
 
     render() {
-      const { children } = this.props;
+      const { location, children } = this.props;
       const appClassName = 'guide-app';
 
       const topTitle = `<span>JENNY KEE </span> &nbsp; &nbsp; &nbsp; <span> LINDA JACKSON </span><br>`;
@@ -91,10 +91,12 @@ class Layout extends Component {
                   redirectUrlText="Try searching for something else"
                 /> */}
 
+                  { console.log( location ) }
+
                   <main className={`${appClassName}__content`}>
                     {children}
 
-                    <Footer />
+                    { location.pathname !== '/' &&  <Footer /> }
                   </main>
 
                   <div className={`${appClassName}__sidenav`}>

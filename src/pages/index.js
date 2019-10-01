@@ -14,7 +14,7 @@ const IndexPage = ({
 }) => {
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <main className="index-page">
 

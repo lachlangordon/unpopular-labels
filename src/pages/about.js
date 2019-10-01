@@ -7,12 +7,12 @@ import SEO from '../components/seo';
 
 import { siteMeta } from '../queries/fragments';
 
-const IndexPage = ({
+const AboutPage = ({
   data: { site, masterSet, heroImage },
   location,
 }) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <main className="about-page">
 
@@ -43,7 +43,7 @@ const IndexPage = ({
 
 };
 
-export default IndexPage;
+export default AboutPage;
 
 // id: 6761
 // This query is executed at build time by Gatsby.

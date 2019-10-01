@@ -43,7 +43,6 @@ query NodeSets {
     keywords
     location
     lastUpdated
-    tileImages
     relatedNarratives {
       id: _id
     }
@@ -62,6 +61,7 @@ query NodeSets {
       id: _id
       notes2
       notes3
+      notes4
       object {
         id: _id
         parentId
@@ -101,7 +101,6 @@ const GatsbyAllSetQuery = `
         name
         summary
         description
-        tileImages
         setObjects {
           object {
             displayTitle
