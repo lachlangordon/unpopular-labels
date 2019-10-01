@@ -19,7 +19,7 @@ const buildPath = ({ title }) => {
   return `/${slug}`;
 }
 
-const convertToSID = (narrativeId) => {
+const convertToSID = narrativeId => {
   if ( narrativeId === '6762' ) return 1;
   else if ( narrativeId === '6763' ) return 2;
   else if ( narrativeId === '6764' ) return 3;
@@ -34,6 +34,12 @@ const convertToSID = (narrativeId) => {
   else if ( narrativeId === '6920' ) return 12;
 }
 
+const parseCirca = dateStr => {
+  const regex = /c\./gi;
+  // console.log(date);
+  return dateStr.replace(/c\./, 'about');
+}
+
 const canUseDOM = () =>
   !!(
     typeof window !== 'undefined' &&
@@ -41,4 +47,4 @@ const canUseDOM = () =>
     window.document.createElement
   );
 
-module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, canUseDOM };
+module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, parseCirca, canUseDOM };

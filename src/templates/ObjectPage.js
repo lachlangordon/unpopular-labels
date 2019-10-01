@@ -8,6 +8,15 @@ import SEO from '../components/seo';
 
 // fragment to fetch GatsbyImageSharp
 import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
+import { parseCirca } from '../lib/utils';
+
+// assign class to Linda or Jenny quotes
+const quotedClass = quote => {
+  let className = 'other__quote';
+  if ( quote.match(/Linda Jackson/) ) { className = `linda__quote`; }
+  else if ( quote.match(/Jenny Kee/) ) { className = `jenny__quote`; }
+  return className;
+}
 
 const ObjectPage = ({
   data: { images, object },
@@ -20,16 +29,14 @@ const ObjectPage = ({
   }
 
   let title = object.object.name;
-  if (object.object.production[0]) {
-    title += `, ${object.object.production[0].date}`;
+  if (object.object.production[0] && object.object.production[0].date !== null) {
+    title += `, ${ parseCirca(object.object.production[0].date) }`;
   }
-
-  console.log(images.length && images[0]);
 
   let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
 
       <main className="object-page main">
@@ -62,19 +69,20 @@ const ObjectPage = ({
                       <p className="object-page__credit-line"
                          dangerouslySetInnerHTML={{ __html: object.object.acquisitionCreditLine }} />
                     }
+
                 </div>
                 <div className="object-page__bottom-content">
                     { object.notes3 &&
-                      <blockquote className="object-page__notes3"
-                         dangerouslySetInnerHTML={{ __html: object.notes3 }} />
+                        <div className="object-page__notes3"
+                                    dangerouslySetInnerHTML={{ __html: object.notes3 }} />
+                    }
+
+                    { object.notes4 &&
+                        <div className="object-page__notes4"
+                                    dangerouslySetInnerHTML={{ __html: `<span class="${quotedClass(object.notes4)}"> &mdash; ${object.notes4} </span>` }} />
                     }
 
                     <hr />
-
-                    { ( object.object.isLoan && object.object.significanceStatement ) &&
-                      <p className="object-page__significance-statement"
-                         dangerouslySetInnerHTML={{ __html: object.object.significanceStatement }} />
-                    }
                 </div>
             </section>
           </div>
@@ -106,6 +114,7 @@ export const pageQuery = graphql`
       id
       notes2
       notes3
+      notes4
       object {
         name
         production {
