@@ -18,7 +18,7 @@ const SetPaginated = ({
   }
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
       <div id="main" className="alt">
         <section id="one">

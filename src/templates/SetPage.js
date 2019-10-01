@@ -16,7 +16,7 @@ const SetPage = ({
 }) => {
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
       <main id="main" className="set-page main">
             <section className="content-header">
