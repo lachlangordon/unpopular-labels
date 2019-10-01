@@ -42,6 +42,17 @@ blockquote {
   }
 }
 
+.object-page__notes4 {
+  display: inline-flex;
+  font-family:  $font-family-bold;
+  font-size: $font-size-lg;
+  p {
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    margin: 0;
+  }
+}
+
 // @media screen and (min-width: 750px) {
 //   h1 {
 //     font-size: 3em;
