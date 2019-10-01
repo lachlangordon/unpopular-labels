@@ -68,7 +68,7 @@
     }
   }
 
-  @media (min-width: $screen-sm-min) and (max-width: $screen-md-min) {
+  @media (min-width: $screen-sm-min) and (max-width: 1023px) {
     .object-page {
       .object-page__content {
         lost-column: 1/2;

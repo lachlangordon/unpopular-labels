@@ -69,7 +69,6 @@ const ObjectPage = ({
                       <p className="object-page__credit-line"
                          dangerouslySetInnerHTML={{ __html: object.object.acquisitionCreditLine }} />
                     }
-
                 </div>
                 <div className="object-page__bottom-content">
                     { object.notes3 &&
