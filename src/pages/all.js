@@ -7,9 +7,10 @@ import SEO from '../components/seo';
 // import {handleBack, handleScrollToTop} from "../lib/navUtils";
 
 const allObjectsPage = ({
-  data: { Sets }
+  data: { Sets },
+  location,
 }) => (
-    <Layout>
+    <Layout location={location}>
       <SEO title="All Objects"/>
 
       <main id="main" className="all-page main">

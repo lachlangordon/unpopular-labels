@@ -11,7 +11,7 @@ const ImagePage = ({
   pageContext: { parentId, masterNarrativeId },
   location,
 }) => (
-  <Layout>
+  <Layout location={location}>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <div id="main">
 
