@@ -18,7 +18,6 @@ const shouldShowSeenIcon = () => {
 
 const isObjectSeen = (id) => {
   let seenObjects = localStorage.getItem(objectsLocalStorageName);
-
   if (seenObjects === null) {
     return false;
   } else {

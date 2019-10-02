@@ -10,6 +10,8 @@ import Slider from 'react-slick';
 
 // import ItemTile from '../ItemTile/ItemTile';
 import ImageById from '../Image/ImageById';
+import SeenIcon from '../SeenIcon/SeenIcon';
+import {isObjectSeen, shouldShowSeenIcon} from "../../lib/session";
 
 const ItemSwipe = ({ relatedItems }) => {
   const settings = {
@@ -28,13 +30,12 @@ const ItemSwipe = ({ relatedItems }) => {
 				{
 					relatedItems.map((object, j) => {
 						if (object.object) {
-								// console.log(object.object.displayTitle);
 							 return object.object.mainImage && (
-								 <div key={`item-tile-${j}`} >
+								 <div key={`item-tile-${j}`} className="item-tile__image-holder">
 									 <Link to={'/object/' + object.id}>
 									 	 <ImageById size="thumbnail" imageId={object.object.mainImage.id} />
 									 	 {/* <img size="thumbnail" src={object.object.mainImage.thumbnailURL} width="70" height="70"/> */}
-
+                     { shouldShowSeenIcon() && isObjectSeen(object.id.toString()) && <SeenIcon/> }
 									 </Link>
 								 </div>
 							 )
