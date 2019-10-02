@@ -19,7 +19,7 @@ const ItemSwipe = ({ relatedItems }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
 
   let sliderEl;

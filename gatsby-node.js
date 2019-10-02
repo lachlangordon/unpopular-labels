@@ -4,7 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
-const LoadablePlugin = require('@loadable/webpack-plugin');
 
 // gatsby-node.js
 const { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError } = require(`./src/lib/graphQL`);

@@ -640,7 +640,7 @@
     "@babel/plugin-transform-react-jsx-self" "^7.0.0"
     "@babel/plugin-transform-react-jsx-source" "^7.0.0"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.0", "@babel/runtime@^7.6.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2":
   version "7.6.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.2.tgz#c3d6e41b304ef10dcf13777a33e7694ec4a9a6dd"
   dependencies:
@@ -948,25 +948,6 @@
   resolved "https://registry.yarnpkg.com/@jimp/utils/-/utils-0.6.8.tgz#09f794945631173567aa50f72ac28170de58a63d"
   dependencies:
     core-js "^2.5.7"
-
-"@loadable/babel-plugin@^5.10.3":
-  version "5.10.3"
-  resolved "https://registry.yarnpkg.com/@loadable/babel-plugin/-/babel-plugin-5.10.3.tgz#faadbe38036b29e449640c3974acececbaeb5739"
-  dependencies:
-    "@babel/plugin-syntax-dynamic-import" "^7.2.0"
-
-"@loadable/component@^5.10.3":
-  version "5.10.3"
-  resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.10.3.tgz#e1ad811ac4834a6ed187605d8464351d0c52896f"
-  dependencies:
-    "@babel/runtime" "^7.6.0"
-    hoist-non-react-statics "^3.3.0"
-
-"@loadable/webpack-plugin@^5.7.1":
-  version "5.7.1"
-  resolved "https://registry.yarnpkg.com/@loadable/webpack-plugin/-/webpack-plugin-5.7.1.tgz#9fe4b19c347eaa72f8ff366ae9a9d2b724f86124"
-  dependencies:
-    mkdirp "^0.5.1"
 
 "@mikaelkristiansson/domready@^1.0.9":
   version "1.0.9"
@@ -4692,6 +4673,12 @@ gatsby-page-utils@^0.0.23:
     lodash "^4.17.15"
     micromatch "^3.1.10"
     slash "^3.0.0"
+
+gatsby-plugin-google-analytics@^2.1.19:
+  version "2.1.19"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.1.19.tgz#b13066bf1600a15c95d1f1ae66e67ad62aa2d13e"
+  dependencies:
+    "@babel/runtime" "^7.6.2"
 
 gatsby-plugin-manifest@^2.1.1:
   version "2.2.20"
