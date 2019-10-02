@@ -1,14 +1,19 @@
 
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
+import Loadable from '@loadable/component';
 
 import ImageById from '../Image/ImageById';
+import SeenIcon from '../SeenIcon/SeenIcon';
+import {shouldShowSeenIcon, isObjectSeen} from '../../lib/session';
+
+// const SeenIcon = Loadable(() => import('../SeenIcon/SeenIcon'));
 
 class ItemTile extends Component {
 
 	render() {
     const itemTileClass = this.props.className || 'item-tile';
-		const { style, url, imageId, imageUrl, imageTag } = this.props;
+		const { style, url, imageId, imageUrl, imageTag, objectId } = this.props;
 		return (
       <div className={itemTileClass}
 			     style={style}>
@@ -17,6 +22,7 @@ class ItemTile extends Component {
 					<div className="item-tile__image-holder">
 						<ImageById size="thumbnail" imageId={imageId} />
 						{ imageTag && <div className="tile-image-tag">{imageTag}</div> }
+						{ shouldShowSeenIcon() && isObjectSeen(objectId) && <SeenIcon/> }
 					</div>
 				</Link>
 

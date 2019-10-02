@@ -96,7 +96,7 @@ class Layout extends Component {
                   <main className={`${appClassName}__content`}>
                     {children}
 
-                    { location.pathname !== '/' &&  <Footer /> }
+                    {/*{ location.pathname !== '/' &&  <Footer /> }*/}
                   </main>
 
                   <div className={`${appClassName}__sidenav`}>

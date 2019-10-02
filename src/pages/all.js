@@ -26,7 +26,7 @@ const allObjectsPage = ({
                   {
                     set.setObjects.map((object, j) => {
                       if (object.object)
-                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} />
+                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} objectId={object.id.toString()}/>
                     })
                   }
                   </div>

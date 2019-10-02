@@ -8,6 +8,7 @@ import SEO from '../components/seo';
 
 // fragment to fetch GatsbyImageSharp
 import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
+import { saveSeenObject } from '../lib/session';
 
 const ObjectPage = ({
   data: { images, object },
@@ -27,7 +28,7 @@ const ObjectPage = ({
   console.log(images.length && images[0]);
 
   let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
-
+  saveSeenObject(object.id.toString());
   return (
     <Layout>
       <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />

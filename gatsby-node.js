@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 // gatsby-node.js
 const { GQLGatsbyWrapper, GQLClientWrapper, printGraphQLError } = require(`./src/lib/graphQL`);
@@ -155,3 +156,11 @@ exports.createPages = async ({ actions, graphql }) => {
   // createDynamicPages('all', allSet.edges, createPage, allTemplate );
   createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
 }
+
+exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, plugins, actions }) => {
+  actions.setWebpackConfig({
+    plugins: [new LoadablePlugin()]
+  })
+}
+
+
