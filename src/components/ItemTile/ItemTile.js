@@ -1,13 +1,10 @@
 
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
-import Loadable from '@loadable/component';
 
 import ImageById from '../Image/ImageById';
 import SeenIcon from '../SeenIcon/SeenIcon';
 import {shouldShowSeenIcon, isObjectSeen} from '../../lib/session';
-
-// const SeenIcon = Loadable(() => import('../SeenIcon/SeenIcon'));
 
 class ItemTile extends Component {
 

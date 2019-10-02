@@ -9,7 +9,6 @@ const RESIZE_EVENT = 'resize';
 function handleWindowResize() {
   if (viewport.width !== window.innerWidth || viewport.height !== window.innerHeight) {
     viewport = {width: window.innerWidth, height: window.innerHeight};
-    // console.log(viewport);
     EE.emit(RESIZE_EVENT, viewport);
   }
 }
@@ -20,8 +19,10 @@ function withViewport(ComposedComponent) {
     constructor() {
       super();
 
+      console.log(canUseDOM());
+      console.log(canUseDOM);
       this.state = {
-        viewport: canUseDOM ? {width: window.innerWidth, height: window.innerHeight} : viewport,
+        viewport: canUseDOM() ? {width: window.innerWidth, height: window.innerHeight} : viewport,
       };
     }
 

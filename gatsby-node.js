@@ -157,10 +157,3 @@ exports.createPages = async ({ actions, graphql }) => {
   createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
 }
 
-exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, plugins, actions }) => {
-  actions.setWebpackConfig({
-    plugins: [new LoadablePlugin()]
-  })
-}
-
-

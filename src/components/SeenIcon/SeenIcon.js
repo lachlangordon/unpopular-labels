@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {canUseDOM} from '../../lib/utils';
 
 class SeenIcon extends Component {
   render() {
