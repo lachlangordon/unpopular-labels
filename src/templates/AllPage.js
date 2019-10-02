@@ -13,7 +13,7 @@ const allObjectsPage = ({
   }) => {
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="All Objects"/>
       <main id="main" className="all-page main">
       {

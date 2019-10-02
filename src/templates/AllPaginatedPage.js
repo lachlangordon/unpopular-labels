@@ -17,7 +17,7 @@ const AllPaginated = ({
   }
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="All Objects"/>
       {
         data.sets.map((set, i) => {
