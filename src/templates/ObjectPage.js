@@ -92,7 +92,7 @@ const ObjectPage = ({
           <div className="container container--md no-padding">
             <section className="content-related" >
                 { related.length &&
-                  <div className="object-page__related-items" style={{ display: 'grid' }} >
+                  <div className="object-page__related-items" >
                     <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
                     <ItemSwipe className="object-page__related-slider" relatedItems={related} />
                   </div>

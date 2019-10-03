@@ -42,10 +42,26 @@ const SetPage = ({
               <div className="container container--lg">
                   <div className="set-page__content">
                   {
-                    objects.map((object, j) => {
-                      if (object.object)
-                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} objectId={object.id.toString()}/>
-                    })
+                    <div className="img-gallery">
+                      <div className="img-gallery__col-grid">
+                        {
+                          objects.map((object, j) => {
+                            if (object.object) {
+                              return object.object.mainImage && (
+                                <div className="img-gallery__col-grid--item" key={j}>
+                                  <ItemTile className="img-gallery__col-grid--item-image"
+                                            key={`item-tile-${j}`}
+                                            url={'/object/' + object.id}
+                                            imageId={object.object.mainImage.id}
+                                            objectId={object.id.toString()}
+                                        />
+                                </div>
+                              )
+                            }
+                        })
+                      }
+                      </div>
+                    </div>
                   }
                   </div>
               </div>

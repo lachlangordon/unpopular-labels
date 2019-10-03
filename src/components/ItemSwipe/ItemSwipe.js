@@ -60,7 +60,7 @@ const ItemSwipe = ({ className, deviceType, relatedItems }) => {
 					relatedItems.map((object, j) => {
 						if (object.object) {
 							 return object.object.mainImage && (
-								 <div key={`item-tile-${j}`} className="item-tile__image-holder">
+								 <div key={`item-slide-${j}`} className="item-slide__image-holder">
 									 <Link to={'/object/' + object.id}>
 									 	 <ImageById size="thumbnail" imageId={object.object.mainImage.id} />
 									 	 {/* <img size="thumbnail" src={object.object.mainImage.thumbnailURL} width="70" height="70"/> */}
