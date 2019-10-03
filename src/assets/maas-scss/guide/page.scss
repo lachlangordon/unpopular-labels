@@ -69,7 +69,26 @@ $content-height-min: 1040px;
     }
 
     .object-page__credit-line, .object-page__significance-statement {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .object-page__title {
+      margin-bottom: 0.1rem;
+    }
+
+    //Related content
+    .object-page__related-items__title {
+      margin-bottom: 0;
+    }
+
+    .object-page__related-items__count {
+      font-size: 0.8rem;
+    }
+
+    .object-page__related-items__scroll {
+      margin-bottom: $spacing-xs;
+      font-size: 0.8rem;
+      text-align: right;
     }
   }
 

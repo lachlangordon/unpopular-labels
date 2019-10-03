@@ -93,7 +93,11 @@ const ObjectPage = ({
             <section className="content-related">
                 { related.length &&
                   <div className="object-page__related-items">
-                    <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
+                    <div>
+                      <h2 className="object-page__related-items__title">Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </h2>
+                      <div className="object-page__related-items__count">{`${related.length + 1} objects`}</div>
+                      <div className="object-page__related-items__scroll">&larr; scroll</div>
+                    </div>
                     <ItemSwipe className="object-page__related-slider" relatedItems={related} /> 
                   </div>
                 }
