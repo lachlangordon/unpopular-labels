@@ -5,6 +5,8 @@ import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
 import SEO from '../components/seo';
 
+import withViewport from '../decorators/withViewport';
+
 class ThemesPage extends Component {
   constructor(props) {
 		super(props);
@@ -21,28 +23,12 @@ class ThemesPage extends Component {
     return bannerSize;
   }
 
-  getViewportSize = (viewport) => {
-   // console.log('Here is the updated viewport value: ');
-   console.log(viewport);
-   return viewport;
-   // this.getBannerSize(viewport);
-  }
-
-  // onClickHandler = (test) => {
-  //   let viewport = this.getViewportSize;
-  //   console.log(viewport)
-  //   console.log( this.getBannerSize(viewport) );
-  //   this.setState({ bannerSize: this.getBannerSize(viewport) });
-  // }
-
   render() {
     const { data, pageContext, location } = this.props;
     const { masterNarrativeId } = pageContext;
+    console.log(this.props.viewport);
 
-    // const currentSize = this.getBannerSize(  );
-    // console.log(currentSize)
-    //
-    // returnViewportSize={ this.getViewportSize }
+    let bannerSize = this.getBannerSize(this.props.viewport);
     return (
       <Layout location={location}>
         <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
@@ -55,7 +41,7 @@ class ThemesPage extends Component {
               return (
                   <article key={`theme-item-${i}`} className="banner-article">
                     <Link to={"/set/" + section.id} className="link primary">
-                      <Banner size={ this.state.bannerSize } themeId={`${i + 1}`} />
+                      <Banner size={ bannerSize } themeId={`${i + 1}`} />
                     </Link>
                     <h3 className="theme-item__title"> { section.name } </h3>
                   </article>
@@ -71,7 +57,7 @@ class ThemesPage extends Component {
   }
 }
 
-export default ThemesPage;
+export default withViewport(ThemesPage);
 
 // id: 6761
 // fields: { slug: { eq: $slug } }
