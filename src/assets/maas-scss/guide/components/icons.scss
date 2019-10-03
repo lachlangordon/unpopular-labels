@@ -6,25 +6,26 @@
 .linda__quote:before {
   // display: block;
 	position: relative;
-	top: 15px;
+	top: 13px;
   left: 10px;
 	float: right;
   content: ' ';
   background-image: url('./svg/linda.svg');
   // background-size: 28px 28px;
-  height: 15px;
+  height: 12.509px;
   width: 36.61px;
 }
 
 .jenny__quote:before {
   // display: block;
 	position: relative;
-	top: 13px;
+
+	top: 15px;
   left: 10px;
 	float: right;
   content: ' ';
   background-image: url('./svg/jenny.svg');
   // background-size: 28px 28px;
-  height: 12.509px;
+  height: 15px;
   width: 36.61px;
 }

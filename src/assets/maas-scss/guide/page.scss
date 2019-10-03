@@ -4,7 +4,9 @@
 ///
 
 /* Page */
-  @import '../core/variables.scss';
+@import '../core/variables.scss';
+
+$content-height-min: 1040px;
 
 // MSIE: Required for IEMobile.
   @-ms-viewport {
@@ -26,6 +28,9 @@
 			}
 		}
 	}
+
+  // for fitting in ipad-pro - portrait
+  main { min-height: $content-height-min }
 
   /*------------------------------------*\
       #ALL-PAGE
