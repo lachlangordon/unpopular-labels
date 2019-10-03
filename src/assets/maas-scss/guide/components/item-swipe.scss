@@ -137,13 +137,19 @@
 	}
 }
 
-
-.image-item {
-  padding: 10px;
+// fix ipadPro landscape
+@media (min-width: $screen-lg-min) {
+	.object-page__related-items {
+		display: grid;
+	}
 }
 
 
 /*
+.image-item {
+  padding: 10px;
+}
+
 .container-with-dots {
   margin-top: 20px;
   padding-bottom: 10px;

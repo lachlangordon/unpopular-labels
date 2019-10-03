@@ -17,7 +17,7 @@ class ItemTile extends Component {
 
       	<Link to={url}>
 					<div className="item-tile__image-holder">
-						<ImageById size="thumbnail" imageId={imageId} />
+						<ImageById imageId={imageId} />
 						{ imageTag && <div className="tile-image-tag">{imageTag}</div> }
 						{ shouldShowSeenIcon() && isObjectSeen(objectId) && <SeenIcon/> }
 					</div>
