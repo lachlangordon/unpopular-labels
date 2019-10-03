@@ -40,7 +40,7 @@ const ObjectPage = ({
     <Layout location={location}>
       <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
 
-      <main className="object-page main">
+      <div className="object-page">
           <div className="container container--md no-padding">
             <section className="content-header">
                 <div className="object-page__mainImg">
@@ -82,24 +82,25 @@ const ObjectPage = ({
                                     dangerouslySetInnerHTML={{ __html: `<span class="${quotedClass(object.notes4)}"> &mdash; ${object.notes4} </span>` }} />
                     }
 
-                    <hr />
+
                 </div>
             </section>
-
           </div>
 
+          <hr />
+
           <div className="container container--md no-padding">
-            <section className="content-related">
+            <section className="content-related" >
                 { related.length &&
-                  <div className="object-page__related-items">
+                  <div className="object-page__related-items" style={{ display: 'grid' }} >
                     <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
-                    <ItemSwipe className="object-page__related-slider" relatedItems={related} /> 
+                    <ItemSwipe className="object-page__related-slider" relatedItems={related} />
                   </div>
                 }
             </section>
           </div>
 
-      </main>
+      </div>
     </Layout>
   )
 

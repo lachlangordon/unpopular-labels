@@ -21,7 +21,7 @@ const SetPage = ({
   return (
     <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
-      <main id="main" className="set-page main">
+      <div id="set-page" className="set-page">
             <section className="content-header">
               { set.id && (
                     <Banner className="no-padding" type="ribbon" size={ bannerSize } themeId={ convertToSID(set.id) } />
@@ -50,7 +50,7 @@ const SetPage = ({
                   </div>
               </div>
             </section>
-      </main>
+      </div>
     </Layout>
   );
 }

@@ -1,31 +1,60 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'gatsby';
 
-// https://github.com/voronianski/react-swipe
-// import ReactSwipe from 'react-swipe';
-
 // https://github.com/akiran/react-slick
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 
-// import ItemTile from '../ItemTile/ItemTile';
+import Slider from 'react-multi-carousel';
 import ImageById from '../Image/ImageById';
 import SeenIcon from '../SeenIcon/SeenIcon';
 import {isObjectSeen, shouldShowSeenIcon} from "../../lib/session";
 
-const ItemSwipe = ({ relatedItems }) => {
-  const settings = {
-    // dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-  };
+const responsive = {
+  desktop: {
+    breakpoint: {
+      max: 3000,
+      min: 1024
+    },
+    items: 5,
+    slidesToSlide: 1,
+    partialVisibilityGutter: 40
+  },
+  tablet: {
+    breakpoint: {
+      max: 1024,
+      min: 768
+    },
+    items: 4,
+    slidesToSlide: 1,
+    partialVisibilityGutter: 30
+  },
+  mobile: {
+    breakpoint: {
+      max: 320,
+      min: 0
+    },
+    items: 3,
+    slidesToSlide: 1,
+    partialVisibilityGutter: 30
+  }
+};
 
+const ItemSwipe = ({ className, deviceType, relatedItems }) => {
+  const handleOnDragStart = e => e.preventDefault();
+
+  const clsName = className || 'item-swipe__slider';
   let sliderEl;
   return (
-    <div>
-      <Slider { ...settings }
+      <Slider
+          infinite
+          swipeable
+          draggable
+          partialVisbile
+          slidesToSlide={1}
+          deviceType={deviceType}
+          responsive={responsive}
+          containerClass="object-page__related-slider"
       >
 				{
 					relatedItems.map((object, j) => {
@@ -42,13 +71,7 @@ const ItemSwipe = ({ relatedItems }) => {
 						}
 					})
 				}
-
       </Slider>
-      {/*
-        <button onClick={() => sliderEl.prev()}>Previous</button>
-        <button onClick={() => sliderEl.next()}>Next</button>
-      */}
-    </div>
   );
 };
 /*
