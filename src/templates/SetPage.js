@@ -6,21 +6,25 @@ import Banner from '../components/Banner/Banner';
 import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
 
-import { convertToSID } from '../lib/utils';
+import withViewport from '../decorators/withViewport';
+
+import { convertToSID, getBannerSize } from '../lib/utils';
 
  // Narrative
 const SetPage = ({
   data: { set, objects },
   pageContext,
   location,
+  viewport
 }) => {
+  let bannerSize = getBannerSize(viewport);
   return (
     <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
       <main id="main" className="set-page main">
             <section className="content-header">
               { set.id && (
-                    <Banner className="no-padding" type="ribbon" size="hi-res" themeId={ convertToSID(set.id) } />
+                    <Banner className="no-padding" type="ribbon" size={ bannerSize } themeId={ convertToSID(set.id) } />
                 )
               }
 
@@ -51,7 +55,7 @@ const SetPage = ({
   );
 }
 
-export default SetPage;
+export default withViewport(SetPage);
 
 export const pageQuery = graphql`
 query SetPage( $id: String!) {

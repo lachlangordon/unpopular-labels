@@ -7,28 +7,20 @@ import SEO from '../components/seo';
 
 import withViewport from '../decorators/withViewport';
 
+import { getBannerSize } from '../lib/utils';
+
 class ThemesPage extends Component {
   constructor(props) {
 		super(props);
     this.state = { bannerSize: "desktop" }
 	}
 
-  // input = viewport size
-  getBannerSize = ({ width, height }) => {
-    let bannerSize;
-    if (width < 767) { bannerSize = "mobile"; }
-    else if (width > 767 && width < 1366) { bannerSize = "ipad"; }
-    else if (width > 1366) { bannerSize = "desktop";  }
-    else { bannerSize = "hi-res";  }
-    return bannerSize;
-  }
-
   render() {
     const { data, pageContext, location } = this.props;
     const { masterNarrativeId } = pageContext;
     console.log(this.props.viewport);
 
-    let bannerSize = this.getBannerSize(this.props.viewport);
+    let bannerSize = getBannerSize(this.props.viewport);
     return (
       <Layout location={location}>
         <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
