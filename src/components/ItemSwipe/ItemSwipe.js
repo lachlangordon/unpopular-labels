@@ -31,16 +31,16 @@ const responsive = {
   },
   mobile: {
     breakpoint: {
-      max: 320,
+      max: 480,
       min: 0
     },
     items: 3,
     slidesToSlide: 1,
-    partialVisibilityGutter: 30
+    partialVisibilityGutter: 20
   }
 };
 
-const ItemSwipe = ({ className, deviceType, relatedItems }) => {
+const ItemSwipe = ({ className, deviceType, objectItems }) => {
   const handleOnDragStart = e => e.preventDefault();
 
   const clsName = className || 'item-swipe__slider';
@@ -54,16 +54,15 @@ const ItemSwipe = ({ className, deviceType, relatedItems }) => {
           slidesToSlide={1}
           deviceType={deviceType}
           responsive={responsive}
-          containerClass="object-page__related-slider"
+          containerClass={clsName}
       >
 				{
-					relatedItems.map((object, j) => {
+					objectItems.map((object, j) => {
 						if (object.object) {
 							 return object.object.mainImage && (
 								 <div key={`item-slide-${j}`} className="item-slide__image-holder">
 									 <Link to={'/object/' + object.id}>
 									 	 <ImageById size="thumbnail" imageId={object.object.mainImage.id} />
-									 	 {/* <img size="thumbnail" src={object.object.mainImage.thumbnailURL} width="70" height="70"/> */}
                      { shouldShowSeenIcon() && isObjectSeen(object.id.toString()) && <SeenIcon/> }
 									 </Link>
 								 </div>

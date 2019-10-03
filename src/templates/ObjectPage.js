@@ -7,7 +7,7 @@ import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 
 // fragment to fetch GatsbyImageSharp
-import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
+// import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
 import { saveSeenObject } from '../lib/session';
 import { parseCirca } from '../lib/utils';
 
@@ -34,7 +34,7 @@ const ObjectPage = ({
     title += `, ${ parseCirca(object.object.production[0].date) }`;
   }
 
-  let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
+  let related = object.parent.setObjects.filter((otherObject) => otherObject.id !== object.id);
   saveSeenObject(object.id.toString());
   return (
     <Layout location={location}>
@@ -94,7 +94,7 @@ const ObjectPage = ({
                 { related.length &&
                   <div className="object-page__related-items" >
                     <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
-                    <ItemSwipe className="object-page__related-slider" relatedItems={related} />
+                    <ItemSwipe className="object-page__related-slider" objectItems={related} />
                   </div>
                 }
             </section>
