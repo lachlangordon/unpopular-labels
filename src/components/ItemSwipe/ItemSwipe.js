@@ -16,7 +16,7 @@ const responsive = {
       max: 3000,
       min: 1024
     },
-    items: 6,
+    items: 5,
     slidesToSlide: 1,
     partialVisibilityGutter: 40
   },
@@ -25,7 +25,7 @@ const responsive = {
       max: 1024,
       min: 768
     },
-    items: 5,
+    items: 4,
     slidesToSlide: 1,
     partialVisibilityGutter: 30
   },
