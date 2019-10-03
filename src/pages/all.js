@@ -13,7 +13,7 @@ const allObjectsPage = ({
     <Layout location={location}>
       <SEO title="All Objects"/>
 
-      <main id="main" className="all-page main">
+      <div className="all-page">
       {
         Sets.map((set, i) => {
           return(
@@ -53,7 +53,7 @@ const allObjectsPage = ({
           )
         })
       }
-      </main>
+      </div>
 
     </Layout>
 );

@@ -48,11 +48,9 @@ $content-height-min: 1040px;
     float: left;
   }
 
-
   .all-page__content {
     lost-utility: clearfix;
   }
-
 
   /*------------------------------------*\
       #CONTENT
@@ -60,6 +58,10 @@ $content-height-min: 1040px;
 
   .content-header {
     padding-bottom: 1em;
+  }
+
+  .footer-content {
+    lost-column: 1;
   }
 
   // object page

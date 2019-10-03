@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
@@ -17,7 +17,7 @@ const SetPage = ({
   return (
     <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
-      <div id="set-page" className="set-page">
+      <div className="set-page">
             <section className="content-header">
               { set.id && (
                     <Banner className="no-padding" type="ribbon" size="hi-res" themeId={ convertToSID(set.id) } />

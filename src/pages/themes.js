@@ -36,8 +36,7 @@ class ThemesPage extends Component {
   // }
 
   render() {
-    const { data, pageContext, location } = this.props;
-    const { masterNarrativeId } = pageContext;
+    const { data, location } = this.props;
 
     // const currentSize = this.getBannerSize(  );
     // console.log(currentSize)
@@ -47,7 +46,7 @@ class ThemesPage extends Component {
       <Layout location={location}>
         <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
 
-        <main id="themes-page">
+        <div className="themes-page">
           <section className="themes-page__body">
 
             <div className="container container--lg no-padding">
@@ -63,9 +62,8 @@ class ThemesPage extends Component {
             })}
             </div>
 
-            {/* <button onClick={this.onClickHandler}> click </button> */}
           </section>
-        </main>
+        </div>
       </Layout>
     )
   }

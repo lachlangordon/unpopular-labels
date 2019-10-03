@@ -24,7 +24,7 @@ const ImageById = ({ imageId, size }) => (
          const { id, filename, caption } = imgFound.node;
          const imgProp = {
            imgObject: imgFound.node.fields.localFile,
-           isThumb: size == 'thumbnail' ? true : false,
+           isThumb: size === 'thumbnail' ? true : false,
            // src: imgFound.node.serverCropSrc,
            name: caption || filename,
          }
