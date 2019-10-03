@@ -4,6 +4,7 @@ import {graphql, Link} from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
+import IconLegend from "../components/IconLegend/IconLegend";
 // import {handleBack, handleScrollToTop} from "../lib/navUtils";
 
 const allObjectsPage = ({
@@ -26,7 +27,7 @@ const allObjectsPage = ({
                   {
                     set.setObjects.map((object, j) => {
                       if (object.object)
-                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} objectId={object.id.toString()}/>
+                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} objectId={object.id.toString()} hasQuote={object.notes3 !== null}/>
                     })
                   }
                   </div>
@@ -36,6 +37,11 @@ const allObjectsPage = ({
           )
         })
       }
+        <section className="section">
+          <div className="container container--lg">
+            <IconLegend/>
+          </div>
+        </section>
       </main>
 
     </Layout>
@@ -50,6 +56,7 @@ export const pageQuery = graphql`
       name
       setObjects {
         id
+        notes3
         object {
           id
           displayTitle

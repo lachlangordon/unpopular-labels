@@ -5,6 +5,7 @@ import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
+import IconLegend from "../components/IconLegend/IconLegend";
 
 // fragment to fetch GatsbyImageSharp
 import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
@@ -14,8 +15,8 @@ import { parseCirca } from '../lib/utils';
 // assign class to Linda or Jenny quotes
 const quotedClass = quote => {
   let className = 'other__quote';
-  if ( quote.match(/Linda Jackson/) ) { className = `linda__quote`; }
-  else if ( quote.match(/Jenny Kee/) ) { className = `jenny__quote`; }
+  if ( quote.match(/^Linda Jackson/) ) { className = `linda__quote`; }
+  else if ( quote.match(/^Jenny Kee/) ) { className = `jenny__quote`; }
   return className;
 }
 
@@ -97,6 +98,11 @@ const ObjectPage = ({
                   </div>
                 }
             </section>
+            <section className="section">
+              <div className="container container--lg">
+                <IconLegend/>
+              </div>
+            </section>
           </div>
 
       </main>
@@ -136,6 +142,7 @@ export const pageQuery = graphql`
           name
           setObjects {
             id
+            notes3
             object {
               displayTitle
               mainImage {

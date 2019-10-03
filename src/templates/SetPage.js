@@ -5,6 +5,7 @@ import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
 import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
+import IconLegend from "../components/IconLegend/IconLegend";
 
 import withViewport from '../decorators/withViewport';
 
@@ -44,10 +45,15 @@ const SetPage = ({
                   {
                     objects.map((object, j) => {
                       if (object.object)
-                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} objectId={object.id.toString()}/>
+                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} objectId={object.id.toString()} hasQuote={object.notes3 !== null}/>
                     })
                   }
                   </div>
+              </div>
+            </section>
+            <section className="section">
+              <div className="container container--lg">
+                <IconLegend/>
               </div>
             </section>
       </main>
@@ -67,6 +73,7 @@ query SetPage( $id: String!) {
   }
   objects: SetObjectsByParentId(parentId: $id) {
     id
+    notes3
     object {
       name
       mainImage {

@@ -4,6 +4,7 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
 import SEO from '../components/seo';
+import IconLegend from "../components/IconLegend/IconLegend";
 
 import withViewport from '../decorators/withViewport';
 
@@ -42,6 +43,11 @@ class ThemesPage extends Component {
             </div>
 
             {/* <button onClick={this.onClickHandler}> click </button> */}
+          </section>
+          <section className="section">
+            <div className="container container--lg">
+              <IconLegend/>
+            </div>
           </section>
         </main>
       </Layout>
