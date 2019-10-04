@@ -1,0 +1,36 @@
+import React, { Component } from 'react';
+
+class JennyIcon extends Component {
+  render() {
+    return (
+      <span className="jenny-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36.61" height="15" viewBox="0 0 36.61 15">
+          <defs>
+            <clipPath id="clip-path">
+              <path id="Path_12" data-name="Path 12" d="M19.106-213.281a36.71,36.71,0,0,1,4.67-1.515,37.2,37.2,0,0,1,4.438-.789q2.747-.059,3.82,0c.69.038,1.36.208,1.864.261a4.963,4.963,0,0,1,2.718.891,22.925,22.925,0,0,1,0,4.021,14.292,14.292,0,0,1-1.018,3.52,10.538,10.538,0,0,1-4.794,5.169,7.992,7.992,0,0,1-5.577.824,6.457,6.457,0,0,1-4.2-3.283,13.92,13.92,0,0,1-1.17-2.709,15.022,15.022,0,0,1-.2-3.024,1.8,1.8,0,0,0-1.252-.5,1.577,1.577,0,0,0-1.185.5,13.738,13.738,0,0,1-1.079,5.166,8.03,8.03,0,0,1-2.978,3.307,7.878,7.878,0,0,1-3.7.543,9.448,9.448,0,0,1-3.247-.824A22.225,22.225,0,0,1,3.4-203.655a9.072,9.072,0,0,1-2.273-3.238,17.622,17.622,0,0,1-1.033-7.2,2.06,2.06,0,0,1,.868-.869,9.385,9.385,0,0,1,2.71-.62,24.089,24.089,0,0,1,4.811,0,45,45,0,0,1,4.472.789q1.414.362,4.524,1.515Z" transform="translate(-0.091 215.706)" fill="#e63422" clipRule="evenodd"/>
+            </clipPath>
+            <clipPath id="clip-path-2">
+              <path id="Path_14" data-name="Path 14" d="M58.585-170.528a5.419,5.419,0,0,0,5.585-5.236A5.419,5.419,0,0,0,58.585-181,5.419,5.419,0,0,0,53-175.764,5.419,5.419,0,0,0,58.585-170.528Z" transform="translate(-53 181)" fill="none" clipRule="evenodd"/>
+            </clipPath>
+            <clipPath id="clip-path-3">
+              <path id="Path_16" data-name="Path 16" d="M318.585-170.528a5.419,5.419,0,0,0,5.585-5.236A5.419,5.419,0,0,0,318.585-181,5.419,5.419,0,0,0,313-175.764,5.419,5.419,0,0,0,318.585-170.528Z" transform="translate(-313 181)" fill="none" clipRule="evenodd"/>
+            </clipPath>
+          </defs>
+          <g id="Group_106" data-name="Group 106" transform="translate(-0.091 215.706)">
+            <g id="Group_85" data-name="Group 85" transform="translate(0.091 -215.706)" clipPath="url(#clip-path)">
+              <path id="Path_11" data-name="Path 11" d="M-4.909-205.008H32.4v-15.7H-4.909Z" transform="translate(4.56 220.357)" fill="#e63422"/>
+            </g>
+            <g id="Group_86" data-name="Group 86" transform="translate(3.784 -213.283)" clipPath="url(#clip-path-2)">
+              <path id="Path_13" data-name="Path 13" d="M48-174.83H59.868V-186H48Z" transform="translate(-48.349 185.651)" fill="#fff"/>
+            </g>
+            <g id="Group_87" data-name="Group 87" transform="translate(21.935 -213.283)" clipPath="url(#clip-path-3)">
+              <path id="Path_15" data-name="Path 15" d="M308-174.83h11.868V-186H308Z" transform="translate(-308.349 185.651)" fill="#fff"/>
+            </g>
+          </g>
+        </svg>
+      </span>
+    );
+  }
+}
+
+export default JennyIcon;

@@ -13,11 +13,11 @@ const BgImage = ({
    children,
    className
  }) => {
-
+  console.log(height);
   return (
    <div className="bg-image" style={{ backgroundColor: overlayColor }}>
        <Image imgClassName="bg-image__gatsby-img" imgStyle={{
-           height: `${({ height }) => height}`,
+           height: `${height}`,
           }}
           imgObject={ imgObject }
           height={height}

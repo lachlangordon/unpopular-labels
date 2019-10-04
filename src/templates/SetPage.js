@@ -37,7 +37,11 @@ const SetPage = ({
                   <div className="set-page__description"
                      dangerouslySetInnerHTML={{ __html: set.description }} />
 
-                  <hr /> <IconLegend/>
+                  <div className="set-page__info">
+                    {`${objects.length} objects`}
+                    <hr /> <IconLegend/>
+                  </div>
+
                </div>
             </section>
 

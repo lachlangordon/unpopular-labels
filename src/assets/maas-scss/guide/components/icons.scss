@@ -2,27 +2,9 @@
     #ICONS
 \*------------------------------------*/
 
-
-.linda__quote:before {
-	position: relative;
-	top: 13px;
-  left: 10px;
-	float: right;
-  content: ' ';
-  background-image: url('./svg/linda.svg');
-  // background-size: 28px 28px;
-  height: 12.509px;
-  width: 36.61px;
-}
-
-.jenny__quote:before {
-	position: relative;
-	top: 15px;
-  left: 10px;
-	float: right;
-  content: ' ';
-  background-image: url('./svg/jenny.svg');
-  // background-size: 28px 28px;
-  height: 15px;
-  width: 36.61px;
+.jenny-icon,
+.linda-icon {
+  line-height: 0;
+  font-size: 1.5em;
+  margin: 0.25em;
 }
