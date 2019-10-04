@@ -5,22 +5,27 @@ import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
 import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
+import IconLegend from "../components/IconLegend/IconLegend";
 
-import { convertToSID } from '../lib/utils';
+import withViewport from '../decorators/withViewport';
+
+import { convertToSID, getBannerSize } from '../lib/utils';
 
  // Narrative
 const SetPage = ({
   data: { set, objects },
   pageContext,
   location,
+  viewport
 }) => {
+  let bannerSize = getBannerSize(viewport);
   return (
     <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
       <div className="set-page">
             <section className="content-header">
               { set.id && (
-                    <Banner className="no-padding" type="ribbon" size="hi-res" themeId={ convertToSID(set.id) } />
+                    <Banner className="no-padding" type="ribbon" size={ bannerSize } themeId={ convertToSID(set.id) } />
                 )
               }
 
@@ -48,8 +53,9 @@ const SetPage = ({
                                   <ItemTile className="img-gallery__col-grid--item-image"
                                             key={`item-tile-${j}`}
                                             url={'/object/' + object.id}
+                                            objectId={`${object.id}`}
                                             imageId={object.object.mainImage.id}
-                                            objectId={object.id.toString()}
+                                            hasQuote={object.notes3 !== null}
                                         />
                                 </div>
                               )
@@ -62,12 +68,17 @@ const SetPage = ({
                   </div>
               </div>
             </section>
+            <section className="section">
+              <div className="container container--lg">
+                <IconLegend/>
+              </div>
+            </section>
       </div>
     </Layout>
   );
 }
 
-export default SetPage;
+export default withViewport(SetPage);
 
 export const pageQuery = graphql`
 query SetPage( $id: String!) {
@@ -79,6 +90,7 @@ query SetPage( $id: String!) {
   }
   objects: SetObjectsByParentId(parentId: $id) {
     id
+    notes3
     object {
       name
       mainImage {

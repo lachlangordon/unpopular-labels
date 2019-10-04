@@ -5,6 +5,7 @@ import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
+import IconLegend from "../components/IconLegend/IconLegend";
 
 // fragment to fetch GatsbyImageSharp
 // import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
@@ -14,8 +15,8 @@ import { parseCirca } from '../lib/utils';
 // assign class to Linda or Jenny quotes
 const quotedClass = quote => {
   let className = 'other__quote';
-  if ( quote.match(/Linda Jackson/) ) { className = `linda__quote`; }
-  else if ( quote.match(/Jenny Kee/) ) { className = `jenny__quote`; }
+  if ( quote.match(/^Linda Jackson/) ) { className = `linda__quote`; }
+  else if ( quote.match(/^Jenny Kee/) ) { className = `jenny__quote`; }
   return className;
 }
 
@@ -92,11 +93,20 @@ const ObjectPage = ({
           <div className="container container--lg no-padding">
             <section className="content-related" >
                 { related.length &&
-                  <div className="object-page__related-items" >
-                    <strong> Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </strong>
-                    <ItemSwipe className="object-page__related-slider" objectItems={related} />
+                  <div className="object-page__related-items">
+                    <div>
+                      <h2 className="object-page__related-items__title">Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </h2>
+                      <div className="object-page__related-items__count">{`${related.length + 1} objects`}</div>
+                      <div className="object-page__related-items__scroll">&larr; scroll</div>
+                    </div>
+                    <ItemSwipe className="object-page__related-slider" objectItems={related} /> 
                   </div>
                 }
+            </section>
+            <section className="section">
+              <div className="container container--lg">
+                <IconLegend/>
+              </div>
             </section>
           </div>
 
@@ -137,6 +147,7 @@ export const pageQuery = graphql`
           name
           setObjects {
             id
+            notes3
             object {
               displayTitle
               mainImage {

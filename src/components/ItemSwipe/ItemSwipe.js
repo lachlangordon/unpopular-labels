@@ -7,6 +7,7 @@ import { navigate } from 'gatsby';
 import Slider from 'react-multi-carousel';
 import ImageById from '../Image/ImageById';
 import SeenIcon from '../SeenIcon/SeenIcon';
+import QuoteIcon from '../QuoteIcon/QuoteIcon';
 import {isObjectSeen, shouldShowSeenIcon} from "../../lib/session";
 
 class ItemSwipe extends Component {

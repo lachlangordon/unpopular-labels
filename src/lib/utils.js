@@ -47,4 +47,14 @@ const canUseDOM = () =>
     window.document.createElement
   );
 
-module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, parseCirca, canUseDOM };
+// input = viewport size
+const getBannerSize = ({ width, height }) => {
+  let bannerSize;
+  if (width < 767) { bannerSize = "mobile"; }
+  else if (width > 767 && width < 1366) { bannerSize = "ipad"; }
+  else if (width > 1366) { bannerSize = "desktop";  }
+  else { bannerSize = "hi-res";  }
+  return bannerSize;
+}
+
+module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, parseCirca, canUseDOM, getBannerSize };

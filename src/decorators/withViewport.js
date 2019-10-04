@@ -19,8 +19,6 @@ function withViewport(ComposedComponent) {
     constructor() {
       super();
 
-      console.log(canUseDOM());
-      console.log(canUseDOM);
       this.state = {
         viewport: canUseDOM() ? {width: window.innerWidth, height: window.innerHeight} : viewport,
       };
