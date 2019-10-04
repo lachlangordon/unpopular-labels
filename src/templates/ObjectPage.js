@@ -41,7 +41,7 @@ const ObjectPage = ({
       <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
 
       <div className="object-page">
-          <div className="container container--md no-padding">
+          <div className="container container--lg no-padding">
             <section className="content-header">
                 <div className="object-page__mainImg">
                   {
@@ -89,7 +89,7 @@ const ObjectPage = ({
 
           <hr />
 
-          <div className="container container--md no-padding">
+          <div className="container container--lg no-padding">
             <section className="content-related" >
                 { related.length &&
                   <div className="object-page__related-items" >

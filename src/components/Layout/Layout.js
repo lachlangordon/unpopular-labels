@@ -91,8 +91,6 @@ class Layout extends Component {
                   redirectUrlText="Try searching for something else"
                 /> */}
 
-                  { console.log( location ) }
-
                   <main className={`${appClassName}__content`}>
                     {children}
 
