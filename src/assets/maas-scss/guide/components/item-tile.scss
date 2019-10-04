@@ -32,3 +32,11 @@
 	position: relative;
 	overflow: hidden;
 }
+
+.item-tile__icon-holder {
+	position: absolute;
+	top: 0;
+	right: 0;
+	line-height: 0;
+	margin-top: 0.333rem;
+}

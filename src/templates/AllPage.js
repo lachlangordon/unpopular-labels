@@ -36,8 +36,9 @@ const allObjectsPage = ({
                                     <ItemTile className="img-gallery__col-grid--item-image"
                                               key={`item-tile-${j}`}
                                               url={'/object/' + object.id}
+                                              objectId={`${object.id}`}
                                               imageId={object.object.mainImage.id}
-                                              objectId={object.id.toString()}
+                                              hasQuote={object.notes3 !== null}
                                           />
                                   </div>
                                 )
@@ -46,7 +47,7 @@ const allObjectsPage = ({
                         }
                         </div>
                       </div>
-                      
+
                   </div>
 
     					</div>

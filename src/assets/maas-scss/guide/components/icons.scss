@@ -1,31 +1,40 @@
+// @import '../../core/variables.scss';
+
 /*------------------------------------*\
     #ICONS
 \*------------------------------------*/
 
-
-.linda__quote:before {
-  // display: block;
-	position: relative;
-	top: 13px;
-  left: 10px;
-	float: right;
-  content: ' ';
-  background-image: url('./svg/linda.svg');
-  // background-size: 28px 28px;
-  height: 12.509px;
-  width: 36.61px;
+.jenny-icon,
+.linda-icon {
+  line-height: 0;
+  font-size: 1.5em;
+  margin: 0.25em;
 }
 
-.jenny__quote:before {
-  // display: block;
-	position: relative;
+/*------------------------------------*\
+    #ICON-LEGEND
+\*------------------------------------*/
 
-	top: 15px;
-  left: 10px;
-	float: right;
-  content: ' ';
-  background-image: url('./svg/jenny.svg');
-  // background-size: 28px 28px;
-  height: 15px;
-  width: 36.61px;
+.icon-legend {
+  font-size: 0.8em;
+
+  div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+
+    p {
+      margin-bottom: 0;
+      margin-left: 1px;
+    }
+  }
+}
+
+/*------------------------------------*\
+    #SEEN-ICON
+\*------------------------------------*/
+
+.seen-icon, .quote-icon {
+  line-height: 0;
+  margin-right: 0.2rem;
 }

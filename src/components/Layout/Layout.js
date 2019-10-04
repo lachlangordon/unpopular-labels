@@ -80,7 +80,6 @@ class Layout extends Component {
           render={data => (
             <div className={`${appClassName} body
                             ${this.state.loading} `}>
-
                 <div className={`${appClassName}__wrapper`}>
 
                 {/* <!-- disable jumpy loader -->
@@ -90,8 +89,6 @@ class Layout extends Component {
                   redirectUrl="/search"
                   redirectUrlText="Try searching for something else"
                 /> */}
-
-                  { console.log( location ) }
 
                   <main className={`${appClassName}__content`}>
                     {children}

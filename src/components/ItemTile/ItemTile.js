@@ -3,14 +3,15 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby';
 
 import ImageById from '../Image/ImageById';
-import SeenIcon from '../SeenIcon/SeenIcon';
+import SeenIcon from '../Icons/SeenIcon';
+import QuoteIcon from '../Icons/QuoteIcon';
 import {shouldShowSeenIcon, isObjectSeen} from '../../lib/session';
 
 class ItemTile extends Component {
 
 	render() {
     const itemTileClass = this.props.className || 'item-tile';
-		const { style, url, imageId, imageUrl, imageTag, objectId } = this.props;
+		const { style, url, imageId, imageUrl, imageTag, objectId, hasQuote } = this.props;
 		return (
       <div className={itemTileClass}
 			     style={style}>
@@ -19,7 +20,10 @@ class ItemTile extends Component {
 					<div className="item-tile__image-holder">
 						<ImageById imageId={imageId} />
 						{ imageTag && <div className="tile-image-tag">{imageTag}</div> }
-						{ shouldShowSeenIcon() && isObjectSeen(objectId) && <SeenIcon/> }
+						<div className="item-tile__icon-holder">
+              { shouldShowSeenIcon() && isObjectSeen(objectId) && <SeenIcon/> }
+              { hasQuote && <QuoteIcon/>}
+						</div>
 					</div>
 				</Link>
 
