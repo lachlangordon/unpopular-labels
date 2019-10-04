@@ -6,13 +6,14 @@ import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 import IconLegend from "../components/IconLegend/IconLegend";
+import LindaIcon from "../components/LindaIcon/LindaIcon";
+import JennyIcon from "../components/JennyIcon/JennyIcon";
 
 // fragment to fetch GatsbyImageSharp
 import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
 import { saveSeenObject } from '../lib/session';
 import { parseCirca } from '../lib/utils';
-import LindaIcon from "../components/LindaIcon/LindaIcon";
-import JennyIcon from "../components/JennyIcon/JennyIcon";
+import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 
 // assign class to Linda or Jenny quotes
 const quotedClass = quote => {
@@ -130,6 +131,9 @@ const ObjectPage = ({
                 }
             </section>
             <section className="section">
+              <div className="container container--lg">
+                <NavigationButtons/>
+              </div>
               <div className="container container--lg">
                 <IconLegend/>
               </div>
