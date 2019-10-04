@@ -3,14 +3,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { navigate } from 'gatsby';
 
-// https://github.com/akiran/react-slick
-// import Slider from 'react-slick';
-
+// https://github.com/YIZHUANG/react-multi-carousel
 import Slider from 'react-multi-carousel';
 import ImageById from '../Image/ImageById';
 import SeenIcon from '../SeenIcon/SeenIcon';
 import {isObjectSeen, shouldShowSeenIcon} from "../../lib/session";
-
 
 class ItemSwipe extends Component {
 
