@@ -36,6 +36,10 @@ const SetPage = ({
 
                   <div className="set-page__description"
                      dangerouslySetInnerHTML={{ __html: set.description }} />
+
+                <div>
+                  {`${objects.length} objects`}
+                </div>
                </div>
             </section>
 

@@ -30,7 +30,12 @@ $content-height-min: 1040px;
 	}
 
   // for fitting in ipad-pro - portrait
-  main { min-height: $content-height-min }
+
+  @media (min-height: $screen-sm-min) and (max-width: 1023px) {
+    main {
+      min-height: $content-height-min
+    }
+  }
 
   /*------------------------------------*\
       #ALL-PAGE
@@ -87,6 +92,7 @@ $content-height-min: 1040px;
 
     .object-page__related-items__scroll {
       margin-bottom: $spacing-xs;
+      margin-right: $spacing-xs;
       font-size: 0.8rem;
       text-align: right;
     }

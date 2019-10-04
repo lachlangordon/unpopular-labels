@@ -11,6 +11,8 @@ import IconLegend from "../components/IconLegend/IconLegend";
 import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
 import { saveSeenObject } from '../lib/session';
 import { parseCirca } from '../lib/utils';
+import LindaIcon from "../components/LindaIcon/LindaIcon";
+import JennyIcon from "../components/JennyIcon/JennyIcon";
 
 // assign class to Linda or Jenny quotes
 const quotedClass = quote => {
@@ -18,6 +20,14 @@ const quotedClass = quote => {
   if ( quote.match(/^Linda Jackson/) ) { className = `linda__quote`; }
   else if ( quote.match(/^Jenny Kee/) ) { className = `jenny__quote`; }
   return className;
+}
+
+const getQuotePerson = quote => {
+  return quote.substring(0, quote.indexOf('<p>'));
+}
+
+const getQuoteAttribution = quote => {
+  return quote.substring(quote.indexOf('<p>'));
 }
 
 const ObjectPage = ({
@@ -34,6 +44,20 @@ const ObjectPage = ({
   if (object.object.production[0] && object.object.production[0].date !== null) {
     title += `, ${ parseCirca(object.object.production[0].date) }`;
   }
+
+  //Work out quote html
+
+  let quoteClass = '';
+  let glasses = undefined;
+  if (object.notes4) {
+    quoteClass = quotedClass(object.notes4);
+    if (quoteClass === 'linda__quote') {
+      glasses = <LindaIcon/>
+    } else if (quoteClass === 'jenny__quote') {
+      glasses = <JennyIcon/>
+    }
+  }
+
 
   let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
   saveSeenObject(object.id.toString());
@@ -79,8 +103,11 @@ const ObjectPage = ({
                     }
 
                     { object.notes4 &&
-                        <div className="object-page__notes4"
-                                    dangerouslySetInnerHTML={{ __html: `<span class="${quotedClass(object.notes4)}"> &mdash; ${object.notes4} </span>` }} />
+                      <div className="object-page__notes4">
+                        <span className={quoteClass} dangerouslySetInnerHTML={{ __html: `&mdash; ${getQuotePerson(object.notes4)}` }}/>
+                        {glasses}
+                        <div dangerouslySetInnerHTML={{ __html: getQuoteAttribution(object.notes4) }}/>
+                      </div>
                     }
 
                     <hr />

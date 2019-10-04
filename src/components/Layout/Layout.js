@@ -80,7 +80,6 @@ class Layout extends Component {
           render={data => (
             <div className={`${appClassName} body
                             ${this.state.loading} `}>
-
                 <div className={`${appClassName}__wrapper`}>
 
                 {/* <!-- disable jumpy loader -->

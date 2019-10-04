@@ -6,20 +6,22 @@ import Layout from '../components/Layout/Layout';
 import BgImage from '../components/Image/BgImage';
 import SEO from '../components/seo';
 
+import withViewport from '../decorators/withViewport';
+
 import { siteMeta } from '../queries/fragments';
 
 const IndexPage = ({
   data: { site, heroImage },
+  viewport,
   location,
 }) => {
-
+  console.log(viewport);
   return (
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <main className="index-page">
-
           <div className="container container--lg no-padding">
-            <BgImage height={ 755 }
+            <BgImage height={ 100 }
                      imgObject={ heroImage }>
 
                 <h2 className="guide-index-page__title"
@@ -43,7 +45,7 @@ const IndexPage = ({
 
 };
 
-export default IndexPage;
+export default withViewport(IndexPage);
 
 // id: 6761
 // This query is executed at build time by Gatsby.
