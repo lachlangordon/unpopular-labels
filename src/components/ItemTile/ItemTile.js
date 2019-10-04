@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import { Link } from 'gatsby';
 
 import ImageById from '../Image/ImageById';
-import SeenIcon from '../SeenIcon/SeenIcon';
-import QuoteIcon from '../QuoteIcon/QuoteIcon';
+import SeenIcon from '../Icons/SeenIcon';
+import QuoteIcon from '../Icons/QuoteIcon';
 import {shouldShowSeenIcon, isObjectSeen} from '../../lib/session';
 
 class ItemTile extends Component {

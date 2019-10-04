@@ -8,9 +8,10 @@ import SEO from '../components/seo';
 
 import { saveSeenObject } from '../lib/session';
 import { parseCirca } from '../lib/utils';
-import LindaIcon from "../components/LindaIcon/LindaIcon";
-import JennyIcon from "../components/JennyIcon/JennyIcon";
-import IconLegend from "../components/IconLegend/IconLegend";
+
+import LindaIcon from "../components/Icons/LindaIcon";
+import JennyIcon from "../components/Icons/JennyIcon";
+import IconLegend from "../components/Icons/IconLegend";
 
 // assign class to Linda or Jenny quotes
 const quotedClass = quote => {
