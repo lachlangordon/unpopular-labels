@@ -1,14 +1,12 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { rhythm, scale } from '../lib/typography';
+import { scale } from '../lib/typography';
 
 import Layout from '../components/Layout/Layout';
 import BgImage from '../components/Image/BgImage';
 import SEO from '../components/seo';
 
 import withViewport from '../decorators/withViewport';
-
-import { siteMeta } from '../queries/fragments';
 
 const IndexPage = ({
   data: { site, heroImage },
@@ -19,7 +17,7 @@ const IndexPage = ({
   return (
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <main className="index-page">
+      <div className="index-page">
           <div className="container container--lg no-padding">
             <BgImage height={ 100 }
                      imgObject={ heroImage }>
@@ -39,7 +37,7 @@ const IndexPage = ({
             </BgImage>
           </div>
 
-      </main>
+      </div>
     </Layout>
   )
 

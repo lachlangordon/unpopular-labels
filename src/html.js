@@ -17,9 +17,6 @@ export default class HTML extends Component {
             src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"
           />
 
-          {/* added for ItemSwipe -- https://github.com/akiran/react-slick */}
-          <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
           {/* Add custom css or scripts here */}
 
           {headComponents}

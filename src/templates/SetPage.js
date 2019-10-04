@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
@@ -22,7 +22,7 @@ const SetPage = ({
   return (
     <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
-      <main id="main" className="set-page main">
+      <div className="set-page">
             <section className="content-header">
               { set.id && (
                     <Banner className="no-padding" type="ribbon" size={ bannerSize } themeId={ convertToSID(set.id) } />
@@ -37,9 +37,11 @@ const SetPage = ({
                   <div className="set-page__description"
                      dangerouslySetInnerHTML={{ __html: set.description }} />
 
-                <div>
-                  {`${objects.length} objects`}
-                </div>
+                  <div className="set-page__info">
+                    {`${objects.length} objects`}
+                    <hr /> <IconLegend/>
+                  </div>
+
                </div>
             </section>
 
@@ -47,20 +49,33 @@ const SetPage = ({
               <div className="container container--lg">
                   <div className="set-page__content">
                   {
-                    objects.map((object, j) => {
-                      if (object.object)
-                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} objectId={object.id.toString()} hasQuote={object.notes3 !== null}/>
-                    })
+                    <div className="img-gallery">
+                      <div className="img-gallery__col-grid">
+                        {
+                          objects.map((object, j) => {
+                            if (object.object) {
+                              return object.object.mainImage && (
+                                <div className="img-gallery__col-grid--item" key={j}>
+                                  <ItemTile className="img-gallery__col-grid--item-image"
+                                            key={`item-tile-${j}`}
+                                            url={'/object/' + object.id}
+                                            objectId={`${object.id}`}
+                                            imageId={object.object.mainImage.id}
+                                            hasQuote={object.notes3 !== null}
+                                        />
+                                </div>
+                              )
+                            }
+                        })
+                      }
+                      </div>
+                    </div>
                   }
                   </div>
               </div>
+
             </section>
-            <section className="section">
-              <div className="container container--lg">
-                <IconLegend/>
-              </div>
-            </section>
-      </main>
+      </div>
     </Layout>
   );
 }

@@ -7,7 +7,6 @@ import SEO from '../components/seo';
 import IconLegend from "../components/IconLegend/IconLegend";
 
 import withViewport from '../decorators/withViewport';
-
 import { getBannerSize } from '../lib/utils';
 
 class ThemesPage extends Component {
@@ -19,14 +18,13 @@ class ThemesPage extends Component {
   render() {
     const { data, pageContext, location } = this.props;
     const { masterNarrativeId } = pageContext;
-    console.log(this.props.viewport);
 
     let bannerSize = getBannerSize(this.props.viewport);
     return (
       <Layout location={location}>
         <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
 
-        <main id="themes-page">
+        <div className="themes-page">
           <section className="themes-page__body">
 
             <div className="container container--lg no-padding">
@@ -42,14 +40,13 @@ class ThemesPage extends Component {
             })}
             </div>
 
-            {/* <button onClick={this.onClickHandler}> click </button> */}
           </section>
           <section className="section">
             <div className="container container--lg">
               <IconLegend/>
             </div>
           </section>
-        </main>
+        </div>
       </Layout>
     )
   }

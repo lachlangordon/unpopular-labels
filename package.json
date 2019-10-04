@@ -42,8 +42,7 @@
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
-    "react-slick": "^0.25.2",
-    "react-swipe": "^6.0.4",
+    "react-multi-carousel": "^2.2.6",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19"
   },
