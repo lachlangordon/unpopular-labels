@@ -127,14 +127,21 @@
 \*------------------------------------*/
 
 .object-page__related-slider {
-
-	// @media (min-width: $screen-lg-min) {
 	max-width: $screen-sm-min;
-	// }
 	.react-multiple-carousel__arrow {
 		display: none;
 		visibility: hidden;
 	}
+}
+
+.item-slide__item-holder {
+  padding: 0 5px;
+  > a {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.5
+    }
+  }
 }
 
 // fix ipadPro landscape

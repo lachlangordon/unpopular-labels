@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
-import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import { navigate } from 'gatsby';
 
 // https://github.com/akiran/react-slick
 // import Slider from 'react-slick';
@@ -10,85 +11,94 @@ import ImageById from '../Image/ImageById';
 import SeenIcon from '../SeenIcon/SeenIcon';
 import {isObjectSeen, shouldShowSeenIcon} from "../../lib/session";
 
-const responsive = {
-  desktop: {
-    breakpoint: {
-      max: 3000,
-      min: 1024
-    },
-    items: 5,
-    slidesToSlide: 1,
-    partialVisibilityGutter: 40
-  },
-  tablet: {
-    breakpoint: {
-      max: 1024,
-      min: 768
-    },
-    items: 4,
-    slidesToSlide: 1,
-    partialVisibilityGutter: 30
-  },
-  mobile: {
-    breakpoint: {
-      max: 480,
-      min: 0
-    },
-    items: 3,
-    slidesToSlide: 1,
-    partialVisibilityGutter: 20
+
+class ItemSwipe extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { isMoving: false };
+  }
+
+  render() {
+    const responsive = {
+      desktop: {
+        breakpoint: {
+          max: 3000,
+          min: 1024
+        },
+        items: 5,
+        slidesToSlide: 1,
+        partialVisibilityGutter: 40
+      },
+      tablet: {
+        breakpoint: {
+          max: 1024,
+          min: 768
+        },
+        items: 4,
+        slidesToSlide: 1,
+        partialVisibilityGutter: 30
+      },
+      mobile: {
+        breakpoint: {
+          max: 480,
+          min: 0
+        },
+        items: 3,
+        slidesToSlide: 1,
+        partialVisibilityGutter: 20
+      }
+    };
+    const { className, deviceType, objectItems } = this.props;
+    const clsName = className || 'item-swipe__slider';
+    // let sliderEl;
+    const goToObjectId = (id) => {
+      // send to
+      navigate (
+        `/object/${id}`,
+        { replace: false }
+      )
+    }
+
+    return (
+        <Slider
+            infinite
+            swipeable
+            draggable
+            partialVisbile
+            slidesToSlide={1}
+            deviceType={deviceType}
+            containerClass={clsName}
+            responsive={responsive}
+            beforeChange={() => this.setState({ isMoving: true })}
+            afterChange={() => this.setState({ isMoving: false })}
+        >
+  				{
+  					objectItems.map((object, j) => {
+  						if (object.object && object.object.mainImage) {
+  							 const objectId = object.id;
+  							 const imageId = object.object.mainImage.id;
+  							 return (
+  								 <div key={`item-slide-${j}`} className="item-slide__item-holder">
+    								 <a onClick={(e) => {
+    								       ( this.state.isMoving ? e.preventDefault() : goToObjectId(objectId) )
+    								     }}>
+    								   <ImageById size="thumbnail" imageId={imageId} />
+    								   { shouldShowSeenIcon() && isObjectSeen(`${objectId}`) && <SeenIcon/> }
+    								 </a>
+  								 </div>
+  							 )
+  						}
+  					})
+  				}
+        </Slider>
+    );
   }
 };
 
-const ItemSwipe = ({ className, deviceType, objectItems }) => {
-  const handleOnDragStart = e => e.preventDefault();
-
-  const clsName = className || 'item-swipe__slider';
-  let sliderEl;
-  return (
-      <Slider
-          infinite
-          swipeable
-          draggable
-          partialVisbile
-          slidesToSlide={1}
-          deviceType={deviceType}
-          responsive={responsive}
-          containerClass={clsName}
-      >
-				{
-					objectItems.map((object, j) => {
-						if (object.object) {
-							 return object.object.mainImage && (
-								 <div key={`item-slide-${j}`} className="item-slide__image-holder">
-									 <Link to={'/object/' + object.id}>
-									 	 <ImageById size="thumbnail" imageId={object.object.mainImage.id} />
-                     { shouldShowSeenIcon() && isObjectSeen(object.id.toString()) && <SeenIcon/> }
-									 </Link>
-								 </div>
-							 )
-						}
-					})
-				}
-      </Slider>
-  );
-};
-/*
-
-ItemTile.propTypes = {
-  title: PropTypes.string,
-  summary: PropTypes.string,
-  subtitle: PropTypes.string,
-  url: PropTypes.string,
-  imageUrl: PropTypes.string,
-  type: PropTypes.string,
-  isBreakout: PropTypes.bool, // NOTE: WIP, may just create a new component
+ItemSwipe.propTypes = {
   className: PropTypes.string,
-  imageTag: PropTypes.string,
+  objectItems: PropTypes.object,
 };
-
-ItemTile.default = {
-  isBreakout: false,
-}*/
 
 export default ItemSwipe;
