@@ -35,7 +35,8 @@ const allObjectsPage = ({
                                           key={`item-tile-${j}`}
                                           url={'/object/' + object.id}
                                           imageId={object.object.mainImage.id}
-                                          objectId={object.id.toString()}
+                                          objectId={`${object.id}`}
+                                          hasQuote={object.notes3 !== null}
                                           />
                               </div>
                               )

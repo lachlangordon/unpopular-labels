@@ -48,7 +48,7 @@ class ItemSwipe extends Component {
       }
     };
     const { className, deviceType, objectItems } = this.props;
-    const clsName = className || 'item-swipe__slider';
+    const itemSwipeClass = className || 'item-swipe__slider';
     // let sliderEl;
     const goToObjectId = (id) => {
       // send to
@@ -66,8 +66,8 @@ class ItemSwipe extends Component {
             partialVisbile
             slidesToSlide={1}
             deviceType={deviceType}
-            containerClass={clsName}
             responsive={responsive}
+            containerClass={itemSwipeClass}
             beforeChange={() => this.setState({ isMoving: true })}
             afterChange={() => this.setState({ isMoving: false })}
         >
@@ -76,13 +76,17 @@ class ItemSwipe extends Component {
   						if (object.object && object.object.mainImage) {
   							 const objectId = object.id;
   							 const imageId = object.object.mainImage.id;
+                 const hasQuote = object.notes3 !== null ? true : false;
   							 return (
   								 <div key={`item-slide-${j}`} className="item-slide__item-holder">
     								 <a onClick={(e) => {
     								       ( this.state.isMoving ? e.preventDefault() : goToObjectId(objectId) )
     								     }}>
     								   <ImageById size="thumbnail" imageId={imageId} />
-    								   { shouldShowSeenIcon() && isObjectSeen(`${objectId}`) && <SeenIcon/> }
+                       <div className="item-slide__icon-holder">
+							           { shouldShowSeenIcon() && isObjectSeen(`${objectId}`) && <SeenIcon/> }
+                         { hasQuote && <QuoteIcon/> }
+                       </div>
     								 </a>
   								 </div>
   							 )

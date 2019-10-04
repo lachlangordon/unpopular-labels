@@ -36,6 +36,8 @@ const SetPage = ({
 
                   <div className="set-page__description"
                      dangerouslySetInnerHTML={{ __html: set.description }} />
+
+                  <hr /> <IconLegend/>
                </div>
             </section>
 
@@ -67,11 +69,7 @@ const SetPage = ({
                   }
                   </div>
               </div>
-            </section>
-            <section className="section">
-              <div className="container container--lg">
-                <IconLegend/>
-              </div>
+
             </section>
       </div>
     </Layout>
