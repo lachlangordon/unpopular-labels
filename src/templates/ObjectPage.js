@@ -5,14 +5,12 @@ import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
-import IconLegend from "../components/IconLegend/IconLegend";
 
-// fragment to fetch GatsbyImageSharp
-import { default_GatsbyImageSharpWithThumb } from '../queries/fragments';
 import { saveSeenObject } from '../lib/session';
 import { parseCirca } from '../lib/utils';
 import LindaIcon from "../components/LindaIcon/LindaIcon";
 import JennyIcon from "../components/JennyIcon/JennyIcon";
+import IconLegend from "../components/IconLegend/IconLegend";
 
 // assign class to Linda or Jenny quotes
 const quotedClass = quote => {
@@ -46,7 +44,6 @@ const ObjectPage = ({
   }
 
   //Work out quote html
-
   let quoteClass = '';
   let glasses = undefined;
   if (object.notes4) {
@@ -58,15 +55,15 @@ const ObjectPage = ({
     }
   }
 
-
   let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
-  saveSeenObject(object.id.toString());
+  saveSeenObject(`${object.id}`);
+
   return (
     <Layout location={location}>
       <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
 
-      <main className="object-page main">
-          <div className="container container--md no-padding">
+      <div className="object-page">
+          <div className="container container--lg no-padding">
             <section className="content-header">
                 <div className="object-page__mainImg">
                   {
@@ -110,14 +107,15 @@ const ObjectPage = ({
                       </div>
                     }
 
-                    <hr />
+
                 </div>
             </section>
-
           </div>
 
-          <div className="container container--md no-padding">
-            <section className="content-related">
+          <hr />
+
+          <div className="container container--lg no-padding">
+            <section className="content-related" >
                 { related.length &&
                   <div className="object-page__related-items">
                     <div>
@@ -125,7 +123,7 @@ const ObjectPage = ({
                       <div className="object-page__related-items__count">{`${related.length + 1} objects`}</div>
                       <div className="object-page__related-items__scroll">&larr; scroll</div>
                     </div>
-                    <ItemSwipe className="object-page__related-slider" relatedItems={related} /> 
+                    <ItemSwipe className="object-page__related-slider" objectItems={related} />
                   </div>
                 }
             </section>
@@ -136,7 +134,7 @@ const ObjectPage = ({
             </section>
           </div>
 
-      </main>
+      </div>
     </Layout>
   )
 

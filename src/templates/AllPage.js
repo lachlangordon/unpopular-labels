@@ -15,7 +15,7 @@ const allObjectsPage = ({
   return (
     <Layout location={location}>
       <SEO title="All Objects"/>
-      <main id="main" className="all-page main">
+      <div id="all-page" className="all-page">
       {
         Sets.map((set, i) => {
           return(
@@ -25,12 +25,29 @@ const allObjectsPage = ({
                 <h2 className="all-page__title">{set.name}</h2>
 
                   <div className="all-page__content">
-                  {
-                    set.setObjects.map((object, j) => {
-                      if (object.object)
-                        return object.object.mainImage && <ItemTile key={`item-tile-${j}`} url={'/object/' + object.id} imageId={object.object.mainImage.id} />
-                    })
-                  }
+
+                      <div className="img-gallery">
+                        <div className="img-gallery__col-grid">
+                          {
+                            set.setObjects.map((object, j) => {
+                              if (object.object) {
+                                return object.object.mainImage && (
+                                  <div className="img-gallery__col-grid--item" key={j}>
+                                    <ItemTile className="img-gallery__col-grid--item-image"
+                                              key={`item-tile-${j}`}
+                                              url={'/object/' + object.id}
+                                              objectId={`${object.id}`}
+                                              imageId={object.object.mainImage.id}
+                                              hasQuote={object.notes3 !== null}
+                                          />
+                                  </div>
+                                )
+                              }
+                          })
+                        }
+                        </div>
+                      </div>
+
                   </div>
 
     					</div>
@@ -38,7 +55,7 @@ const allObjectsPage = ({
           )
         })
       }
-      </main>
+      </div>
     </Layout>
 )};
 

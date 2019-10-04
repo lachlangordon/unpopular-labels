@@ -14,7 +14,7 @@ const AboutPage = ({
   return (
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <main className="about-page">
+      <div className="about-page">
 
           <div className="container container--lg">
               <section className="content-header">
@@ -37,7 +37,7 @@ const AboutPage = ({
               </section>
           </div>
 
-      </main>
+      </div>
     </Layout>
   )
 
