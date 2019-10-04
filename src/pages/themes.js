@@ -4,7 +4,6 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
 import SEO from '../components/seo';
-import IconLegend from "../components/Icons/IconLegend";
 
 import withViewport from '../decorators/withViewport';
 import { getBannerSize } from '../lib/utils';
@@ -40,11 +39,6 @@ class ThemesPage extends Component {
             })}
             </div>
 
-          </section>
-          <section className="section">
-            <div className="container container--lg">
-              <IconLegend/>
-            </div>
           </section>
         </div>
       </Layout>
