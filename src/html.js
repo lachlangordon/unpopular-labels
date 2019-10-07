@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { shouldShowSeenIcon } from './lib/session';
+
 export default class HTML extends Component {
   render() {
     const { headComponents , htmlAttributes, bodyAttributes, preBodyComponents, body, postBodyComponents} = this.props
@@ -9,7 +11,9 @@ export default class HTML extends Component {
         <head>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          { !shouldShowSeenIcon() && (
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          )}
 
           {/* Add custom css or scripts here */}
           <script
