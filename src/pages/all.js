@@ -5,6 +5,7 @@ import Layout from '../components/Layout/Layout';
 import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
 import IconLegend from "../components/IconLegend/IconLegend";
+import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 // import {handleBack, handleScrollToTop} from "../lib/navUtils";
 
 const allObjectsPage = ({
@@ -52,6 +53,11 @@ const allObjectsPage = ({
           )
         })
       }
+      <section className="section">
+        <div className="container container--lg">
+          <NavigationButtons/>
+        </div>
+      </section>
       <section className="section">
         <div className="container container--lg">
           <IconLegend/>

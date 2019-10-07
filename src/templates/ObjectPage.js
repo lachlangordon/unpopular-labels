@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 import IconLegend from "../components/IconLegend/IconLegend";
 import LindaIcon from "../components/LindaIcon/LindaIcon";
 import JennyIcon from "../components/JennyIcon/JennyIcon";
-
+import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 
 import { saveSeenObject } from '../lib/session';
 import { parseCirca } from '../lib/utils';
@@ -132,6 +132,8 @@ const ObjectPage = ({
               <div className="container container--lg">
                 <NavigationButtons/>
               </div>
+            </section>
+            <section className="section">
               <div className="container container--lg">
                 <IconLegend/>
               </div>
