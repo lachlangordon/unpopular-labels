@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import SeenIcon from '../SeenIcon/SeenIcon';
-import QuoteIcon from '../QuoteIcon/QuoteIcon';
+import SeenIcon from '../Icons/SeenIcon';
+import QuoteIcon from '../Icons/QuoteIcon';
 
 import {shouldShowSeenIcon} from '../../lib/session';
 

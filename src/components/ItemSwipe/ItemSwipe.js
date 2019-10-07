@@ -6,8 +6,8 @@ import { navigate } from 'gatsby';
 // https://github.com/YIZHUANG/react-multi-carousel
 import Slider from 'react-multi-carousel';
 import ImageById from '../Image/ImageById';
-import SeenIcon from '../SeenIcon/SeenIcon';
-import QuoteIcon from '../QuoteIcon/QuoteIcon';
+import SeenIcon from '../Icons/SeenIcon';
+import QuoteIcon from '../Icons/QuoteIcon';
 import {isObjectSeen, shouldShowSeenIcon} from "../../lib/session";
 
 class ItemSwipe extends Component {

@@ -5,13 +5,14 @@ import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
-import IconLegend from "../components/IconLegend/IconLegend";
-import LindaIcon from "../components/LindaIcon/LindaIcon";
-import JennyIcon from "../components/JennyIcon/JennyIcon";
 import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 
 import { saveSeenObject } from '../lib/session';
 import { parseCirca } from '../lib/utils';
+
+import LindaIcon from "../components/Icons/LindaIcon";
+import JennyIcon from "../components/Icons/JennyIcon";
+import IconLegend from "../components/Icons/IconLegend";
 
 // assign class to Linda or Jenny quotes
 const quotedClass = quote => {
