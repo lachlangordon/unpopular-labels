@@ -94,7 +94,7 @@ class Image extends Component {
     return (
 			<div className={className} style={style}>
         {
-          this.getImage( isThumb && hasThumb(imgObject) ?
+          this.getImage( !!isThumb && hasThumb(imgObject) ?
                             imgObject.thumbnail : imgObject
                         , imgProps)
         }

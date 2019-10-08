@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
@@ -6,44 +6,54 @@ import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 
 import { siteMeta } from '../queries/fragments';
+import withViewport from '../decorators/withViewport';
 
-const AboutPage = ({
-  data: { site, masterSet, heroImage },
-  location,
-}) => {
-  return (
-    <Layout location={location}>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <div className="about-page">
+const aboutImgSize = ({ width, height }) => {
+  if (width < 1366) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
-          <div className="container container--lg">
-              <section className="content-header">
-                <div className="about-page__masthead">
-                  <Image size="thumbnail" imgObject={ heroImage } defImgMode="fluid" />
-                </div>
-              </section>
+class AboutPage extends Component {
+  render() {
+    const { location, data } = this.props;
+    const { site, masterSet, heroImage } = data;
 
-              <section className="main-content">
-                  <div className="about-page__content">
-                    <h1 className="guide-about-page__title">
-                        { site.siteMetadata.title }
-                    </h1>
+    return (
+      <Layout location={location}>
+        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        <div className="about-page">
 
-                    { masterSet.description &&
-                      <div className="set-page__description"
-                         dangerouslySetInnerHTML={{ __html: masterSet.description }} />
-                    }
+            <div className="container container--lg">
+                <section className="content-header">
+                  <div className="about-page__masthead">
+                    <Image isThumb={ aboutImgSize(this.props.viewport) } imgObject={ heroImage } defImgMode="fluid" />
                   </div>
-              </section>
-          </div>
+                </section>
 
-      </div>
-    </Layout>
-  )
+                <section className="main-content">
+                    <div className="about-page__content">
+                      <h1 className="guide-about-page__title">
+                          { site.siteMetadata.title }
+                      </h1>
 
-};
+                      { masterSet.description &&
+                        <div className="set-page__description"
+                           dangerouslySetInnerHTML={{ __html: masterSet.description }} />
+                      }
+                    </div>
+                </section>
+            </div>
 
-export default AboutPage;
+        </div>
+      </Layout>
+    );
+  }
+}
+
+export default withViewport(AboutPage);
 
 // id: 6761
 // This query is executed at build time by Gatsby.
