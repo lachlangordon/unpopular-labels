@@ -92,7 +92,7 @@ $element-margin: 2em;
 	position: relative;
 	background-color: transparent;
 
-	.bg-image__gatsby-img {
+	.gatsby-image-wrapper {
 		position: absolute;
 	  top: 0;
 	  left: 0;
@@ -105,14 +105,17 @@ $element-margin: 2em;
 			font-family: "object-fit: cover !important; object-position: 0% 0% !important;";
 		}
 
-		// @media screen and (max-width: 600px) {
-		// 	height: ${({ mobileHeight }) => mobileHeight};
+		// iphoneX & pixel XL ?
+		// @media screen and (min-height: 730px) {
+		// 	& > div {
+		// 		padding-bottom: 1.45rem / 2 !important;
+		// 	}
 		// }
 	}
 
 	.bg-image__content {
 		position: absolute;
-	  bottom: 0;
+		bottom: 50px;
 	  width: 100%;
 	}
 }

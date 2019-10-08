@@ -38,6 +38,62 @@ $content-height-min: 1040px;
   }
 
   /*------------------------------------*\
+      #INDEX-PAGE
+  \*------------------------------------*/
+  .index-page {
+
+    ul.actions {
+      list-style-type: none;
+      overflow: hidden;
+    }
+
+    // normal ipad
+    @media (min-width: 768px) {
+      .portrait-ipad {
+        .guide-index-page__title {
+          font-size: 4.9rem !important;
+          line-height: 4.9rem !important;
+        }
+
+        .bg-image__content {
+          font-size: 1rem !important;
+          bottom: 4.563rem !important;
+
+          ul.actions {
+            li > a > span {
+              font-size: 1.5rem !important;
+              line-height: inherit !important;
+            }
+          }
+        }
+      }
+    }
+
+    // ipad-pro
+    @media (min-width: $screen-md-min) {
+      .portrait-ipad {
+        .guide-index-page__title {
+          font-size: 7.9rem !important;
+          line-height: 6.9rem !important;
+        }
+
+        .bg-image__content {
+          font-size: 1.7rem !important;
+          bottom: 5.563rem !important;
+
+          ul.actions {
+            li > a > span {
+              font-size: 3rem !important;
+              line-height: inherit !important;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  /*------------------------------------*\
       #ALL-PAGE
   \*------------------------------------*/
 
