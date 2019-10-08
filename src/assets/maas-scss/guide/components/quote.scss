@@ -9,68 +9,44 @@
     #blockquote
 \*------------------------------------*/
 
-blockquote {
-  padding: 36px 0px;
-  font-size: 1.5em;
-  position: relative;
-  background: $colour-white;
-  margin-bottom: 28px;
-  // &::before {
-  //   right: 100%;
-  // }
-  // &::after {
-  //   left: 100%;
-  // }
-  &::before {
-    top: 0;
-    left: -35px;
-    content: '“';
-    font-size: 2em;
-    position: absolute;
-  }
-  &::after {
-    right: 0.1em;
-    content: '”';
-    bottom: -22px;
-    font-size: 2em;
-    position: absolute;
-  }
-  p {
-    margin: 0;
-    // font-style: italic;
-    font-family:  $font-family-bold;
+.object-page__notes3 {
+  font-size: 1.2em;
+  padding-top: 0.6em;
+  blockquote {
+    padding: 36px 0px;
+    font-size: 1.3em;
+    position: relative;
+    background: $colour-white;
+    margin-bottom: 28px;
+    &::before {
+      top: 0;
+      left: -35px;
+      content: '“';
+      font-size: 2em;
+      position: absolute;
+    }
+    &::after {
+      right: 0.1em;
+      content: '”';
+      bottom: -22px;
+      font-size: 2em;
+      position: absolute;
+    }
+    p {
+      margin: 0;
+      // font-style: italic;
+      font-family:  $font-family-bold;
+    }
   }
 }
 
 .object-page__notes4 {
   font-family:  $font-family-bold;
   font-size: $font-size-lg;
+  padding-left: 0.6em;
   p {
     font-family: $font-family-base;
     font-size: $font-size-sm;
     margin: 0;
   }
 }
-
-// @media screen and (min-width: 750px) {
-//   h1 {
-//     font-size: 3em;
-//   }
-//   blockquote {
-//     padding-right: 0;
-//     width: calc(100% + 50px);
-//     &::before {
-//       display: none;
-//     }
-//     &::after {
-//       width: 50px;
-//       border-radius: 0 3px 3px 0;
-//     }
-//     p {
-//       font-size: 2.5em;
-//       &::after {
-//         bottom: -56px
-//       }
-//     }
-//   }
-// }
