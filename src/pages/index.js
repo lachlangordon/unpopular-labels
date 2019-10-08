@@ -18,16 +18,7 @@ const IndexPage = ({
 
   // calculate various classes: scroll or no-scroll
   let imgOrient = imgClassOrient(viewport), viewportSize = getBannerSize(viewport);
-  let getBodyClass = '', getImageClass = `bg-image ${imgOrient}-${viewportSize}`;
-
-  if ( imgOrient === 'portrait' ) {
-    getBodyClass = 'no-scroll';
-    if ( viewportSize === 'mobile' ) {
-      getBodyClass = 'no-scroll-mobile';
-    }
-  } else {
-    getBodyClass = '';
-  }
+  let getImageClass = `bg-image ${imgOrient}-${viewportSize}`;
 
   // imgProps
   let imgProp = {
@@ -39,7 +30,7 @@ const IndexPage = ({
 
   return (
     <Layout location={location}>
-      <SEO title="Home" bodyClassName={ getBodyClass } keywords={[`gatsby`, `application`, `react`]} />
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div className="index-page">
           <div className="container container--lg no-padding">
             <BgImage { ...imgProp }>
