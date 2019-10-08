@@ -26,7 +26,7 @@ class ThemesPage extends Component {
         <div className="themes-page">
           <section className="themes-page__body">
 
-            <div className="container container--lg no-padding">
+            <div className="container container--lg">
             { data.sets.map((section, i) => {
               return (
                   <article key={`theme-item-${i}`} className="banner-article">
