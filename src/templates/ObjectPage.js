@@ -51,6 +51,16 @@ const ObjectPage = ({
     date = (<span className="object-page__date">{`, ${parseCirca(object.object.production[0].date)}` }</span>);
   }
 
+  // creditLine
+  let creditLine = '';
+  const { acquisitionCreditLine, recordType } = object.object;
+  if ( acquisitionCreditLine.length === 1 &&
+              (recordType === "ArchivePart" || recordType === "Part") ) {
+    creditLine = "<span> MAAS Collection </span>";
+  } else {
+    creditLine = acquisitionCreditLine;
+  }
+
   //Work out quote html
   let quoteClass = '';
   let glasses = undefined;
@@ -106,9 +116,9 @@ const ObjectPage = ({
                          dangerouslySetInnerHTML={{ __html: object.notes2 }} />
                     }
 
-                    { object.object.acquisitionCreditLine &&
+                    { creditLine &&
                       <p className="object-page__credit-line"
-                         dangerouslySetInnerHTML={{ __html: object.object.acquisitionCreditLine }} />
+                         dangerouslySetInnerHTML={{ __html: creditLine }} />
                     }
                 </div>
                 <div className="object-page__bottom-content">
@@ -176,6 +186,7 @@ export const pageQuery = graphql`
           date
         }
         isLoan
+        recordType
         significanceStatement
         acquisitionCreditLine
         mainImage {

@@ -196,6 +196,7 @@ const setObject = ( _object ) => {
   return {
     name: _object.displayTitle || '',
     summary: _object.summary || '',
+    recordType: _object.recordType || '',
     productionNotes: _object.productionNotes || '',
     production: _object.production || null,
     significanceStatement: _object.significanceStatement || '',
