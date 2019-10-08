@@ -8,19 +8,18 @@ const BgImage = ({
    imgObject,
    title,
    height,
-   mobileHeight,
+   isMobile,
    overlayColor,
    children,
    className
  }) => {
+  console.log(className);
   console.log(height);
+
   return (
-   <div className="bg-image" style={{ backgroundColor: overlayColor }}>
-       <Image imgClassName="bg-image__gatsby-img" imgStyle={{
-           height: `${height}`,
-          }}
+   <div className={ className } style={{ backgroundColor: overlayColor }}>
+       <Image isThumb={ !!isMobile }
           imgObject={ imgObject }
-          height={height}
           title={title}
        />
        <div className="bg-image__content">
@@ -31,19 +30,20 @@ const BgImage = ({
 }
 
 BgImage.defaultProps = {
-  height: null,
   overlayColor: 'transparent',
+  className: 'bg-image',
+  isMobile: false,
   children: null,
-  className: null
+  height: null,
 }
 
 BgImage.propTypes = {
   imgObject: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
-  height: PropTypes.string,
   overlayColor: PropTypes.string,
+  className: PropTypes.string,
   children: PropTypes.node,
-  className: PropTypes.string
+  height: PropTypes.number,
+  title: PropTypes.string,
 };
 
 export default BgImage;
