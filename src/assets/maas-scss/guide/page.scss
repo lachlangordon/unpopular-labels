@@ -115,20 +115,26 @@ $content-height-min: 1040px;
   @media (min-width: $screen-md-min) {
     // set page
     .set-page {
+      lost-utility: clearfix;
+
       .container {
         padding-left: $spacing-sm !important;
       }
 
       .content-header {
-        lost-column: 2/5;
+        lost-column: 2/5 0;
       }
 
       .main-content {
-        lost-column: 3/5;
+        lost-column: 3/5 0;
 
         .set-page__content > .item-tile {
           lost-column: 1/2;
         }
+      }
+
+      .full-width {
+        lost-column: 5/5 1;
       }
     }
 

@@ -5,6 +5,8 @@ import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
 import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
+
+import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 import IconLegend from "../components/Icons/IconLegend";
 
 import withViewport from '../decorators/withViewport';
@@ -23,6 +25,7 @@ const SetPage = ({
     <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
       <div className="set-page">
+        <div>
             <section className="content-header">
               { set.id && (
                     <Banner className="no-padding" type="ribbon" size={ bannerSize } themeId={ convertToSID(set.id) } />
@@ -44,7 +47,6 @@ const SetPage = ({
 
                </div>
             </section>
-
             <section className="section main-content">
               <div className="container container--lg">
                   <div className="set-page__content">
@@ -73,8 +75,13 @@ const SetPage = ({
                   }
                   </div>
               </div>
-
             </section>
+        </div>
+          <section className="section full-width">
+            <div className="container container--lg">
+              <NavigationButtons/>
+            </div>
+          </section>
       </div>
     </Layout>
   );

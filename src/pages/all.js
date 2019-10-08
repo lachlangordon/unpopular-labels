@@ -4,8 +4,8 @@ import {graphql, Link} from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
+import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 import IconLegend from "../components/Icons/IconLegend";
-// import {handleBack, handleScrollToTop} from "../lib/navUtils";
 
 const allObjectsPage = ({
   data: { Sets },
@@ -52,6 +52,11 @@ const allObjectsPage = ({
           )
         })
       }
+      <section className="section">
+        <div className="container container--lg">
+          <NavigationButtons/>
+        </div>
+      </section>
       <section className="section">
         <div className="container container--lg">
           <IconLegend/>

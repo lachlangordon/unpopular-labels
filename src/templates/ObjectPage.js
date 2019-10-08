@@ -5,6 +5,7 @@ import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
+import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 
 import { saveSeenObject } from '../lib/session';
 import { parseCirca } from '../lib/utils';
@@ -127,6 +128,11 @@ const ObjectPage = ({
                     <ItemSwipe className="object-page__related-slider" objectItems={related} />
                   </div>
                 }
+            </section>
+            <section className="section">
+              <div className="container container--lg">
+                <NavigationButtons/>
+              </div>
             </section>
             <section className="section">
               <div className="container container--lg">

@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import maasLogo from '../../assets/maas-scss/logos/logo-maas.gif';
+
+import {shouldShowSeenIcon} from '../../lib/session';
 
 const Footer = (props) => (
     <footer className="footer">
@@ -20,10 +23,10 @@ const Footer = (props) => (
                 <nav className="nav-secondary">
                   <div className="footer-content__navigation-container">
                       <ul className="footer-content__navigation">
-                        <li className="menu-item"><a href="https://maas.museum/terms-and-conditions/">Terms and Conditions</a></li>
-                        <li className="menu-item"><a href="https://maas.museum/privacy/">Privacy</a></li>
-                        <li className="menu-item"><a href="https://maas.museum/copyright/">Copyright</a></li>
-                        <li className="menu-item"><a href="https://maas.museum/disclaimers/">Disclaimers</a></li>
+                        <li className="menu-item"><Link to="/credits">Credits</Link></li>
+                        {shouldShowSeenIcon() && (
+                          <li className="menu-item"><Link to="/privacy">Privacy</Link></li>
+                        )}
                         {/* <li ><a href="https://www.nsw.gov.au/">NSW Government</a></li> */}
                       </ul>
                   </div>

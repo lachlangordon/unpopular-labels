@@ -64,7 +64,6 @@ class Layout extends Component {
       const topTitle = `<span>JENNY KEE </span> &nbsp; &nbsp; &nbsp; <span> LINDA JACKSON </span><br>`;
       const pageTitle = `<span> STEP INTO &nbsp; PARADISE </span>`;
       const dateText = `<span> 17 October 2019 - 22 March 2020 </span>`;
-
       return (
         <StaticQuery
           query={graphql`
