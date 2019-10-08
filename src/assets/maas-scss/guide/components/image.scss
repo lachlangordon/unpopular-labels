@@ -106,8 +106,9 @@ $element-margin: 2em;
 		}
 
 		// iphoneX & pixel XL ?
-		@media screen and (min-height: 730px) {
-			& > div {
+		& > div {
+			padding-bottom: 171.375%;
+			@media screen and (min-height: 730px) {
 				padding-bottom: 1.45rem / 2 !important;
 			}
 		}
