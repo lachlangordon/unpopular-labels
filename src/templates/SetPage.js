@@ -41,7 +41,7 @@ const SetPage = ({
                      dangerouslySetInnerHTML={{ __html: set.description }} />
 
                   <div className="set-page__info">
-                    {`${objects.length} objects`}
+                    <span className="set-page__object-count">{`${objects.length} objects`}</span>
                     <hr /> <IconLegend/>
                   </div>
 

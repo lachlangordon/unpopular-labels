@@ -6,13 +6,15 @@ import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
+import Banner from '../components/Banner/Banner';
 
 import { saveSeenObject } from '../lib/session';
-import { parseCirca } from '../lib/utils';
+import {convertToSID, parseCirca, getBannerSize} from '../lib/utils';
 
 import LindaIcon from "../components/Icons/LindaIcon";
 import JennyIcon from "../components/Icons/JennyIcon";
 import IconLegend from "../components/Icons/IconLegend";
+import withViewport from "../decorators/withViewport";
 
 // assign class to Linda or Jenny quotes
 const quotedClass = quote => {
@@ -34,15 +36,29 @@ const ObjectPage = ({
   data: { images, object },
   pageContext,
   location,
+  viewport,
 }) => {
+
+  let bannerSize = getBannerSize(viewport);
 
   if (!object.object) {
     return (<div>Not Web Published</div>);
   }
 
   let title = object.object.name;
+  let date = undefined;
   if (object.object.production[0] && object.object.production[0].date !== null) {
-    title += `, ${ parseCirca(object.object.production[0].date) }`;
+    date = (<span className="object-page__date">{`, ${parseCirca(object.object.production[0].date)}` }</span>);
+  }
+
+  // creditLine
+  let creditLine = '';
+  const { acquisitionCreditLine, recordType } = object.object;
+  if ( acquisitionCreditLine.length === 1 &&
+              (recordType === "ArchivePart" || recordType === "Part") ) {
+    creditLine = "<span> MAAS Collection </span>";
+  } else {
+    creditLine = acquisitionCreditLine;
   }
 
   //Work out quote html
@@ -66,6 +82,14 @@ const ObjectPage = ({
 
       <div className="object-page">
           <div className="container container--lg no-padding">
+
+            <section>
+              { object.parent.id && (
+                <Banner className="no-padding" type="ribbon" size={bannerSize} themeId={ convertToSID(object.parent.id) } />
+              )
+              }
+            </section>
+
             <section className="content-header">
                 <div className="object-page__mainImg">
                   {
@@ -80,9 +104,11 @@ const ObjectPage = ({
             </section>
 
             <section className="section main-content">
+
                 <div className="object-page__content">
                     <h1 className="object-page__title">
                       { title }
+                      { date }
                     </h1>
 
                     { object.notes2 &&
@@ -90,9 +116,9 @@ const ObjectPage = ({
                          dangerouslySetInnerHTML={{ __html: object.notes2 }} />
                     }
 
-                    { object.object.acquisitionCreditLine &&
+                    { creditLine &&
                       <p className="object-page__credit-line"
-                         dangerouslySetInnerHTML={{ __html: object.object.acquisitionCreditLine }} />
+                         dangerouslySetInnerHTML={{ __html: creditLine }} />
                     }
                 </div>
                 <div className="object-page__bottom-content">
@@ -130,14 +156,10 @@ const ObjectPage = ({
                 }
             </section>
             <section className="section">
-              <div className="container container--lg">
                 <NavigationButtons/>
-              </div>
             </section>
             <section className="section">
-              <div className="container container--lg">
                 <IconLegend/>
-              </div>
             </section>
           </div>
 
@@ -147,7 +169,7 @@ const ObjectPage = ({
 
 }
 
-export default ObjectPage;
+export default withViewport(ObjectPage);
 
 // images[0] = main image
 // parent = to find related items
@@ -164,6 +186,7 @@ export const pageQuery = graphql`
           date
         }
         isLoan
+        recordType
         significanceStatement
         acquisitionCreditLine
         mainImage {

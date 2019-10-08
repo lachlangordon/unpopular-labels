@@ -65,6 +65,7 @@ query NodeSets {
       object {
         id: _id
         parentId
+        recordType
         displayTitle
         summary
         isLoan

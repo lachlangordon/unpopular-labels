@@ -7,7 +7,6 @@ import {shouldShowSeenIcon} from '../../lib/session';
 const Footer = (props) => (
     <footer className="footer">
         <section className="section footer-content">
-          <div className="container container--lg">
                 {/*
                   <h2>About the exhibition</h2>
                   <p>{props.description}</p>
@@ -16,7 +15,7 @@ const Footer = (props) => (
                   </div>
                 */}
                 <div className="footer-content__acknowledgment">
-                    <h3>Acknowledgement of Country</h3>
+                    <h3 className="footer-content__acknowledgment-title">Acknowledgement of Country</h3>
                     <p>The Museum of Applied Arts and Sciences acknowledges Australia’s First Nations Peoples as the Traditional Owners and Custodians of the land and gives respect to the Elders – past and present – and through them to all Aboriginal and Torres Strait Islander peoples.</p>
                     <br /> <p> All photography by Museum of Applied Arts and Sciences unless otherwise stated.</p>
                 </div>
@@ -31,7 +30,6 @@ const Footer = (props) => (
                       </ul>
                   </div>
                 </nav>
-            </div>
         </section>
     </footer>
 );
