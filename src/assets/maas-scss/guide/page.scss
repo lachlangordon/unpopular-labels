@@ -83,9 +83,14 @@ $content-height-min: 1040px;
       margin-bottom: 0.1rem;
     }
 
+    .object-page__date {
+      font-weight: normal;
+    }
+
     //Related content
     .object-page__related-items__title {
       margin-bottom: 0;
+      font-family: $font-family-bold;
     }
 
     .object-page__related-items__count {
@@ -97,6 +102,10 @@ $content-height-min: 1040px;
       margin-right: $spacing-xs;
       font-size: 0.8rem;
       text-align: right;
+    }
+
+    .object-page__mainImg {
+      padding-top: 1.25em;
     }
   }
 
@@ -185,6 +194,7 @@ $content-height-min: 1040px;
   }
 
   // set page
+
   .set-page {
     .container {
       padding-left: $spacing-sm !important;
@@ -194,4 +204,8 @@ $content-height-min: 1040px;
 
 .set-page__object-count {
   font-size: 0.8em;
+}
+
+.set-page__title {
+  margin-top: 0.25em !important;
 }
