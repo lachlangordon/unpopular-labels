@@ -6,7 +6,6 @@ import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
 import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 import IconLegend from "../components/Icons/IconLegend";
-// import {handleBack, handleScrollToTop} from "../lib/navUtils";
 
 const allObjectsPage = ({
   data: { Sets },
