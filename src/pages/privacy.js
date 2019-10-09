@@ -5,20 +5,21 @@ import SEO from '../components/seo';
 import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 
 const PrivacyPage = ({
-                       location,
-                     }) => {
+ location,
+}) => {
   return (
     <Layout location={location}>
-      <SEO title="Credits" keywords={[`gatsby`, `application`, `react`]} />
-      <div className="credits-page">
+      <SEO title="Privacy" keywords={[`gatsby`, `application`, `react`]} />
+
+      <div className="normal-page">
         <div className="container container--lg">
-          <section className="main-content">
-            <div className="about-page__content">
-              <h1 className="guide-about-page__title">
+          <section className="full-content">
+            <div className="normal-page__content">
+              <h1 className="normal-page__title">
                 Privacy
               </h1>
 
-              <div className="set-page__description">
+              <div className="normal-page__description">
                   <p>Museum of Applied Arts and Sciences&nbsp;is committed to protecting your privacy, including throughout&nbsp;and as a result of your interaction/s with our websites.</p>
                   <p>Museum of Applied Arts and Sciences&nbsp;is subject to the <em>NSW Privacy and Personal Information Protection Act (1998)</em>. The Museum’s Privacy Management Plan outlines how the Museum complies with the Act.</p>
                   <h3><strong>Automatic logging of information</strong></h3>

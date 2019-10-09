@@ -58,7 +58,7 @@ const getBannerSize = ({ width, height }) => {
 }
 
 // create image class based on viewport
-const imgClassOrient = ({ width, height }) => {
+const getImgOrient = ({ width, height }) => {
  let orientation;
  const aspectRatio = width / height;
  if (aspectRatio > 1) { orientation = 'landscape' }
@@ -67,4 +67,4 @@ const imgClassOrient = ({ width, height }) => {
  return orientation;
 }
 
-module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, parseCirca, canUseDOM, getBannerSize, imgClassOrient };
+module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, parseCirca, canUseDOM, getBannerSize, getImgOrient };
