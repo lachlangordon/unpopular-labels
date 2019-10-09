@@ -131,6 +131,15 @@ $content-height-min: 1040px;
       padding-left: $spacing-sm !important;
     }
 
+    // banner
+    @media (min-width: $screen-md-min) {
+      .ribbon-img__image-holder {
+        .gatsby-image-wrapper > div {
+          padding-bottom: 8.0537% !important;
+        }
+      }
+    }
+
     .object-page__credit-line, .object-page__significance-statement {
       font-size: 0.8rem;
     }
