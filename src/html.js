@@ -16,10 +16,6 @@ export default class HTML extends Component {
           )}
 
           {/* Add custom css or scripts here */}
-          <script
-            defer
-            src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"
-          />
 
           {/* Add custom css or scripts here */}
 

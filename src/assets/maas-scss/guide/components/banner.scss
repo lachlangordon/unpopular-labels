@@ -11,10 +11,19 @@
 \*------------------------------------*/
 
 .banner-article {
-	margin-bottom: $spacing-md;
+	margin-bottom: $spacing-xxxxs;
+
+	h3 {
+		margin-top: $spacing-xxxxxs;
+		font-size: 1.29082rem;
+	}
+
+	@media (min-width: $screen-md-min) {
+		margin-bottom: $spacing-md;
+	}
 
 	a:link, a:visited {
-		color: $colour-grey-darker;
+		color: $colour-black;
 		text-decoration: none;
 		display: block;
 

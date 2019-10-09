@@ -5,6 +5,9 @@
   "version": "0.1.0",
   "author": "MAAS Developer <developer@maas.museum>",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.5",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.6.3",

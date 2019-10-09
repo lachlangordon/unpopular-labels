@@ -32,8 +32,8 @@ class ThemesPage extends Component {
                   <article key={`theme-item-${i}`} className="banner-article">
                     <Link to={"/set/" + section.id} className="link primary">
                       <Banner size={ bannerSize } themeId={`${i + 1}`} />
+                      <h3 className="theme-item__title"> { section.name } </h3>
                     </Link>
-                    <h3 className="theme-item__title"> { section.name } </h3>
                   </article>
               )
             })}
