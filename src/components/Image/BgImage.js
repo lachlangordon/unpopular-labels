@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Image from './Image';
-// import GatsbyImage from 'gatsby-image';
 
 const BgImage = ({
    imgObject,
@@ -13,9 +12,6 @@ const BgImage = ({
    children,
    className
  }) => {
-  console.log(className);
-  console.log(height);
-
   // if it's mobile minus -4rem, for iPadPros & desktop minus -2rem
   let heightModifier = isMobile ? '4rem' : '2rem';
   return (
