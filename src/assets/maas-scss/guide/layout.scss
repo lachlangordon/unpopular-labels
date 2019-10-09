@@ -62,6 +62,16 @@ $colour-black: #000;
     .sidepanel__date-text { color: $colour-white; }
   }
 
+  .sidepanel__logo {
+    align-self: flex-end;
+    margin: 0 $spacing-sm;
+
+    svg {
+      fill: $colour-white;
+      height: 60px;
+    }
+  }
+
   // hide it for most screens (xs, sm, md)
   display: none;
 }
@@ -85,7 +95,9 @@ $colour-black: #000;
 
   // display sidepanel for lg
   .guide-app__sidepanel {
-    display: block;
+    display: flex;
     flex: 0 0 20em;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }

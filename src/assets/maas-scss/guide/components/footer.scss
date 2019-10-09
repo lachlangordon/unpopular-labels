@@ -35,18 +35,31 @@
   //   font-size: $font-size-md;
   // }
 
-  .footer-mobile-icon {
+  .footer-mobile-footer {
+    min-height: 50px;
     display: flex;
-    font-size: 0.8em;
+    justify-content: space-between;
+    margin-bottom: $spacing-sm;
 
     @media (min-width: $screen-md-min) {
       display: none;
     }
+  }
+
+  .footer-mobile-icon {
+    display: flex;
+    font-size: 0.8em;
 
     svg {
       height: 50px;
       width: 21px;
       margin-right: 10px;
+    }
+  }
+
+  .footer-maas-logo {
+    svg {
+      height: 50px;
     }
   }
 
