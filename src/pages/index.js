@@ -8,7 +8,7 @@ import BgImage from '../components/Image/BgImage';
 import SEO from '../components/seo';
 
 import withViewport from '../decorators/withViewport';
-import { imgClassOrient, getBannerSize } from '../lib/utils';
+import { getImgOrient, getBannerSize } from '../lib/utils';
 
 const IndexPage = ({
   data: { site, heroImage },
@@ -17,12 +17,12 @@ const IndexPage = ({
 }) => {
 
   // calculate various classes: scroll or no-scroll
-  let imgOrient = imgClassOrient(viewport), viewportSize = getBannerSize(viewport);
+  let imgOrient = getImgOrient(viewport), viewportSize = getBannerSize(viewport);
   let getImageClass = `bg-image ${imgOrient}-${viewportSize}`;
 
   // imgProps
   let imgProp = {
-    height: !isEmpty(viewport['height']) ? viewport['height'] : 100,
+    height: viewport['height'],
     isMobile: viewportSize === 'mobile' ? true : false,
     className: getImageClass,
     imgObject: heroImage,
@@ -78,7 +78,7 @@ export const pageQuery = graphql`
         }
       }
       childImageSharp {
-        fluid(maxWidth: 1024, maxHeight: 1374) {
+        fluid(maxWidth: 1024, maxHeight: 1774) {
           ...GatsbyImageSharpFluid
         }
       }
