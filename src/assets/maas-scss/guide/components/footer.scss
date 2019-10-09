@@ -35,6 +35,21 @@
   //   font-size: $font-size-md;
   // }
 
+  .footer-mobile-icon {
+    display: flex;
+    font-size: 0.8em;
+
+    @media (min-width: $screen-md-min) {
+      display: none;
+    }
+
+    svg {
+      height: 50px;
+      width: 21px;
+      margin-right: 10px;
+    }
+  }
+
   .footer-content__acknowledgment {
     padding-top: 1em;
     font-size: 0.8em;
