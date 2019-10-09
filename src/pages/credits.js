@@ -17,7 +17,7 @@ const CreditsPage = ({
           <div className="normal-page__content">
 
             <h1 className="normal-page__title">
-              Acknowledgement
+              Acknowledgements
             </h1>
 
             <div className="normal-page__description">
