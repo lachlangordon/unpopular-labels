@@ -136,7 +136,11 @@ $content-height-min: 1040px;
     }
 
     .object-page__title {
-      margin-bottom: 0.1rem;
+      margin-bottom: $spacing-xxxxs;
+    }
+
+    .object-page__notes2, .object-page__credit-line {
+      margin-bottom: $spacing-xs;
     }
 
     .object-page__date {
@@ -145,11 +149,13 @@ $content-height-min: 1040px;
 
     //Related content
     .object-page__related-items__title {
-      margin-bottom: 0;
+      margin-bottom: $spacing-xxxxs;
       font-family: $font-family-bold;
+      font-size: 1.15rem;
     }
 
     .object-page__related-items__count {
+      margin-bottom: 0;
       font-size: 0.8rem;
     }
 
