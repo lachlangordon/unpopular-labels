@@ -166,8 +166,8 @@ $content-height-min: 1040px;
 
     // about page
     .about-page {
-      .container {
-        padding: $spacing-md 0 0 0 !important;
+      .container:first-child {
+        padding: $spacing-md 0 0 0;
       }
 
       .content-header {
@@ -208,4 +208,11 @@ $content-height-min: 1040px;
 
 .set-page__title {
   margin-top: 0.25em !important;
+}
+
+.cultural-statement {
+  text-align: center;
+  background: $colour-grey-lightest;
+  padding: 1em;
+  position: relative;
 }
