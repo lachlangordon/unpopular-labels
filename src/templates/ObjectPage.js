@@ -73,7 +73,23 @@ const ObjectPage = ({
     }
   }
 
-  let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
+  let objectIndex = -1;
+  for (let i = 0; i < object.parent.setObjects.length; i++) {
+    if (object.parent.setObjects[i].id.toString() === object.id) {
+      objectIndex = i;
+      break;
+    }
+  }
+
+  let related = object.parent.setObjects;
+  if (objectIndex > 0) {
+
+    let removedObjects = related.splice(objectIndex);
+    related = removedObjects.concat(related);
+  }
+  related.splice(0, 1);
+
+
   saveSeenObject(`${object.id}`);
 
   return (
@@ -151,7 +167,7 @@ const ObjectPage = ({
                       <div className="object-page__related-items__count">{`${related.length + 1} objects`}</div>
                       {/* <div className="object-page__related-items__scroll">&larr; scroll</div> */}
                     </div>
-                    <ItemSwipe className="object-page__related-slider" objectItems={related} />
+                    <ItemSwipe className="object-page__related-slider" objectItems={related}/>
                   </div>
                 }
             </section>

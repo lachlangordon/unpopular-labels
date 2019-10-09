@@ -16,11 +16,14 @@ const BgImage = ({
   console.log(className);
   console.log(height);
 
+  // if it's mobile minus -4rem, for iPadPros & desktop minus -2rem
+  let heightModifier = isMobile ? '4rem' : '2rem';
   return (
    <div className={ className } style={{ backgroundColor: overlayColor }}>
        <Image isThumb={ !!isMobile }
-          imgObject={ imgObject }
-          title={title}
+              imgStyle={{ objectFit: 'contain', height: `calc(${height}px - ${heightModifier})` }}
+              imgObject={ imgObject }
+              title={title}
        />
        <div className="bg-image__content">
         {children}

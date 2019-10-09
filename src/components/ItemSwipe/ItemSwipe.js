@@ -18,6 +18,7 @@ class ItemSwipe extends Component {
   }
 
   render() {
+
     const responsive = {
       desktop: {
         breakpoint: {
@@ -48,6 +49,7 @@ class ItemSwipe extends Component {
       }
     };
     const { className, deviceType, objectItems } = this.props;
+
     const itemSwipeClass = className || 'item-swipe__slider';
     // let sliderEl;
     const goToObjectId = (id) => {
