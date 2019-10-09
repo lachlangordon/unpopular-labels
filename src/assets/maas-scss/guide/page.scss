@@ -40,6 +40,16 @@ $content-height-min: 1040px;
     }
   }
 
+  // large display settings: container on xlg
+  .container--lg {
+    @media (min-width: $screen-xlg-min) {
+      max-width: inherit !important;
+    }
+    @media (min-width: 180em) {
+      font-size: $font-size-xlg;
+    }
+  }
+
   /*------------------------------------*\
       #INDEX-PAGE
   \*------------------------------------*/

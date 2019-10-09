@@ -90,8 +90,6 @@ exports.onCreateNode = async ({
 
         if (fileNode) {
           console.log(`fileNodeId: %s`, fileNode.id);
-          // console.log(`NodeId:%s`, node.id)
-          // console.log(`fileURL:%s`, node.url)
           createNodeField({
             node,
             name: 'localFile___NODE',
@@ -122,11 +120,6 @@ exports.createPages = async ({ actions, graphql }) => {
 
   // setTemplate
   const setTemplate = require.resolve('./src/templates/SetPage.js');
-  // const setPaginatedTemplate = require.resolve('./src/templates/SetPaginatedPage.js');
-
-  // allTemplate
-  // const allTemplate = require.resolve('./src/templates/AllPage.js');
-  // const allPaginatedTemplate = require.resolve('./src/templates/AllPaginatedPage.js');
 
   // objectTemplate
   const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
@@ -147,12 +140,6 @@ exports.createPages = async ({ actions, graphql }) => {
   );
   const { allSetObject } = objects.data;
 
-  // create pages with templates and helper functions
-  // createPaginatedSetPages('set', allSet.edges, createPage, setPaginatedTemplate, 3, 'setObjects' );
-  // createPaginatedPages('all', allSet.edges, createPage, allPaginatedTemplate, 2);
-
   createDynamicPages('set', allSet.edges, createPage, setTemplate );
-  // createDynamicPages('all', allSet.edges, createPage, allTemplate );
   createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
 }
-
