@@ -30,6 +30,7 @@ class AboutPage extends Component {
               <section className="content-header">
                 <div className="about-page__masthead">
                   <Image isThumb={ aboutImgSize(this.props.viewport) } imgObject={ heroImage } defImgMode="fluid" />
+                  <span className="about-page__img-caption"> Linda Jackson and Jenny Kee, Image: Hugh Stewart </span>
                 </div>
               </section>
 

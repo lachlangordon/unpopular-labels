@@ -42,6 +42,12 @@ h2, h3, h4, h5, h6 {
    }
 }
 
+// disable acessibility focus border !!
+*:focus {
+  outline: 0.1px !important;
+  outline-color: $colour-blue !important;
+}
+
 // import gallery-guide CSS
 @import 'guide/page.scss';
 @import 'guide/layout.scss';
