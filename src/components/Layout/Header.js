@@ -4,13 +4,12 @@ import React from 'react';
 
 import { rhythm, scale } from '../../lib/typography';
 import presets from '../../lib/presets';
-import logo from '../../assets/maas-scss/svg/home-red.svg';
 
 const Header = (props) => {
 
   const headerLinks = [
     { 'name' :  'OBJECTS', 'location': '/all' },
-    { 'name' :  'THEMES', 'location': '/themes' },
+    { 'name' :  'THEMES', 'location': '/themes'},
     { 'name' :  'ABOUT', 'location': '/about' },
   ];
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 
 import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
@@ -22,81 +22,97 @@ const quotedClass = quote => {
   if ( quote.match(/^Linda Jackson/) ) { className = `linda__quote`; }
   else if ( quote.match(/^Jenny Kee/) ) { className = `jenny__quote`; }
   return className;
-}
+};
 
 const getQuotePerson = quote => {
   return quote.substring(0, quote.indexOf('<p>'));
-}
+};
 
 const getQuoteAttribution = quote => {
   return quote.substring(quote.indexOf('<p>'));
-}
+};
 
-const ObjectPage = ({
-  data: { images, object },
-  pageContext,
-  location,
-  viewport,
-}) => {
+class ObjectPage extends Component {
 
-  let bannerSize = getBannerSize(viewport);
+  related = [];
 
-  if (!object.object) {
-    return (<div>Not Web Published</div>);
-  }
+  constructor(props) {
+    super(props);
 
-  let title = object.object.name;
-  let date = undefined;
-  if (object.object.production[0] && object.object.production[0].date !== null) {
-    date = (<span className="object-page__date">{`, ${parseCirca(object.object.production[0].date)}` }</span>);
-  }
+    let object = props.data.object;
 
-  // creditLine
-  let creditLine = '';
-  const { acquisitionCreditLine, recordType } = object.object;
-  if ( acquisitionCreditLine.length === 1 &&
-              (recordType === "ArchivePart" || recordType === "Part") ) {
-    creditLine = "<span> MAAS Collection </span>";
-  } else {
-    creditLine = acquisitionCreditLine;
-  }
-
-  //Work out quote html
-  let quoteClass = '';
-  let glasses = undefined;
-  if (object.notes4) {
-    quoteClass = quotedClass(object.notes4);
-    if (quoteClass === 'linda__quote') {
-      glasses = <LindaIcon/>
-    } else if (quoteClass === 'jenny__quote') {
-      glasses = <JennyIcon/>
+    let objectIndex = -1;
+    for (let i = 0; i < object.parent.setObjects.length; i++) {
+      if (object.parent.setObjects[i].id.toString() === object.id) {
+        objectIndex = i;
+        break;
+      }
     }
-  }
 
-  let objectIndex = -1;
-  for (let i = 0; i < object.parent.setObjects.length; i++) {
-    if (object.parent.setObjects[i].id.toString() === object.id) {
-      objectIndex = i;
-      break;
+    this.related = object.parent.setObjects;
+    if (objectIndex > 0) {
+
+      let removedObjects = this.related.splice(objectIndex);
+      this.related = removedObjects.concat(this.related);
     }
+    this.related.splice(0, 1);
   }
 
-  let related = object.parent.setObjects;
-  if (objectIndex > 0) {
+  render() {
 
-    let removedObjects = related.splice(objectIndex);
-    related = removedObjects.concat(related);
-  }
-  related.splice(0, 1);
+    console.log(this.related);
 
+    const {
+      data,
+      pageContext,
+      location,
+      viewport,
+    } = this.props;
 
-  saveSeenObject(`${object.id}`);
+    const images = data.images;
+    const object = data.object;
 
-  return (
-    <Layout location={location}>
-      <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
+    let bannerSize = getBannerSize(viewport);
 
-      <div className="object-page">
+    if (!object.object) {
+      return (<div>Not Web Published</div>);
+    }
+
+    let title = object.object.name;
+    let date = undefined;
+    if (object.object.production[0] && object.object.production[0].date !== null) {
+      date = (<span className="object-page__date">{`, ${parseCirca(object.object.production[0].date)}` }</span>);
+    }
+
+    // creditLine
+    let creditLine = '';
+    const { acquisitionCreditLine, recordType } = object.object;
+    if ( acquisitionCreditLine.length === 1 &&
+      (recordType === "ArchivePart" || recordType === "Part") ) {
+      creditLine = "<span> MAAS Collection </span>";
+    } else {
+      creditLine = acquisitionCreditLine;
+    }
+
+    //Work out quote html
+    let quoteClass = '';
+    let glasses = undefined;
+    if (object.notes4) {
+      quoteClass = quotedClass(object.notes4);
+      if (quoteClass === 'linda__quote') {
+        glasses = <LindaIcon/>
+      } else if (quoteClass === 'jenny__quote') {
+        glasses = <JennyIcon/>
+      }
+    }
+
+    saveSeenObject(`${object.id}`);
+
+    return (
+      <Layout location={location}>
+        <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
+
+        <div className="object-page">
           <div className="container container--lg no-padding">
 
             <section>
@@ -107,52 +123,52 @@ const ObjectPage = ({
             </section>
 
             <section className="content-header">
-                <div className="object-page__mainImg">
-                  {
-                    images.length && (
-                      <Image className="image--object"
-                             imgObject={ images[0].fields.localFile }
-                             defImgMode="fluid"
-                             />
-                    )
-                  }
-                </div>
+              <div className="object-page__mainImg">
+                {
+                  images.length && (
+                    <Image className="image--object"
+                           imgObject={ images[0].fields.localFile }
+                           defImgMode="fluid"
+                    />
+                  )
+                }
+              </div>
             </section>
 
             <section className="section main-content">
 
-                <div className="object-page__content">
-                    <h1 className="object-page__title">
-                      { title }
-                      { date }
-                    </h1>
+              <div className="object-page__content">
+                <h1 className="object-page__title">
+                  { title }
+                  { date }
+                </h1>
 
-                    { object.notes2 &&
-                      <p className="object-page__notes2"
-                         dangerouslySetInnerHTML={{ __html: object.notes2 }} />
-                    }
+                { object.notes2 &&
+                <p className="object-page__notes2"
+                   dangerouslySetInnerHTML={{ __html: object.notes2 }} />
+                }
 
-                    { creditLine &&
-                      <p className="object-page__credit-line"
-                         dangerouslySetInnerHTML={{ __html: creditLine }} />
-                    }
+                { creditLine &&
+                <p className="object-page__credit-line"
+                   dangerouslySetInnerHTML={{ __html: creditLine }} />
+                }
+              </div>
+              <div className="object-page__bottom-content">
+                { object.notes3 &&
+                <div className="object-page__notes3"
+                     dangerouslySetInnerHTML={{ __html: object.notes3 }} />
+                }
+
+                { object.notes4 &&
+                <div className="object-page__notes4">
+                  <span className={quoteClass} dangerouslySetInnerHTML={{ __html: `&mdash; ${getQuotePerson(object.notes4)}` }}/>
+                  {glasses}
+                  <div dangerouslySetInnerHTML={{ __html: getQuoteAttribution(object.notes4) }}/>
                 </div>
-                <div className="object-page__bottom-content">
-                    { object.notes3 &&
-                        <div className="object-page__notes3"
-                                    dangerouslySetInnerHTML={{ __html: object.notes3 }} />
-                    }
-
-                    { object.notes4 &&
-                      <div className="object-page__notes4">
-                        <span className={quoteClass} dangerouslySetInnerHTML={{ __html: `&mdash; ${getQuotePerson(object.notes4)}` }}/>
-                        {glasses}
-                        <div dangerouslySetInnerHTML={{ __html: getQuoteAttribution(object.notes4) }}/>
-                      </div>
-                    }
+                }
 
 
-                </div>
+              </div>
             </section>
           </div>
 
@@ -160,29 +176,26 @@ const ObjectPage = ({
 
           <div className="container container--lg no-padding">
             <section className="content-related" >
-                { related.length &&
-                  <div className="object-page__related-items">
-                    <div>
-                      <h3 className="object-page__related-items__title">Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </h3>
-                      <div className="object-page__related-items__count">{`${related.length + 1} objects`}</div>
-                      {/* <div className="object-page__related-items__scroll">&larr; scroll</div> */}
-                    </div>
-                    <ItemSwipe className="object-page__related-slider" objectItems={related}/>
-                  </div>
-                }
+              { this.related.length &&
+              <div className="object-page__related-items">
+                <div>
+                  <h3 className="object-page__related-items__title">Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </h3>
+                  <div className="object-page__related-items__count">{`${this.related.length + 1} objects`}</div>
+                  {/* <div className="object-page__related-items__scroll">&larr; scroll</div> */}
+                </div>
+                <ItemSwipe className="object-page__related-slider" objectItems={this.related}/>
+              </div>
+              }
             </section>
             <section className="section">
-                <NavigationButtons/>
-            </section>
-            <section className="section">
-                <IconLegend/>
+              <NavigationButtons/>
             </section>
           </div>
 
-      </div>
-    </Layout>
-  )
-
+        </div>
+      </Layout>
+    )
+  }
 }
 
 export default withViewport(ObjectPage);
