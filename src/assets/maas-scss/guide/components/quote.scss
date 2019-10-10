@@ -13,27 +13,27 @@
   font-size: 1.3em;
   padding-top: 0.6em;
   blockquote {
-    padding: 36px 0px;
     position: relative;
+    display: inline-block;
+    padding: 0.2em 0 0 0.6em;
+    margin: 0.6em 0 1.2em 0;
     background: $colour-white;
-    margin-bottom: 28px;
     &::before {
       top: 0;
-      left: -35px;
-      content: '“';
-      font-size: 2em;
-      position: absolute;
+      left: -5px;
+      display: inline;
+      position: relative;
+      content: '\201C';
     }
     &::after {
-      right: 0.1em;
-      content: '”';
-      bottom: -22px;
-      font-size: 2em;
-      position: absolute;
+      top: 0;
+      right: -5px;
+      display: inline;
+      position: relative;
+      content: '\201D';
     }
     p {
       margin: 0;
-      // font-style: italic;
       font-family:  $font-family-bold;
     }
   }

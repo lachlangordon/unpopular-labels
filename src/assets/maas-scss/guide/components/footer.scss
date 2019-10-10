@@ -36,7 +36,6 @@
   // }
 
   .footer-mobile-footer {
-    min-height: 50px;
     display: flex;
     justify-content: space-between;
     margin-bottom: $spacing-sm;
@@ -58,6 +57,7 @@
   }
 
   .footer-maas-logo {
+    margin-left: auto;
     svg {
       height: 50px;
     }

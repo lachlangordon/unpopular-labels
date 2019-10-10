@@ -102,7 +102,7 @@ class ItemSwipe extends Component {
 
 ItemSwipe.propTypes = {
   className: PropTypes.string,
-  objectItems: PropTypes.object,
+  objectItems: PropTypes.array,
 };
 
 export default ItemSwipe;

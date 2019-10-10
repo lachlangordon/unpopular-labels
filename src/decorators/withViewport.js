@@ -28,7 +28,7 @@ function withViewport(ComposedComponent) {
       if (!EE) {
         EE = new EventEmitter();
         window.addEventListener('resize', handleWindowResize);
-        window.addEventListener('orientationchange', handleWindowResize);
+        // window.addEventListener('orientationchange', handleWindowResize);
       }
 
       EE.on(RESIZE_EVENT, this.handleResize, this);
@@ -38,7 +38,7 @@ function withViewport(ComposedComponent) {
       EE.removeListener(RESIZE_EVENT, this.handleResize, this);
       if (!EE.listeners(RESIZE_EVENT, true)) {
         window.removeEventListener('resize', handleWindowResize);
-        window.removeEventListener('orientationchange', handleWindowResize);
+        // window.removeEventListener('orientationchange', handleWindowResize);
         EE = null;
       }
     }

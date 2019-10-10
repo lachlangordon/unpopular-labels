@@ -4,13 +4,12 @@ import React from 'react';
 
 import { rhythm, scale } from '../../lib/typography';
 import presets from '../../lib/presets';
-import logo from '../../assets/maas-scss/svg/home-red.svg';
 
 const Header = (props) => {
 
   const headerLinks = [
     { 'name' :  'OBJECTS', 'location': '/all' },
-    { 'name' :  'THEMES', 'location': '/themes' },
+    { 'name' :  'THEMES', 'location': '/themes'},
     { 'name' :  'ABOUT', 'location': '/about' },
   ];
 
@@ -26,10 +25,14 @@ const Header = (props) => {
         <nav className="header__navigation">
           <Link to="/" className="menu-links">
 
-              <img style={{
+              <div style={{
                 // not working well - need to use gatsby image for scaling
                 ...scale(1/5),
-              }} src={logo} alt="Step Into Paradise" />
+              }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 25 25">
+                  <path id="Path" d="M25,11.719V23.438a1.6,1.6,0,0,1-.412,1.1,1.267,1.267,0,0,1-.977.464H15.278V15.625H9.722V25H1.389a1.267,1.267,0,0,1-.977-.464A1.6,1.6,0,0,1,0,23.438V11.719a.372.372,0,0,1,.011-.073.372.372,0,0,0,.011-.073L12.5,0,24.978,11.572A.378.378,0,0,1,25,11.719Z" fillRule="evenodd"/>
+                </svg>
+              </div>
 
           </Link>
 
@@ -39,7 +42,7 @@ const Header = (props) => {
               <li key={`nav-${i}`} className="header__navigation-button">
                 <Link to={item.location} className="menu-links">
 
-                  <h1 style={{
+                  <div style={{
                       ...scale(3 / 5),
                       [presets.xlg]: {
                         ...scale(1),
@@ -53,7 +56,7 @@ const Header = (props) => {
                       {item.name}
                     </span>
 
-                  </h1>
+                  </div>
                 </Link>
               </li>
             )
