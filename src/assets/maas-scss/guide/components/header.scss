@@ -25,13 +25,28 @@
   }
 
   nav.header__navigation {
+    font-family: $font-family-header;
 
     a.menu-links {
       display: inline-block;
       float: left;
       text-decoration: none;
+      color: $colour-blue;
 
-      > h1 {
+
+      svg {
+        fill: $colour-blue;
+      }
+
+      &[aria-current="page"] {
+        color: $colour-pink;
+
+        svg {
+          fill: $colour-pink;
+        }
+      }
+
+      > div {
         color: inherit;
         line-height: 1;
         margin: 0;
@@ -63,7 +78,7 @@
 
         &:first-child {
 
-          a h1 span {
+          a div span {
             border: 0;
           }
 
@@ -90,7 +105,7 @@
 
   .header__navigation-button > a {
     float: left !important;
-    h1 > span {
+    div > span {
       margin-left: 0 !important;
       border-right: none !important;
     }
