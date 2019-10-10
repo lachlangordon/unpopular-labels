@@ -20,6 +20,7 @@
 /* Base Override */
 $font-family-header: 'Bebas-Neue';
 h1 {
+   color: $colour-dark;
    font-family: $font-family-header;
    font-size: $font-size-xxlg;
    font-weight: normal;
@@ -31,6 +32,7 @@ h1 {
 }
 
 h2, h3, h4, h5, h6 {
+   color: $colour-dark;
    font-family: $font-family-header;
    font-weight: normal;
    margin-bottom: $spacing-xs;
