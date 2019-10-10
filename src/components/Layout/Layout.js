@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
+import { MobileIcon } from '../Icons/SharedIcons';
 import { rhythm, scale } from '../../lib/typography';
 import presets from '../../lib/presets';
 
@@ -44,14 +45,6 @@ class Layout extends Component {
             clearTimeout(this.timeoutId);
         }
     }
-
-    //
-    // componentDidUpdate (prevProps) {
-    //   // if (this.props.viewport.width !== prevProps.viewport.width) {
-    //     const { viewport, returnViewportSize } = this.props;
-    //     returnViewportSize(viewport);
-    //   // }
-    // }
 
     render() {
       const { location, children } = this.props;
@@ -121,12 +114,15 @@ class Layout extends Component {
                              </li>
                              <li>
                                <div className="view-guide">
-                                 <p className="sidepanel__date-text"
-                                    style={{ ...scale(1/3) }}
-                                    dangerouslySetInnerHTML={{ __html: dateText }} />
-                                   <span> View this guide on your phone: <br />
-                                     <a href="https://maas.museum/guide"> https://maas.museum/guide </a>
-                                   </span>
+                                   <p className="sidepanel__date-text"
+                                      style={{ ...scale(1/3) }}
+                                      dangerouslySetInnerHTML={{ __html: dateText }} />
+                                   <div className="footer-mobile-icon">
+                                     <MobileIcon />
+                                     <span> View this guide on your phone: <br />
+                                       <a href="https://maas.museum/guide"> https://maas.museum/guide </a>
+                                     </span>
+                                   </div>
                                </div>
                              </li>
                         </ul>

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
+import { MobileIcon } from "../Icons/SharedIcons";
 import {shouldShowSeenIcon} from '../../lib/session';
 import ImageByPath from "../Image/ImageByPath";
 
@@ -13,7 +12,7 @@ const LightFooter = (props) => (
         {
           !shouldShowSeenIcon() && (
             <div className="footer-mobile-icon">
-              <FontAwesomeIcon icon={faMobileAlt} />
+              <MobileIcon />
               <div>
                 View this guide on your phone:
                 <br/>

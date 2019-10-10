@@ -5,18 +5,7 @@
 
 @import '../core/variables.scss';
 
-/* Title - index-page */
-.guide-index-page__title {
-  color: $colour-white;
-  padding-left: 1rem;
-
-  > span {
-    display: block;
-  }
-}
-
 span.text__fadeIn {
-  text-align: left;
   animation: fadein 2s;
   -moz-animation: fadein 2s; /* Firefox */
   -webkit-animation: fadein 2s; /* Safari and Chrome */

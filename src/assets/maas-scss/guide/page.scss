@@ -55,31 +55,29 @@ $content-height-min: 1040px;
   \*------------------------------------*/
   .index-page {
 
+    .bg-content__wrapper {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      justify-content: center;
+      // border: 5px solid red;
+    }
+
+    /* Title - index-page */
+    .guide-index-page__title {
+      color: $colour-white;
+      padding-left: 1rem;
+
+      > span {
+        text-align: center;
+        display: block;
+      }
+    }
+
     ul.actions {
       list-style-type: none;
       overflow: hidden;
-    }
-
-    // normal ipad
-    @media (min-width: 768px) {
-      .portrait-ipad {
-        .guide-index-page__title {
-          font-size: 4.9rem !important;
-          line-height: 4.9rem !important;
-        }
-
-        .bg-image__content {
-          font-size: 1rem !important;
-          bottom: 4.563rem !important;
-
-          ul.actions {
-            li > a > span {
-              font-size: 1.5rem !important;
-              line-height: inherit !important;
-            }
-          }
-        }
-      }
+      margin: auto;
     }
 
     // ipad-pro
@@ -103,7 +101,6 @@ $content-height-min: 1040px;
         }
       }
     }
-
   }
 
   /*------------------------------------*\

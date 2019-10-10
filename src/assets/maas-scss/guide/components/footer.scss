@@ -69,7 +69,13 @@
   }
 
   .footer-content__acknowledgment-title {
+    margin-bottom: 0.3em;
     font-family: $font-family-bold;
+    font-size: 1rem;
+
+    @media (min-width: $screen-lg-min) {
+      margin-bottom: 0.6em;
+    }
   }
 
   .footer-content__navigation-container {
