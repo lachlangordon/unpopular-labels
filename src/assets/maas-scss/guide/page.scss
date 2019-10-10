@@ -280,8 +280,8 @@ $content-height-min: 1040px;
   .full-content {
     lost-column: 5/5;
   }
-  // set page
 
+  // set page
   .set-page {
     .container {
       padding-left: $spacing-sm !important;
@@ -295,6 +295,15 @@ $content-height-min: 1040px;
 
 .set-page__title {
   margin-top: 0.25em !important;
+}
+
+// about page
+.about-page__img-caption {
+  font-size: $font-size-xs;
+
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-size-sm;
+  }
 }
 
 .cultural-statement {
