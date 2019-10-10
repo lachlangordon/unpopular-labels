@@ -9,8 +9,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-// import withViewport from '../../decorators/withViewport';
-
 import { rhythm, scale } from '../../lib/typography';
 import presets from '../../lib/presets';
 
@@ -18,10 +16,8 @@ import presets from '../../lib/presets';
 import '../../assets/maas-scss/main.scss';
 
 import Header from './Header';
-import Menu from '../Menu/Menu';
-
-import Loader from '../Loader/Loader';
 import Footer from './Footer';
+import LightFooter from './LightFooter';
 
 class Layout extends Component {
     constructor(props) {
@@ -64,6 +60,13 @@ class Layout extends Component {
       const topTitle = `<span>JENNY KEE </span> &nbsp; &nbsp; &nbsp; <span> LINDA JACKSON </span><br>`;
       const pageTitle = `<span> STEP INTO &nbsp; PARADISE </span>`;
       const dateText = `<span> 17 October 2019 - 22 March 2020 </span>`;
+
+      let footer = undefined;
+      if (location && location.pathname === '/about' || location.pathname === '/themes' || location.pathname === '/objects') {
+        footer = (<Footer/>)
+      } else if (location && location.pathname !== '/') {
+        footer = <LightFooter/>
+      }
       return (
         <StaticQuery
           query={graphql`
@@ -92,8 +95,7 @@ class Layout extends Component {
                   <main className={`${appClassName}__content`}>
                     {children}
 
-                    { ( location && location.pathname !== '/' ) &&
-                          <Footer /> }
+                    { footer }
                   </main>
 
                   <div className={`${appClassName}__sidenav`}>
