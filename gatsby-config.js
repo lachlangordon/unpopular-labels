@@ -50,7 +50,7 @@ module.exports = {
         start_url: `/`,
         display: `minimal-ui`,
         // This path is relative to the root of the site.
-        icon: config.siteLogo,
+        icon: `src/assets/favicons/MAAS_logo-512x512.png`,
       },
     },
     {

@@ -6,7 +6,7 @@ const meta = {
   siteShortName: 'SIP',
   siteDescription: 'Step into Paradise Gallery Guide.',
   siteHeadline: 'Digital Gallery Guide',
-  siteUrl: 'https://maas-guide.netlify.com', // No trailing slash!
+  siteUrl: 'https://maas.museum/guide', // No trailing slash!
 };
 
 const social = {
