@@ -9,6 +9,7 @@ import SEO from '../components/seo';
 
 import withViewport from '../decorators/withViewport';
 import { getImgOrient, getBannerSize } from '../lib/utils';
+import { ArrowRight } from '../components/Icons/SharedIcons';
 
 const IndexPage = ({
   data: { site, heroImage },
@@ -34,18 +35,20 @@ const IndexPage = ({
       <div className="index-page">
           <div className="container container--lg no-padding">
             <BgImage { ...imgProp }>
-                <h2 className="guide-index-page__title"
-                    style={{ ...scale(2) }}>
-                  <span className="text__fadeIn"> STEP </span>
-                  <span className="text__fadeIn"> INTO </span>
-                  <span className="text__fadeIn"> PARADISE </span>
-                </h2>
 
-                <ul className="actions">
-                    <li><Link to="/themes" className="button" >
-                      <span style={{ ...scale(1) }}> Get Started </span> </Link>
-                    </li>
-                </ul>
+                <div className="bg-content__wrapper">
+                      <h2 className="guide-index-page__title"
+                          style={{ ...scale(2) }}>
+                        <span className="text__fadeIn"> STEP INTO </span>
+                        <span className="text__fadeIn"> PARADISE </span>
+                      </h2>
+
+                      <ul className="actions">
+                          <li><Link to="/themes" className="button" >
+                            <span style={{ ...scale(1) }}> Get Started <ArrowRight style={{ fontSize: '0.7em', verticalAlign: 'middle' }} /> </span> </Link>
+                          </li>
+                      </ul>
+                </div>
             </BgImage>
           </div>
 
@@ -73,7 +76,7 @@ export const pageQuery = graphql`
       name
       absolutePath
       thumbnail: childImageSharp {
-        fluid(maxWidth: 420,maxHeight: 740) {
+        fluid(maxWidth: 300,maxHeight: 720) {
           ...GatsbyImageSharpFluid
         }
       }
