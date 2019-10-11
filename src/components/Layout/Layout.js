@@ -47,6 +47,7 @@ class Layout extends Component {
     }
 
     render() {
+      // window.source = "kiosk";
       const { location, children } = this.props;
       const appClassName = 'guide-app';
 
@@ -55,11 +56,16 @@ class Layout extends Component {
       const dateText = `<span> 17 October 2019 - 22 March 2020 </span>`;
 
       let footer = undefined;
-      if (location && location.pathname === '/about' || location.pathname === '/themes' || location.pathname === '/objects') {
-        footer = (<Footer/>)
-      } else if (location && location.pathname !== '/') {
-        footer = <LightFooter/>
-      }
+      if (location &&
+            (location.pathname === '/about' ||
+             location.pathname === '/themes' ||
+             location.pathname === '/objects' )
+         ) {
+            footer = (<Footer/>)
+          } else if (location && location.pathname !== '/') {
+            footer = <LightFooter/>
+          }
+
       return (
         <StaticQuery
           query={graphql`
@@ -94,7 +100,9 @@ class Layout extends Component {
                   <div className={`${appClassName}__sidenav`}>
 
                     <Header className={`${appClassName}__header`}
-                            siteTitle={data.site.siteMetadata.title}  />
+                            siteTitle={data.site.siteMetadata.title}
+                            location={location.pathname}
+                    />
 
                   </div>
 
