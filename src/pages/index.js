@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { scale } from '../lib/typography';
+import { scale, rhythm } from '../lib/typography';
 import { isEmpty } from 'lodash';
 
 import Layout from '../components/Layout/Layout';
@@ -28,6 +28,15 @@ const IndexPage = ({
     className: getImageClass,
     imgObject: heroImage,
   }
+  
+  let textStyle = (
+     viewportSize === 'mobile' ) ? {
+    ...scale(2.1),
+    lineHeight: rhythm(3)
+  } : {
+    ...scale(2.5),
+    lineHeight: rhythm(4.5)
+  }
 
   return (
     <Layout location={location}>
@@ -38,7 +47,7 @@ const IndexPage = ({
 
                 <div className="bg-content__wrapper">
                       <h2 className="guide-index-page__title"
-                          style={{ ...scale(2) }}>
+                          style={ textStyle }>
                         <span className="text__fadeIn"> STEP INTO </span>
                         <span className="text__fadeIn"> PARADISE </span>
                       </h2>
