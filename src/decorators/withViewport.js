@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import EventEmitter from 'eventemitter3';
 import { canUseDOM } from '../lib/utils';
+import { throttle } from 'lodash';
 
 let EE;
-let viewport = {width: 1366, height: 768}; // Default size for server-side rendering
+let viewport = {width: 1024, height: 1366}; // Default size for server-side rendering
 const RESIZE_EVENT = 'resize';
 
 function handleWindowResize() {
@@ -27,7 +28,7 @@ function withViewport(ComposedComponent) {
     componentDidMount() {
       if (!EE) {
         EE = new EventEmitter();
-        window.addEventListener('resize', handleWindowResize);
+        window.addEventListener('resize', throttle(handleWindowResize, 16));
         // window.addEventListener('orientationchange', handleWindowResize);
       }
 
@@ -37,7 +38,7 @@ function withViewport(ComposedComponent) {
     componentWillUnmount() {
       EE.removeListener(RESIZE_EVENT, this.handleResize, this);
       if (!EE.listeners(RESIZE_EVENT, true)) {
-        window.removeEventListener('resize', handleWindowResize);
+        window.removeEventListener('resize', throttle(handleWindowResize, 16));
         // window.removeEventListener('orientationchange', handleWindowResize);
         EE = null;
       }

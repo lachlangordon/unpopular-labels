@@ -38,6 +38,7 @@ class ObjectPage extends Component {
   constructor(props) {
     super(props);
     this.related = [];
+    this.init();
   }
 
   init = () => {
@@ -69,7 +70,6 @@ class ObjectPage extends Component {
       viewport,
     } = this.props;
 
-    this.init();
     // console.log(this.related);
 
     const { images, object } = data;
