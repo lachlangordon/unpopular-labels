@@ -61,7 +61,6 @@ const processImageField = async ( _object, createNode, parentId ) => {
       if ( _object.mainImage ) {
         const { mainImage } = _object;
         const _mainImage =  setNodeImage({ ...mainImage, parent })
-        console.log(_mainImage);
         createNode(_mainImage);
       }
 
@@ -98,7 +97,6 @@ const processObjectField = async ( _object, createNode, parentId ) => {
             // preprocess object
             let parent = parentId || null;
             normalisedObj = setNodeSetObject({ ...narrativeObj, parent });
-            console.log(`importing objects - themeId: %s vs. objectParent: %s`, parent, parentObjId);
             createNode(normalisedObj);
         });
 
