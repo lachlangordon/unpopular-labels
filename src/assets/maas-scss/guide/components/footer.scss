@@ -40,8 +40,12 @@
     justify-content: space-between;
     margin-bottom: $spacing-sm;
 
-    @media (min-width: $screen-md-min) {
+    @media (min-width: $screen-lg-min) {
       display: none;
+    }
+
+    a {
+      color: $colour-black;
     }
   }
 

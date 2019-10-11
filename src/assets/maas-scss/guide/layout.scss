@@ -77,6 +77,10 @@ $colour-black: #000;
 
   // hide it for most screens (xs, sm, md)
   display: none;
+
+  .view-guide a {
+    color: $colour-white;
+  }
 }
 
 @media (min-width: $screen-lg-min) {

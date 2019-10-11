@@ -47,6 +47,7 @@ class Layout extends Component {
     }
 
     render() {
+      window.source = "kiosk";
       const { location, children } = this.props;
       const appClassName = 'guide-app';
 
@@ -94,7 +95,9 @@ class Layout extends Component {
                   <div className={`${appClassName}__sidenav`}>
 
                     <Header className={`${appClassName}__header`}
-                            siteTitle={data.site.siteMetadata.title}  />
+                            siteTitle={data.site.siteMetadata.title}
+                            location={location.pathname}
+                    />
 
                   </div>
 

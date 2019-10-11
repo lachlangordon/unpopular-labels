@@ -8,11 +8,10 @@ import presets from '../../lib/presets';
 const Header = (props) => {
 
   const headerLinks = [
-    { 'name' :  'OBJECTS', 'location': '/all' },
-    { 'name' :  'THEMES', 'location': '/themes'},
+    { 'name' :  'OBJECTS', 'location': '/all'},
+    { 'name' :  'THEMES', 'location': '/themes', 'partialLocation': '/set'},
     { 'name' :  'ABOUT', 'location': '/about' },
   ];
-
   return (
     <div id="header" className="header">
 
@@ -38,6 +37,7 @@ const Header = (props) => {
 
           <ul role="navigation">
           { headerLinks.map((item, i) => {
+            console.log(item.partialLocation && props.location.includes(item.partialLocation));
             return (
               <li key={`nav-${i}`} className="header__navigation-button">
                 <Link to={item.location} className="menu-links">
