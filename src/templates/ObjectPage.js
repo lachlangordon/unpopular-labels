@@ -34,16 +34,18 @@ const getQuoteAttribution = quote => {
 
 class ObjectPage extends Component {
 
-  related = [];
-
   constructor(props) {
     super(props);
+    this.related = [];
+  }
 
-    let object = props.data.object;
+  init = () => {
+    // let object = props.data.object;
+    const { object } = this.props.data;
 
     let objectIndex = -1;
     for (let i = 0; i < object.parent.setObjects.length; i++) {
-      if (object.parent.setObjects[i].id.toString() === object.id) {
+      if (`${ object.parent.setObjects[i].id }` === object.id) {
         objectIndex = i;
         break;
       }
@@ -51,7 +53,6 @@ class ObjectPage extends Component {
 
     this.related = object.parent.setObjects;
     if (objectIndex > 0) {
-
       let removedObjects = this.related.splice(objectIndex);
       this.related = removedObjects.concat(this.related);
     }
@@ -67,8 +68,10 @@ class ObjectPage extends Component {
       viewport,
     } = this.props;
 
-    const images = data.images;
-    const object = data.object;
+    this.init();
+    // console.log(this.related);
+
+    const { images, object } = data;
 
     let bannerSize = getBannerSize(viewport);
 
