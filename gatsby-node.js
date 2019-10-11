@@ -89,7 +89,9 @@ exports.onCreateNode = async ({
         });
 
         if (fileNode) {
-          console.log(`fileNodeId: %s`, fileNode.id);
+          console.log(`localising imageId: %s`, node.id);
+          console.log(`imageURL: %s`, node.url);
+          // console.log(`fileNodeId: %s`, fileNode.id);
           createNodeField({
             node,
             name: 'localFile___NODE',
