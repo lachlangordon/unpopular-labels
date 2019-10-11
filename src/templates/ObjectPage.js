@@ -7,6 +7,7 @@ import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 import Banner from '../components/Banner/Banner';
+import { isEmpty } from 'lodash';
 
 import { saveSeenObject } from '../lib/session';
 import {convertToSID, parseCirca, getBannerSize} from '../lib/utils';
@@ -45,7 +46,7 @@ class ObjectPage extends Component {
 
     let objectIndex = -1;
     for (let i = 0; i < object.parent.setObjects.length; i++) {
-      if (`${ object.parent.setObjects[i].id }` === object.id) {
+      if (object.parent.setObjects[i].id.toString() === object.id) {
         objectIndex = i;
         break;
       }
@@ -126,7 +127,7 @@ class ObjectPage extends Component {
             <section className="content-header">
               <div className="object-page__mainImg">
                 {
-                  images[0].fields.localFile && (
+                  !!images.length && (
                     <Image className="image--object"
                            imgObject={ images[0].fields.localFile }
                            defImgMode="fluid"
