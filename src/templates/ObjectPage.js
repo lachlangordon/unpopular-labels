@@ -60,8 +60,6 @@ class ObjectPage extends Component {
 
   render() {
 
-    console.log(this.related);
-
     const {
       data,
       pageContext,

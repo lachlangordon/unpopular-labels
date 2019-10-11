@@ -12,9 +12,6 @@ require('dotenv').config({
 const config = require('./config/website');
 const postCSSPlugins = require('./postcss-config.js');
 
-console.log(`Gatsby in : '${activeEnv}' mode.`);
-console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`);
-
 module.exports = {
   siteMetadata: {
     title: config.siteTitle,

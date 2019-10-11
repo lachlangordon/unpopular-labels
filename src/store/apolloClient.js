@@ -30,7 +30,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       ),
     );
 
-  if (networkError) console.log(`[Network error]: ${networkError}`);
 })
 
 // { dataIdFromObject: o => (o.id ? `${o.__typename}:${o.id}` : null) }
@@ -60,7 +59,6 @@ const resolvers = {
         }
       `;
       const current = cache.readQuery({ query });
-      console.log(current);
       const data = {
         showMenu: !current.showMenu,
       };

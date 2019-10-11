@@ -4,7 +4,6 @@ const createDynamicPages = (type, list, createPage, template) =>
     const id = data.node.id;
     const path = `/${type}/${id}`;
 
-    console.log(`Creating page: ${path}`);
     createPage({
       path: path,
       component: template,
@@ -20,7 +19,6 @@ const createPaginatedPages = (type, list, createPage, template, itemsPerPage) =>
   const numPages = Math.ceil(list.length / itemsPerPage);
 
   Array.from({ length: numPages }).forEach((_, i) => {
-    console.log(`Creating page: ${path}/${i + 1}`);
     createPage({
       path: i === 0 ? path : `${path}/${i + 1}`,
       component: template,
@@ -43,7 +41,6 @@ const createPaginatedSetPages = (type, list, createPage, template, itemsPerPage,
     const numPages = Math.ceil(objects.length / itemsPerPage);
 
     Array.from({length: numPages}).forEach((_, i) => {
-      console.log(`Creating page: ${path}/${i + 1}`);
 
       createPage({
         path: i === 0 ? path : `${path}/${i + 1}`,
