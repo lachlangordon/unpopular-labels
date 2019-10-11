@@ -27,11 +27,9 @@ exports.sourceNodes = async ({ actions, createNodeId, store, cache }) => {
   `;
 
   try {
-    console.log(`starting to fetch data from MAAS_API`);
 
     const { masterSet, childSets } = await GQLClientWrapper( query );
 
-    console.log(`finished fetching data`);
 
     // if there is no master narrative don't create nodes
     if ( masterSet.length ) { return; }
@@ -52,7 +50,6 @@ exports.sourceNodes = async ({ actions, createNodeId, store, cache }) => {
           }, createNode);
       });
 
-      console.log(`finished importing data`);
       resolve();
     })
 
@@ -79,7 +76,6 @@ exports.onCreateNode = async ({
   if (node.internal.type === 'SetImage') {
     try {
       if (node.id && node.url) {
-        console.log(`process image: `, node.url);
         const fileNode = await createRemoteFileNode({
           url: node.url,
           store,
@@ -100,7 +96,6 @@ exports.onCreateNode = async ({
         }
       }
     } catch (err) {
-      console.log(`error SetImage node link: %s`, err);
     }
   }
 }
@@ -133,7 +128,6 @@ exports.createPages = async ({ actions, graphql }) => {
   );
 
   const { allSet } = sets.data;
-  console.log(allSet.edges);
 
   const objects = await GQLGatsbyWrapper(
     graphql(`
