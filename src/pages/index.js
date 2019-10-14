@@ -37,12 +37,12 @@ const IndexPage = ({
 
   // handle mobile & landscape mobile
   if ( viewportSize === 'mobile' ||
-       (imgOrient === 'landscape' && viewport['height'] < 768) 
+       (imgOrient === 'landscape' && viewport['height'] < 768)
   ) {
     // landscape mobile - smaller
     textStyle = imgOrient === 'landscape' ? {
       ...scale(1.8),
-     lineHeight: rhythm(2.5)
+     lineHeight: rhythm(2.5),
     } : {
      ...scale(2.1),
      lineHeight: rhythm(3)
@@ -65,9 +65,9 @@ const IndexPage = ({
 
                       <ul className="actions">
                           <li>
-                            <Link to="/themes" className="button" >
+                            <Link to="/themes" className="button index-button" >
                               <span style={{ ...scale(1) }}> Get Started
-                              <ArrowRight style={{ fontSize: '0.7em', verticalAlign: 'middle' }} /> </span>
+                              <ArrowRight className="index-arrow" /> </span>
                             </Link>
                           </li>
                       </ul>
