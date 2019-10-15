@@ -113,8 +113,6 @@ class ObjectPage extends Component {
     }
 
     saveSeenObject(`${object.id}`);
-    console.log("quote person", getQuotePerson(object.notes4));
-    console.log("quote att", getQuoteAttribution(object.notes4));
 
     return (
       <Layout location={location}>
