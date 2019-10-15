@@ -59,7 +59,7 @@ class ItemSwipe extends Component {
         `/object/${id}`,
         { replace: false }
       )
-    }
+    };
 
     return (
         <Slider
