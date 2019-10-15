@@ -7,6 +7,7 @@ import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 import Banner from '../components/Banner/Banner';
+import { isEmpty } from 'lodash';
 
 import { saveSeenObject } from '../lib/session';
 import {convertToSID, parseCirca, getBannerSize} from '../lib/utils';
@@ -121,17 +122,15 @@ class ObjectPage extends Component {
               }
             </section>
 
-            <section className="content-header">
-              <div className="object-page__mainImg">
-                {
-                  images.length && (
-                    <Image className="image--object"
-                           imgObject={ images[0].fields.localFile }
-                           defImgMode="fluid"
-                    />
-                  )
-                }
-              </div>
+            <section className="content-header object-page__mainImg">
+              {
+                !!images.length && (
+                  <Image className="image--object"
+                         imgObject={ images[0].fields.localFile }
+                         defImgMode="fluid"
+                  />
+                )
+              }
             </section>
 
             <section className="section main-content">
@@ -173,15 +172,12 @@ class ObjectPage extends Component {
 
           <hr />
 
-          <div className="container container--lg no-padding">
-            <section className="content-related" >
+            <section className="content-related container container--lg no-padding" >
               { this.related.length &&
               <div className="object-page__related-items">
-                <div>
                   <h3 className="object-page__related-items__title">Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </h3>
-                  <div className="object-page__related-items__count">{`${this.related.length + 1} objects`}</div>
+                  <div className="object-page__related-items__count">{`${this.related.length} ${this.related.length > 1 ? "objects" : "object"}`}</div>
                   {/* <div className="object-page__related-items__scroll">&larr; scroll</div> */}
-                </div>
                 <ItemSwipe className="object-page__related-slider" objectItems={this.related}/>
               </div>
               }
@@ -189,7 +185,6 @@ class ObjectPage extends Component {
             <section className="section">
               <NavigationButtons/>
             </section>
-          </div>
 
         </div>
       </Layout>

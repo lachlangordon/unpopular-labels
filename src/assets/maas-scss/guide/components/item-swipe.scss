@@ -135,12 +135,11 @@
 }
 
 .item-slide__item-holder {
+  display: block;
   padding: 0 5px;
-  > a {
-    cursor: pointer;
-    &:hover {
-      opacity: 0.5
-    }
+  cursor: pointer;
+  &:hover {
+    opacity: 0.5
   }
 }
 

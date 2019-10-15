@@ -62,10 +62,10 @@ class ItemSwipe extends Component {
 
     return (
         <Slider
-            infinite
+            infinite={objectItems.length > 1}
             swipeable
             draggable
-            partialVisbile
+            partialVisbile={objectItems.length > 1}
             slidesToSlide={1}
             deviceType={deviceType}
             responsive={responsive}
@@ -76,22 +76,25 @@ class ItemSwipe extends Component {
   				{
   					objectItems.map((object, j) => {
   						if (object.object && object.object.mainImage) {
-  							 const objectId = object.id;
-  							 const imageId = object.object.mainImage.id;
-                 const hasQuote = object.notes3 !== null ? true : false;
-  							 return (
-  								 <div key={`item-slide-${j}`} className="item-slide__item-holder">
-    								 <a onClick={(e) => {
-    								       ( this.state.isMoving ? e.preventDefault() : goToObjectId(objectId) )
-    								     }}>
-    								   <ImageById size="thumbnail" imageId={imageId} />
-                       <div className="item-slide__icon-holder">
-							           { shouldShowSeenIcon() && isObjectSeen(`${objectId}`) && <SeenIcon/> }
-                         { hasQuote && <QuoteIcon/> }
-                       </div>
-    								 </a>
-  								 </div>
-  							 )
+               const objectId = object.id;
+               const imageId = object.object.mainImage.id;
+               const hasQuote = object.notes3 !== null ? true : false;
+               const showIconDiv = hasQuote || (shouldShowSeenIcon() && isObjectSeen(objectId));
+               return (
+                   <a className="item-slide__item-holder" key={`item-slide-${j}`} onClick={(e) => {
+                         ( this.state.isMoving ? e.preventDefault() : goToObjectId(objectId) )
+                       }}>
+                     <ImageById size="thumbnail" imageId={imageId} />
+                     {
+                       showIconDiv && (
+                         <div className="item-slide__icon-holder">
+                           { shouldShowSeenIcon() && isObjectSeen(`${objectId}`) && <SeenIcon/> }
+                           { hasQuote && <QuoteIcon/> }
+                         </div>
+                       )
+                     }
+                   </a>
+               )
   						}
   					})
   				}
