@@ -26,13 +26,12 @@ const Footer = (props) => (
           <div className="footer-content__acknowledgment">
               <h3 className="footer-content__acknowledgment-title">Acknowledgement of Country</h3>
               <p>The Museum of Applied Arts and Sciences acknowledges Australia’s First Nations Peoples as the Traditional Owners and Custodians of the land and gives respect to the Elders – past and present – and through them to all Aboriginal and Torres Strait Islander peoples.</p>
-              <p> All photography by Museum of Applied Arts and Sciences unless otherwise stated.</p>
           </div>
           <nav className="nav-secondary">
             <div className="footer-content__navigation-container">
                 <ul className="footer-content__navigation">
-                  <li className="menu-item"><Link to="/credits">Credits</Link></li>
                   <li className="menu-item"><Link to="/acknowledgements">Acknowledgements</Link></li>
+                  <li className="menu-item"><Link to="/credits">Credits</Link></li>
                   {shouldShowSeenIcon() && (
                     <li className="menu-item"><Link to="/privacy">Privacy</Link></li>
                   )}

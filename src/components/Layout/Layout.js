@@ -25,25 +25,23 @@ class Layout extends Component {
       super(props);
       this.state = {
           error: false,
-          isMenuVisible: false,
           loading: 'is-loading'
       };
-      // console.log(props);
-      // this.handleToggleMenu = this.handleToggleMenu.bind(this)
     }
 
     componentDidMount () {
-        this.timeoutId = setTimeout(() => {
-            this.setState({loading: ''});
-        }, 100);
-
-        // console.log(window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE);
+      // console.log(window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE);
+      this.timeoutId = setTimeout(() => {
+          if (window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE) {
+            this.setState({ loading: '' });
+          }
+      }, 100);
     }
 
     componentWillUnmount () {
-        if (this.timeoutId) {
-            clearTimeout(this.timeoutId);
-        }
+      if (this.timeoutId) {
+          clearTimeout(this.timeoutId);
+      }
     }
 
     render() {
@@ -67,16 +65,7 @@ class Layout extends Component {
 
       return (
         <StaticQuery
-          query={graphql`
-            query SiteTitleQuery {
-              site {
-                siteMetadata {
-                  title
-                  description
-                }
-              }
-            }
-          `}
+          query={SiteTitleQuery}
           render={data => (
             <div className={`${appClassName} body
                             ${this.state.loading} `}>
@@ -149,7 +138,15 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// const AppLayout = withViewport(Layout);
+const SiteTitleQuery = graphql`
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+  }
+`;
 
-// export default AppLayout;
 export default Layout;

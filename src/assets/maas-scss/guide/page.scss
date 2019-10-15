@@ -80,6 +80,21 @@ $content-height-min: 1040px;
       margin: auto;
     }
 
+    .index-button {
+
+      > span {
+        float: left;
+        text-align: left;
+        width: 100%;
+      }
+
+      .index-arrow {
+        position: relative;
+        vertical-align: middle;;
+        margin-left: 0.5em;
+      }
+    }
+
     // ipad-pro
     @media (min-width: $screen-md-min) {
       .portrait-ipad {

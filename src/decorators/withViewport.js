@@ -4,7 +4,7 @@ import { canUseDOM } from '../lib/utils';
 import { throttle } from 'lodash';
 
 let EE;
-let viewport = {width: 1024, height: 1366}; // Default size for server-side rendering
+let viewport = {width: 1024, height: 1366}; // Default size for server-side rendering: ipadPro
 const RESIZE_EVENT = 'resize';
 
 function handleWindowResize() {
@@ -23,13 +23,17 @@ function withViewport(ComposedComponent) {
       this.state = {
         viewport: canUseDOM() ? {width: window.innerWidth, height: window.innerHeight} : viewport,
       };
+
+      // need to declare it here for removing it properly
+      // https://stackoverflow.com/questions/46102738/react-event-listener-with-throttle-not-being-removed
+      this.throttledResize = throttle(handleWindowResize, 16);
     }
 
     componentDidMount() {
       if (!EE) {
         EE = new EventEmitter();
-        window.addEventListener('resize', throttle(handleWindowResize, 16));
-        // window.addEventListener('orientationchange', handleWindowResize);
+        window.addEventListener('resize', this.throttledResize);
+        window.addEventListener('orientationchange', this.throttledResize);
       }
 
       EE.on(RESIZE_EVENT, this.handleResize, this);
@@ -38,8 +42,8 @@ function withViewport(ComposedComponent) {
     componentWillUnmount() {
       EE.removeListener(RESIZE_EVENT, this.handleResize, this);
       if (!EE.listeners(RESIZE_EVENT, true)) {
-        window.removeEventListener('resize', throttle(handleWindowResize, 16));
-        // window.removeEventListener('orientationchange', handleWindowResize);
+        window.removeEventListener('resize', this.throttledResize);
+        window.removeEventListener('orientationchange', this.throttledResize);
         EE = null;
       }
     }

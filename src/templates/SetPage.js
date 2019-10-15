@@ -47,7 +47,7 @@ const SetPage = ({
 
                </div>
             </section>
-            <section className="section main-content">
+            <section className="section main-content no-side-padding">
               <div className="container container--lg">
                   <div className="set-page__content">
                   {

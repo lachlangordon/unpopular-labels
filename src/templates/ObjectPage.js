@@ -14,7 +14,6 @@ import {convertToSID, parseCirca, getBannerSize} from '../lib/utils';
 
 import LindaIcon from "../components/Icons/LindaIcon";
 import JennyIcon from "../components/Icons/JennyIcon";
-import IconLegend from "../components/Icons/IconLegend";
 import withViewport from "../decorators/withViewport";
 
 // assign class to Linda or Jenny quotes
@@ -65,7 +64,6 @@ class ObjectPage extends Component {
 
     const {
       data,
-      pageContext,
       location,
       viewport,
     } = this.props;

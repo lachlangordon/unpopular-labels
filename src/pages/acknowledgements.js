@@ -27,7 +27,7 @@ const AcknowledgementsPage = ({
                 <p>Tony Assness</p>
 
                 <h3><strong>Curatorial</strong></h3>
-                <p>Glynis Jones, Alysha Buss</p>
+                <p>Glynis Jones, Alysha Buss, Vanessa Thorne</p>
 
                 <h3><strong>Exhibition Designer</strong></h3>
                 <p>Jemima Woo</p>
@@ -45,7 +45,7 @@ const AcknowledgementsPage = ({
                 <p>Lucy Clark, Madeleine Riley, Sarah Heenan, Sarah Pointon, Skye Mitchell, Suzanne Chee, Teresa Werstak</p>
 
                 <h3><strong>Audio, Visual and Digital Media</strong></h3>
-                <p>Anna Fraser, Arul Baskaran, Ben Rumble, Brett Tweedie, David Cochrane, Gara Baldwin, Georgina Veneziani, Jonny Seymour, Julien Burgess, Kathleen Hackett, Kathleen Phillips, Lachlan Gordon, Marinco Kojdanovski, Michael Saad, Nathan Utama, Nick Wales, Owen Conlan, Ryan Hernandez</p>
+                <p>Anna Fraser, Arul Baskaran, Ben Rumble, Brett Tweedie, David Cochrane, Gara Baldwin, Geoff Drane, Georgina Veneziani, Harry Ree, Jessica James-Moody, Julien Burgess, Karen Johnson, Kathleen Hackett, Kathleen Phillips, Lachlan Gordon, Marinco Kojdanovski, Michael Saad, Nathan Utama, Owen Conlan, Rebecca Godfrey, Ryan Hernandez, Stephen Mason, Tim Wilson</p>
 
                 <br />
 
@@ -61,7 +61,7 @@ const AcknowledgementsPage = ({
                 <p>We thank the following people and organisations who have generously supported Step into Paradise.</p>
 
                 <h3><strong>Lenders</strong></h3>
-                <p>Dinosaur Designs, Jenny Kee, Jill Oliver, Klava Widdicombe, Linda Jackson, National Gallery of Australia, National Gallery of Victoria, Paul and Moira McKnight, Romance Was Born, Toni Walker-Lear</p>
+                <p>Dinosaur Designs, Doodad + Fandango, Jenny Kee, Jill Oliver, Klava Widdicombe, Linda Jackson, National Gallery of Australia, National Gallery of Victoria, Paul and Moira McKnight, Romance Was Born, Toni Walker-Lear</p>
 
                 <h3><strong>Supporters</strong></h3>
                 <p>ABC Commercial, Alan White, Anna Fraser and Julian Burgess, Annie Noon, APRA AMCOS, Bill Cunningham Foundation LLC, Bliss Swift, Brett Hilder, Brian Morris, Daniel Boud, Dominique Longheon, Fairfax Media, Fran Moore, François Perez, Grant Matthews, Hugh Stewart, John Storey, Jon Lewis (courtesy Mark Lewis), Kobya Panguana, Lucas Dawson, Mike Molloy, Mike Walsh Show, National Film and Sound Archive of Australia, Network 10, News Licensing (UK), News Life Media, Newspix, Penny McIntyre, Think Positive Prints (T+), Pental, Peter Muhlbock (Sunday Telegraph), Peter Smalley (Clytie Jessop Estate), Philippe Mora, Porter’s Paints, Robert Rosen, Robert Whitaker, Sandy Edwards, Sonny Vandevelde, Tim Street-Porter, TopFoto, Wendy Adnam, William Yang</p>

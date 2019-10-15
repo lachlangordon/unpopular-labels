@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { scale, rhythm } from '../lib/typography';
-import { isEmpty } from 'lodash';
 
 import Layout from '../components/Layout/Layout';
 import BgImage from '../components/Image/BgImage';
@@ -28,14 +27,25 @@ const IndexPage = ({
     className: getImageClass,
     imgObject: heroImage,
   }
-  
-  let textStyle = (
-     viewportSize === 'mobile' ) ? {
-    ...scale(2.1),
-    lineHeight: rhythm(3)
-  } : {
+
+  // default - large iPadPro
+  let textStyle = {
     ...scale(2.5),
     lineHeight: rhythm(4.5)
+  };
+
+  // handle mobile & landscape mobile
+  if ( viewportSize === 'mobile' ||
+       (imgOrient === 'landscape' && viewport['height'] < 768)
+  ) {
+    // landscape mobile - smaller
+    textStyle = imgOrient === 'landscape' ? {
+      ...scale(1.8),
+     lineHeight: rhythm(2.5),
+    } : {
+     ...scale(2.1),
+     lineHeight: rhythm(3)
+    }
   }
 
   return (
@@ -53,8 +63,11 @@ const IndexPage = ({
                       </h2>
 
                       <ul className="actions">
-                          <li><Link to="/themes" className="button" >
-                            <span style={{ ...scale(1) }}> Get Started <ArrowRight style={{ fontSize: '0.7em', verticalAlign: 'middle' }} /> </span> </Link>
+                          <li>
+                            <Link to="/themes" className="button index-button" >
+                              <span style={{ ...scale(1) }}> Get Started
+                              <ArrowRight className="index-arrow" /> </span>
+                            </Link>
                           </li>
                       </ul>
                 </div>
