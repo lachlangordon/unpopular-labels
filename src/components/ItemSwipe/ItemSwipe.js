@@ -62,10 +62,10 @@ class ItemSwipe extends Component {
 
     return (
         <Slider
-            infinite
+            infinite={objectItems.length > 1}
             swipeable
             draggable
-            partialVisbile
+            partialVisbile={objectItems.length > 1}
             slidesToSlide={1}
             deviceType={deviceType}
             responsive={responsive}
