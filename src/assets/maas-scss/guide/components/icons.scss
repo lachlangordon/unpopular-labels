@@ -35,6 +35,10 @@
       @media (min-width: $screen-sm-min) {
         top: 0;
       }
+
+      @media (min-width: $screen-md-min) {
+        width: 40px;
+      }
     }
   }
 }

@@ -78,9 +78,8 @@ class Layout extends Component {
             }
           `}
           render={data => (
-            <div className={`${appClassName} body
+            <div className={`${appClassName} body ${appClassName}__wrapper
                             ${this.state.loading} `}>
-                <div className={`${appClassName}__wrapper`}>
 
                 {/* <!-- disable jumpy loader -->
                   <Loader
@@ -135,8 +134,6 @@ class Layout extends Component {
                         </ul>
                     </div>
                   </aside>
-
-                </div>
 
             </div>
           )}
