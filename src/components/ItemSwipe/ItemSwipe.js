@@ -78,7 +78,7 @@ class ItemSwipe extends Component {
   					objectItems.map((object, j) => {
   						if (object.object && object.object.mainImage) {
                const objectId = object.id;
-               const imageId = object.object.mainImage.id;
+               // const imageId = object.object.mainImage.id;
                const hasQuote = object.notes3 !== null ? true : false;
                const showIconDiv = hasQuote || (shouldShowSeenIcon() && isObjectSeen(objectId));
                return (
