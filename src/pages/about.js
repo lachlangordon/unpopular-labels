@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 
-import { siteMeta } from '../queries/fragments';
 import withViewport from '../decorators/withViewport';
 
 const aboutImgSize = ({ width, height }) => {
@@ -30,7 +29,7 @@ class AboutPage extends Component {
               <section className="content-header">
                 <div className="about-page__masthead">
                   <Image isThumb={ aboutImgSize(this.props.viewport) } imgObject={ heroImage } defImgMode="fluid" />
-                  <span className="about-page__img-caption"> Linda Jackson and Jenny Kee, Image: Hugh Stewart </span>
+                  <span className="about-page__img-caption"> Linda Jackson and Jenny Kee, 2019. Image: Hugh Stewart </span>
                 </div>
               </section>
 
@@ -57,7 +56,7 @@ class AboutPage extends Component {
                 <p>We make our work to celebrate and to explain our response to a rich and diverse Australia – an Australia of our times. That response is still being shaped and enhanced by a deeper understanding of what place really means to a people, and with greater perspective and shared understanding of protocol and propriety.</p>
                 <p>While developing our colourful and exuberant picture of Australia, we must acknowledge in our country a period of great cultural naivety, societal ignorance and colonial blindness that only now we – as a society – are starting to address, enabling a pathway to true recognition, respect and reconciliation.</p>
                 <p>To Indigenous Australia, we thank you for your custodianship, your creativity, your ingenuity and your generosity. You have inspired us in our work and in our lives.</p>
-                <p>Jenny Kee and Linda Jackson</p>
+                <strong>Jenny Kee and Linda Jackson</strong>
               </section>
             </div>
 

@@ -15,8 +15,7 @@ class ThemesPage extends Component {
 	}
 
   render() {
-    const { data, pageContext, location } = this.props;
-    const { masterNarrativeId } = pageContext;
+    const { data, location } = this.props;
 
     let bannerSize = getBannerSize(this.props.viewport);
     return (

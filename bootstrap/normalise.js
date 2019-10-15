@@ -200,7 +200,7 @@ const setObject = ( _object ) => {
     productionNotes: _object.productionNotes || '',
     production: _object.production || null,
     significanceStatement: _object.significanceStatement || '',
-    acquisitionCreditLine: _object.acquisitionCreditLine || ',',
+    acquisitionCreditLine: _object.acquisitionCreditLine || '',
     isLoan: _object.isLoan || false,
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],

@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { scale, rhythm } from '../lib/typography';
-import { isEmpty } from 'lodash';
 
 import Layout from '../components/Layout/Layout';
 import BgImage from '../components/Image/BgImage';
