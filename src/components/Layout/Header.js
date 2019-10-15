@@ -16,12 +16,10 @@ const Header = (props) => {
 
   return (
     <div id="header" className="header">
-      <div className="header__wrapper" style={{
+        <nav className="header__navigation header__wrapper" style={{
           paddingTop: rhythm(0.4),
           paddingBottom: `calc(${rhythm(0.5)} - 1px)`,
         }}>
-
-        <nav className="header__navigation">
           <Link to="/" className="menu-links">
               <HomeIcon style={{ marginTop: `0.4em`, ...scale(1/5) }} />
           </Link>
@@ -45,8 +43,6 @@ const Header = (props) => {
           })}
           </ul>
         </nav>
-
-      </div>
     </div>
   );
 }

@@ -26,61 +26,51 @@ const SetPage = ({
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
       <div className="set-page">
         <div>
-            <section className="content-header">
-              { set.id && (
-                    <Banner className="no-padding" type="ribbon" size={ bannerSize } themeId={ convertToSID(set.id) } />
-                )
-              }
+          <section className="content-header">
+            { set.id && (
+                  <Banner className="no-padding" type="ribbon" size={ bannerSize } themeId={ convertToSID(set.id) } />
+              )
+            }
 
-              <div className="container container--lg">
-                  <h1 className="set-page__title">
-                    { set.name }
-                  </h1>
-
-                  <div className="set-page__description"
-                     dangerouslySetInnerHTML={{ __html: set.description }} />
-
-                  <div className="set-page__info">
-                    <span className="set-page__object-count">{`${objects.length} objects`}</span>
-                    <hr /> <IconLegend/>
-                  </div>
-
-               </div>
-            </section>
-            <section className="section main-content no-side-padding">
-              <div className="container container--lg">
-                  <div className="set-page__content">
-                  {
-                    <div className="img-gallery">
-                      <div className="img-gallery__col-grid">
-                        {
-                          objects.map((object, j) => {
-                            if (object.object) {
-                              return object.object.mainImage && (
-                                <div className="img-gallery__col-grid--item" key={j}>
-                                  <ItemTile className="img-gallery__col-grid--item-image"
-                                            key={`item-tile-${j}`}
-                                            url={'/object/' + object.id}
-                                            objectId={`${object.id}`}
-                                            imageId={object.object.mainImage.id}
-                                            hasQuote={object.notes3 !== null}
-                                        />
-                                </div>
-                              )
-                            }
-                        })
-                      }
-                      </div>
-                    </div>
-                  }
-                  </div>
-              </div>
-            </section>
-        </div>
-          <section className="section full-width">
             <div className="container container--lg">
+                <h1 className="set-page__title">
+                  { set.name }
+                </h1>
+
+                <div className="set-page__description"
+                   dangerouslySetInnerHTML={{ __html: set.description }} />
+
+                <div className="set-page__info">
+                  <span className="set-page__object-count">{`${objects.length} objects`}</span>
+                  <hr /> <IconLegend/>
+                </div>
+
+             </div>
+          </section>
+          <section className="section main-content no-side-padding container container--lg set-page__content">
+            {
+              <div className="img-gallery img-gallery__col-grid">
+                {
+                  objects.map((object, j) => {
+                    if (object.object) {
+                      return object.object.mainImage && (
+                        <ItemTile className="img-gallery__col-grid--item img-gallery__col-grid--item-image"
+                                  key={`item-tile-${j}`}
+                                  url={'/object/' + object.id}
+                                  objectId={`${object.id}`}
+                                  imageId={object.object.mainImage.id}
+                                  hasQuote={object.notes3 !== null}
+                              />
+                      )
+                    }
+                })
+              }
+              </div>
+            }
+          </section>
+        </div>
+          <section className="section full-width container container--lg">
               <NavigationButtons/>
-            </div>
           </section>
       </div>
     </Layout>

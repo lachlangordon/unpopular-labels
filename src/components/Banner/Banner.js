@@ -8,10 +8,8 @@ const Banner = ({ size, type, themeId, style }) => {
   const className =  ( type === 'themes' ? 'banner-img' : 'ribbon-img' );
   const path = `images/${type}/${size}`;
 	return themeId ? (
-    <div className={className} style={style}>
-				<div className={ className + `__image-holder` }>
-					<ImageByPath path={path} filename={themeId} />
-				</div>
+    <div className={`${className} ${className}__image-holder`} style={style}>
+        <ImageByPath path={path} filename={themeId} />
     </div>
 	) : null;
 }
