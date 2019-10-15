@@ -4,7 +4,7 @@ import linda from '../../assets/maas-scss/svg/linda.svg';
 class LindaIcon extends Component {
   render() {
     return (
-      <span className="jenny-icon">
+      <span className="linda-icon">
         {/*<svg xmlns="http://www.w3.org/2000/svg" width="36.61" height="12.509" viewBox="0 0 36.61 12.509">*/}
           {/*<defs>*/}
             {/*<clipPath id="clip-path">*/}

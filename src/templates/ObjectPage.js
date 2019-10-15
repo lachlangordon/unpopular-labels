@@ -25,10 +25,16 @@ const quotedClass = quote => {
 };
 
 const getQuotePerson = quote => {
+  if (quote.indexOf('<p>') === -1) {
+    return quote;
+  }
   return quote.substring(0, quote.indexOf('<p>'));
 };
 
 const getQuoteAttribution = quote => {
+  if (quote.indexOf('<p>') === -1) {
+    return '';
+  }
   return quote.substring(quote.indexOf('<p>'));
 };
 
@@ -107,6 +113,8 @@ class ObjectPage extends Component {
     }
 
     saveSeenObject(`${object.id}`);
+    console.log("quote person", getQuotePerson(object.notes4));
+    console.log("quote att", getQuoteAttribution(object.notes4));
 
     return (
       <Layout location={location}>
@@ -159,9 +167,10 @@ class ObjectPage extends Component {
 
                 { object.notes4 &&
                 <div className="object-page__notes4">
-                  <span className={quoteClass} dangerouslySetInnerHTML={{ __html: `&mdash; ${getQuotePerson(object.notes4)}` }}/>
-                  {glasses}
-                  <div dangerouslySetInnerHTML={{ __html: getQuoteAttribution(object.notes4) }}/>
+                  <span className={quoteClass}>
+                    <span className="quote-person" dangerouslySetInnerHTML={{ __html: `&mdash; ${getQuotePerson(object.notes4)}` }}/>{glasses}
+                  </span>
+                  <span className="quote-attribution" dangerouslySetInnerHTML={{ __html: getQuoteAttribution(object.notes4) }}/>
                 </div>
                 }
 
