@@ -1,104 +1,228 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/layout';
+import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
+import Layout from '../components/Layout/Layout';
+import Image from '../components/Image/Image';
 import SEO from '../components/seo';
+import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
+import Banner from '../components/Banner/Banner';
+import { isEmpty } from 'lodash';
 
-import {handleBack, handleScrollToTop} from '../lib/navUtils';
+import { saveSeenObject } from '../lib/session';
+import {convertToSID, parseCirca, getBannerSize} from '../lib/utils';
 
-const ObjectPage = ({
-  data: {object},
-  pageContext,
-  location,
-}) => {
+import LindaIcon from "../components/Icons/LindaIcon";
+import JennyIcon from "../components/Icons/JennyIcon";
+import withViewport from "../decorators/withViewport";
 
-  if (!object.object) {
-    return (<div>Not Web Published</div>)
-  }
-
-  let title = object.object.name;
-  if (object.object.production[0]) {
-    title += `, ${object.object.production[0].date}`;
-  }
-
-  let related = object.parent.setObjects.filter((otherObject) => otherObject.id != object.id);
-
-  return (
-    <Layout>
-      <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
-      <div id="main" className="alt">
-        <section id="one">
-          <div className="inner">
-            {
-              object.object.mainImage && (
-                <span className="image main"><img src={object.object.mainImage.url} alt="" /></span>
-              )
-            }
-            <header>
-              <h1>{title}</h1>
-            </header>
-            <p>Part of <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link></p>
-            <p>{object.notes2}</p>
-            <p>{object.notes3}</p>
-            <p>{object.object.acquisitionCreditLine}</p>
-          </div>
-        </section>
-        <section id="two">
-          <header>
-            <h2>{`More in ${object.parent.name}`}</h2>
-            <div className="tiles">
-              {
-                related.map((object, i) => {
-                  return(
-                    <article key={i}>
-                      {
-                        object.object
-                        ? (
-                            <Link to={`/object/${object.id}`} className="link primary">
-                              {
-                                object.object.mainImage ? (
-                                  <img src={object.object.mainImage.url}/>
-                                ) : <div>{object.object.displayTitle}</div>
-                              }
-                            </Link>
-                          )
-                        : (
-                            <div>{"Unpublished object IRN " + object.id}</div>
-                          )
-                      }
-                    </article>
-                  )
-                })
-              }
-            </div>
-          </header>
-        </section>
-        <section id="three">
-          <button onClick={handleBack}>Back</button>
-          <button onClick={handleScrollToTop}>Top</button>
-        </section>
-      </div>
-    </Layout>
-  );
-
+// assign class to Linda or Jenny quotes
+const quotedClass = quote => {
+  let className = 'other__quote';
+  if ( quote.match(/^Linda Jackson/) ) { className = `linda__quote`; }
+  else if ( quote.match(/^Jenny Kee/) ) { className = `jenny__quote`; }
+  return className;
 };
 
-export default ObjectPage
+const getQuotePerson = quote => {
+  if (quote.indexOf('<p>') === -1) {
+    return quote;
+  }
+  return quote.substring(0, quote.indexOf('<p>'));
+};
 
+const getQuoteAttribution = quote => {
+  if (quote.indexOf('<p>') === -1) {
+    return '';
+  }
+  return quote.substring(quote.indexOf('<p>'));
+};
+
+class ObjectPage extends Component {
+
+  constructor(props) {
+    super(props);
+    this.related = [];
+    this.init();
+  }
+
+  init = () => {
+    // let object = props.data.object;
+    const { object } = this.props.data;
+
+    let objectIndex = -1;
+    for (let i = 0; i < object.parent.setObjects.length; i++) {
+      if (`${ object.parent.setObjects[i].id }` === object.id) {
+        objectIndex = i;
+        break;
+      }
+    }
+
+    this.related = object.parent.setObjects;
+    if (objectIndex > 0) {
+      let removedObjects = this.related.splice(objectIndex);
+      this.related = removedObjects.concat(this.related);
+    }
+    this.related.splice(0, 1);
+  }
+
+  render() {
+
+    const {
+      data,
+      location,
+      viewport,
+    } = this.props;
+
+    // console.log(this.related);
+
+    const { images, object } = data;
+
+    let bannerSize = getBannerSize(viewport);
+
+    if (!object.object) {
+      return (<div>Not Web Published</div>);
+    }
+
+    let title = object.object.name;
+    let date = undefined;
+    if (object.object.production[0] && object.object.production[0].date !== null) {
+      date = (<span className="object-page__date">{`, ${parseCirca(object.object.production[0].date)}` }</span>);
+    }
+
+    // creditLine
+    let creditLine = '';
+    const { acquisitionCreditLine, recordType } = object.object;
+    if ( acquisitionCreditLine.length === 1 &&
+      (recordType === "ArchivePart" || recordType === "Part") ) {
+      creditLine = "<span> MAAS Collection </span>";
+    } else {
+      creditLine = acquisitionCreditLine;
+    }
+
+    //Work out quote html
+    let quoteClass = '';
+    let glasses = undefined;
+    if (object.notes4) {
+      quoteClass = quotedClass(object.notes4);
+      if (quoteClass === 'linda__quote') {
+        glasses = <LindaIcon/>
+      } else if (quoteClass === 'jenny__quote') {
+        glasses = <JennyIcon/>
+      }
+    }
+
+    saveSeenObject(`${object.id}`);
+
+    return (
+      <Layout location={location}>
+        <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
+
+        <div className="object-page">
+          <div className="container container--lg no-padding">
+
+            <section>
+              { object.parent.id && (
+                <Banner className="no-padding" type="ribbon" size={bannerSize} themeId={ convertToSID(object.parent.id) } />
+              )
+              }
+            </section>
+
+            <section className="content-header object-page__mainImg">
+              {
+                !!images.length && (
+                  <Image className="image--object"
+                         imgObject={ images[0].fields.localFile }
+                         defImgMode="fluid"
+                  />
+                )
+              }
+            </section>
+
+            <section className="section main-content">
+
+              <div className="object-page__content">
+                <h1 className="object-page__title">
+                  { title }
+                  { date }
+                </h1>
+
+                { object.notes2 &&
+                <p className="object-page__notes2"
+                   dangerouslySetInnerHTML={{ __html: object.notes2 }} />
+                }
+
+                { creditLine &&
+                <p className="object-page__credit-line"
+                   dangerouslySetInnerHTML={{ __html: creditLine }} />
+                }
+              </div>
+              <div className="object-page__bottom-content">
+                { object.notes3 &&
+                <div className="object-page__notes3"
+                     dangerouslySetInnerHTML={{ __html: object.notes3 }} />
+                }
+
+                { object.notes4 &&
+                <div className="object-page__notes4">
+                  <span className={quoteClass}>
+                    <span className="quote-person" dangerouslySetInnerHTML={{ __html: `&mdash; ${getQuotePerson(object.notes4)}` }}/>{glasses}
+                  </span>
+                  <span className="quote-attribution" dangerouslySetInnerHTML={{ __html: getQuoteAttribution(object.notes4) }}/>
+                </div>
+                }
+
+
+              </div>
+            </section>
+          </div>
+
+          <hr />
+
+            <section className="content-related container container--lg no-padding" >
+              { this.related.length &&
+              <div className="object-page__related-items">
+                  <h3 className="object-page__related-items__title">Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </h3>
+                  <div className="object-page__related-items__count">{`${this.related.length} ${this.related.length > 1 ? "objects" : "object"}`}</div>
+                  {/* <div className="object-page__related-items__scroll">&larr; scroll</div> */}
+                <ItemSwipe className="object-page__related-slider" objectItems={this.related}/>
+              </div>
+              }
+            </section>
+            <section className="section">
+              <NavigationButtons/>
+            </section>
+
+        </div>
+      </Layout>
+    )
+  }
+}
+
+export default withViewport(ObjectPage);
+
+// images[0] = main image
+// parent = to find related items
 export const pageQuery = graphql`
   query ObjectPage($id: String!) {
     object: setObject(id: { eq: $id }) {
       id
       notes2
       notes3
+      notes4
       object {
         name
         production {
           date
         }
+        isLoan
+        recordType
+        significanceStatement
         acquisitionCreditLine
         mainImage {
+          id
           url
+          thumbnailURL
         }
       }
       parent {
@@ -106,14 +230,32 @@ export const pageQuery = graphql`
           id
           name
           setObjects {
-            id: _id
+            id
+            notes3
             object {
               displayTitle
               mainImage {
+                id
                 url
+                thumbnailURL
               }
             }
           }
+        }
+      }
+    }
+    images: ImagesByParentId(parentId: $id) {
+      id
+      url
+      thumbnailSrc
+      serverCropSrc
+      width
+      height
+      filename
+      caption
+      fields {
+        localFile {
+          ...default_GatsbyImageSharp
         }
       }
     }

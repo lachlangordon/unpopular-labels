@@ -1,0 +1,115 @@
+/*------------------------------------*\
+    #HEADER
+\*------------------------------------*/
+
+@import '../../core/variables.scss';
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+
+  @media (min-width: $screen-md-min) {
+    .header__wrapper {
+      margin: 0 auto;
+      overflow: hidden;
+      padding-left: 0.5em;
+      padding-right: 0 !important;
+    }
+  }
+
+  nav.header__navigation {
+    font-family: $font-family-header;
+
+    a.menu-links {
+      display: inline-block;
+      float: left;
+      text-decoration: none;
+      color: $colour-blue;
+
+      // make clickable area larger
+      .home-icon {
+        position: relative;
+        display: inline-block;
+        padding: 2em 2em 1em 3em;
+        margin: -2em -2em -2em -2em;
+        z-index: 1;
+      }
+
+      svg {
+        fill: $colour-blue;
+      }
+
+      &[aria-current="page"] {
+        color: $colour-pink;
+
+        svg {
+          fill: $colour-pink;
+        }
+      }
+
+      > div {
+        color: inherit;
+        line-height: 1;
+        margin: 0;
+        overflow: hidden;
+
+        > span {
+          border-right: 1px solid rgba(0,0,0,0.3);
+          line-height: 1;
+        }
+      }
+
+      // image logo - for smaller screens
+      @media (max-width: $screen-md-min) {
+        > img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    > ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+
+      > li {
+        float: right;
+
+        &:first-child {
+          a div span {
+            border: 0;
+          }
+        }
+      }
+    }
+  }
+
+  
+}
+
+@media (min-width: $screen-lg-min) {
+
+  .header {
+    border: none !important;
+  }
+
+  .header nav.header__navigation > ul {
+    padding-left: 0.3em;
+    padding-top: 1em;
+    float: left;
+  }
+
+  .header nav.header__navigation > ul > li {
+    float: left;
+  }
+
+  .header__navigation-button > a {
+    float: left !important;
+    div > span {
+      margin-left: 0 !important;
+      border-right: none !important;
+    }
+  }
+}

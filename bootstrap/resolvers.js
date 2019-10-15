@@ -6,7 +6,7 @@ const { GraphQLSchema, GraphQLString, GraphQLInt, GraphQLList } = require(`graph
 const { paginate } = require('gatsby/dist/schema/resolvers');
 
  // later move it to config
-const __MASTER_NARRATIVE = 6761
+const __MASTER_NARRATIVE = 6761;
 
 const GatsbyResolvers = {
   // Create a new root query field.
@@ -58,9 +58,7 @@ const GatsbyResolvers = {
             sets = sets.slice(0, args.limit);
           }
           return sets;
-        });
-
-
+        })
       }
     },
     SetObjectsByParentId: {
@@ -85,16 +83,16 @@ const GatsbyResolvers = {
             type: `SetObject`,
           });
 
-        let filteredObjects = setObjects.filter(setObj => setObj.parent == `${ args.parentId }`);
+          let filteredObjects = setObjects.filter(setObj => setObj.parent == `${ args.parentId }`);
 
-        if (args.skip) {
-          filteredObjects = filteredObjects.slice(args.skip);
-        }
+          if (args.skip) {
+            filteredObjects = filteredObjects.slice(args.skip);
+          }
 
-        if (args.limit) {
-          filteredObjects = filteredObjects.slice(0, args.limit);
-        }
-        return filteredObjects;
+          if (args.limit) {
+            filteredObjects = filteredObjects.slice(0, args.limit);
+          }
+          return filteredObjects;
       }
     },
     ImagesByParentId: {
@@ -115,6 +113,21 @@ const GatsbyResolvers = {
         return images.filter(img => img.parent == `${ args.parentId }`)
       }
     },
+    ImageById: {
+      type: `SetImage`,
+      args: {
+        id: {
+          name: `id`,
+          type: GraphQLString,
+        }
+      },
+      resolve (source, args, context, info) {
+
+        return context.nodeModel.getNodeById({
+          id: args.id
+        });
+      }
+    },
     ImagesByIds: {
       type: [`SetImage`],
       args: {
@@ -127,13 +140,13 @@ const GatsbyResolvers = {
 
         return context.nodeModel.getNodesByIds({
           ids: args.ids
-        })
+        });
       }
     }
   }
-}
+};
 
 module.exports = {
   GatsbyResolvers,
-}
+};
 // export default GatsbyResolvers

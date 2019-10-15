@@ -1,0 +1,68 @@
+@import 'core/base.scss';
+@import 'core/helpers.scss';
+
+/*
+ * Add new or override base CSS Styles here
+ * Only for HTML Tags, do not add classes or ids here.
+ * Consider moving these into maas-style-guide/base.scss if appropriate.
+ */
+
+ .sr-only {
+   height: 1px !important;
+   width: 1px !important;
+   padding: 0 !important;
+   border: 0 !important;
+   position: absolute !important;
+   clip: rect(1px, 1px, 1px, 1px);
+ }
+
+
+/* Base Override */
+$font-family-header: 'Bebas-Neue';
+h1 {
+   color: $colour-dark;
+   font-family: $font-family-header;
+   font-size: $font-size-xxlg;
+   font-weight: normal;
+   line-height: $line-height-sm;
+
+   i {
+     font-family: $font-family-header;
+   }
+}
+
+h2, h3, h4, h5, h6 {
+   color: $colour-dark;
+   font-family: $font-family-header;
+   font-weight: normal;
+   margin-bottom: $spacing-xs;
+
+   i {
+     font-family: $font-family-header;
+   }
+}
+
+// disable acessibility focus border !!
+*:focus {
+  outline: 0.1px !important;
+  outline-color: $colour-blue !important;
+}
+
+// import gallery-guide CSS
+@import 'guide/page.scss';
+@import 'guide/layout.scss';
+@import 'guide/animation.scss';
+
+// components
+@import 'guide/components/header.scss';
+@import 'guide/components/button.scss';
+@import 'guide/components/image.scss';
+@import 'guide/components/item-tile.scss';
+@import 'guide/components/banner.scss';
+@import 'guide/components/quote.scss';
+@import 'guide/components/footer.scss';
+@import 'guide/components/navigation.scss';
+
+// BETA
+@import 'guide/components/icons.scss';
+@import 'guide/components/item-swipe.scss';

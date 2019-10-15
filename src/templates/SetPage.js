@@ -1,97 +1,102 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
-import Layout from '../components/layout';
-import Image from '../components/image';
+import Layout from '../components/Layout/Layout';
+import Banner from '../components/Banner/Banner';
+import ItemTile from '../components/ItemTile/ItemTile';
 import SEO from '../components/seo';
 
-import {handleBack, handleScrollToTop} from '../lib/navUtils';
+import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
+import IconLegend from "../components/Icons/IconLegend";
 
-import pic11 from '../assets/images/pic11.jpg'
+import withViewport from '../decorators/withViewport';
+
+import { convertToSID, getBannerSize } from '../lib/utils';
 
  // Narrative
 const SetPage = ({
   data: { set, objects },
   pageContext,
   location,
+  viewport
 }) => {
-
-  let paginationItems = [];
-
-  for(let i = 1; i <= pageContext.numPages; i++) {
-    paginationItems.push(<Link to={`/set/${pageContext.id}/${i > 1 ? i : ''}`}>{i}</Link>)
-  }
-
+  let bannerSize = getBannerSize(viewport);
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title={set.name} keywords={[`gatsby`, `application`, `react`]} />
-      <div id="main" className="alt">
-        <section id="one">
-            <div className="inner">
-                <header className="major">
-                    <h1> { set.name } </h1>
-                </header>
-                <span className="image main"><img src={pic11} alt="" /></span>
-
-                <p> { set.description }</p>
-            </div>
-        </section>
-        <section id="two" className="tiles">
-          {
-            objects.map((object, i) => {
-              return (
-                <article key={i}>
-                  {
-                    object.object
-                      ? (
-                        <Link to={'/object/' + object.id} className="link primary">
-                          {
-                            object.object.mainImage ? (
-                              <img src={object.object.mainImage.url}/>
-                            ) : <div>{object.object.name}</div>
-                          }
-                        </Link>
-                      )
-                      : (
-                        <div>{"Unpublished object IRN " + object.id}</div>
-                      )
-                  }
-                </article>
+      <div className="set-page">
+        <div>
+          <section className="content-header">
+            { set.id && (
+                  <Banner className="no-padding" type="ribbon" size={ bannerSize } themeId={ convertToSID(set.id) } />
               )
-            })
-          }
-        </section>
-        <section id="three">
-          <button onClick={handleBack}>Back</button>
-          <button onClick={handleScrollToTop}>Top</button>
-          <div>
-            {paginationItems}
-          </div>
-        </section>
+            }
+
+            <div className="container container--lg">
+                <h1 className="set-page__title">
+                  { set.name }
+                </h1>
+
+                <div className="set-page__description"
+                   dangerouslySetInnerHTML={{ __html: set.description }} />
+
+                <div className="set-page__info">
+                  <span className="set-page__object-count">{`${objects.length} objects`}</span>
+                  <hr /> <IconLegend/>
+                </div>
+
+             </div>
+          </section>
+          <section className="section main-content no-side-padding container container--lg set-page__content">
+            {
+              <div className="img-gallery img-gallery__col-grid">
+                {
+                  objects.map((object, j) => {
+                    if (object.object) {
+                      return object.object.mainImage && (
+                        <ItemTile className="img-gallery__col-grid--item img-gallery__col-grid--item-image"
+                                  key={`item-tile-${j}`}
+                                  url={'/object/' + object.id}
+                                  objectId={`${object.id}`}
+                                  imageId={object.object.mainImage.id}
+                                  hasQuote={object.notes3 !== null}
+                              />
+                      )
+                    }
+                })
+              }
+              </div>
+            }
+          </section>
+        </div>
+          <section className="section full-width container container--lg">
+              <NavigationButtons/>
+          </section>
       </div>
     </Layout>
-  )
+  );
 }
 
-export default SetPage
+export default withViewport(SetPage);
 
 export const pageQuery = graphql`
-query SetPage( $id: String!, $skip: Int!, $limit: Int!) {
+query SetPage( $id: String!) {
   set( id: { eq: $id } ) {
     id
     name
     summary
     description
   }
-  
-  objects: SetObjectsByParentId(parentId: $id, limit: $limit, skip: $skip) {
+  objects: SetObjectsByParentId(parentId: $id) {
     id
+    notes3
     object {
       name
       mainImage {
+        id
         url
       }
     }
   }
 }
-`
+`;

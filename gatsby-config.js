@@ -9,19 +9,19 @@ require('dotenv').config({
 });
 
 // load website config
-const config = require('./config/website')
-
-console.log(`Gatsby in : '${activeEnv}' mode.`)
-console.log(`Using environment config: '${ process.env.GRAPHQL_URL }'`)
+const config = require('./config/website');
+const postCSSPlugins = require('./postcss-config.js');
 
 module.exports = {
   siteMetadata: {
     title: config.siteTitle,
+    siteUrl: config.siteUrl,
+    headline: config.siteHeadline,
     description: config.siteDescription,
     twitter: config.twitter,
     instagram: config.instagram,
     facebook: config.facebook,
-    author: `developer@maas.museum`,
+    author: config.author,
   },
   plugins: [
     /*
@@ -53,15 +53,31 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: 'config/typography.js',
+        pathToConfigModule: 'src/lib/typography.js',
       },
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        // postCSS plugin to load lostgrid.css
+        // http://lostgrid.org/docs.html
+        postCssPlugins: [...postCSSPlugins],
+        cssLoaderOptions: {
+          camelCase: false,
+        }
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: config.googleAnalyticsID,
+      }
+    },
   ],
-}
+};

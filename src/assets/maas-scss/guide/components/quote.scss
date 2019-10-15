@@ -1,0 +1,51 @@
+///
+/// MAAS Gallery Guide - blockquote styles
+/// developer@maas.museum
+///
+
+@import '../../core/variables.scss';
+
+/*------------------------------------*\
+    #blockquote
+\*------------------------------------*/
+
+.object-page__notes3 {
+  font-size: 1.3em;
+  padding-top: 0.6em;
+  blockquote {
+    position: relative;
+    display: inline-block;
+    padding: 0.2em 0 0 0.6em;
+    margin: 0.6em 0 0.8em 0;
+    background: $colour-white;
+    &::before {
+      top: 0;
+      left: -5px;
+      display: inline;
+      position: relative;
+      content: '\201C';
+    }
+    &::after {
+      top: 0;
+      right: -5px;
+      display: inline;
+      position: relative;
+      content: '\201D';
+    }
+    p {
+      margin: 0;
+      font-family:  $font-family-bold;
+    }
+  }
+}
+
+.object-page__notes4 {
+  font-family:  $font-family-bold;
+  font-size: $font-size-lg;
+  padding-left: 0.6em;
+  p {
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    margin: 0;
+  }
+}

@@ -3,13 +3,13 @@
  *
  */
 
-import { ApolloClient } from 'apollo-client'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import { CachePersistor } from 'apollo-cache-persist'
-import { withClientState } from 'apollo-link-state'
-import { HttpLink } from 'apollo-link-http'
-import { onError } from 'apollo-link-error'
-import { ApolloLink } from 'apollo-link'
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { CachePersistor } from 'apollo-cache-persist';
+import { withClientState } from 'apollo-link-state';
+import { HttpLink } from 'apollo-link-http';
+import { onError } from 'apollo-link-error';
+import { ApolloLink } from 'apollo-link';
 
 // import fetch from 'isomorphic-fetch'
 import gql from 'graphql-tag'
@@ -20,7 +20,7 @@ import gql from 'graphql-tag'
 //   global.fetch = fetch
 // }
 
-const debug = process.env.NODE_ENV === 'development' ? true : false
+const debug = process.env.NODE_ENV === 'development' ? true : false ;
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -28,12 +28,12 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
       ),
-    )
-  if (networkError) console.log(`[Network error]: ${networkError}`)
+    );
+
 })
 
-// { dataIdFromObject: o => (o._id ? `${o.__typename}:${o._id}` : null) }
-const cache = new InMemoryCache()
+// { dataIdFromObject: o => (o.id ? `${o.__typename}:${o.id}` : null) }
+const cache = new InMemoryCache();
 
 if (process.browser) {
   const persistor = new CachePersistor({
@@ -41,14 +41,14 @@ if (process.browser) {
     storage: global.window.localStorage,
     debug: debug,
   });
-  persistor.restore()
+  persistor.restore();
 }
 
 const GET_MENU = gql`
   query getMenu {
     showMenu
   }
-`
+`;
 
 const resolvers = {
   Mutation: {
@@ -57,27 +57,26 @@ const resolvers = {
         {
           showMenu @client
         }
-      `
-      const current = cache.readQuery({ query })
-      console.log(current)
+      `;
+      const current = cache.readQuery({ query });
       const data = {
         showMenu: !current.showMenu,
-      }
-      cache.writeData({ data })
-      return null
+      };
+      cache.writeData({ data });
+      return null;
     },
     toggleDarkMode: (_, args, { cache }) => {
       const query = gql`
         {
           darkMode @client
         }
-      `
-      const current = cache.readQuery({ query })
+      `;
+      const current = cache.readQuery({ query });
       const data = {
         darkMode: !current.darkMode,
-      }
-      cache.writeData({ data })
-      return null
+      };
+      cache.writeData({ data });
+      return null;
     },
     updateNetworkStatus: (_, { isConnected }, { cache }) => {
       const data = {
@@ -86,8 +85,8 @@ const resolvers = {
           isConnected
         },
       };
-      cache.writeData({ data })
-      return null
+      cache.writeData({ data });
+      return null;
     },
   },
 }
@@ -98,20 +97,20 @@ const defaults = {
   showMenu: false,
   darkMode: false,
   NetworkStatus: false,
-}
+};
 
 const stateLink = withClientState({
   cache,
   resolvers,
   defaults,
-})
+});
 
 const httpLink = new HttpLink({
   uri: process.env.NODE_ENV === 'development'
       ? 'http://localhost:8000/___graphql'
       : '/graphql',
   credentials: 'same-origin'
-})
+});
 
 export const client = new ApolloClient({
   link: ApolloLink.from([
@@ -121,7 +120,7 @@ export const client = new ApolloClient({
   ]),
   cache,
   connectToDevTools: true,
-})
+});
 
 // Purge persistor when the store was reset.
 // client.onResetStore((); => persistor.purge())

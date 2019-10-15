@@ -1,49 +1,53 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
-import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
+import React, { Component } from 'react';
+import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/layout'
-import Image from '../components/image'
-import SEO from '../components/seo'
-import {handleBack, handleScrollToTop} from "../lib/navUtils";
+import Layout from '../components/Layout/Layout';
+import Banner from '../components/Banner/Banner';
+import SEO from '../components/seo';
 
-const themesPage = ({
-                     data,
-                     pageContext: {
-                       masterNarrativeId,
-                     },
-                     location,
-                   }) => (
-  <Layout>
-    <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
-    <div id="main">
-      <section id="one" className="tiles">
-        {data.sets.map((section, i) => {
-          return (
+import withViewport from '../decorators/withViewport';
+import { getBannerSize } from '../lib/utils';
 
-              <article key={i}>
-                <Link to={"/set/" + section.id} className="link primary">
-                <header className="major">
-                  <h3> { section.name } </h3>
-                </header>
-                </Link>
-              </article>
+class ThemesPage extends Component {
+  constructor(props) {
+		super(props);
+    this.state = { bannerSize: "desktop" }
+	}
 
-          )
-        })}
-      </section>
-      <section id="two">
-        <button onClick={handleBack}>Back</button>
-        <button onClick={handleScrollToTop}>Top</button>
-      </section>
-    </div>
-  </Layout>
-);
+  render() {
+    const { data, location } = this.props;
 
-export default themesPage
+    let bannerSize = getBannerSize(this.props.viewport);
+    return (
+      <Layout location={location}>
+        <SEO title="Themes" keywords={[`gatsby`, `application`, `react`]} />
 
-// _id: 6761
+        <div className="themes-page">
+          <section className="themes-page__body">
+
+            <div className="container container--lg">
+            { data.sets.map((section, i) => {
+              return (
+                  <article key={`theme-item-${i}`} className="banner-article">
+                    <Link to={"/set/" + section.id} className="link primary">
+                      <Banner size={ bannerSize } themeId={`${i + 1}`} />
+                      <h3 className="theme-item__title"> { section.name } </h3>
+                    </Link>
+                  </article>
+              )
+            })}
+            </div>
+
+          </section>
+        </div>
+      </Layout>
+    )
+  }
+}
+
+export default withViewport(ThemesPage);
+
+// id: 6761
 // fields: { slug: { eq: $slug } }
 // https://www.gatsbyjs.org/docs/gatsby-config/#mapping-node-types
 // This query is executed at build time by Gatsby.

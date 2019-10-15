@@ -4,14 +4,14 @@
  */
 
 // later move it to config
-const __MASTER_NARRATIVE = 6761
+const __MASTER_NARRATIVE = 6761;
 
 // initial GQL query to generate dynamic content nodes
 const GatsbyNodeQuery = `
 query NodeSets {
   masterSet: narrativeById(_id: ${__MASTER_NARRATIVE}) {
-    _id
-    title
+    id: _id
+    name: title
     summary
     description
     subjects
@@ -19,12 +19,23 @@ query NodeSets {
     keywords
     location
     lastUpdated
+    mainImage {
+      id: _id
+      refId: id
+      filename: identifier
+      url(width: 0, height: 2000, smart: true)
+      thumbnailURL: url(width: 70, height: 70, smart: true)
+      serverCropURL: url(width: 400, height: 400, smart: true)
+      width
+      height
+      caption
+    }
   }
   childSets: narratives (filter: {
     masterNarrative: ${__MASTER_NARRATIVE}
   }) {
-    _id
-    title
+    id: _id
+    name: title
     summary
     description
     subjects
@@ -32,46 +43,44 @@ query NodeSets {
     keywords
     location
     lastUpdated
-    tileImages
     relatedNarratives {
-      _id
+      id: _id
     }
     mainImage {
-			_id
-      url
-      width
-      height
-    }
-    images {
-			_id
-      url
+      id: _id
+      refId: id
+      filename: identifier
+      url(width: 0, height: 2000, smart: true)
+      thumbnailURL: url(width: 70, height: 70, smart: true)
+      serverCropURL: url(width: 400, height: 400, smart: true)
       width
       height
       caption
     }
     narrativeObjects {
-      _id
+      id: _id
       notes2
       notes3
+      notes4
       object {
-        _id
+        id: _id
         parentId
+        recordType
         displayTitle
         summary
+        isLoan
+        significanceStatement
         acquisitionCreditLine
         production {
 		      date
 		    }
-        images {
-          _id
-          url
-          width
-          height
-          caption
-        }
         mainImage {
-          _id
-          url
+          id: _id
+          refId: id
+          filename: identifier
+          url(width: 0, height: 2000, smart: true)
+          thumbnailURL: url(width: 70, height: 70, smart: true)
+          serverCropURL: url(width: 400, height: 400, smart: true)
           width
           height
           caption
@@ -93,12 +102,13 @@ const GatsbyAllSetQuery = `
         name
         summary
         description
-        tileImages
         setObjects {
           object {
             displayTitle
             mainImage {
               url
+              width
+              height
             }
           }
         }
@@ -106,7 +116,8 @@ const GatsbyAllSetQuery = `
     }
   }
 }
-`
+`;
+
 const GatsbyAllSetObjectQuery = `
 {
   allSetObject(sort:{ fields: id, order:ASC }) {
@@ -129,7 +140,7 @@ const GatsbyAllSetObjectQuery = `
     }
   }
 }
-`
+`;
 
 const GatsbyAllImageQuery = `
 {
@@ -140,16 +151,15 @@ const GatsbyAllImageQuery = `
         url
         width
         height
-        caption
       }
     }
   }
 }
-`
+`;
 
 module.exports = {
   GatsbyNodeQuery,
   GatsbyAllSetQuery,
   GatsbyAllSetObjectQuery,
   GatsbyAllImageQuery,
-}
+};
