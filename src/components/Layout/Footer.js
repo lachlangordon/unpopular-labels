@@ -31,8 +31,8 @@ const Footer = (props) => (
           <nav className="nav-secondary">
             <div className="footer-content__navigation-container">
                 <ul className="footer-content__navigation">
-                  <li className="menu-item"><Link to="/credits">Credits</Link></li>
                   <li className="menu-item"><Link to="/acknowledgements">Acknowledgements</Link></li>
+                  <li className="menu-item"><Link to="/credits">Credits</Link></li>
                   {shouldShowSeenIcon() && (
                     <li className="menu-item"><Link to="/privacy">Privacy</Link></li>
                   )}

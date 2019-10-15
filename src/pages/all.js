@@ -18,36 +18,26 @@ const allObjectsPage = ({
       {
         Sets.map((set, i) => {
           return (
-            <section key={`set-${i}`} className="all-page__body">
-    					<div className="container container--lg">
+            <section key={`set-${i}`} className="all-page__body container container--lg">
+              <h2 className="all-page__title">{set.name}</h2>
 
-                <h2 className="all-page__title">{set.name}</h2>
-
-                <div className="all-page__content">
-                  <div className="img-gallery">
-                    <div className="img-gallery__col-grid">
-                      {
-                        set.setObjects.map((object, j) => {
-                          if (object.object) {
-                            return object.object.mainImage && (
-                              <div className="img-gallery__col-grid--item" key={j}>
-                                <ItemTile className="img-gallery__col-grid--item-image"
-                                          key={`item-tile-${j}`}
-                                          url={'/object/' + object.id}
-                                          imageId={object.object.mainImage.id}
-                                          objectId={`${object.id}`}
-                                          hasQuote={object.notes3 !== null}
-                                          />
-                              </div>
-                              )
-                          }
-                        })
-                      }
-                    </div>
-                  </div>
+                <div className="img-gallery img-gallery__col-grid">
+                    {
+                      set.setObjects.map((object, j) => {
+                        if (object.object) {
+                          return object.object.mainImage && (
+                              <ItemTile className="img-gallery__col-grid--item img-gallery__col-grid--item-image"
+                                        key={`item-tile-${j}`}
+                                        url={'/object/' + object.id}
+                                        imageId={object.object.mainImage.id}
+                                        objectId={`${object.id}`}
+                                        hasQuote={object.notes3 !== null}
+                                        />
+                            )
+                        }
+                      })
+                    }
                 </div>
-
-    					</div>
         		</section>
           )
         })

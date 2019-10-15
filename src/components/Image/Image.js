@@ -73,7 +73,7 @@ class Image extends Component {
       };
     }
 
-    return GatsbyImgProp ? <GatsbyImage {...GatsbyImgProp} /> : noImageContent;
+    return GatsbyImgProp ? <GatsbyImage {...GatsbyImgProp} Tag="div"/> : noImageContent;
 	}
 
   render() {
@@ -92,13 +92,9 @@ class Image extends Component {
 
     // todo: for thumbnail - set default width & height
     return (
-			<div className={className} style={style}>
-        {
           this.getImage( !!isThumb && hasThumb(imgObject) ?
                             imgObject.thumbnail : imgObject
                         , imgProps)
-        }
-      </div>
     );
   }
 }
