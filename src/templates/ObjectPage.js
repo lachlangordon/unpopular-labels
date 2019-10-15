@@ -49,8 +49,6 @@ class ObjectPage extends Component {
   init = () => {
     const { object } = this.props.data;
 
-    console.log(object.parent.setObjects.length);
-
     if (object.parent.setObjects.length > 1) {
       let objectIndex = -1;
       for (let i = 0; i < object.parent.setObjects.length; i++) {
