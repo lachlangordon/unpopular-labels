@@ -10,8 +10,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
 import { MobileIcon } from '../Icons/SharedIcons';
-import { rhythm, scale } from '../../lib/typography';
-import presets from '../../lib/presets';
+import { scale } from '../../lib/typography';
 
 // base maas-style-guide
 import '../../assets/maas-scss/main.scss';

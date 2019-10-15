@@ -1,10 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from './Image';
-import GatsbyImage from 'gatsby-image';
-
-// fragment to fetch GatsbyImageSharp
-import { default_GatsbyImageSharpWithThumb } from '../../queries/fragments';
 
 const ImageById = ({ imageId, size }) => (
    <StaticQuery
@@ -39,6 +35,8 @@ const ImageById = ({ imageId, size }) => (
 
  export default ImageById;
 
+// query with thumbnails
+// ...default_GatsbyImageSharpWithThumb
  export const allSetImages = graphql`
    query {
      allSetImage {
@@ -51,7 +49,7 @@ const ImageById = ({ imageId, size }) => (
            serverCropSrc
            fields {
              localFile {
-               ...default_GatsbyImageSharpWithThumb
+               ...default_GatsbyImageSharp
              }
            }
          }

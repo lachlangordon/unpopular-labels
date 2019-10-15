@@ -4,7 +4,6 @@ import React from 'react';
 
 import { HomeIcon } from '../Icons/SharedIcons';
 import { rhythm, scale } from '../../lib/typography';
-import presets from '../../lib/presets';
 
 const Header = (props) => {
 
