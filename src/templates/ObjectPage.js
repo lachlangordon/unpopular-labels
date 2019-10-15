@@ -216,6 +216,7 @@ export const pageQuery = graphql`
           id
           url
           thumbnailURL
+          serverCropURL
         }
       }
       parent {
@@ -231,6 +232,7 @@ export const pageQuery = graphql`
                 id
                 url
                 thumbnailURL
+                serverCropURL
               }
             }
           }
