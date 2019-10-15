@@ -47,23 +47,28 @@ class ObjectPage extends Component {
   }
 
   init = () => {
-    // let object = props.data.object;
     const { object } = this.props.data;
 
-    let objectIndex = -1;
-    for (let i = 0; i < object.parent.setObjects.length; i++) {
-      if (`${ object.parent.setObjects[i].id }` === object.id) {
-        objectIndex = i;
-        break;
-      }
-    }
+    console.log(object.parent.setObjects.length);
 
-    this.related = object.parent.setObjects;
-    if (objectIndex > 0) {
-      let removedObjects = this.related.splice(objectIndex);
-      this.related = removedObjects.concat(this.related);
+    if (object.parent.setObjects.length > 1) {
+      let objectIndex = -1;
+      for (let i = 0; i < object.parent.setObjects.length; i++) {
+        if (`${ object.parent.setObjects[i].id }` === object.id) {
+          objectIndex = i;
+          break;
+        }
+      }
+
+      this.related = object.parent.setObjects;
+      if (objectIndex > 0) {
+        let removedObjects = this.related.splice(objectIndex);
+        this.related = removedObjects.concat(this.related);
+      }
+      this.related.splice(0, 1);
+    } else {
+       this.related = object.parent.setObjects;
     }
-    this.related.splice(0, 1);
   }
 
   render() {
@@ -73,8 +78,6 @@ class ObjectPage extends Component {
       location,
       viewport,
     } = this.props;
-
-    // console.log(this.related);
 
     const { images, object } = data;
 
@@ -178,7 +181,6 @@ class ObjectPage extends Component {
           </div>
 
           <hr />
-
             <section className="content-related container container--lg no-padding" >
               { this.related.length &&
               <div className="object-page__related-items">
