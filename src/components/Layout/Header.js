@@ -21,7 +21,7 @@ const Header = (props) => {
           paddingBottom: `calc(${rhythm(0.5)} - 1px)`,
         }}>
           <Link to="/" className="menu-links">
-              <HomeIcon style={{ marginTop: `0.4em`, ...scale(1/5) }} />
+              <HomeIcon style={{ marginTop: `0.4em`, ...scale(2/5) }} />
           </Link>
 
           <ul role="navigation">
