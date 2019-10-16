@@ -35,11 +35,9 @@ const IndexPage = ({
   };
 
   // handle mobile & landscape mobile
-  if ( viewportSize === 'mobile' ||
-       (imgOrient === 'landscape' && viewport['height'] < 768)
-  ) {
+  if ( viewportSize === 'mobile' || viewportSize === 'ipad' ) {
     // landscape mobile - smaller
-    textStyle = imgOrient === 'landscape' ? {
+    textStyle = (imgOrient === 'landscape' && viewport['height'] < 768) ? {
       ...scale(1.8),
      lineHeight: rhythm(2.5),
     } : {
