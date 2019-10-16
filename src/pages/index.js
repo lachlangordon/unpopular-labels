@@ -28,23 +28,20 @@ const IndexPage = ({
     imgObject: heroImage,
   }
 
-  // default - large iPadPro
-  let textStyle = {
+  let textStyle = (
+     viewportSize === 'mobile' ) ? {
+    ...scale(2.1),
+    lineHeight: rhythm(3)
+  } : {
     ...scale(2.5),
     lineHeight: rhythm(4.5)
-  };
+  }
 
   // handle mobile & landscape mobile
-  if ( viewportSize === 'mobile' ||
-       (imgOrient === 'landscape' && viewport['height'] < 768)
-  ) {
-    // landscape mobile - smaller
-    textStyle = imgOrient === 'landscape' ? {
-      ...scale(1.8),
-     lineHeight: rhythm(2.5),
-    } : {
-     ...scale(2.1),
-     lineHeight: rhythm(3)
+  if (imgOrient === 'landscape' && viewport['height'] < 768) {
+    textStyle = {
+        ...scale(1.8),
+       lineHeight: rhythm(2.5),
     }
   }
 
@@ -52,27 +49,18 @@ const IndexPage = ({
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div className="index-page">
-          <div className="container container--lg no-padding">
+          <Link to="/themes" className="container container--lg no-padding">
             <BgImage { ...imgProp }>
 
                 <div className="bg-content__wrapper">
-                      <h2 className="guide-index-page__title"
-                          style={ textStyle }>
-                        <span className="text__fadeIn"> STEP INTO </span>
-                        <span className="text__fadeIn"> PARADISE </span>
-                      </h2>
-
-                      <ul className="actions">
-                          <li>
-                            <Link to="/themes" className="button index-button" >
-                              <span style={{ ...scale(1) }}> Get Started
-                              <ArrowRight className="index-arrow" /> </span>
-                            </Link>
-                          </li>
-                      </ul>
+                  <h2 className="guide-index-page__title"
+                      style={ textStyle }>
+                    <span className="text__fadeIn"> STEP INTO </span>
+                    <span className="text__fadeIn"> PARADISE </span>
+                  </h2>
                 </div>
             </BgImage>
-          </div>
+          </Link>
 
       </div>
     </Layout>
@@ -103,7 +91,7 @@ export const pageQuery = graphql`
         }
       }
       childImageSharp {
-        fluid(maxWidth: 1024, maxHeight: 1774) {
+        fluid(maxWidth: 1024, maxHeight: 1600) {
           ...GatsbyImageSharpFluid
         }
       }

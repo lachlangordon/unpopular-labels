@@ -31,15 +31,13 @@ class Layout extends Component {
     componentDidMount () {
       // console.log(window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE);
       this.timeoutId = setTimeout(() => {
-          if (window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE) {
-            this.setState({ loading: '' });
-          }
+        this.setState({ loading: '' });
       }, 100);
     }
 
     componentWillUnmount () {
       if (this.timeoutId) {
-          clearTimeout(this.timeoutId);
+        clearTimeout(this.timeoutId);
       }
     }
 
