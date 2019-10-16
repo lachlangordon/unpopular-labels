@@ -28,21 +28,20 @@ const IndexPage = ({
     imgObject: heroImage,
   }
 
-  // default - large iPadPro
-  let textStyle = {
+  let textStyle = (
+     viewportSize === 'mobile' ) ? {
+    ...scale(2.1),
+    lineHeight: rhythm(3)
+  } : {
     ...scale(2.5),
     lineHeight: rhythm(4.5)
-  };
+  }
 
   // handle mobile & landscape mobile
-  if ( viewportSize === 'mobile' || viewportSize === 'ipad' ) {
-    // landscape mobile - smaller
-    textStyle = (imgOrient === 'landscape' && viewport['height'] < 768) ? {
-      ...scale(1.8),
-     lineHeight: rhythm(2.5),
-    } : {
-     ...scale(2.1),
-     lineHeight: rhythm(3)
+  if (imgOrient === 'landscape' && viewport['height'] < 768) {
+    textStyle = {
+        ...scale(1.8),
+       lineHeight: rhythm(2.5),
     }
   }
 
@@ -92,7 +91,7 @@ export const pageQuery = graphql`
         }
       }
       childImageSharp {
-        fluid(maxWidth: 1024, maxHeight: 1774) {
+        fluid(maxWidth: 768, maxHeight: 1774) {
           ...GatsbyImageSharpFluid
         }
       }
