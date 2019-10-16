@@ -6,7 +6,7 @@ import GatsbyImage from 'gatsby-image';
 // fragment to fetch GatsbyImageSharp
 import { default_GatsbyImageSharpWithThumb } from '../../queries/fragments';
 
-const ImageById = ({ imageId, size }) => (
+const ImageById = ({ imageId, size, alt }) => (
    <StaticQuery
      query={allSetImages}
      render={data => {
@@ -27,6 +27,7 @@ const ImageById = ({ imageId, size }) => (
            isThumb: size === 'thumbnail' ? true : false,
            // src: imgFound.node.serverCropSrc,
            name: caption || filename,
+           alt: alt,
          }
          return <Image { ...imgProp } />;
        } catch (e) {
