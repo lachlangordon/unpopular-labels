@@ -35,11 +35,9 @@ const IndexPage = ({
   };
 
   // handle mobile & landscape mobile
-  if ( viewportSize === 'mobile' ||
-       (imgOrient === 'landscape' && viewport['height'] < 768)
-  ) {
+  if ( viewportSize === 'mobile' || viewportSize === 'ipad' ) {
     // landscape mobile - smaller
-    textStyle = imgOrient === 'landscape' ? {
+    textStyle = (imgOrient === 'landscape' && viewport['height'] < 768) ? {
       ...scale(1.8),
      lineHeight: rhythm(2.5),
     } : {
@@ -52,27 +50,18 @@ const IndexPage = ({
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div className="index-page">
-          <div className="container container--lg no-padding">
+          <Link to="/themes" className="container container--lg no-padding">
             <BgImage { ...imgProp }>
 
                 <div className="bg-content__wrapper">
-                      <h2 className="guide-index-page__title"
-                          style={ textStyle }>
-                        <span className="text__fadeIn"> STEP INTO </span>
-                        <span className="text__fadeIn"> PARADISE </span>
-                      </h2>
-
-                      <ul className="actions">
-                          <li>
-                            <Link to="/themes" className="button index-button" >
-                              <span style={{ ...scale(1) }}> Get Started
-                              <ArrowRight className="index-arrow" /> </span>
-                            </Link>
-                          </li>
-                      </ul>
+                  <h2 className="guide-index-page__title"
+                      style={ textStyle }>
+                    <span className="text__fadeIn"> STEP INTO </span>
+                    <span className="text__fadeIn"> PARADISE </span>
+                  </h2>
                 </div>
             </BgImage>
-          </div>
+          </Link>
 
       </div>
     </Layout>
