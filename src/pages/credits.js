@@ -48,7 +48,7 @@ const CreditsPage = ({
               <p>Flamingo Follies 1979 excerpts shown with kind permission from the estate of Clytie Jessop. Courtesy National Film and Sound Archive of Australia</p>
               <p><cite>The Mike Walsh Show</cite> excerpts courtesy Mike Walsh</p>
               <p>Softly advertisement courtesy Pental</p>
-              <p><cite>Good Morning Australia</cite> excerpt courtesy Network 10<img style={{width: '2em', marginLeft: '0.5em'}} src={tenLogo}/></p>
+              <p><cite>Good Morning Australia</cite> excerpt courtesy Network 10<img style={{width: '2em', marginLeft: '0.5em'}} alt="Network 10 logo" src={tenLogo}/></p>
 
               <h2>Opals</h2>
               <p>Photos courtesy Fran Moore, Linda Jackson, Wendy Adnam</p>
