@@ -15,7 +15,7 @@ class SeenIcon extends Component {
             {/*<path id="iconmonstr-eye-9" d="M8.75,8.75A1.75,1.75,0,1,1,7,6.969,1.768,1.768,0,0,1,8.75,8.75ZM14,8.483S11.52,13.5,7.009,13.5C2.82,13.5,0,8.483,0,8.483S2.593,4,7.009,4C11.5,4,14,8.483,14,8.483ZM9.917,8.75A2.917,2.917,0,1,0,7,11.719,2.946,2.946,0,0,0,9.917,8.75Z" transform="translate(23 1309)" fill="#fff"/>*/}
           {/*</g>*/}
         {/*</svg>*/}
-        <img src={seen}/>
+        <img alt="You've already seen this object." src={seen}/>
       </span>
 
     );

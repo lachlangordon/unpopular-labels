@@ -60,6 +60,7 @@ const SetPage = ({
                                   objectId={`${object.id}`}
                                   imageId={object.object.mainImage.id}
                                   hasQuote={object.notes3 !== null}
+                                  title={object.object.name}
                               />
                       )
                     }

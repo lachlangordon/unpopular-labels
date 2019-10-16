@@ -17,7 +17,7 @@ class LindaIcon extends Component {
             {/*</g>*/}
           {/*</g>*/}
         {/*</svg>*/}
-        <img src={linda}/>
+        <img alt="Linda Jackson's glasses" src={linda}/>
       </span>
     );
   }

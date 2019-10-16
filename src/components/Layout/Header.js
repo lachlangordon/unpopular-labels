@@ -15,33 +15,33 @@ const Header = (props) => {
 
   return (
     <div id="header" className="header">
-        <nav className="header__navigation header__wrapper" style={{
-          paddingTop: rhythm(0.4),
-          paddingBottom: `calc(${rhythm(0.5)} - 1px)`,
-        }}>
-          <Link to="/" className="menu-links">
-              <HomeIcon style={{ marginTop: `0.4em`, ...scale(2/5) }} />
-          </Link>
+      <nav role="navigation" className="header__navigation header__wrapper" style={{
+        paddingTop: rhythm(0.4),
+        paddingBottom: `calc(${rhythm(0.5)} - 1px)`,
+      }}>
+        <Link to="/" className="menu-links">
+            <HomeIcon style={{ marginTop: `0.4em`, ...scale(2/5) }} />
+        </Link>
 
-          <ul role="navigation">
-          { headerLinks.map((item, i) => {
-            return (
-              <li key={`nav-${i}`} className="header__navigation-button">
-                <Link to={item.location} className="menu-links">
-                    <div style={{ ...scale(4 / 5) }}>
-                      <span style={{
-                          paddingRight: rhythm(0.7),
-                          marginLeft: rhythm(0.7),
-                        }}>
-                        {item.name}
-                      </span>
-                    </div>
-                </Link>
-              </li>
-            )
-          })}
-          </ul>
-        </nav>
+        <ul>
+        { headerLinks.map((item, i) => {
+          return (
+            <li key={`nav-${i}`} className="header__navigation-button">
+              <Link to={item.location} className="menu-links">
+                  <div style={{ ...scale(4 / 5) }}>
+                    <span style={{
+                        paddingRight: rhythm(0.7),
+                        marginLeft: rhythm(0.7),
+                      }}>
+                      {item.name}
+                    </span>
+                  </div>
+              </Link>
+            </li>
+          )
+        })}
+        </ul>
+      </nav>
     </div>
   );
 }

@@ -29,7 +29,7 @@ class JennyIcon extends Component {
             {/*</g>*/}
           {/*</g>*/}
         {/*</svg>*/}
-        <img src={jenny}/>
+        <img alt="Jenny Kee's glasses" src={jenny}/>
       </span>
     );
   }

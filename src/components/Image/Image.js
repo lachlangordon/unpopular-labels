@@ -44,6 +44,7 @@ class Image extends Component {
         width,
         height,
         title: alt,
+        alt,
         style: imgStyle,
         className: imgClassName,
         fluid: getFluid(_image),
@@ -54,6 +55,7 @@ class Image extends Component {
         width,
         height,
         title: alt,
+        alt,
         style: imgStyle,
         className: imgClassName,
         fixed: getFixed(_image),
@@ -72,16 +74,14 @@ class Image extends Component {
       imgClassName:  this.props.imgClassName || {},
       name: imgObject ? imgObject.id : this.props.name,
       src: imgObject ? imgObject.url : this.props.src, // get valid local url
-      alt: imgObject ? imgObject.caption : this.props.alt,
+      alt : this.props.alt,
       width: this.props.width,
       height: this.props.height,
     };
 
     // todo: for thumbnail - set default width & height
     return (
-          this.getImage( !!isThumb && hasThumb(imgObject) ?
-                            imgObject.thumbnail : imgObject
-                        , imgProps)
+          this.getImage( !!isThumb && hasThumb(imgObject) ? imgObject.thumbnail : imgObject, imgProps)
     );
   }
 }
