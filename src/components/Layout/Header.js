@@ -29,7 +29,7 @@ const Header = (props) => {
             return (
               <li key={`nav-${i}`} className="header__navigation-button">
                 <Link to={item.location} className="menu-links">
-                    <div style={{ ...scale(3 / 5) }}>
+                    <div style={{ ...scale(4 / 5) }}>
                       <span style={{
                           paddingRight: rhythm(0.7),
                           marginLeft: rhythm(0.7),
