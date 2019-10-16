@@ -1,21 +1,8 @@
 import React, { Component } from 'react';
 import GatsbyImage from 'gatsby-image';
-
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 // import { Image as Img } from 'maas-react-components/dist/Image';
-
-/*
- // we only care about `aspectRatio`, the rest will be passed directly to `Img`
- // also take out `className` so it be merged with our generated `orientation` class name
- const ImageOrient = ({ aspectRatio, className, ...props }) => {
-   let orientation
-   if (aspectRatio > 1) orientation = 'landscape'
-   if (aspectRatio < 1) orientation = 'portrait'
-   else orientation = 'square'
-
-   return <Image className={`${className} ${orientation}`} {...props} />
- } */
 
 const hasThumb = _img =>
   _img.hasOwnProperty('thumbnail');
@@ -105,7 +92,6 @@ Image.defaultProps = {
   noImageContent: (<i className='fa fa-picture-o'></i>),
 }
 
-/*
 Image.propTypes = {
 	className: PropTypes.string,
 	src: PropTypes.string,
@@ -116,6 +102,6 @@ Image.propTypes = {
   // gatsby image mode
 	defImgMode: PropTypes.string,
 	noImageContent: PropTypes.object || PropTypes.string,
-};*/
+};
 
 export default Image;
