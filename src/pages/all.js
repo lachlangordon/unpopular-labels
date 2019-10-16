@@ -31,7 +31,7 @@ const allObjectsPage = ({
                                         url={'/object/' + object.id}
                                         imageId={object.object.mainImage.id}
                                         objectId={`${object.id}`}
-                                        title={object.displayTitle}
+                                        title={object.object.displayTitle}
                                         hasQuote={object.notes3 !== null}
                                         />
                             )
