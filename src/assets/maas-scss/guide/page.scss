@@ -328,11 +328,11 @@ $content-height-min: 1040px;
 
 .qr-code {
   display: flex;
-  //justify-content: center;
-  margin-bottom: 1em;
+  justify-content: center;
+  margin-bottom: 2em;
 
   img {
-    width: 50%;
+    width: 100%;
   }
 }
 

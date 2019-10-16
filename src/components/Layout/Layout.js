@@ -43,6 +43,7 @@ class Layout extends Component {
     }
 
     render() {
+      window.source = "kiosk";
       const { location, children } = this.props;
       const appClassName = 'guide-app';
 
