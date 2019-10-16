@@ -13,11 +13,7 @@ const LightFooter = (props) => (
           !shouldShowSeenIcon() && (
             <div className="footer-mobile-icon">
               <MobileIcon />
-              <div>
-                View this guide on your phone:
-                <br/>
-                <a href="https://maas.museum/guide">https://maas.museum/guide</a>
-              </div>
+                <Link to="/link">View this guide on your phone</Link>
             </div>
           )
         }

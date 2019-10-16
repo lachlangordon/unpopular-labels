@@ -324,3 +324,18 @@ $content-height-min: 1040px;
   padding: 1em;
   position: relative;
 }
+
+.qr-code {
+  display: flex;
+  //justify-content: center;
+  margin-bottom: 1em;
+
+  img {
+    width: 50%;
+  }
+}
+
+.mobile-link {
+  font-size: 30px;
+  margin-left: 30px;
+}

@@ -62,7 +62,7 @@ class Layout extends Component {
           } else if (location && location.pathname !== '/') {
             footer = <LightFooter/>
           }
-
+      window.source = "kiosk";
       return (
         <StaticQuery
           query={SiteTitleQuery}
