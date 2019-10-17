@@ -1,5 +1,5 @@
 import React from 'react';
-import {graphql, Link} from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout/Layout';
 import ItemTile from '../components/ItemTile/ItemTile';
@@ -31,6 +31,7 @@ const allObjectsPage = ({
                                         url={'/object/' + object.id}
                                         imageId={object.object.mainImage.id}
                                         objectId={`${object.id}`}
+                                        title={object.object.displayTitle}
                                         hasQuote={object.notes3 !== null}
                                         />
                             )

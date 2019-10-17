@@ -1,21 +1,8 @@
 import React, { Component } from 'react';
 import GatsbyImage from 'gatsby-image';
-
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 // import { Image as Img } from 'maas-react-components/dist/Image';
-
-/*
- // we only care about `aspectRatio`, the rest will be passed directly to `Img`
- // also take out `className` so it be merged with our generated `orientation` class name
- const ImageOrient = ({ aspectRatio, className, ...props }) => {
-   let orientation
-   if (aspectRatio > 1) orientation = 'landscape'
-   if (aspectRatio < 1) orientation = 'portrait'
-   else orientation = 'square'
-
-   return <Image className={`${className} ${orientation}`} {...props} />
- } */
 
 const hasThumb = _img =>
   _img.hasOwnProperty('thumbnail');
@@ -57,6 +44,7 @@ class Image extends Component {
         width,
         height,
         title: alt,
+        alt,
         style: imgStyle,
         className: imgClassName,
         fluid: getFluid(_image),
@@ -67,6 +55,7 @@ class Image extends Component {
         width,
         height,
         title: alt,
+        alt,
         style: imgStyle,
         className: imgClassName,
         fixed: getFixed(_image),
@@ -82,19 +71,17 @@ class Image extends Component {
     // dont forget to append props
     let imgProps = {
       imgStyle:  this.props.imgStyle || {},
-      imgClassName:  this.props.imgClassName || {},
+      imgClassName:  this.props.imgClassName || '',
       name: imgObject ? imgObject.id : this.props.name,
       src: imgObject ? imgObject.url : this.props.src, // get valid local url
-      alt: imgObject ? imgObject.caption : this.props.alt,
+      alt : this.props.alt,
       width: this.props.width,
       height: this.props.height,
     };
 
     // todo: for thumbnail - set default width & height
     return (
-          this.getImage( !!isThumb && hasThumb(imgObject) ?
-                            imgObject.thumbnail : imgObject
-                        , imgProps)
+          this.getImage( !!isThumb && hasThumb(imgObject) ? imgObject.thumbnail : imgObject, imgProps)
     );
   }
 }
@@ -105,17 +92,17 @@ Image.defaultProps = {
   noImageContent: (<i className='fa fa-picture-o'></i>),
 }
 
-/*
 Image.propTypes = {
+	imgClassName: PropTypes.string,
+  imgStyle: PropTypes.object,
 	className: PropTypes.string,
 	src: PropTypes.string,
 	alt: PropTypes.string,
 	width: PropTypes.number,
 	height: PropTypes.number,
-
   // gatsby image mode
 	defImgMode: PropTypes.string,
-	noImageContent: PropTypes.object || PropTypes.string,
-};*/
+  noImageContent: PropTypes.string || PropTypes.object,
+}
 
 export default Image;

@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMobileAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faMobileAlt, faArrowRight, faArrowLeft, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 //
+const ArrowUp = props => <FontAwesomeIcon icon={faArrowUp} {...props} />
+
+const ArrowLeft = props => <FontAwesomeIcon icon={faArrowLeft} {...props} />
+
 const ArrowRight = props => <FontAwesomeIcon icon={faArrowRight} {...props} />
 
 const MobileIcon = props => <FontAwesomeIcon icon={faMobileAlt} {...props} />
@@ -16,6 +20,8 @@ const HomeIcon = props =>  (
 );
 
 export {
+  ArrowUp,
+  ArrowLeft,
   ArrowRight,
   MobileIcon,
   HomeIcon,

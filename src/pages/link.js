@@ -24,7 +24,7 @@ const LinksPage = ({
               <div className="normal-page__description">
                 <h2>Scan the QR code</h2>
                 <div className="container container--sm qr-code">
-                  <img src={qr}/>
+                  <img alt="maas-museum guide qr-code" src={qr}/>
                 </div>
                 <div className="container container--sm">
                   <ol>
