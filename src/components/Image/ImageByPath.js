@@ -2,9 +2,6 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from './Image';
 
-// fragment to fetch GatsbyImageSharp
-import { default_GatsbyImageSharp } from '../../queries/fragments';
-
 const ImageByPath = ({ path, filename }) => (
    <StaticQuery
      query={localImgQuery}
@@ -19,7 +16,7 @@ const ImageByPath = ({ path, filename }) => (
 
        if (filteredImgs) {
          imageFound = filteredImgs.find(image => {
-           return image.node.name == `${filename}`;
+           return image.node.name === `${filename}`;
          });
        } else {
          imageFound = data.localImages.edges.find(image => image.node.name === `${filename}`);

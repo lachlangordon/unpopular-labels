@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 
 import { MobileIcon } from "../Icons/SharedIcons";
 import {shouldShowSeenIcon} from '../../lib/session';
-import ImageByPath from "../Image/ImageByPath";
 
 const LightFooter = (props) => (
   <footer className="footer">
