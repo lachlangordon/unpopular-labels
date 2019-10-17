@@ -1,10 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from './Image';
-import GatsbyImage from 'gatsby-image';
-
-// fragment to fetch GatsbyImageSharp
-import { default_GatsbyImageSharpWithThumb } from '../../queries/fragments';
 
 const ImageById = ({ imageId, size, alt }) => (
    <StaticQuery
@@ -21,7 +17,7 @@ const ImageById = ({ imageId, size, alt }) => (
        }
 
        try {
-         const { id, filename, caption } = imgFound.node;
+         const { filename, caption } = imgFound.node;
          const imgProp = {
            imgObject: imgFound.node.fields.localFile,
            isThumb: size === 'thumbnail' ? true : false,

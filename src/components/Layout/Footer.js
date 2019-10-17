@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 
 import { MobileIcon } from "../Icons/SharedIcons";
 import {shouldShowSeenIcon} from '../../lib/session';
-import ImageByPath from "../Image/ImageByPath";
 
 const Footer = (props) => (
     <footer className="footer">
@@ -16,7 +15,7 @@ const Footer = (props) => (
                   <div>
                     View this guide on your phone:
                     <br/>
-                    <a href="#">https://maas.museum/guide</a>
+                    <a href="#top">https://maas.museum/guide</a>
                     <br/>
                     or <Link to="/link">scan the QR code</Link>
                   </div>
