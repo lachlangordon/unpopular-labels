@@ -26,7 +26,7 @@ const ImageByPath = ({ path, filename }) => (
          return null;
        }
 
-       const { id, name, sourceInstanceName } = imageFound.node;
+       const { name } = imageFound.node;
        return <Image imgObject={imageFound.node} title={name} />
      }}
    />

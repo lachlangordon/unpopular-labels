@@ -8,7 +8,6 @@ import SEO from '../components/seo';
 
 import withViewport from '../decorators/withViewport';
 import { getImgOrient, getBannerSize } from '../lib/utils';
-import { ArrowRight } from '../components/Icons/SharedIcons';
 
 const IndexPage = ({
   data: { site, heroImage },

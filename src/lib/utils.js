@@ -35,9 +35,9 @@ const convertToSID = narrativeId => {
 }
 
 const parseCirca = dateStr => {
-  const regex = /c\./gi;
+  const regex = /c\./;
   // console.log(date);
-  return dateStr.replace(/c\./, 'about');
+  return dateStr.replace(regex, 'about');
 }
 
 const canUseDOM = () =>
