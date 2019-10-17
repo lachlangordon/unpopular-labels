@@ -47,7 +47,7 @@ const SetPage = ({
 
              </div>
           </section>
-          <section className="section main-content no-side-padding container container--lg set-page__content">
+          <section className="section main-content container container--lg set-page__content">
             {
               <div className="img-gallery img-gallery__col-grid">
                 {
