@@ -4,7 +4,8 @@ import { canUseDOM } from '../lib/utils';
 import { throttle } from 'lodash';
 
 let EE;
-let viewport = {width: 1024, height: 1366}; // Default size for server-side rendering: ipadPro
+// let viewport = {width: 1024, height: 1366}; // Default size for server-side rendering: ipadPro
+let viewport = {width: null, height: null};  // null on init - to prevent render
 const RESIZE_EVENT = 'resize';
 
 function handleWindowResize() {

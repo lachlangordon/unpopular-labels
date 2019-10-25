@@ -71,7 +71,7 @@ class Image extends Component {
     // dont forget to append props
     let imgProps = {
       imgStyle:  this.props.imgStyle || {},
-      imgClassName:  this.props.imgClassName || {},
+      imgClassName:  this.props.imgClassName || '',
       name: imgObject ? imgObject.id : this.props.name,
       src: imgObject ? imgObject.url : this.props.src, // get valid local url
       alt : this.props.alt,
@@ -93,12 +93,13 @@ Image.defaultProps = {
 }
 
 Image.propTypes = {
+	imgClassName: PropTypes.string,
+  imgStyle: PropTypes.object,
 	className: PropTypes.string,
 	src: PropTypes.string,
 	alt: PropTypes.string,
 	width: PropTypes.number,
 	height: PropTypes.number,
-
   // gatsby image mode
 	defImgMode: PropTypes.string,
 	noImageContent: PropTypes.object || PropTypes.string,

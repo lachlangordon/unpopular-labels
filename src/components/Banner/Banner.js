@@ -3,8 +3,8 @@ import ImageByPath from '../Image/ImageByPath';
 import PropTypes from 'prop-types';
 
 // two types of banner image: ribbon or themes
+// size is the path for different versions banner used - (getBannerSize in lib/utils.js)
 const Banner = ({ size, type, themeId, style }) => {
-
   const className =  ( type === 'themes' ? 'banner-img' : 'ribbon-img' );
   const path = `images/${type}/${size}`;
 	return themeId ? (
@@ -14,19 +14,12 @@ const Banner = ({ size, type, themeId, style }) => {
 	) : null;
 }
 
-/*
 Banner.propTypes = {
-  title: PropTypes.string,
-  summary: PropTypes.string,
-  subtitle: PropTypes.string,
-  url: PropTypes.string,
-  imageUrl: PropTypes.string,
+  size: PropTypes.string,
   type: PropTypes.string,
-  isBreakout: PropTypes.bool, // NOTE: WIP, may just create a new component
-  className: PropTypes.string,
-  imageTag: PropTypes.string,
+  themeId: PropTypes.number,
+  style: PropTypes.object,
 };
-*/
 
 Banner.defaultProps = {
   type: 'themes',

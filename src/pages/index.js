@@ -8,7 +8,6 @@ import SEO from '../components/seo';
 
 import withViewport from '../decorators/withViewport';
 import { getImgOrient, getBannerSize } from '../lib/utils';
-import { ArrowRight } from '../components/Icons/SharedIcons';
 
 const IndexPage = ({
   data: { site, heroImage },
@@ -45,6 +44,10 @@ const IndexPage = ({
     }
   }
 
+  if (viewport['height'] === null) {
+    return null;
+  }
+
   return (
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
@@ -64,7 +67,7 @@ const IndexPage = ({
 
       </div>
     </Layout>
-  )
+  );
 
 };
 

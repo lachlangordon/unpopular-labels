@@ -16,7 +16,7 @@ const ImageByPath = ({ path, filename }) => (
 
        if (filteredImgs) {
          imageFound = filteredImgs.find(image => {
-           return image.node.name == `${filename}`;
+           return image.node.name === `${filename}`;
          });
        } else {
          imageFound = data.localImages.edges.find(image => image.node.name === `${filename}`);
@@ -26,7 +26,7 @@ const ImageByPath = ({ path, filename }) => (
          return null;
        }
 
-       const { id, name, sourceInstanceName } = imageFound.node;
+       const { name } = imageFound.node;
        return <Image imgObject={imageFound.node} title={name} />
      }}
    />

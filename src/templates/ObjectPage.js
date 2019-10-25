@@ -7,7 +7,6 @@ import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 import Banner from '../components/Banner/Banner';
-import { isEmpty } from 'lodash';
 
 import { saveSeenObject } from '../lib/session';
 import {convertToSID, parseCirca, getBannerSize} from '../lib/utils';

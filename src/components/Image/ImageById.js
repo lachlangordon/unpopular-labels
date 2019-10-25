@@ -17,7 +17,7 @@ const ImageById = ({ imageId, size, alt }) => (
        }
 
        try {
-         const { id, filename, caption } = imgFound.node;
+         const { filename, caption } = imgFound.node;
          const imgProp = {
            imgObject: imgFound.node.fields.localFile,
            isThumb: size === 'thumbnail' ? true : false,
