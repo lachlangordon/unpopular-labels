@@ -44,6 +44,10 @@ const IndexPage = ({
     }
   }
 
+  if (viewport['height'] === null) {
+    return null;
+  }
+
   return (
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
@@ -63,7 +67,7 @@ const IndexPage = ({
 
       </div>
     </Layout>
-  )
+  );
 
 };
 
