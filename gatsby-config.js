@@ -1,12 +1,3 @@
-let activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
-
-// const { buildSchema, buildClientSchema } = require('graphql');
-// const fs = require('fs');
-
-require('dotenv').config({
-  path: '.env',
-});
 
 // load website config
 const config = require('./config/website');

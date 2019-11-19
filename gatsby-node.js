@@ -15,8 +15,17 @@ const { GatsbyResolvers } = require('./bootstrap/resolvers');
 const { createDynamicPages, createPaginatedPages, createPaginatedSetPages } = require('./src/lib/pageCreator');
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`);
 
-// later move it to config
-const __MASTER_NARRATIVE = 6761;
+// read from dotenv
+require('dotenv').config({
+  path: '.env',
+});
+
+let activeEnv =
+   process.env.NODE_ENV || "development";
+
+const __MASTER_NARRATIVE = process.env.MASTER_NARRATIVE;
+
+const __DEBUG = activeEnv === "development" ? true : false;
 
 exports.sourceNodes = async ({ actions, createNodeId, store, cache }) => {
   const { createNode, createParentChildLink } = actions;
@@ -29,7 +38,6 @@ exports.sourceNodes = async ({ actions, createNodeId, store, cache }) => {
   try {
 
     const { masterSet, childSets } = await GQLClientWrapper( query );
-
 
     // if there is no master narrative don't create nodes
     if ( masterSet.length ) { return; }
@@ -90,9 +98,14 @@ exports.onCreateNode = async ({
             name: 'localFile___NODE',
             value: fileNode.id,
           });
+
+          if (__DEBUG) {
+            console.log(`importing imageURL: %s`, node.url);
+          }
         }
       }
     } catch (err) {
+      console.log(`error SetImage node link: %s`, err);
     }
   }
 }

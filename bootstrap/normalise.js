@@ -5,8 +5,12 @@
 
 const crypto = require('crypto');
 
-// later move it to config
-const __MASTER_NARRATIVE = 6761;
+// read from dotenv
+require('dotenv').config({
+  path: '.env',
+});
+
+const __MASTER_NARRATIVE = process.env.MASTER_NARRATIVE;
 
 const setInternal = ( _objectType, _object ) => {
   return {
