@@ -93,8 +93,7 @@ class ObjectPage extends Component {
     // creditLine
     let creditLine = '';
     const { acquisitionCreditLine, recordType } = object.object;
-    if ( acquisitionCreditLine.length === 1 &&
-      (recordType === "ArchivePart" || recordType === "Part") ) {
+    if ( recordType === "ArchivePart" || recordType === "Part" ) {
       creditLine = "<span> MAAS Collection </span>";
     } else {
       creditLine = acquisitionCreditLine;
