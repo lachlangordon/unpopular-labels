@@ -5,7 +5,8 @@ import { navigate } from 'gatsby';
 
 // https://github.com/YIZHUANG/react-multi-carousel
 import Slider from 'react-multi-carousel';
-import ImageById from '../Image/ImageById';
+// import ImageById from '../Image/ImageById';
+import MaasImage from '../Image/MaasImage';
 import SeenIcon from '../Icons/SeenIcon';
 import QuoteIcon from '../Icons/QuoteIcon';
 import {isObjectSeen, shouldShowSeenIcon} from "../../lib/session";
@@ -77,14 +78,20 @@ class ItemSwipe extends Component {
   					objectItems.map((object, j) => {
   						if (object.object && object.object.mainImage) {
                const objectId = object.id;
-               const imageId = object.object.mainImage.id;
+               // const imageId = object.object.mainImage.id;
                const hasQuote = object.notes3 !== null ? true : false;
                const showIconDiv = hasQuote || (shouldShowSeenIcon() && isObjectSeen(objectId));
                return (
                    <a className="item-slide__item-holder" key={`item-slide-${j}`} onClick={(e) => {
                          ( this.state.isMoving ? e.preventDefault() : goToObjectId(objectId) )
                        }}>
-                     <ImageById size="thumbnail" imageId={imageId} />
+                     <MaasImage
+                         className="object-swipe__image"
+                         src={object.object.mainImage.serverCropURL}
+                         noImageContent={<div className="object-swipe__content">
+                            Image unavailable
+                          </div>}
+                       />
                      {
                        showIconDiv && (
                          <div className="item-slide__icon-holder">

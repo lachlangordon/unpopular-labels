@@ -37,20 +37,22 @@ $gutter-xlg: 1.563rem;
 }
 
 .img-gallery__col-grid {
-	column-count: 1;
-  column-gap: $gutter-md;
+	//column-count: 1;
+ // column-gap: $gutter-md;
+ //
+ //@media (min-width: $screen-xs-min) {
+ //   column-count: 2;
+ // }
+ //
+ //@media (min-width: $screen-sm-min) {
+ //   column-count: 3;
+ // }
+ //
+ // @media (min-width: $screen-md-min)  {
+ //   column-gap: $gutter-md;
+ // }
 
- @media (min-width: $screen-xs-min) {
-    column-count: 2;
-  }
-
- @media (min-width: $screen-sm-min) {
-    column-count: 3;
-  }
-
-  @media (min-width: $screen-md-min)  {
-    column-gap: $gutter-md;
-  }
+	lost-masonry-wrap: no-flex;
 }
 
 .img-gallery__col-grid--item {
@@ -58,8 +60,12 @@ $gutter-xlg: 1.563rem;
   position: relative;
   margin-bottom: $gutter-md;
 
+	lost-masonry-column: 1/2;
+
   @media (min-width: $screen-md-min)  {
     margin-bottom: $gutter-md;
+
+	  lost-masonry-column: 1/3;
   }
 }
 

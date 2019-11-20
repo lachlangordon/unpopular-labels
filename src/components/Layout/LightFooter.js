@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
-
+import { Link } from "gatsby";
 import { MobileIcon } from "../Icons/SharedIcons";
 import {shouldShowSeenIcon} from '../../lib/session';
 
