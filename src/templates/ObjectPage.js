@@ -132,7 +132,7 @@ class ObjectPage extends Component {
               {
                 !!images.length && (
                   <Image className="image--object"
-                         imgObject={ images[0].fields.localFile }
+                         imgObject={ images[0].fields.localMainFile }
                          defImgMode="fluid"
                   />
                 )
@@ -253,7 +253,7 @@ export const pageQuery = graphql`
       filename
       caption
       fields {
-        localFile {
+        localMainFile {
           ...default_GatsbyImageSharp
         }
       }

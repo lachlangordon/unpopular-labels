@@ -11,7 +11,7 @@ const ImgGallery = edges => {
       <div className="img-gallery__col-grid">
         {
           edges.images.map((image, index) => {
-            const imageObject = image.node.fields.localFile;
+            const imageObject = image.node.fields.localMainFile;
             return (
               <div className="img-gallery__col-grid--item" key={index}>
                 <Image

@@ -2,10 +2,10 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from './Image';
 
-const ImageById = ({ imageId, size, alt }) => {
+const ImageByIdNoBase64 = ({ imageId, size, alt }) => {
   return (
     <StaticQuery
-      query={allSetImages}
+      query={allSetImages_noBase64}
       render={data => {
         const imgFound = data.allSetImage.edges.find(
           image => {
@@ -36,28 +36,7 @@ const ImageById = ({ imageId, size, alt }) => {
   )
 };
 
- export default ImageById;
-
- export const allSetImages = graphql`
-   query {
-     allSetImage {
-       edges {
-         node {
-           id
-           caption
-           filename
-           thumbnailSrc
-           serverCropSrc
-           fields {
-             localTileFile {
-               ...default_GatsbyImageSharpWithThumb
-             }
-           }
-         }
-       }
-     }
-   }
- `;
+export default ImageByIdNoBase64;
 
 export const allSetImages_noBase64 = graphql`
     query {

@@ -15,6 +15,8 @@ const { GatsbyResolvers } = require('./bootstrap/resolvers');
 const { createDynamicPages, createPaginatedPages, createPaginatedSetPages } = require('./src/lib/pageCreator');
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`);
 
+const { getThumborImageUrl } = require('maas-js-utils');
+
 // later move it to config
 const __MASTER_NARRATIVE = 6761;
 
@@ -72,12 +74,12 @@ exports.onCreateNode = async ({
 }) => {
   // console.log(node)
   const { createNodeField, createNode } = actions;
-
   if (node.internal.type === 'SetImage') {
     try {
       if (node.id && node.url) {
-        const fileNode = await createRemoteFileNode({
-          url: node.url,
+        let fileNode = await createRemoteFileNode({
+          // url: node.url,
+          url: getThumborImageUrl(node.id, { width: 1000, height: 0, smart: true }),
           store,
           cache,
           createNode,
@@ -87,7 +89,23 @@ exports.onCreateNode = async ({
         if (fileNode) {
           createNodeField({
             node,
-            name: 'localFile___NODE',
+            name: 'localMainFile___NODE',
+            value: fileNode.id,
+          });
+        }
+
+        fileNode = await createRemoteFileNode({
+          url: getThumborImageUrl(node.id, { width: 420, height: 0, smart: true }),
+          store,
+          cache,
+          createNode,
+          createNodeId,
+        });
+
+        if (fileNode) {
+          createNodeField({
+            node,
+            name: 'localTileFile___NODE',
             value: fileNode.id,
           });
         }

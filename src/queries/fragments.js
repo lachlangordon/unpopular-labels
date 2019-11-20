@@ -26,6 +26,7 @@ export const default_GatsbyImageSharp = graphql`
       fluid(maxHeight: 740) {
         ...GatsbyImageSharpFluid
         originalName
+        presentationHeight
       }
     }
   }
@@ -54,7 +55,33 @@ export const default_GatsbyImageSharpWithThumb = graphql`
       fluid(maxHeight: 740) {
         ...GatsbyImageSharpFluid
         originalName
+        presentationHeight
       }
     }
   }
+`
+
+export const default_GatsbyImageSharpWithThumbNoBase64 = graphql`
+    fragment default_GatsbyImageSharpWithThumbNoBase64 on File {
+        id
+        url
+        sourceInstanceName
+        publicURL
+        name
+        relativePath
+        relativeDirectory
+        absolutePath
+        thumbnail: childImageSharp {
+            fluid(maxWidth: 400, maxHeight: 400) {
+                ...GatsbyImageSharpFluid_noBase64
+            }
+        }
+        childImageSharp {
+            fluid(maxHeight: 740) {
+                ...GatsbyImageSharpFluid_noBase64
+                originalName
+                presentationHeight
+            }
+        }
+    }
 `

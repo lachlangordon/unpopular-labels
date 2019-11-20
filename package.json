@@ -45,6 +45,8 @@
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-lazy-load": "^3.0.13",
+    "react-masonry-component": "^6.2.1",
     "react-multi-carousel": "^2.2.10",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19"

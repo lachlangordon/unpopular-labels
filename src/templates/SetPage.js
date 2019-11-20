@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Masonry from 'react-masonry-component';
 
 import Layout from '../components/Layout/Layout';
 import Banner from '../components/Banner/Banner';
@@ -49,7 +50,7 @@ const SetPage = ({
           </section>
           <section className="section main-content container container--lg set-page__content">
             {
-              <div className="img-gallery img-gallery__col-grid">
+              <Masonry className="img-gallery img-gallery__col-grid" options={{transitionDuration: 0}}>
                 {
                   objects.map((object, j) => {
                     if (object.object) {
@@ -61,12 +62,13 @@ const SetPage = ({
                                   imageId={object.object.mainImage.id}
                                   hasQuote={object.notes3 !== null}
                                   title={object.object.name}
+                                  useBase64={j < 10}
                               />
                       )
                     }
                 })
               }
-              </div>
+              </Masonry>
             }
           </section>
         </div>
