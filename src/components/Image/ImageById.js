@@ -51,7 +51,7 @@ const ImageById = ({ imageId, size, alt }) => {
            thumbnailSrc
            serverCropSrc
            fields {
-             localFile {
+             localTileFile {
                ...default_GatsbyImageSharp
              }
            }
