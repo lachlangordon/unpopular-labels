@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Masonry from 'react-masonry-component';
+import LazyLoad from 'react-lazy-load';
 
 import Layout from '../components/Layout/Layout';
 import ItemTile from '../components/ItemTile/ItemTile';
@@ -41,9 +42,11 @@ const allObjectsPage = ({
             return (
               <section key={`set-${i}`} className="all-page__body container container--lg">
                 <h2 className="all-page__title">{set.name}</h2>
-                <Masonry className="img-gallery img-gallery__col-grid" options={{transitionDuration: 0}}>
+                <LazyLoad offset={250}>
+                <Masonry className="img-gallery img-gallery__col-grid" options={{transitionDuration: 0}} updateOnEachImageLoad={true}>
                   {tiles}
                 </Masonry>
+                </LazyLoad>
               </section>
             )
           })

@@ -12,7 +12,7 @@ class ItemTile extends Component {
 
 	render() {
     const itemTileClass = this.props.className || 'item-tile';
-		const { style, url, imageId, imageUrl, imageTag, objectId, hasQuote, title, useBase64 } = this.props;
+		const { style, url, imageId, objectId, hasQuote, title, useBase64 } = this.props;
 		const showIconDiv = hasQuote || (shouldShowSeenIcon() && isObjectSeen(objectId));
 		return (
       	<Link to={url} className={`item-tile__image-holder ${itemTileClass}`} style={style}>
