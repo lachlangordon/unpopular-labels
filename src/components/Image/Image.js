@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import GatsbyImage from 'gatsby-image';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
-// import { Image as Img } from 'maas-react-components/dist/Image';
 
 const hasThumb = _img =>
   _img.hasOwnProperty('thumbnail');
@@ -62,7 +61,7 @@ class Image extends Component {
         fixed: getFixed(_image),
       };
     }
-    
+
     if (GatsbyImgProp) {
 
       return (

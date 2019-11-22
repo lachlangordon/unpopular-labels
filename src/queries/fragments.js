@@ -73,12 +73,12 @@ export const default_GatsbyImageSharpWithThumbNoBase64 = graphql`
         absolutePath
         thumbnail: childImageSharp {
             fluid(maxWidth: 400, maxHeight: 400) {
-                ...GatsbyImageSharpFluid_noBase64
+                ...GatsbyImageSharpFluid_withWebp_noBase64
             }
         }
         childImageSharp {
             fluid(maxHeight: 740) {
-                ...GatsbyImageSharpFluid_noBase64
+                ...GatsbyImageSharpFluid_withWebp_noBase64
                 originalName
                 presentationHeight
             }

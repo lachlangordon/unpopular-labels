@@ -1,4 +1,3 @@
-
 // remove trailing slashes unless it's only "/"
 const replaceSlash = _path => ( _path === `/` ? _path : _path.replace(/\/$/, `` ));
 // remove slashes at the begining and end

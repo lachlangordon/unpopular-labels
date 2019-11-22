@@ -32,7 +32,6 @@ exports.sourceNodes = async ({ actions, createNodeId, store, cache }) => {
 
     const { masterSet, childSets } = await GQLClientWrapper( query );
 
-
     // if there is no master narrative don't create nodes
     if ( masterSet.length ) { return; }
 
@@ -77,8 +76,8 @@ exports.onCreateNode = async ({
   if (node.internal.type === 'SetImage') {
     try {
       if (node.id && node.url) {
+
         let fileNode = await createRemoteFileNode({
-          // url: node.url,
           url: getThumborImageUrl(node.id, { width: 1000, height: 0, smart: true }),
           store,
           cache,
