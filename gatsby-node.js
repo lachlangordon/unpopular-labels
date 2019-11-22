@@ -77,7 +77,6 @@ exports.onCreateNode = async ({
   if (node.internal.type === 'SetImage') {
     try {
       if (node.id && node.url) {
-        console.log(getThumborImageUrl(node.id, { width: 1000, height: 0, smart: true }));
         let fileNode = await createRemoteFileNode({
           // url: node.url,
           url: getThumborImageUrl(node.id, { width: 1000, height: 0, smart: true }),

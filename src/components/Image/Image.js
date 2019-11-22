@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import GatsbyImage from 'gatsby-image';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
-import LazyLoad from 'react-lazy-load';
 // import { Image as Img } from 'maas-react-components/dist/Image';
 
 const hasThumb = _img =>
@@ -30,7 +29,7 @@ class Image extends Component {
   // _image = gatsby imageNode
   getImage = (_image, _props) => {
     const { defImgMode, noImageContent } = this.props;
-    const { imgClassName, imgStyle, name, src, alt, width, height } = _props;
+    const { imgClassName, imgStyle, name, alt, width, height } = _props;
 
     // When there is only src no GatsbyImage
     // MAAS image doesn't work, use std img
@@ -40,7 +39,6 @@ class Image extends Component {
 
     // GatsbyImage
     let GatsbyImgProp = null;
-    let displayHeight = null;
     if ( defImgMode === 'fluid' && !isEmpty( getFluid(_image) )) {
       GatsbyImgProp = {
         name,
@@ -52,7 +50,6 @@ class Image extends Component {
         className: imgClassName,
         fluid: getFluid(_image),
       };
-      displayHeight = height || GatsbyImgProp.fluid.presentationHeight;
     } else if ( defImgMode === 'fixed' && !isEmpty( getFixed(_image) )) {
       GatsbyImgProp = {
         name,
@@ -64,7 +61,6 @@ class Image extends Component {
         className: imgClassName,
         fixed: getFixed(_image),
       };
-      displayHeight = height || GatsbyImgProp.fixed.presentationHeight
     }
     
     if (GatsbyImgProp) {
@@ -78,7 +74,7 @@ class Image extends Component {
 	}
 
   render() {
-    const { isThumb, imgObject, className, style } = this.props;
+    const { isThumb, imgObject } = this.props;
 
     // dont forget to append props
     let imgProps = {
