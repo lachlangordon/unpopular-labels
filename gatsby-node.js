@@ -13,7 +13,7 @@ const { getIds, processSet } = require('./bootstrap/normalise');
 const { GatsbyResolvers } = require('./bootstrap/resolvers');
 
 const { createDynamicPages, createPaginatedPages, createPaginatedSetPages } = require('./src/lib/pageCreator');
-const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`);
+const { replaceSlash, replaceBothSlash, setPageName, buildThumborImageUrl } = require(`./src/lib/utils`);
 
 const { getThumborImageUrl } = require('maas-js-utils');
 
@@ -77,6 +77,7 @@ exports.onCreateNode = async ({
   if (node.internal.type === 'SetImage') {
     try {
       if (node.id && node.url) {
+        console.log(getThumborImageUrl(node.id, { width: 1000, height: 0, smart: true }));
         let fileNode = await createRemoteFileNode({
           // url: node.url,
           url: getThumborImageUrl(node.id, { width: 1000, height: 0, smart: true }),

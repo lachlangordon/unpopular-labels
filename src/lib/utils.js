@@ -1,3 +1,24 @@
+const THUMBOR_SECRET='GfVgWAMtREukKWp93NjV3ArAzPVc2Dpu';
+const THUMBOR_END_POINT='https://d3ecqbn6etsqar.cloudfront.net';
+
+const Thumbor = require(`thumbor`);
+
+const buildThumborImageUrl = (imageId, { width, height, type = 'thumbor', smart = false }) => {
+  let result;
+
+  const thumbor = new Thumbor(THUMBOR_SECRET, THUMBOR_END_POINT);
+
+  if (imageId) {
+    width = (width === undefined) ? 'orig' : width;
+    height = (height === undefined) ? 'orig' : height;
+
+    result = thumbor.setImagePath(imageId + '.jpg').resize(width, height).smartCrop(smart).filter(['strip_icc()']).buildUrl();
+  } else {
+    result = null;
+  }
+
+  return result;
+}
 
 // remove trailing slashes unless it's only "/"
 const replaceSlash = _path => ( _path === `/` ? _path : _path.replace(/\/$/, `` ));
@@ -58,4 +79,4 @@ const getImgOrient = ({ width, height }) => {
  return orientation;
 }
 
-module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, parseCirca, canUseDOM, getBannerSize, getImgOrient };
+module.exports = { replaceSlash, replaceBothSlash, setPageName, convertToSID, parseCirca, canUseDOM, getBannerSize, getImgOrient, buildThumborImageUrl };

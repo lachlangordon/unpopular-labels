@@ -11,6 +11,7 @@ import Slider from 'react-multi-carousel';
 import Image from '../Image/Image';
 import SeenIcon from '../Icons/SeenIcon';
 import QuoteIcon from '../Icons/QuoteIcon';
+import {buildThumborImageUrl} from "../../lib/utils";
 import {isObjectSeen, shouldShowSeenIcon} from "../../lib/session";
 
 class ItemSwipe extends Component {
@@ -80,13 +81,16 @@ class ItemSwipe extends Component {
   					objectItems.map((object, j) => {
   						if (object.object && object.object.mainImage) {
                const objectId = object.id;
+               const imageId = object.object.mainImage.id;
+               // object.object.mainImage.serverCropURL
+               const thumborSrc = buildThumborImageUrl(imageId, { width: 400, height: 400, smart: true });
                const hasQuote = object.notes3 !== null ? true : false;
                const showIconDiv = hasQuote || (shouldShowSeenIcon() && isObjectSeen(objectId));
                return (
                    <a className="item-slide__item-holder" key={`item-slide-${j}`} onClick={(e) => {
                          ( this.state.isMoving ? e.preventDefault() : goToObjectId(objectId) )
                        }}>
-                     <Image className="object-swipe__image" size="thumbnail" src={object.object.mainImage.serverCropURL} />
+                     <Image className="object-swipe__image" size="thumbnail" src={thumborSrc} />
                      {
                        showIconDiv && (
                          <div className="item-slide__icon-holder">

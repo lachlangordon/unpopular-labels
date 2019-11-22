@@ -49,6 +49,7 @@
     "react-masonry-component": "^6.2.1",
     "react-multi-carousel": "^2.2.10",
     "react-typography": "^0.16.19",
+    "thumbor": "^0.1.5",
     "typography": "^0.16.19"
   },
   "devDependencies": {
