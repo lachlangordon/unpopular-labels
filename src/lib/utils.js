@@ -10,15 +10,6 @@ const setPageName = _path => {
   return _name === '' ? 'index' : _name ;
 }
 
-// not used just yet
-const buildPath = ({ title }) => {
-  // remove special chars
-  let cleantitle = title.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
-  // change hyphen for space
-  let slug = cleantitle.replace(/\s+/g, '-');
-  return `/${slug}`;
-}
-
 const convertToSID = narrativeId => {
   if ( narrativeId === '6762' ) return 1;
   else if ( narrativeId === '6763' ) return 2;
