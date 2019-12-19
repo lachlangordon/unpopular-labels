@@ -220,7 +220,6 @@ export const pageQuery = graphql`
         mainImage {
           id
           url
-          thumbnailURL
         }
       }
       parent {
@@ -235,7 +234,6 @@ export const pageQuery = graphql`
               mainImage {
                 id
                 url
-                thumbnailURL
               }
             }
           }
@@ -245,8 +243,6 @@ export const pageQuery = graphql`
     images: ImagesByParentId(parentId: $id) {
       id
       url
-      thumbnailSrc
-      serverCropSrc
       width
       height
       filename

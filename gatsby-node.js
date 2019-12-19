@@ -93,6 +93,7 @@ exports.onCreateNode = async ({
         }
       }
     } catch (err) {
+      console.log(`error SetImage node link: %s`, err);
     }
   }
 }
