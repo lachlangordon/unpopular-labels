@@ -44,8 +44,6 @@ const ImageById = ({ imageId, size, alt }) => (
            id
            caption
            filename
-           thumbnailSrc
-           serverCropSrc
            fields {
              localFile {
                ...default_GatsbyImageSharpWithThumb
