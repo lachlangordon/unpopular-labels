@@ -24,6 +24,8 @@ query NodeSets {
       refId: id
       filename: identifier
       url
+      thumbnailURL: url(width: 70, height: 70, smart: true)
+      serverCropURL: url(width: 400, height: 400, smart: true)
       width
       height
       caption
@@ -49,6 +51,8 @@ query NodeSets {
       refId: id
       filename: identifier
       url
+      thumbnailURL: url(width: 70, height: 70, smart: true)
+      serverCropURL: url(width: 400, height: 400, smart: true)
       width
       height
       caption
@@ -75,6 +79,8 @@ query NodeSets {
           refId: id
           filename: identifier
           url
+          thumbnailURL: url(width: 70, height: 70, smart: true)
+          serverCropURL: url(width: 400, height: 400, smart: true)
           width
           height
           caption
