@@ -18,8 +18,12 @@ const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils
 // later move it to config
 const __MASTER_NARRATIVE = 6761;
 
-exports.sourceNodes = async ({ actions, createNodeId, store, cache }) => {
-  const { createNode, createParentChildLink } = actions;
+exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store, cache }) => {
+
+  const helpers = Object.assign({}, actions, {
+    createContentDigest,
+    createNodeId,
+  })
 
   // init query to populate nodes
   const query = `
@@ -28,31 +32,26 @@ exports.sourceNodes = async ({ actions, createNodeId, store, cache }) => {
 
   try {
 
-    const { masterSet, childSets } = await GQLClientWrapper( query );
+    const graphQLResults = await GQLClientWrapper( query );
 
+    const { masterSet, childSets } = graphQLResults;
 
-    // if there is no master narrative don't create nodes
-    if ( masterSet.length ) { return; }
+    const _master = await processSet({
+      ...masterSet,
+      children: childSets ? getIds(childSets) : [],
+      parent: null
+    }, helpers);
 
-    // create nodes
-    return new Promise((resolve, reject) => {
+    // console.log( _master );
 
-      const _master = processSet({
-        ...masterSet,
-        children: childSets ? getIds(childSets) : [],
-        parent: null
-      }, createNode);
+    const _childs = await Promise.all(
+      childSets.map(chSet => processSet({
+          ...chSet,
+          parent: __MASTER_NARRATIVE
+        }, helpers))
+    );
 
-      childSets.forEach(chSet => {
-          const _node = processSet({
-            ...chSet,
-            parent: __MASTER_NARRATIVE
-          }, createNode);
-      });
-
-      resolve();
-    })
-
+    // console.log( _childs );
 
   } catch (e) {
 
@@ -61,6 +60,7 @@ exports.sourceNodes = async ({ actions, createNodeId, store, cache }) => {
 
     printGraphQLError(e);
   }
+
 }
 
 exports.onCreateNode = async ({
@@ -106,7 +106,6 @@ exports.createResolvers = ({
   store,
   reporter,
 }) => {
-
   createResolvers(GatsbyResolvers);
 }
 
@@ -117,7 +116,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const setTemplate = require.resolve('./src/templates/SetPage.js');
 
   // objectTemplate
-  const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
+  // const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
 
   const sets = await GQLGatsbyWrapper(
     graphql(`

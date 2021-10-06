@@ -2,21 +2,20 @@
  * Data preprocess from MAAS API to import into Gatsby's node
  *
  */
+ const crypto = require('crypto');
 
-const crypto = require('crypto');
+ // later move it to config
+ const __MASTER_NARRATIVE = 6761;
 
-// later move it to config
-const __MASTER_NARRATIVE = 6761;
-
-const setInternal = ( _objectType, _object ) => {
-  return {
-    type: `${ _objectType }`,
-    contentDigest: crypto
-      .createHash(`md5`)
-      .update(JSON.stringify(_object))
-      .digest(`hex`),
-  }
-};
+ const setInternal = ( _objectType, _object ) => {
+   return {
+     type: `${ _objectType }`,
+     contentDigest: crypto
+       .createHash(`md5`)
+       .update(JSON.stringify(_object))
+       .digest(`hex`),
+   }
+ };
 
 // exported functions
 const getIds = ( _objects ) => {
@@ -40,103 +39,112 @@ const hasObject = _object =>
   _object.hasOwnProperty('narrativeObjects');
 
 // async
-const processImageField = async ( _object, createNode, parentId ) => {
+const processImageField = async ( _object, parentId, helpers ) => {
 
-  return new Promise((resolve, reject) => {
+  let parent = parentId || null,
+      imgNodes = [];
 
-      if ( typeof createNode !== 'function' ) {
-        reject( new Error('Error - Gatsby image import') );
-      }
+  if ( _object.images ) {
+    const { images } = _object;
+    images.map( img =>
+      img.id && imgNodes.push( setNodeImage({ ...img, parent }) )
+    )
+  }
 
-      let parent = parentId || null;
+  if ( _object.mainImage && _object.mainImage.id ) {
+    const { mainImage } = _object;
+    imgNodes.push( setNodeImage({ ...mainImage, parent }) )
+  }
 
-      if ( _object.images ) {
-        const { images } = _object;
-        images.map( img => {
-          const _image = setNodeImage({ ...img, parent });
-          createNode(_image);
-        })
-      }
-
-      if ( _object.mainImage ) {
-        const { mainImage } = _object;
-        const _mainImage =  setNodeImage({ ...mainImage, parent })
-        createNode(_mainImage);
-      }
-
-      resolve();
-    })
+  return Promise.all(
+    imgNodes.map(img => createNodeFromData(
+      img,
+      IMG_TYPE,
+      helpers))
+  );
 }
 
 // preprocess narrative objects
-const processObjectField = async ( _object, createNode, parentId ) => {
+const processObjectField = async ( _object, parentId, helpers ) => {
+  // don't process if it does not have id
+  if ( !_object.id ) { reject( new Error('Gatsby Node Error: processing node object') ); }
 
-  return new Promise((resolve, reject) => {
+  // narrative object = themes
+  if ( _object.narrativeObjects ) {
+    const { narrativeObjects } = _object;
 
-    // don't process if it does not have id
-    if ( !_object.id &&
-        typeof createNode !== 'function' ) { reject( new Error('Error - Gatsby object import') ); }
+    // object record attached inside narrativeObj
+    if ( narrativeObjects.length ) {
 
-    // narrative object = themes
-    if ( _object.narrativeObjects ) {
-      const { narrativeObjects } = _object;
+       return Promise.all(
+          narrativeObjects.map(async narrativeObj => {
+              // process images
+              const { object } = narrativeObj;
+              if ( object ) {
+                // narrative object id as parent id
+                const parentObjId = narrativeObj.id;
+                await processImageField(object, parentObjId, helpers);
+              }
 
-      // object record attached inside narrativeObj
-      if ( narrativeObjects.length ) {
-
-        narrativeObjects.map(async narrativeObj => {
-            // narrative object id as parent id
-            const parentObjId = narrativeObj.id;
-
-            // process images
-            const { object } = narrativeObj;
-            if ( object ) {
-              await processImageField(object, createNode, parentObjId);
-            }
-
-            // preprocess object
-            let parent = parentId || null;
-            normalisedObj = setNodeSetObject({ ...narrativeObj, parent });
-            createNode(normalisedObj);
-        });
-
-        resolve();
-      }
+              // preprocess object
+              let parent = parentId || null;
+              createNodeFromData(
+                setNodeSetObject({ ...narrativeObj, parent }),
+                OBJ_TYPE,
+                helpers
+              );
+          })
+       )
     }
+  }
 
-  })
 }
 
 // preprocess narrative
-const processSet = async ( _Set, createNode ) => {
-
+const processSet = async ( _Set, helpers ) => {
     // don't process if it does not have id
-    if ( !_Set.id &&
-        typeof createNode !== 'function' ) { return new Error('Error - Gatsby node import'); }
+    if ( !_Set.id ) { return new Error('Gatsby Node Error: processing set'); }
 
     if (hasImageField(_Set)) {
-      await processImageField(_Set, createNode, _Set.parent);
+      await processImageField( _Set, _Set.parent, helpers );
     }
 
     // process object in narrative
     if (hasObject(_Set)) {
       // narrativeId as parent
-      await processObjectField(_Set, createNode, _Set.id);
+      await processObjectField(_Set, _Set.id, helpers);
     }
 
-    const _nodeSet = setNodeSet( _Set );
-    // console.log( _nodeSet )
-    return createNode(_nodeSet);
+    return createNodeFromData( setNodeSet(_Set), SET_TYPE, helpers );
+}
+
+
+// helper function for creating nodes
+const createNodeFromData = (item, nodeType, helpers) => {
+  const { createNode } = helpers;
+
+  if ( typeof createNode !== 'function' ) {
+    reject( new Error('Gatsby Node Error: failed data import') );
+  }
+
+  const nodeMetadata = {
+    internal: {
+      type: nodeType,
+      contentDigest: helpers.createContentDigest(item),
+    },
+  }
+
+  const node = Object.assign({}, item, nodeMetadata)
+  helpers.createNode(node)
+  return node
 }
 
 // === new normalise method
-
+const IMG_TYPE = `SetImage`;
 const setNodeImage = ( _img ) => {
-  const IMG_TYPE = `SetImage`;
   return {
     id: `${ _img.id }`,
     parent: `${ _img.parent || null }`,
-    internal: setInternal( IMG_TYPE, _img ),
     url: _img.url || null,
     thumbnailSrc: _img.thumbnailURL || null,
     serverCropSrc: _img.serverCropURL|| null,
@@ -148,13 +156,12 @@ const setNodeImage = ( _img ) => {
 };
 
 // narrative = top level phase
+const SET_TYPE = `Set`;
 const setNodeSet = ( _set ) => {
-  const SET_TYPE = `Set`;
   return {
     id: `${ _set.id }`,
     parent: `${ _set.parent || null }`,
     children: _set.children || [],
-    internal: setInternal( SET_TYPE, _set ),
     // other fields
     name: _set.name || '',
     summary: _set.summary || '',
@@ -175,12 +182,11 @@ const setNodeSet = ( _set ) => {
 };
 
 // collections in phase
+const OBJ_TYPE = `SetObject`;
 const setNodeSetObject = ( _set_obj ) => {
-  const OBJ_TYPE = `SetObject`;
   return {
     id: `${ _set_obj.id }`,
     parent: `${ _set_obj.parent || null }`,
-    internal: setInternal( OBJ_TYPE, _set_obj ),
     notes2: _set_obj.notes2,
     notes3: _set_obj.notes3,
     notes4: _set_obj.notes4,
@@ -202,9 +208,10 @@ const setObject = ( _object ) => {
     isLoan: _object.isLoan || false,
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],
-    mainImage:  _object.mainImage || null,
+    mainImage: _object.mainImage || null,
   }
 };
+
 
 module.exports = {
   getIds,
