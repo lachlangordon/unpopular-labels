@@ -116,7 +116,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const setTemplate = require.resolve('./src/templates/SetPage.js');
 
   // objectTemplate
-  // const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
+  const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
 
   const sets = await GQLGatsbyWrapper(
     graphql(`
