@@ -35,10 +35,6 @@
         z-index: 1;
       }
 
-      svg {
-        fill: $colour-blue;
-      }
-
       &[aria-current="page"] {
         color: $colour-pink;
 

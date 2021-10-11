@@ -15,28 +15,6 @@ import LindaIcon from "../components/Icons/LindaIcon";
 import JennyIcon from "../components/Icons/JennyIcon";
 import withViewport from "../decorators/withViewport";
 
-// assign class to Linda or Jenny quotes
-const quotedClass = quote => {
-  let className = 'other__quote';
-  if ( quote.match(/^Linda Jackson/) ) { className = `linda__quote`; }
-  else if ( quote.match(/^Jenny Kee/) ) { className = `jenny__quote`; }
-  return className;
-};
-
-const getQuotePerson = quote => {
-  if (quote.indexOf('<p>') === -1) {
-    return quote;
-  }
-  return quote.substring(0, quote.indexOf('<p>'));
-};
-
-const getQuoteAttribution = quote => {
-  if (quote.indexOf('<p>') === -1) {
-    return '';
-  }
-  return quote.substring(quote.indexOf('<p>'));
-};
-
 class ObjectPage extends Component {
 
   constructor(props) {
@@ -84,33 +62,6 @@ class ObjectPage extends Component {
       return (<div>Not Web Published</div>);
     }
 
-    let title = object.object.name;
-    let date = undefined;
-    if (object.object.production[0] && object.object.production[0].date !== null) {
-      date = (<span className="object-page__date">{`, ${parseCirca(object.object.production[0].date)}` }</span>);
-    }
-
-    // creditLine
-    let creditLine = '';
-    const { acquisitionCreditLine, recordType } = object.object;
-    if ( recordType === "ArchivePart" || recordType === "Part" ) {
-      creditLine = "<span> MAAS Collection </span>";
-    } else {
-      creditLine = acquisitionCreditLine;
-    }
-
-    //Work out quote html
-    let quoteClass = '';
-    let glasses = undefined;
-    if (object.notes4) {
-      quoteClass = quotedClass(object.notes4);
-      if (quoteClass === 'linda__quote') {
-        glasses = <LindaIcon/>
-      } else if (quoteClass === 'jenny__quote') {
-        glasses = <JennyIcon/>
-      }
-    }
-
     saveSeenObject(`${object.id}`);
 
     return (
@@ -142,54 +93,23 @@ class ObjectPage extends Component {
 
               <div className="object-page__content">
                 <h1 className="object-page__title">
-                  { title }
-                  { date }
+                  { object.notes2 }
                 </h1>
-
-                { object.notes2 &&
-                <p className="object-page__notes2"
-                   dangerouslySetInnerHTML={{ __html: object.notes2 }} />
-                }
-
-                { creditLine &&
-                <p className="object-page__credit-line"
-                   dangerouslySetInnerHTML={{ __html: creditLine }} />
-                }
               </div>
               <div className="object-page__bottom-content">
                 { object.notes3 &&
                 <div className="object-page__notes3"
                      dangerouslySetInnerHTML={{ __html: object.notes3 }} />
                 }
-
-                { object.notes4 &&
-                <div className="object-page__notes4">
-                  <span className={quoteClass}>
-                    <span className="quote-person" dangerouslySetInnerHTML={{ __html: `&mdash; ${getQuotePerson(object.notes4)}` }}/>{glasses}
-                  </span>
-                  <span className="quote-attribution" dangerouslySetInnerHTML={{ __html: getQuoteAttribution(object.notes4) }}/>
-                </div>
-                }
-
+              </div>
+              <div className="audio-container">
+                  <audio controls src={object.notes4}>
+                    Your browser does not support HTML audio.
+                  </audio>
 
               </div>
             </section>
           </div>
-
-          <hr />
-            <section className="content-related container container--lg no-padding" >
-              { this.related.length &&
-              <div className="object-page__related-items">
-                  <h3 className="object-page__related-items__title">Other objects in <Link to={`/set/${object.parent.id}`}>{object.parent.name}</Link> : </h3>
-                  <div className="object-page__related-items__count">{`${this.related.length} ${this.related.length > 1 ? "objects" : "object"}`}</div>
-                  {/* <div className="object-page__related-items__scroll">&larr; scroll</div> */}
-                <ItemSwipe className="object-page__related-slider" objectItems={this.related}/>
-              </div>
-              }
-            </section>
-            <section className="section">
-              <NavigationButtons/>
-            </section>
 
         </div>
       </Layout>
@@ -210,13 +130,6 @@ export const pageQuery = graphql`
       notes4
       object {
         name
-        production {
-          date
-        }
-        isLoan
-        recordType
-        significanceStatement
-        acquisitionCreditLine
         mainImage {
           id
           url

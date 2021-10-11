@@ -45,21 +45,6 @@ class Layout extends Component {
       const { location, children } = this.props;
       const appClassName = 'guide-app';
 
-      const topTitle = `<span>JENNY KEE </span> &nbsp; &nbsp; &nbsp; <span> LINDA JACKSON </span><br>`;
-      const pageTitle = `<span> STEP INTO &nbsp; PARADISE </span>`;
-      const dateText = `<span> 17 October 2019 - 22 March 2020 </span>`;
-
-      let footer = undefined;
-      if (location &&
-            (location.pathname === '/about' ||
-             location.pathname === '/themes' ||
-             location.pathname === '/objects' )
-         ) {
-            footer = (<Footer/>)
-          } else if (location && location.pathname !== '/') {
-            footer = <LightFooter/>
-          }
-
       return (
         <StaticQuery
           query={SiteTitleQuery}
@@ -78,7 +63,7 @@ class Layout extends Component {
                   <main className={`${appClassName}__content`}>
                     {children}
 
-                    { footer }
+                    <Footer/>
                   </main>
 
                   <div className={`${appClassName}__sidenav`}>
@@ -89,37 +74,6 @@ class Layout extends Component {
                     />
 
                   </div>
-
-                  <aside className={`${appClassName}__sidepanel`}>
-
-                    <div className="container container--sm">
-                        <ul className="sidepanel__content">
-                             <li>
-                               <h2 className="sidepanel__top-title"
-                                   style={{ ...scale(1.6) }}
-                                   dangerouslySetInnerHTML={{ __html: topTitle }} />
-                             </li>
-                             <li>
-                               <h1 className="sidepanel__description"
-                                   style={{ ...scale(2.1) }}
-                                   dangerouslySetInnerHTML={{ __html: pageTitle }} />
-                             </li>
-                             <li>
-                               <div className="view-guide">
-                                   <p className="sidepanel__date-text"
-                                      style={{ ...scale(1/3) }}
-                                      dangerouslySetInnerHTML={{ __html: dateText }} />
-                                   <div className="footer-mobile-icon">
-                                     <MobileIcon />
-                                     <span> View this guide on your phone: <br />
-                                       <a href="https://maas.museum/guide"> https://maas.museum/guide </a>
-                                     </span>
-                                   </div>
-                               </div>
-                             </li>
-                        </ul>
-                    </div>
-                  </aside>
 
             </div>
           )}

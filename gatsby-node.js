@@ -16,7 +16,7 @@ const { createDynamicPages, createPaginatedPages, createPaginatedSetPages } = re
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`);
 
 // later move it to config
-const __MASTER_NARRATIVE = 6761;
+const __MASTER_NARRATIVE = 7951;
 
 exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store, cache }) => {
 
@@ -34,22 +34,12 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store
 
     const graphQLResults = await GQLClientWrapper( query );
 
-    const { masterSet, childSets } = graphQLResults;
+    const { masterSet } = graphQLResults;
 
     const _master = await processSet({
       ...masterSet,
-      children: childSets ? getIds(childSets) : [],
       parent: null
     }, helpers);
-
-    // console.log( _master );
-
-    const _childs = await Promise.all(
-      childSets.map(chSet => processSet({
-          ...chSet,
-          parent: __MASTER_NARRATIVE
-        }, helpers))
-    );
 
     // console.log( _childs );
 
@@ -136,3 +126,35 @@ exports.createPages = async ({ actions, graphql }) => {
   createDynamicPages('set', allSet.edges, createPage, setTemplate );
   createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
 }
+
+// exports.createSchemaCustomization = ({actions}) => {
+//   const {createTypes} = actions;
+//
+//   const typeDefs = `
+//     type SetObjectObject implements Node {
+//       production: [ObjectProduction]
+//     }
+//
+//     type ObjectProduction implements Node {
+//           role: String,
+//           creator : String,
+//           place : String,
+//           address : String,
+//           date : String,
+//           dateEarliest : String,
+//           dateLatest : String
+//       }
+//
+//     type SetObject implements Node {
+//       notes2: String,
+//       notes3: String,
+//       notes4: String
+//     }
+//
+//     type SetSetObjects implements Node {
+//       notes3: String
+//     }
+//   `;
+//
+//   createTypes(typeDefs);
+// }

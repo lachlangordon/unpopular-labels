@@ -12,12 +12,21 @@ const MobileIcon = props => <FontAwesomeIcon icon={faMobileAlt} {...props} />
 
 const HomeIcon = props =>  (
   <span className="home-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="1.25em" height="1.25em" viewBox="0 0 25 25" {...props}>
-      <title>Home</title>
-      <path id="Path" d="M25,11.719V23.438a1.6,1.6,0,0,1-.412,1.1,1.267,1.267,0,0,1-.977.464H15.278V15.625H9.722V25H1.389a1.267,1.267,0,0,1-.977-.464A1.6,1.6,0,0,1,0,23.438V11.719a.372.372,0,0,1,.011-.073.372.372,0,0,0,.011-.073L12.5,0,24.978,11.572A.378.378,0,0,1,25,11.719Z" fillRule="evenodd"/>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <title>Home</title>
+        <path d="M1 23V11.1111L12 1L23 11.1111V23H1Z" stroke="black"/>
     </svg>
   </span>
 );
+
+const BackIcon = props => (
+    <span className="back-icon">
+        <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <title>Back</title>
+            <path d="M8.08729 0.500111L1.01622 7.57118M8.08729 14.6422L1.01622 7.57118M1.01622 7.57118H23.4994" stroke="black"/>
+        </svg>
+    </span>
+)
 
 export {
   ArrowUp,
@@ -25,4 +34,5 @@ export {
   ArrowRight,
   MobileIcon,
   HomeIcon,
+  BackIcon
 }

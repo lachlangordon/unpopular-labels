@@ -6,7 +6,7 @@ const { GraphQLSchema, GraphQLString, GraphQLInt, GraphQLList } = require(`graph
 const { paginate } = require('gatsby/dist/schema/resolvers');
 
  // later move it to config
-const __MASTER_NARRATIVE = 6761;
+const __MASTER_NARRATIVE = 7951;
 
 const GatsbyResolvers = {
   // Create a new root query field.

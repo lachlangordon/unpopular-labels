@@ -4,7 +4,7 @@
  */
 
 // later move it to config
-const __MASTER_NARRATIVE = 6761;
+const __MASTER_NARRATIVE = 7951;
 
 // initial GQL query to generate dynamic content nodes
 const GatsbyNodeQuery = `
@@ -30,33 +30,6 @@ query NodeSets {
       height
       caption
     }
-  }
-  childSets: narratives (filter: {
-    masterNarrative: ${__MASTER_NARRATIVE}
-  }) {
-    id: _id
-    name: title
-    summary
-    description
-    subjects
-    associations
-    keywords
-    location
-    lastUpdated
-    relatedNarratives {
-      id: _id
-    }
-    mainImage {
-      id: _id
-      refId: id
-      filename: identifier
-      url
-      thumbnailURL: url(width: 70, height: 70, smart: true)
-      serverCropURL: url(width: 400, height: 400, smart: true)
-      width
-      height
-      caption
-    }
     narrativeObjects {
       id: _id
       notes2
@@ -64,16 +37,7 @@ query NodeSets {
       notes4
       object {
         id: _id
-        parentId
-        recordType
         displayTitle
-        summary
-        isLoan
-        significanceStatement
-        acquisitionCreditLine
-        production {
-		      date
-		    }
         mainImage {
           id: _id
           refId: id
@@ -85,7 +49,6 @@ query NodeSets {
           height
           caption
         }
-        productionNotes
       }
     }
   }
@@ -126,16 +89,13 @@ const GatsbyAllSetObjectQuery = `
         id
         object {
           name
-          production {
-            date
-          }
-          acquisitionCreditLine
           mainImage {
             url
           }
         }
         notes2
         notes3
+        notes4
       }
     }
   }

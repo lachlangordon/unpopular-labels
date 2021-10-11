@@ -3,29 +3,21 @@ import { graphql, Link } from 'gatsby';
 import { scale, rhythm } from '../lib/typography';
 
 import Layout from '../components/Layout/Layout';
-import BgImage from '../components/Image/BgImage';
 import SEO from '../components/seo';
 
 import withViewport from '../decorators/withViewport';
 import { getImgOrient, getBannerSize } from '../lib/utils';
 
+import logo from '../assets/images/glitterati-logo.svg';
+
 const IndexPage = ({
-  data: { site, heroImage },
+  data: { site },
   viewport,
   location,
 }) => {
 
   // calculate various classes: scroll or no-scroll
   let imgOrient = getImgOrient(viewport), viewportSize = getBannerSize(viewport);
-  let getImageClass = `bg-image ${imgOrient}-${viewportSize}`;
-
-  // imgProps
-  let imgProp = {
-    height: viewport['height'],
-    isMobile: viewportSize === 'mobile' ? true : false,
-    className: getImageClass,
-    imgObject: heroImage,
-  }
 
   let textStyle = (
      viewportSize === 'mobile' ) ? {
@@ -52,19 +44,15 @@ const IndexPage = ({
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div className="index-page">
-          <Link to="/themes" className="container container--lg no-padding">
-            <BgImage { ...imgProp }>
-
-                <div className="bg-content__wrapper">
-                  <h2 className="guide-index-page__title"
-                      style={ textStyle }>
-                    <span className="text__fadeIn"> STEP INTO </span>
-                    <span className="text__fadeIn"> PARADISE </span>
-                  </h2>
-                </div>
-            </BgImage>
+          <h1><img alt="Robert Rosen: Glitterati" src={logo}/></h1>
+          <Link to="/page-turner" className="container container--lg no-padding">
+              <h2>Diaries</h2>
+              <h3>Page turner remote</h3>
           </Link>
-
+          <Link to="/objects" className="container container--lg no-padding">
+              <h2>Audio files</h2>
+              <h3>Audio and Transcripts</h3>
+          </Link>
       </div>
     </Layout>
   );
@@ -80,24 +68,6 @@ export const pageQuery = graphql`
   query {
     site {
       ...siteMeta
-    }
-    heroImage: file(relativePath: { regex: "/MAAS_SIP_MAIN.jpg/" }) {
-      id
-      url
-      sourceInstanceName
-      publicURL
-      name
-      absolutePath
-      thumbnail: childImageSharp {
-        fluid(maxWidth: 300,maxHeight: 720) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-      childImageSharp {
-        fluid(maxWidth: 768, maxHeight: 1774) {
-          ...GatsbyImageSharpFluid
-        }
-      }
     }
   }
 `;

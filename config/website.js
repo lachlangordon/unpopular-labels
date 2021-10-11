@@ -1,12 +1,12 @@
 const meta = {
   // Metadata
   // Finds usage in gatsby-config, and SEO component
-  siteTitle: 'Step Into Paradise',
-  siteTitleAlt: 'MAAS - Step Into Paradise',
-  siteShortName: 'SIP',
-  siteDescription: 'Step into Paradise Gallery Guide.',
+  siteTitle: 'Robert Rosen: Glitterati',
+  siteTitleAlt: 'Powerhouse - Robert Rosen: Glitterati',
+  siteShortName: 'Robert Rosen',
+  siteDescription: 'Robert Rosen Exhibition Gallery Guide.',
   siteHeadline: 'Digital Gallery Guide',
-  siteUrl: 'https://maas.museum/guide', // No trailing slash!
+  siteUrl: 'https://ma.as/rosen', // No trailing slash!
 };
 
 const social = {
