@@ -1,9 +1,6 @@
-import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
 import React from 'react';
 
-import { HomeIcon, BackIcon } from '../Icons/SharedIcons';
-import { rhythm, scale } from '../../lib/typography';
+import { BackIcon } from '../Icons/SharedIcons';
 import {handleBack} from "../../lib/navUtils";
 
 const Header = (props) => {

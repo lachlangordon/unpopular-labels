@@ -193,7 +193,11 @@
       bottom: 0;
       background: $colour-dark;
       width: 100%;
-      margin-left: -1%;
+      left: 0;
+
+      audio {
+        width: 100%;
+      }
     }
 
     //Related content
