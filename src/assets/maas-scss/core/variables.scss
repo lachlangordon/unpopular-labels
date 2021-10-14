@@ -41,15 +41,17 @@ $colour-blue: #0028db;
 
  // font variables added for Circular-Pro
  // Circular-Pro-Book
- $font-family-base: 'Circular-Pro-Book';
- $font-family-medium: 'Circular-Pro-Medium';
- $font-family-bold: 'Circular-Pro-Bold';
- $font-family-black: 'Circular-Pro-Black';
+ $font-family-base: 'CircularXX-Light';
+ $font-family-medium: 'CircularXX-Light';
+ $font-family-bold: 'CircularXX-Light';
+ $font-family-black: 'CircularXX-Light';
 
- $font-italic-base: 'Circular-Pro-BookItalic';
- $font-italic-medium: 'Circular-Pro-MediumItalic';
- $font-italic-bold: 'Circular-Pro-BookItalic';
- $font-italic-black: 'Circular-Pro-BlackItalic';
+ $font-italic-base: 'CircularXX-LightItalic';
+ $font-italic-medium: 'CircularXX-LightItalic';
+ $font-italic-bold: 'CircularXX-LightItalic';
+ $font-italic-black: 'CircularXX-LightItalic';
+
+ $font-family-header: 'CircularXX-Light';
 
 /* Major Third */
 $font-size-xxxs: 0.4096em;

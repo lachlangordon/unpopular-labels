@@ -6,6 +6,7 @@
 @import '../css/font-awesome.min.css';
 @import '../css/bebas-neue.css';
 @import '../css/circular.css';
+@import '../css/circularxx.css';
 // vars
 @import './variables.scss';
 @import './mixins.scss';
@@ -17,7 +18,7 @@
 
 html {
   height: 100%;
-  color: $colour-black;
+  color: $colour-white;
   font-weight: normal;
   font-size: 1rem; /* ~16px; */
   font-family: $font-family-medium;
@@ -29,7 +30,7 @@ html {
   position: relative;
   min-height: 100%;
   box-sizing: border-box;
-  background-color: $colour-white;
+  background-color: $colour-black;
   touch-action: pan-y;
 
   /* iPad */
@@ -54,16 +55,18 @@ html {
 
 body {
   height: 100%;
+  color: $colour-white;
 }
 
 a:link, a:visited {
-  color: $colour-blue;
+  color: $colour-white;
+  text-decoration: none;
 }
 
 p {
   margin-top: 0;
   margin-bottom: $spacing-lg;
-  color: $colour-black;
+  color: $colour-white;
 }
 
 i {

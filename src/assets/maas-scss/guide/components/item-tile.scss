@@ -28,9 +28,25 @@
 }
 
 .item-tile__image-holder {
-	display: block;
+	display: flex;
 	position: relative;
 	overflow: hidden;
+	border-bottom: 1px solid $colour-black;
+	padding-bottom: $spacing-md;
+	padding-top: $spacing-md;
+
+	&:first-child {
+		border-top: 1px solid $colour-black;
+	}
+
+	.item-tile-img {
+		width: 50%;
+	}
+
+	.item-tile-info {
+		width: 50%;
+		margin-left: $spacing-md;
+	}
 }
 
 .item-tile__icon-holder {

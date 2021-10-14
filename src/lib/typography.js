@@ -14,7 +14,7 @@ const options = {
     'sans-serif',
   ],
   bodyFontFamily: [
-    'Circular-Pro-Book',
+    'CircularXX-Light',
     'Helvetica',
     'Arial',
     'sans-serif',

@@ -4,25 +4,30 @@ import React from 'react';
 
 import { HomeIcon, BackIcon } from '../Icons/SharedIcons';
 import { rhythm, scale } from '../../lib/typography';
+import {handleBack} from "../../lib/navUtils";
 
 const Header = (props) => {
   return (
     <div id="header" className="header">
-      <nav role="navigation" className="header__navigation header__wrapper" style={{
-        paddingTop: rhythm(0.4),
-        paddingBottom: `calc(${rhythm(0.5)} - 1px)`,
-      }}>
-          {
-              props.location !== '/' && (
-                  <Link to="/objects" className="menu-links">
-                      <BackIcon/>
-                  </Link>
-              )
-          }
-        <Link to="/" className="menu-links">
-            <HomeIcon style={{ marginTop: `0.4em`, ...scale(2/5) }} />
-        </Link>
-      </nav>
+      {
+          props.location !== '/' && (
+              <nav role="navigation" className="header__navigation header__wrapper">
+
+                {
+                  props.location.includes('/object/') && (
+                      <a onClick={handleBack} to="/objects" className="menu-links back">
+                        <BackIcon/>
+                      </a>
+                  )
+                }
+                {
+                  props.location.includes('/object/') && (
+                      <div class="header-title">Robert Rosen Audio Files</div>
+                  )
+                }
+              </nav>
+          )
+      }
     </div>
   );
 }

@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'CircularXX-Light';
+    font-style:  normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/CircularXX-Light.otf") format("opentype"),
+        url("../fonts/CircularXXTT-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'CircularXX-LightItalic';
+    font-style:  italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("../fonts/CircularXX-LightItalic.otf") format("opentype"),
+    url("../fonts/CircularXXTT-LightItalic.ttf") format("truetype");
+}

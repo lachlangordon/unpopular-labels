@@ -4,7 +4,7 @@ import seen from '../../assets/maas-scss/svg/seen.svg';
 class SeenIcon extends Component {
   render() {
     return (
-      <span className="seen-icon">
+      <div className="seen-icon">
         {/*<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">*/}
           {/*<g id="Group_143" data-name="Group 143" transform="translate(-20 -1308)">*/}
             {/*<g id="Group_142" data-name="Group 142">*/}
@@ -16,7 +16,7 @@ class SeenIcon extends Component {
           {/*</g>*/}
         {/*</svg>*/}
         <img alt="You've already seen this object." src={seen}/>
-      </span>
+      </div>
 
     );
   }

@@ -19,7 +19,7 @@ $colour-black: #000;
 }
 
 .guide-app__wrapper {
-  background: rgba(0,0,0,0.03);
+  background: $colour-black;
   display: flex;
   flex: 1 0 auto; /* 2 */
   flex-direction: column;
@@ -30,21 +30,11 @@ $colour-black: #000;
   }
 }
 
-.guide-app__content {
-  background-color: $colour-white;
-}
-
 .guide-app__sidenav {
   order: -1;
 }
 
-.guide-app__sidenav,
 .guide-app__sidepanel {
-  background: $colour-white;
-}
-
-.guide-app__sidepanel {
-  background-color: $colour-black;
   padding: $spacing-md 0;
 
   ul.sidepanel__content {

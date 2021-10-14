@@ -10,8 +10,6 @@ const meta = {
 };
 
 const social = {
-  siteLogo: `${meta.siteUrl}/icons/icon-192x192.png`,
-  siteLogoSmall: `${meta.siteUrl}/icons/icon-48x48.png`,
   twitter: '@maasmuseum',
   instagram: '@powerhousemuseum',
   facebook: 'powerhousemuseum',
@@ -23,8 +21,8 @@ const website = {
   googleAnalyticsID: 'UA-57161575-20',
   author: 'developer@maas.museum',
   // Manifest
-  backgroundColor: '#fff',
-  themeColor: '#393939',
+  backgroundColor: '#000',
+  themeColor: '#fff',
 };
 
 module.exports = website;

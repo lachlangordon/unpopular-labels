@@ -42,6 +42,10 @@
   \*------------------------------------*/
   .index-page {
 
+    h1 {
+      text-align: center;
+    }
+
     .bg-content__wrapper {
       display: flex;
       position: relative;
@@ -115,6 +119,18 @@
 
     min-height: 20em;
     padding-top: $spacing-md;
+
+    h1 {
+      text-transform: uppercase;
+
+      span {
+        text-transform: capitalize;
+      }
+    }
+
+    .description {
+      margin-bottom: $spacing-xxlg;
+    }
   }
 
   .all-page__content-title {
@@ -134,8 +150,9 @@
   }
 
   .footer-content {
-    lost-column: 1;
-    line-height: 1.3;
+    display: flex;
+    justify-content: center;
+    padding: $spacing-xlg $spacing-xlg;
   }
 
   // object page
@@ -158,6 +175,8 @@
     }
 
     .object-page__title {
+      font-size: $font-size-xlg;
+      font-weight: bold;
       margin-bottom: $spacing-xxxxs;
     }
 
@@ -167,6 +186,14 @@
 
     .object-page__date {
       font-weight: normal;
+    }
+
+    .audio-container {
+      position: fixed;
+      bottom: 0;
+      background: $colour-dark;
+      width: 100%;
+      margin-left: -1%;
     }
 
     //Related content
@@ -189,7 +216,12 @@
     }
 
     .object-page__mainImg {
-      padding-top: 1.25em;
+      display: flex;
+      justify-content: center;
+
+      .gatsby-image-wrapper {
+        width: 50%;
+      }
     }
   }
 

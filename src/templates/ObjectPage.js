@@ -103,7 +103,7 @@ class ObjectPage extends Component {
                 }
               </div>
               <div className="audio-container">
-                  <audio controls src={object.notes4}>
+                  <audio controls muted src={object.notes4}>
                     Your browser does not support HTML audio.
                   </audio>
 

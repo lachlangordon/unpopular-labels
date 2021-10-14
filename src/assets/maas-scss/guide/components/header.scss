@@ -5,8 +5,8 @@
 @import '../../core/variables.scss';
 
 .header {
-  background: #fff;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+
+  min-height: 56px;
 
   @media (min-width: $screen-md-min) {
     .header__wrapper {
@@ -19,28 +19,30 @@
 
   nav.header__navigation {
     font-family: $font-family-header;
+    display: flex;
+
 
     a.menu-links {
       display: inline-block;
       float: left;
       text-decoration: none;
-      color: $colour-blue;
+      padding: 17px 22px;
 
-      // make clickable area larger
-      .home-icon {
-        position: relative;
-        display: inline-block;
-        padding: 2em 2em 1em 3em;
-        margin: -2em -2em -2em -2em;
-        z-index: 1;
+      &.back {
+        align-self: flex-start;
       }
 
-      &[aria-current="page"] {
-        color: $colour-pink;
+      &.home {
+        align-self: flex-end;
+        margin-left: auto;
+      }
 
-        svg {
-          fill: $colour-pink;
-        }
+      // make clickable area larger
+      .home-icon,
+      .back-icon {
+        position: relative;
+        display: inline-block;
+        z-index: 1;
       }
 
       > div {
@@ -82,7 +84,10 @@
     }
   }
 
-  
+  .header-title {
+    text-align: center;
+    align-self: center;
+  }
 }
 
 @media (min-width: $screen-lg-min) {

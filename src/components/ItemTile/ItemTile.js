@@ -15,9 +15,13 @@ class ItemTile extends Component {
 		return (
 
       	<Link to={url} className={`item-tile__image-holder ${itemTileClass}`} style={style}>
-			<ImageById imageId={imageId} alt={title} />
-			<div dangerouslySetInnerHTML={{__html: title}}/>
-			{ shouldShowSeenIcon() && isObjectSeen(objectId) && <SeenIcon/> }
+			<div className="item-tile-img">
+				<ImageById imageId={imageId} alt={title} />
+			</div>
+			<div className="item-tile-info">
+				<div dangerouslySetInnerHTML={{__html: title}}/>
+				{ shouldShowSeenIcon() && isObjectSeen(objectId) && <SeenIcon/> }
+			</div>
 		</Link>
 		);
 	}
