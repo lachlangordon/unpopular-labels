@@ -2,7 +2,8 @@
 
 //Check if local storage is available and also if the kiosk header is enabled
 
-const objectsLocalStorageName = 'sip.seenObjects';
+const objectsLocalStorageName = 'rosen.seenObjects';
+const mutedLocalStorageName = 'rosen.audioMuted';
 
 const shouldShowSeenIcon = () => {
 
@@ -69,4 +70,26 @@ const saveSeenObject = (id) => {
 
 };
 
-module.exports = { shouldShowSeenIcon, isObjectSeen, saveSeenObject };
+
+const isAudioMuted = () => {
+  try {
+    let muted = localStorage.getItem(mutedLocalStorageName);
+
+    if (muted === null || muted === 'true') { //blegh local storage turning booleans into strings
+      return true;
+    }
+    return false;
+  } catch (e) {
+    return true;
+  }
+}
+
+const saveAudioMuteState = (muteState) => {
+  try {
+    localStorage.setItem(mutedLocalStorageName, muteState);
+  } catch (e) {
+    return false;
+  }
+}
+
+module.exports = { shouldShowSeenIcon, isObjectSeen, saveSeenObject, isAudioMuted, saveAudioMuteState };

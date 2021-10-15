@@ -11,15 +11,15 @@ const Header = (props) => {
               <nav role="navigation" className="header__navigation header__wrapper">
 
                 {
-                  props.location.includes('/object/') && (
+                  (props.location.includes('/object/') || props.location.includes('/credits')) && (
                       <a onClick={handleBack} to="/objects" className="menu-links back">
                         <BackIcon/>
                       </a>
                   )
                 }
                 {
-                  props.location.includes('/object/') && (
-                      <div class="header-title">Robert Rosen Audio Files</div>
+                  (props.location.includes('/object/') || props.location.includes('/credits')) && (
+                      <div className="header-title">Robert Rosen Audio Files</div>
                   )
                 }
               </nav>

@@ -152,7 +152,15 @@
   .footer-content {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding: $spacing-xlg $spacing-xlg;
+
+    a {
+      font-size: 14px;
+      text-decoration: underline;
+      padding: $spacing-xxs;
+    }
   }
 
   // object page

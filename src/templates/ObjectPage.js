@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { graphql, Link } from 'gatsby';
 
-import ItemSwipe from '../components/ItemSwipe/ItemSwipe';
 import Layout from '../components/Layout/Layout';
 import Image from '../components/Image/Image';
 import SEO from '../components/seo';
-import NavigationButtons from "../components/NavigationButtons/NavigationButtons";
 import Banner from '../components/Banner/Banner';
 
-import { saveSeenObject } from '../lib/session';
+import { saveSeenObject, isAudioMuted, saveAudioMuteState } from '../lib/session';
 import {convertToSID, parseCirca, getBannerSize} from '../lib/utils';
 
-import LindaIcon from "../components/Icons/LindaIcon";
-import JennyIcon from "../components/Icons/JennyIcon";
 import withViewport from "../decorators/withViewport";
 
 class ObjectPage extends Component {
@@ -46,6 +42,10 @@ class ObjectPage extends Component {
     }
   }
 
+  handleVolumeChange = (e) => {
+    saveAudioMuteState(e.target.muted);
+  }
+
   render() {
 
     const {
@@ -63,6 +63,8 @@ class ObjectPage extends Component {
     }
 
     saveSeenObject(`${object.id}`);
+
+    const isMuted = isAudioMuted();
 
     return (
       <Layout location={location}>
@@ -103,7 +105,7 @@ class ObjectPage extends Component {
                 }
               </div>
               <div className="audio-container">
-                  <audio controls muted src={object.notes4}>
+                  <audio controls muted={isMuted} src={object.notes4} onVolumeChange={this.handleVolumeChange}>
                     Your browser does not support HTML audio.
                   </audio>
 
