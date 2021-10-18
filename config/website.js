@@ -18,7 +18,7 @@ const social = {
 const website = {
   ...meta,
   ...social,
-  googleAnalyticsID: 'UA-57161575-20',
+  googleAnalyticsID: 'UA-57161575-22',
   author: 'developer@maas.museum',
   // Manifest
   backgroundColor: '#000',
