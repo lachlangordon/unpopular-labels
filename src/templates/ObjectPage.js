@@ -7,7 +7,7 @@ import SEO from '../components/seo';
 import Banner from '../components/Banner/Banner';
 
 import { saveSeenObject, isAudioMuted, saveAudioMuteState } from '../lib/session';
-import {convertToSID, parseCirca, getBannerSize} from '../lib/utils';
+import {convertToSID, getBannerSize} from '../lib/utils';
 
 import withViewport from "../decorators/withViewport";
 
@@ -94,8 +94,7 @@ class ObjectPage extends Component {
             <section className="section main-content">
 
               <div className="object-page__content">
-                <h1 className="object-page__title">
-                  { object.notes2 }
+                <h1 className="object-page__title" dangerouslySetInnerHTML={{__html: object.notes2}}>
                 </h1>
               </div>
               <div className="object-page__bottom-content">
