@@ -21,6 +21,7 @@ const CreditsPage = ({
 
             <div className="normal-page__description">
               <p><i>Glitterati</i> draws on the Robert Rosen archive held in the Powerhouse collection as well as images, shown with the photographer's generous permission, from his personal archive. The exhibition was produced through collaboration with Robert Rosen and the museum's multidisciplinary team.</p>
+              <p>Archival footage: <a href="https://www.abccommercial.com/contentsales/contact-us/sales">Australian Broadcasting Corporation Library Sales</a></p>
             </div>
 
           </div>
