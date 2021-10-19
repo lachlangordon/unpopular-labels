@@ -9,6 +9,8 @@ import Banner from '../components/Banner/Banner';
 import { saveSeenObject, isAudioMuted, saveAudioMuteState } from '../lib/session';
 import {convertToSID, getBannerSize} from '../lib/utils';
 
+import transcripts from "../lib/transcripts";
+
 import withViewport from "../decorators/withViewport";
 
 class ObjectPage extends Component {
@@ -66,6 +68,13 @@ class ObjectPage extends Component {
 
     const isMuted = isAudioMuted();
 
+    let transcript = null;
+    if (transcripts.hasOwnProperty(object.id)) {
+      transcript = transcripts[object.id];
+    } else {
+      transcript = object.notes3;
+    }
+
     return (
       <Layout location={location}>
         <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
@@ -98,9 +107,9 @@ class ObjectPage extends Component {
                 </h1>
               </div>
               <div className="object-page__bottom-content">
-                { object.notes3 &&
+                { transcript &&
                 <div className="object-page__notes3"
-                     dangerouslySetInnerHTML={{ __html: object.notes3 }} />
+                     dangerouslySetInnerHTML={{ __html: transcript }} />
                 }
               </div>
               <div className="audio-container">
