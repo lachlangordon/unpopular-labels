@@ -19,9 +19,7 @@ const allObjectsPage = ({
                       <br/>
                       <span>audio files</span>
                   </h1>
-                  <div className="description">
-                      {Set.description}
-                  </div>
+                  <div className="description" dangerouslySetInnerHTML={{__html: Set.description}}/>
                   <div className="objects">
                       {
                           Set.setObjects.map((object, i) => {
