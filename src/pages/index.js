@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 import withViewport from '../decorators/withViewport';
 import { getImgOrient, getBannerSize } from '../lib/utils';
 
-import logo from '../assets/images/glitterati-logo.svg';
+// import logo from '../assets/images/glitterati-logo.svg';
 
 const IndexPage = ({
   data: { site },
@@ -44,7 +44,7 @@ const IndexPage = ({
     <Layout location={location}>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div className="index-page">
-          <h1><img alt="Robert Rosen: Glitterati" src={logo}/></h1>
+          <h1>{site.siteMetadata.shortTitle}</h1>
           <Link to="/objects" className="container container--lg no-padding">
               <h2>Audio files</h2>
               <h3>Audio and Transcripts</h3>

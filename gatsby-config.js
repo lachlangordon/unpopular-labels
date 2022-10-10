@@ -11,6 +11,7 @@ const postCSSPlugins = require('./postcss-config.js');
 module.exports = {
   siteMetadata: {
     title: config.siteTitle,
+    shortTitle: config.siteShortTitle,
     siteUrl: config.siteUrl,
     headline: config.siteHeadline,
     description: config.siteDescription,

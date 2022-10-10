@@ -5,6 +5,8 @@ export const siteMeta = graphql`
     siteMetadata {
       siteUrl
       title
+      shortTitle
+      headline
       description
     }
   }
