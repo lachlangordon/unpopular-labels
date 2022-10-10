@@ -21,8 +21,119 @@
       "mainImage":null,
       "narrativeObjects":[
         {
+          "id":622403,
+          "notes2":"Evan Dando [Loaded from JSON]",
+          "notes3":"Tracks digitised from a cassette tape Evan Dando recorded in his hotel room for Stephen Pavlovic",
+          "notes4":"All songs licensed by OneMusic Australia",
+          "object":{
+            "id":622403,
+            "displayTitle":"Evan Dando | Demo, 1994",
+            "mainImage":{
+              "id":817276,
+              "refId":"TXVsdGltZWRpYTo2MmNjZGQwZjRmOTkxZDNhMTc0M2U1NmM=",
+              "filename":"0604558_0001_m.jpg",
+              "url":"https://d3ecqbn6etsqar.cloudfront.net/FX3rbn-b41fqsoxKYafAyqojN6s=/817276.jpg",
+              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/0kbk5WTRuJLkm5c2EkJbf_YmQD4=/70x70/smart/817276.jpg",
+              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/4fnF3wXVnytgKPv3x27EPWaIuRY=/400x400/smart/817276.jpg",
+              "width":400,
+              "height":600,
+              "caption":null
+            }
+          },
+          "tracks":[
+            {
+              "title":"Big Gay Heart",
+              "description":"written by Dando *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Great Big No",
+              "description":"written by Dando *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Paid To Smile",
+              "description":"written by Dando/Morgan *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"It’s About Time",
+              "description":"written by Dando *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Style",
+              "description":"written by Dando (01:49) *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"I'll Do It Anyway",
+              "description":"written by Dando/Morgan *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Rest Assured",
+              "description":"written by Dando *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Down About It",
+              "description":"written by Dando *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Being Around",
+              "description":"written by Dando *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Confetti",
+              "description":"written by Dando/Morgan *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            }
+          ]
+        },
+        {
+          "id":622493,
+          "notes2":"Lemonheads",
+          "notes3":"Tracks digitised from a cassette tape Evan Dando recorded in his hotel room for Stephen Pavlovic. ",
+          "notes4":"All songs licensed by OneMusic Australia",
+          "object":{
+            "id":622493,
+            "displayTitle":"Photograph of model wearing Zandra Rhodes garment by Robert Rosen",
+            "mainImage":{
+              "id":918193,
+              "refId":"TXVsdGltZWRpYTo2MmNjZGQxMjRmOTkxZDNhMTc0M2U1NmU=",
+              "filename":"0604648_0001_m retouch Karen Hancock.jpg",
+              "url":"https://d3ecqbn6etsqar.cloudfront.net/79KWBIQtA81UeDl12a2sSulZFc4=/918193.jpg",
+              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/aJtLk3Zg5rgJP_fMi4IIso33DJM=/70x70/smart/918193.jpg",
+              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/-YKFNx9gT2Lp75f4mQxhntqccr8=/400x400/smart/918193.jpg",
+              "width":600,
+              "height":400,
+              "caption":null
+            }
+          },
+          "tracks":[
+            {
+              "title":"I Don't Wanna",
+              "description":"‘Half a Canyon’ written by Malkmus *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Nightime",
+              "description":"(Big Star cover) written by Chilton *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            },
+            {
+              "title":"Skulls",
+              "description":"(Misfits cover) written by Danzig *",
+              "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+            }
+          ]
+        },
+        {
           "id":645817,
-          "notes2":"Nirvana | Demo, 1994 [Loaded from JSON]",
+          "notes2":"Nirvana",
           "notes3":"Tracks digitised from a cassette tape the band sent to Stephen Pavlovic.",
           "notes4":"All songs licensed by OneMusic Australia",
           "object":{
@@ -43,44 +154,44 @@
           "tracks":[
             {
               "title":"I Hate Myself and I Want to Die",
-              "description":"‘I Hate Myself and I Want to Die’ written by Cobain*",
+              "description":"written by Cobain*",
               "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
             },
             {
               "title":"Very Ape",
-              "description":"‘Very Ape’ written by Cobain*",
+              "description":"written by Cobain*",
               "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
             },
             {
               "title":"Gallons of Rubbing Alcohol Flow Through the Strip",
-              "description":"‘Gallons of Rubbing Alcohol Flow Through the Strip’ written by Cobain/Grohl/Novoselic*",
+              "description":"written by Cobain/Grohl/Novoselic*",
               "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
             },
             {
               "title":"Heart Shaped Box",
-              "description":"‘Heart Shaped Box’ written by Cobain*",
+              "description":"written by Cobain*",
               "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
             },
             {
               "title":"Milk It",
-              "description":"‘Milk It’ written by Cobain*",
+              "description":"written by Cobain*",
               "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
             },
             {
               "title":"Moist Vagina",
-              "description":"‘Moist Vagina’ written by Cobain*",
+              "description":"written by Cobain*",
               "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
             }
           ]
         },
         {
           "id":622552,
-          "notes2":"Lynne Franks, London, 1989 ",
-          "notes3":"At the Embassy Club I met this woman called Lynne Franks, so she was just starting London Fashion Week and she invited me to attend. I had never been to a fashion week before and this was truly amazing. The celebrities, the fashions, the backstage, the models screaming and shouting ‘Where’s my makeup? Where’s my wig’. All this atmosphere drew me in. ",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/03.+S2+-+Lynne+Franks.mp3",
+          "notes2":"Pavement",
+          "notes3":"",
+          "notes4":"All songs licensed by OneMusic Australia",
           "object":{
             "id":622552,
-            "displayTitle":"Photograph of Lynne Franks by Robert Rosen",
+            "displayTitle":"Pavement | Live at the Wireless, 1994",
             "mainImage":{
               "id":918189,
               "refId":"TXVsdGltZWRpYTo2MmNjZGQxYTRmOTkxZDNhMTc0M2U1NzQ=",
@@ -91,406 +202,44 @@
               "width":454,
               "height":600,
               "caption":null
-            }
-          }
-        },
-        {
-          "id":622493,
-          "notes2":"Zandra Rhodes Autumn/Winter 1981–82, London ",
-          "notes3":"There would be a stack of photographers up the back behind the audience, but I wanted a better vantage point so I crouched down so when the model hit the end of the catwalk, she'd pose for the photographers and then she would turn to me, and then she would turn even more. So, I got this beautiful turning shot, especially if they were wearing like Zandra Rhodes’ floaty clothes where the fabric would flare up. The magazines really liked it. As I knew Zandra quite well, she always invited me to all of her shows. Her collections were amazing, the fabrics, the details of the makeup, everything about her show was a work of art. ",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/04.+S2+-+Zandra+Rhodes.mp3",
-          "object":{
-            "id":622493,
-            "displayTitle":"Photograph of model wearing Zandra Rhodes garment by Robert Rosen",
-            "mainImage":{
-              "id":918193,
-              "refId":"TXVsdGltZWRpYTo2MmNjZGQxMjRmOTkxZDNhMTc0M2U1NmU=",
-              "filename":"0604648_0001_m retouch Karen Hancock.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/79KWBIQtA81UeDl12a2sSulZFc4=/918193.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/aJtLk3Zg5rgJP_fMi4IIso33DJM=/70x70/smart/918193.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/-YKFNx9gT2Lp75f4mQxhntqccr8=/400x400/smart/918193.jpg",
-              "width":600,
-              "height":400,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":622403,
-          "notes2":"Anna Piaggi, London, 1986",
-          "notes3":"Anna Piaggi was one amazing woman. She worked writing for Vogue and always dressed better than anybody in the room. Anna was such a style icon that in Paris during the fashion shows, she would rush back to her hotel room to change into the designer outfits of the appropriate show that she was going to.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/05.+S3+Anna+Piaggi.mp3",
-          "object":{
-            "id":622403,
-            "displayTitle":"Photograph of Anna Piaggi in London by Robert Rosen",
-            "mainImage":{
-              "id":817276,
-              "refId":"TXVsdGltZWRpYTo2MmNjZGQwZjRmOTkxZDNhMTc0M2U1NmM=",
-              "filename":"0604558_0001_m.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/FX3rbn-b41fqsoxKYafAyqojN6s=/817276.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/0kbk5WTRuJLkm5c2EkJbf_YmQD4=/70x70/smart/817276.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/4fnF3wXVnytgKPv3x27EPWaIuRY=/400x400/smart/817276.jpg",
-              "width":400,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":622534,
-          "notes2":"Vivienne Westwood Spring/Summer 1989, Paris ",
-          "notes3":"Vivienne Westwood and Malcolm McLaren were an amazingly creative team. Besides the music that Malcolm created with bands like the Sex Pistols and the other people. And then Vivienne, her fashion creations were an amazing team effort. This photo is taken at one of Vivienne's shows, which were always packed to the rafters. Everybody wanted to be there. ",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/06.+S3+-+Vivienne+Westwood.mp3",
-          "object":{
-            "id":622534,
-            "displayTitle":"Photograph of models wearing Vivienne Westwood dresses by Robert Rosen",
-            "mainImage":{
-              "id":817145,
-              "refId":"TXVsdGltZWRpYTo2MmNjZGQxNzRmOTkxZDNhMTc0M2U1NzI=",
-              "filename":"0604689_0001_m.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/MqwRmDzQLrhb8IMDtoObsdoQETA=/817145.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/NBsqGwRoXZmHPGz4x4g70ndUO3o=/70x70/smart/817145.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/9FhSlVGOnAG35f0yZTKuwCdz9pw=/400x400/smart/817145.jpg",
-              "width":600,
-              "height":400,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":605984,
-          "notes2":"Richard and Jane O'Brien at the Embassy Club London, 1980 ",
-          "notes3":"In the early eighties in London, the Embassy club really became my office. You'd meet everybody there, fashion editors, editors of Vogue, style editors, music editors, everybody would converge at the Embassy Club and that's where I did most of my networking. I'd meet people like Lynne Franks the director of London Fashion Week, editors of different magazines and just introduce myself. I very rarely even had to take my portfolio in again, they seem to trust me and just said, ‘Yep, shoot it, come in next week with a bunch of photos,’ which I did. And that continued for years.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/02.+S8+-+Richard+%26+Jane+O'Brien+at+the+Embassy+Club.mp3",
-          "object":{
-            "id":605984,
-            "displayTitle":"Photograph of Richard and Jayne O'Brien by Robert Rosen",
-            "mainImage":{
-              "id":732186,
-              "refId":"TXVsdGltZWRpYTo2MmMzNjViOGFkZWJhNjE3YmUzNGE0OWU=",
-              "filename":"0588880_0001_m.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/IfChrpqk0GITozN420eZhn0E1Tk=/732186.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/F2Iv4h2k9MMAZyFoJuT2rzNJUq4=/70x70/smart/732186.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/MFTf5BE9FNTc-vm6xHpgoYF5wNQ=/400x400/smart/732186.jpg",
-              "width":600,
-              "height":475,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":646174,
-          "notes2":"Daniella Parmar and David Bowie at the Blitz Club, London, 1979 ",
-          "notes3":"It was my early London days around 1979 and there was a club called Blitz where all the Neo Romantics and punks would meet. They would come from all over England, all dressed up, because Steve Strange, whose club it was, would not let them in unless they had style, panache, whatever. Anyway, one day Steven called me at home and said, David Bowie's coming in tonight. I want you to be the only photographer upstairs with him. I think, shit, David Bowie. Okay. So, I get all dressed up and go, and I'm upstairs and I checked the camera. There's no film in it. Oh my God I forgot the film, I was so nervous to meet David Bowie. So, my friend runs out down to Piccadilly to buy some film at the chemist, comes back, I load the film, and while I'm loading the film, Bowie walks in and sits at the couch opposite me. So I load and just raise the camera and take a photo. He looks at me and beckons me over and says, Don't you know it's impolite not to ask someone before you take their photograph. So, I'",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/07.+S8+-+David+Bowie+at+the+Blitz+Club.mp3",
-          "object":{
-            "id":646174,
-            "displayTitle":"DANIELLE & DAVID BOWIE AT BLITZ  CLUB  LONDON 1979 c PHOTO ROBERT ROSEN\nSection: Social snaps-London and Paris-1970s 1980s",
-            "mainImage":{
-              "id":839102,
-              "refId":"TXVsdGltZWRpYTo2MmNiNTNmZWVlZDllZDE0MjAzNjdiNTI=",
-              "filename":"DANIELLE & DAVID BOWIE AT BLITZ  CLUB  LONDON 1979 (c) PHOTO ROBERT ROSEN.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/-GPUmR6zYIimmOflyYzKuXq6IKs=/839102.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/V4Ud3YV4th1tACGovNlW0yHWVKs=/70x70/smart/839102.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/mc0zI1K7SkammSXVSBnqKikZ-kc=/400x400/smart/839102.jpg",
-              "width":600,
-              "height":450,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":605794,
-          "notes2":"Andrew Logan and Divine at the <i>Alternative Miss World</i> premiere, Chelsea Classic Cinema, London, 1980 ",
-          "notes3":"Andrew Logan was a famous artist, sculptor, a very, very creative person around the social scene in London. He started doing these events every year called the Alternative Miss World and you had to do three outfits, day wear, evening wear and swimwear. And the judges he had were always celebrities like, Andy Warhol was there one year, Zandra Rhodes. They made a movie of it. And this photo was taken at the premiere of the movie as Divine and Andrew stepped out of the car.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/08.+S8+-+Andrew+Logan+%26+Divine+at+the+Alternative+Miss+World+Premiere.mp3",
-          "object":{
-            "id":605794,
-            "displayTitle":"Photograph of 'Alternative Miss World' by Robert Rosen",
-            "mainImage":{
-              "id":754742,
-              "refId":"TXVsdGltZWRpYTo2MmNhMjIyYmJiY2NiODUzNDYyMGY0MmY=",
-              "filename":"0588690_0001_m.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/rowi0B3SdpKwcBQJ3G3R9z2eKII=/754742.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/ZbsI-y2FKt_PCIaPbtYMO09nBfs=/70x70/smart/754742.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/eaw2IGNsHgzfKMRHIWckpm9dOFg=/400x400/smart/754742.jpg",
-              "width":599,
-              "height":479,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":605783,
-          "notes2":"Grace Jones and Kid Creole, Camden Palace nightclub, London, 1982 ",
-          "notes3":"Steve Jones and Rusty Egan had started a new nightclub, which instantly became a trend and on this night Grace Jones came. So, I was there with my little snappy, and she was talking to some guy, and I nodded to her and she nodded back to me so I started taking some photos. The guy started screaming at me, ‘Get that bloody camera out of my face,’ to which I replied, ‘I'm not taking photographs of you, I'm taking them of Grace Jones and if you don't like it leave.’ He walked away in a huff and I went up to Jones and said, ‘Hi, how are you?’ and ‘Who’s that guy?’ And she said, ‘Oh, that's Kid Creole.’",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/10.+S9+-+Grace+Jones+and+Kid+Creole.mp3",
-          "object":{
-            "id":605783,
-            "displayTitle":"Photograph of Grace Jones and Kid Creole by Robert Rosen",
-            "mainImage":{
-              "id":754775,
-              "refId":"TXVsdGltZWRpYTo2MmNmMzljMjFhOTQ2ZTEyMDgxOWFhYWI=",
-              "filename":"0588679_0001_m.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/1PWT7iWTKRI_oMX4rgWm5e7g42Q=/754775.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/2jwPh7T15xa461Tvjs9a5i-H9Tg=/70x70/smart/754775.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/eN54TXW3T-m45WERRgRM5THsYmg=/400x400/smart/754775.jpg",
-              "width":600,
-              "height":438,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645209,
-          "notes2":"Michelle Jank Spring/Summer 2005–06, Mercedes Australian Fashion Week, Sydney ",
-          "notes3":"Michelle was just a student at East Sydney Tech when I met her and I could see she was doing great things then. I used to go to the East Sydney Tech end-of-year fashion shows and her work really stood out. This photograph was taken from the front row, of all the models just slowly, slowly, coming on, and stepping on chairs and ladders until the final shot. I'd only ever done catwalk in London and Paris so that was very exciting seeing all the models, hairdressers, makeup, everybody in a tizz, trying to get ready on time to step out onto that catwalk. I found photographing backstage much, much more exciting than photographing the catwalk because of the atmosphere and because of the quick shots I could get of people in disarray, or, looking perfect two seconds before they're about to go on the catwalk, handing a cigarette to the security, and stepping out looking immaculate.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/11.+S4+-+Michelle+Jank%2C+Australian+Fashion+Week.mp3",
-          "object":{
-            "id":645209,
-            "displayTitle":"MICHELLE JANK 2005  PHOTO ROBERT ROSEN\nSection: Australian Fashion Week - Front row",
-            "mainImage":{
-              "id":833228,
-              "refId":"TXVsdGltZWRpYTo2MmNiNTQ3M2VlZDllZDE0MjAzNjdiYjY=",
-              "filename":"MICHELLE JANK 2005  PHOTO ROBERT ROSEN.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/gfqAgbMbxvgTDtMgS4qLnbHUtE8=/833228.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/79M1j9BGTBuVexOaeAVKCGY1T1A=/70x70/smart/833228.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/_IrOrEc_hOJQ-xhvykXCqDpTEOs=/400x400/smart/833228.jpg",
-              "width":600,
-              "height":400,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645862,
-          "notes2":"SABA Spring/Summer 1996–97, Mercedes Australian Fashion Week, Sydney",
-          "notes3":"When I was backstage, I knew most of the models anyway, from the parties and from other fashion shows, and they trusted me. I wasn't going to get photos of them undressed, I do respect everybody's privacy. When the show starts, most of the photographers had to leave and go into the front, but the PRs all knew me and they let me stay behind and still photograph the models getting ready in their outfits. It is really all about trust, and the same with London and being allowed into the VIP areas, knowing I wasn't going to take photographs of somebody drunk, or out of it, or falling over, because I wouldn't like to be photographed like that either.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/12.+S4+-+SABA%2C+Australian+Fashion+Week.mp3",
-          "object":{
-            "id":645862,
-            "displayTitle":"SABA Spring / Summer 1996-97, Mercedes Australian Fashion Week, Sydneyc PHOTO ROBERT ROSEN\nSection: Australian Fashion Week - Back stage",
-            "mainImage":{
-              "id":834846,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY0YmVlZDllZDE0MjAzNjc2MGE=",
-              "filename":"SABA 1996 - Copy.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/ZVHWVS2jfpE_5D9Ey8x2-x88nCw=/834846.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/baalUr4eutq3tidhszNaQjhO5Rs=/70x70/smart/834846.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/g4uCdCDlwYhbg5hxDxDa5OzU7dU=/400x400/smart/834846.jpg",
-              "width":400,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":646006,
-          "notes2":"Elton John and Ian ’Molly’ Meldrum, Sebel Townhouse, Sydney, 1990",
-          "notes3":"Elton and Molly Meldrum. They were great friends over the years, and in Sydney at the Sebel Townhouse there was a party for Elton John, and they were mucking around, and laughing and joking, and I just went up to them. And for some reason, Molly grabbed Elton's hat and so he grabbed Molly's hat, and they posed for this photograph.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/13.+S5+-+Elton+John+%26+Molly+Meldrum.mp3",
-          "object":{
-            "id":646006,
-            "displayTitle":"ELTON JOHN & MOLLY MELDRUM AT SEBEL TOWNHOUSE SYDNEY 1990 c PHOTO ROBERT ROSEN\nSection: Social snaps - Australia 1980s - 2015",
-            "mainImage":{
-              "id":838948,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY0Y2VlZDllZDE0MjAzNjc2MGM=",
-              "filename":"ELTON JOHN & MOLLY MELDRUM AT SEBEL TOWNHOUSE SYDNEY 1990 (c) PHOTO ROBERT ROSEN.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/tSa2PmcsHfi5zxfe2QtywbbYioQ=/838948.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/VHE5zjLOedQhNHKf7nn17AFgr0c=/70x70/smart/838948.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/N4Ody7Ul-XfbYASfCMkJv7N8Oik=/400x400/smart/838948.jpg",
-              "width":600,
-              "height":450,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":646055,
-          "notes2":"Kylie Minogue and Michael Hutchence at his 30th birthday, Sydney, 1990 ",
-          "notes3":"It was Michael's 30th birthday and I knew him quite well by this time, and he actually invited me to his private party in a studio in Sydney. So I went, little snappy camera in my pocket. After about an hour of drinking and frivolity I went up to Michael and I said, ‘Is it okay if I take a few snaps?’ And he said, ‘Yeah, of course.’ Kylie was just standing next to him and I said, ‘Okay, well, let's start with you two.’ A little later on in the evening, Kylie presented him with the chocolate cake that she’d baked especially for his birthday.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/14.+S5+-+Kylie+Minogue+and+Michael+Hutchence.mp3",
-          "object":{
-            "id":646055,
-            "displayTitle":"KYLIE MINOGUE  & MICHAEL HUTCHENCE AT MICHAEL'S 30TH BIRTHDAY SYDNEY 1990 c PHOTO ROBERT ROSEN\nSection: Social snaps - Australia 1980s - 2015",
-            "mainImage":{
-              "id":838992,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY0ZGVlZDllZDE0MjAzNjc2MGU=",
-              "filename":"KYLIE MINOGUE  & MICHAEL HUTCHENCE AT MICHAEL S 30TH BIRTHDAY SYDNEY 1990 (c) PHOTO ROBERT ROSEN.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/lWUgqZHMu-jjZjFbBvbLz74eBh8=/838992.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/eVoPhVnG2BpEDJ3lRlpAHm9H0n4=/70x70/smart/838992.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/gmeQxYaKHmzunG18DBZiCX9oiyk=/400x400/smart/838992.jpg",
-              "width":450,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645631,
-          "notes2":"Steve Stevens and Billy Idol, Sydney, 1987 ",
-          "notes3":"I met Billy in London, probably in the late seventies. He was hanging out with Steve Strange and Marilyn and was also one of the regulars at the Embassy nightclub. He was actually very shy. He didn't mind me photographing him, but, on stage, his persona completely changed into this real rock and roll idol, if you will. This photograph was taken at the afterparty of the Billy Idol concerts in Sydney.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/15.+S5+-+Steve+Stevens+and+Billy+Idol.mp3",
-          "object":{
-            "id":645631,
-            "displayTitle":"STEVE STEVENS & BILLY IDOL SYDNEY 1987 PHOTO ROBERT ROSEN  \nSection: Social snaps - Australia 1980s - 2015",
-            "mainImage":{
-              "id":833963,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY0ZWVlZDllZDE0MjAzNjc2MTA=",
-              "filename":"STEVE STEVENS & BILLY IDOL SYDNEY 1987 PHOTO ROBERT ROSEN .jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/zU-dGO_e8GzT4dMx2qpWNsNJzGM=/833963.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/IuI5_Q9D-z0GDGI-uNIF5Y2W2EM=/70x70/smart/833963.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/6BuUEe4PKcJY1AgxJ8sAZXHMvdw=/400x400/smart/833963.jpg",
-              "width":600,
-              "height":450,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":358952,
-          "notes2":"Simon Reptile, portrait for Harper’s Bazaar Australia, Rosemount Avenue Studio, Sydney, 1985. Printed by Tonia Arapovic, Blinky's Photo Store, Kings Cross, NSW, Australia, 2006 ",
-          "notes3":"Around 1984–85 I went back to Sydney for a holiday and I was approached by a woman, Lee Tulloch, who had just got editorship of Harper's Bazaar, and she asked me if I would like to stay on in Australia and work for them as their social photographer and doing some portraits and also going to the London and Paris fashion shows and shooting it for them. Of course, I said yes, I jumped at the chance to work. Sydney was now starting to get vibey and people were much more attuned to the fashion industry, and the nightclubs were great, everything about it was perfect for me. ",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/16.+S7+-+Harper's+Bazaar+Portraits.mp3",
-          "object":{
-            "id":358952,
-            "displayTitle":"Photographic print of Simon Reptile by Robert Rosen",
-            "mainImage":{
-              "id":918187,
-              "refId":"TXVsdGltZWRpYTo2MmNiNWRjNmVlZDllZDE0MjAzNjg1Y2Q=",
-              "filename":"C00053644 Simon reptile.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/kTiv1Vz4l-MOwIzAcYTIsBoIZto=/918187.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/RxPDpvIIVbMupidxBPZtM-JoN2A=/70x70/smart/918187.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/rawkIqdTvwkrtJ849SOn6Xcqa0s=/400x400/smart/918187.jpg",
-              "width":417,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645870,
-          "notes2":"Michael Hutchence, portrait for Harper’s Bazaar Australia, Rosemount Avenue Studio, Sydney, 1985 ",
-          "notes3":"I went to this party and I spotted Michael and he looked interesting and standing with his girlfriend, Michele Bennett. So, I went up to them and said, ‘Hello, I'm Robert, who are you? And what do you do?’ And Michael said, ‘Oh, I'm a singer,’ and Michelle said, ‘I'm a model.’ I just turned to one side and said, ‘If I meet another singer and another model in Australia, I'm going to scream.’ We became friends over that because I was just perfectly natural. I didn't know who he was. I'd just come back from London. After that, Harper's Bazaar asked me to do portraits of people wearing their favourite outfits. I asked the editor and a few friends ‘Who's the most famous rock star in Australia?’ because I wanted to do all different walks of life. And a few of them said, Michael Hutchence and I said, ‘Oh no, that's the guy I was rude to.’ I managed to contact him through his agent, and he said, ‘Yes, of course.’ And he came to the studio and he brought with him his",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/17.+S7+-+Michael+Hutchence+Portrait.mp3",
-          "object":{
-            "id":645870,
-            "displayTitle":"MICHAEL HUTCHENCE PORTRAIT SYDNEY 1985 c PHOTO ROBERT ROSEN\nSection: Portraits and Performance - Celebrity portraits",
-            "mainImage":{
-              "id":834854,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY0ZmVlZDllZDE0MjAzNjc2MTI=",
-              "filename":"MICHAEL HUTCHENCE PORTRAIT SYDNEY 1985 (c) PHOTO ROBERT ROSEN.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/xVhlNXnpWGCEPYV5PBQ9xaTQTK8=/834854.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/Yz2oBPzedmFXhEV1YbChsNJprow=/70x70/smart/834854.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/zNuDgX6I3rg6Vl1EoEFn9Gg81AU=/400x400/smart/834854.jpg",
-              "width":446,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645382,
-          "notes2":"Boy George at Club for Heroes, London, 1981",
-          "notes3":"I first met Boy George at the Blitz club. He was actually the hat check boy, but he was always the best dressed person there. Because of his look, his character, his uniqueness, he was invited everywhere, always in different outfits and I think he probably made all those outfits himself. Or he had a lot of fashion designer friends, and they would make outfits for him. He was a joy to photograph.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/09.+S7+-+Boy+George+at+Club+for+Heroes.mp3",
-          "object":{
-            "id":645382,
-            "displayTitle":"BOY GEORGE AT CLUB FOR HEROES LONDON 1981 PHOTO ROBERT ROSEN\nSection: Portraits and Performance - Celebrity portraits",
-            "mainImage":{
-              "id":918188,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY1MGVlZDllZDE0MjAzNjc2MTQ=",
-              "filename":"BOY GEORGE CLUB FOR HEROES LONDON 1981.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/1TGpbH1524rjTbNwFMcvCbJ3Ba8=/918188.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/nZKU5sGyzzNZTHwD9eaYT4fYZrI=/70x70/smart/918188.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/vcHyd2dBSeFGdzYodbPoZaUVsNY=/400x400/smart/918188.jpg",
-              "width":474,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645894,
-          "notes2":"Yoko Ono at the Museum of Contemporary Art, Sydney, 2000 ",
-          "notes3":"I heard Yoko was coming to Sydney for the Biennale, so I asked the PR if she could contact Yoko to have a private portrait session. Yoko replied that no, she was a bit shy, she didn't know me. So, I turn up at the press conference thinking, I'm going to get this portrait. I opened my camera case and I said, ‘Look, I've brought a backdrop with me, give me five minutes with her.’ Of course, there's two security guards there, so I got them to hold the black cloth behind Yoko, took the photographs and then she said, ‘Would you like a cup of tea or coffee?’ So, we sat down, we had some coffee and we just talked and talked about London, the old days, and everything. And then there's a banging on the door ‘Robert, I told you, five minutes.’ The door opens the PR's bursting in, there's TV crews waiting outside. I said, ‘Okay, I'm sorry.’ Yoko had given me her address in New York to send a couple of prints to because she wanted to see them. So, I did. And she sent me a beautiful",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/18.+S7+-+Yoko+Ono+Portrait.mp3",
-          "object":{
-            "id":645894,
-            "displayTitle":"YOKO ONO  MCA STUDIO  SYDNEY   2000 c PHOTO ROBERT ROSEN\nSection: Portraits and Performance - Celebrity portraits",
-            "mainImage":{
-              "id":834878,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY1MWVlZDllZDE0MjAzNjc2MTY=",
-              "filename":"YOKO ONO  MCA STUDIO  SYDNEY   2000 (c) PHOTO ROBERT ROSEN.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/aItcpvkoUBrIjePoaCZoWScC544=/834878.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/2A1VU2s9bl1i4a4IOIhGfSTVUo4=/70x70/smart/834878.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/wFytcAEHbDtfDtXZ0af-35Rm1Ew=/400x400/smart/834878.jpg",
-              "width":435,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645327,
-          "notes2":"David Bowie, London, 1981 ",
-          "notes3":"I think I was influenced to start the Polaroid collection by Andy Warhol. When I met him in London, he was shooting Polaroids around the parties. And I was just intrigued by this strange looking camera and these photos that it would just spit out instantly, and they would develop within about one minute. I took the Polaroid camera everywhere with me in my pocket. So, if there was somebody quite famous, I would whip it out and say, ‘Let's do a Polaroid.’<br>This Polaroid of David Bowie was taken at Regine’s nightclub at a party in the afternoon. I went up to him and said, ‘Could I take a Polaroid of you?’ And he said, ‘Yes, sure, let's just go over here behind the bushes.’ So, we went and shot the Polaroid. He asked me my name and I said, Robert Rosen, and he replied ‘Robert Rosen with the looking glass bow tie,’ because I was wearing one of Andrew Logan's glass mirror bow ties. Anyway, the Polaroid photo is developing and I'm holding it really nervously thinking any m",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/19.+S10+-+David+Bowie+Polaroid.mp3",
-          "object":{
-            "id":645327,
-            "displayTitle":"DAVID BOWIE SINGER? MUSICIAN? ACTOR- LONDON 1981\nSection: Polaroids",
-            "mainImage":{
-              "id":833406,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY1MmVlZDllZDE0MjAzNjc2MTg=",
-              "filename":"DAVID BOWIE SINGER MUSICIAN ACTOR LONDON 1981.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/0juZyg9EUNhCKaM6QQBg-xav-OM=/833406.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/8vTcso05ttZzys9bx5SBSsCVEBA=/70x70/smart/833406.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/e7CLBCcvk-Aa3s9F2eCdYW3cMaI=/400x400/smart/833406.jpg",
-              "width":493,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645355,
-          "notes2":"Nina Simone, London, 1981 ",
-          "notes3":"There was a party for Liberace at Wedgie's, which was quite an upper-class nightclub on the Kings Road in Chelsea. And the photographers were leaving as I arrived, as I'm usually late anyway. And I said, ‘Is there anybody in there?’ And they said, ‘Nah, not really, just Liberace.’ And one of them piped up and said, ‘Oh, Nina Simone's in there.’ I thought what? Nina Simone, my idol, my God I've got to get in there. So, I went in, found Nina. She was sitting at a table and I asked her if I could do a Polaroid of her. And we took a Polaroid, she looked at, it said, ‘Nup, I don't like it.’ She stuck it in the candle and burnt it, held it up, looking like the Statue of Liberty, holding this flaming Polaroid. We proceeded to do about five or six after that, until she finally liked the one you're looking at. Then she said to me, ‘Sit down and talk to me.’ We had copious amounts of champagne and talked about God knows what.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/20.+S10+-+Nina+Simone+Polaroid.mp3",
-          "object":{
-            "id":645355,
-            "displayTitle":"NINA SIMONE SINGER?SONGWRITER?PIANIST?CIVIL RIGHTS ACTIVIST- LONDON 1981\nSection: Polaroids",
-            "mainImage":{
-              "id":833434,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY1M2VlZDllZDE0MjAzNjc2MWE=",
-              "filename":"NINA SIMONE SINGER SONGWRITER PIANIST CIVIL RIGHTS ACTIVIST LONDON 1981.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/NPdfeCPlAjcBRZEDGGN5xZIt0lk=/833434.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/JEppApHFfRDeKL0gGpUDjpXxUg0=/70x70/smart/833434.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/GNUWziDr1n7liL3xOKClhEbaP2c=/400x400/smart/833434.jpg",
-              "width":492,
-              "height":600,
-              "caption":null
-            }
-          }
-        },
-        {
-          "id":645399,
-          "notes2":"Grace Jones, Enmore Theatre, Sydney, 2011",
-          "notes3":"I was invited by the publicist to attend the Grace Jones concert. It was at a small theatre in Sydney called the Enmore Theatre. And I don't know why, maybe because I had the camera around my neck, but the security guards just ushered me right up the front, close to the stage. And there was hardly anybody else photographing, which was great so I could move around freely. Grace Jones to me is just a vision of beauty, excitement. Every frame that I take of Grace is almost perfect. So, during the concert she had this big floaty outfit on and, I don't know why, I just kept pressing the button the whole time. So, I got this sequence of photographs.",
-          "notes4":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/21.+S6+-+Grace+Jones%2C+Enmore+Theatre.mp3",
-          "object":{
-            "id":645399,
-            "displayTitle":"GRACE JONES PERFORMS ENMORE THEATRE SYDNEY 2011 PHOTO ROBERT ROSEN  2\nSection: Portraits and Performance - Performers",
-            "mainImage":{
-              "id":833545,
-              "refId":"TXVsdGltZWRpYTo2MmNiNGY1NGVlZDllZDE0MjAzNjc2MWM=",
-              "filename":"GRACE JONES PERFORMS ENMORE THEATRE SYDNEY 2011 PHOTO ROBERT ROSEN  2.jpg",
-              "url":"https://d3ecqbn6etsqar.cloudfront.net/XcxHjYeFs8oQzb1v4j1coBK814U=/833545.jpg",
-              "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/hB-d2UT0dN3boEXr_wlsP_chDDM=/70x70/smart/833545.jpg",
-              "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/L2qB0I_PNp8QcJiamp2blq4iahc=/400x400/smart/833545.jpg",
-              "width":600,
-              "height":397,
-              "caption":null
-            }
+            },
+            "tracks":[
+              {
+                "title":"Half a Canyon",
+                "description":"‘Half a Canyon’ written by Malkmus *",
+                "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+              },
+              {
+                "title":"Best Friend’s Arm",
+                "description":"written by Malkmus *",
+                "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+              },
+              {
+                "title":"Brink of the Clouds/Candylad",
+                "description":"written by Malkmus *",
+                "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+              },
+              {
+                "title":"Unfair",
+                "description":"written by Malkmus *",
+                "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+              },
+              {
+                "title":"Easily Fooled",
+                "description":"written by Malkmus *",
+                "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+              },
+              {
+                "title":"Heaven is a Truck",
+                "description":"written by Malkmus *",
+                "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+              },
+              {
+                "title":"Box Elder",
+                "description":"written by Kannberg/Malkmus *",
+                "url":"https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+              }
+            ]
           }
         }
       ]
