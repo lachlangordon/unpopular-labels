@@ -4,7 +4,11 @@
  */
 
 // later move it to config
-const __MASTER_NARRATIVE = 7951;
+const __MASTER_NARRATIVE = process.env.MASTER_NARRATIVE;
+
+// console.log("================= queries.js =================");
+// console.log( __MASTER_NARRATIVE + "\n\r");
+// console.log("================= queries.js =================");
 
 // initial GQL query to generate dynamic content nodes
 const GatsbyNodeQuery = `

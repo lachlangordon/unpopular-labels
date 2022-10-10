@@ -15,8 +15,17 @@ const { GatsbyResolvers } = require('./bootstrap/resolvers');
 const { createDynamicPages, createPaginatedPages, createPaginatedSetPages } = require('./src/lib/pageCreator');
 const { replaceSlash, replaceBothSlash, setPageName } = require(`./src/lib/utils`);
 
-// later move it to config
-const __MASTER_NARRATIVE = 7951;
+const fs = require(`fs`);
+
+// data-config
+require('dotenv').config({
+  path: '.env',
+});
+const config = require('./config/datalayer');
+
+const __DATA_SOURCE = config.dataSource;
+const __SOURCE_PATH = config.sourcePath;
+const __GRAPHQL_URL = config.graphqlURL;
 
 exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store, cache }) => {
 
@@ -25,16 +34,24 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest, store
     createNodeId,
   })
 
-  // init query to populate nodes
-  const query = `
-    ${GatsbyNodeQuery}
-  `;
-
   try {
 
-    const graphQLResults = await GQLClientWrapper( query );
+    let dataSet;
+    if ( __DATA_SOURCE === 'GRAPHQL') {
+      // init query to populate nodes
+      const query = `
+        ${GatsbyNodeQuery}
+      `;
+      dataSet = await GQLClientWrapper( query, __GRAPHQL_URL );
 
-    const { masterSet } = graphQLResults;
+    } else if ( __DATA_SOURCE === 'JSON' ) {
+
+      // read from JSON
+      const jsonData = fs.readFileSync(__SOURCE_PATH);
+      dataSet = JSON.parse(jsonData).data;
+    }
+
+    const { masterSet } = dataSet;
 
     const _master = await processSet({
       ...masterSet,
@@ -126,35 +143,3 @@ exports.createPages = async ({ actions, graphql }) => {
   createDynamicPages('set', allSet.edges, createPage, setTemplate );
   createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
 }
-
-// exports.createSchemaCustomization = ({actions}) => {
-//   const {createTypes} = actions;
-//
-//   const typeDefs = `
-//     type SetObjectObject implements Node {
-//       production: [ObjectProduction]
-//     }
-//
-//     type ObjectProduction implements Node {
-//           role: String,
-//           creator : String,
-//           place : String,
-//           address : String,
-//           date : String,
-//           dateEarliest : String,
-//           dateLatest : String
-//       }
-//
-//     type SetObject implements Node {
-//       notes2: String,
-//       notes3: String,
-//       notes4: String
-//     }
-//
-//     type SetSetObjects implements Node {
-//       notes3: String
-//     }
-//   `;
-//
-//   createTypes(typeDefs);
-// }

@@ -1,9 +1,5 @@
 const { GraphQLClient } = require(`graphql-request`);
 
-require('dotenv').config({
-  path: '.env',
-});
-
 /**
  * Request a query from a Gatsby GraphQL Server.
  */
@@ -19,10 +15,10 @@ const GQLGatsbyWrapper = promise =>
 /**
  * Request a query from a client.
  */
-const GQLClientWrapper = async ( query ) => {
+const GQLClientWrapper = async ( query, gqlURL ) => {
   // used to populate node narrative data on starters
-  const client = process.env.GRAPHQL_URL
-    ? new GraphQLClient(`${ process.env.GRAPHQL_URL }`)
+  const client = gqlURL
+    ? new GraphQLClient(`${ gqlURL }`)
     : null ;
 
   return await client.request(query);

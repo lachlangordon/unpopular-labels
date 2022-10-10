@@ -5,8 +5,12 @@
 const { GraphQLSchema, GraphQLString, GraphQLInt, GraphQLList } = require(`graphql`);
 const { paginate } = require('gatsby/dist/schema/resolvers');
 
- // later move it to config
-const __MASTER_NARRATIVE = 7951;
+// load narrative from env
+const __MASTER_NARRATIVE = process.env.MASTER_NARRATIVE;
+
+// console.log("================= resolvers.js =================");
+// console.log( __MASTER_NARRATIVE + "\n\r");
+// console.log("================= resolvers.js =================");
 
 const GatsbyResolvers = {
   // Create a new root query field.

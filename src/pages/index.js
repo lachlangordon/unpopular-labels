@@ -45,10 +45,6 @@ const IndexPage = ({
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div className="index-page">
           <h1><img alt="Robert Rosen: Glitterati" src={logo}/></h1>
-          <Link to="/page-turner" className="container container--lg no-padding">
-              <h2>Diaries</h2>
-              <h3>Page turner remote</h3>
-          </Link>
           <Link to="/objects" className="container container--lg no-padding">
               <h2>Audio files</h2>
               <h3>Audio and Transcripts</h3>

@@ -4,9 +4,6 @@
  */
  const crypto = require('crypto');
 
- // later move it to config
- const __MASTER_NARRATIVE = 7951;
-
  const setInternal = ( _objectType, _object ) => {
    return {
      type: `${ _objectType }`,
