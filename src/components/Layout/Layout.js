@@ -18,6 +18,7 @@ import '../../assets/maas-scss/main.scss';
 import Header from './Header';
 import Footer from './Footer';
 import LightFooter from './LightFooter';
+import AlbumPlayer from "../AlbumPlayer/AlbumPlayer";
 
 class Layout extends Component {
     constructor(props) {
@@ -65,6 +66,7 @@ class Layout extends Component {
 
                     <Footer/>
                   </main>
+
 
                   <div className={`${appClassName}__sidenav`}>
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { shouldShowSeenIcon } from './lib/session';
+import AlbumPlayer from "./components/AlbumPlayer/AlbumPlayer";
 
 export default class HTML extends Component {
   render() {
