@@ -120,18 +120,18 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
   // setTemplate
-  const setTemplate = require.resolve('./src/templates/SetPage.js');
+  // const setTemplate = require.resolve('./src/templates/SetPage.js');
 
-  // objectTemplate
-  const objectTemplate = require.resolve('./src/templates/ObjectPage.js');
+  // trackTemplate
+  const trackTemplate = require.resolve('./src/templates/TrackPage.js');
 
-  const sets = await GQLGatsbyWrapper(
-    graphql(`
-      ${ GatsbyAllSetQuery }
-    `)
-  );
+  // const sets = await GQLGatsbyWrapper(
+  //   graphql(`
+  //     ${ GatsbyAllSetQuery }
+  //   `)
+  // );
 
-  const { allSet } = sets.data;
+  // const { allSet } = sets.data;
 
   const objects = await GQLGatsbyWrapper(
     graphql(`
@@ -140,6 +140,6 @@ exports.createPages = async ({ actions, graphql }) => {
   );
   const { allSetObject } = objects.data;
 
-  createDynamicPages('set', allSet.edges, createPage, setTemplate );
-  createDynamicPages('object', allSetObject.edges, createPage, objectTemplate );
+  // createDynamicPages('set', allSet.edges, createPage, setTemplate );
+  createDynamicPages('track', allSetObject.edges, createPage, trackTemplate );
 }

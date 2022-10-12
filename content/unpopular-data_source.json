@@ -31,11 +31,12 @@
             "mainImage":{
               "id":817276,
               "refId":"TXVsdGltZWRpYTo2MmNjZGQwZjRmOTkxZDNhMTc0M2U1NmM=",
-              "filename":"0604558_0001_m.jpg",
+              "filename":"Evan-Dando-tape-cover.jpg",
               "url":"https://d3ecqbn6etsqar.cloudfront.net/FX3rbn-b41fqsoxKYafAyqojN6s=/817276.jpg",
               "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/0kbk5WTRuJLkm5c2EkJbf_YmQD4=/70x70/smart/817276.jpg",
               "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/4fnF3wXVnytgKPv3x27EPWaIuRY=/400x400/smart/817276.jpg",
-              "width":400,
+              "imagePath": "images/unpopular/evan-dando",
+              "width":600,
               "height":600,
               "caption":null
             },
@@ -109,12 +110,13 @@
             "mainImage":{
               "id":918193,
               "refId":"TXVsdGltZWRpYTo2MmNjZGQxMjRmOTkxZDNhMTc0M2U1NmU=",
-              "filename":"0604648_0001_m retouch Karen Hancock.jpg",
+              "filename":"Lemonheads-Live-Phoenician-tape.jpg",
               "url":"https://d3ecqbn6etsqar.cloudfront.net/79KWBIQtA81UeDl12a2sSulZFc4=/918193.jpg",
               "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/aJtLk3Zg5rgJP_fMi4IIso33DJM=/70x70/smart/918193.jpg",
               "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/-YKFNx9gT2Lp75f4mQxhntqccr8=/400x400/smart/918193.jpg",
+              "imagePath": "images/unpopular/lemonheads",
               "width":600,
-              "height":400,
+              "height":600,
               "caption":null
             },
             "tracks":[
@@ -147,12 +149,13 @@
             "mainImage":{
               "id":834807,
               "refId":"TXVsdGltZWRpYTo2MmNiNGY0N2VlZDllZDE0MjAzNjc2MDI=",
-              "filename":"PAUL & LINDA MCCARTNEY ABBEY RD STUDIOS  LONDON 1982 (c) PHOTO ROBERT ROSEN.jpg",
+              "filename":"Nirvana-studio-demo-tape.jpg",
               "url":"https://d3ecqbn6etsqar.cloudfront.net/3_LYqFJWj-JzMrIZZ6nvx-j6f20=/834807.jpg",
               "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/mT8o69qo_NLS6ylSLm4hx8Agnro=/70x70/smart/834807.jpg",
               "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/vlsq_vLeobRf92yVPMF25q0FXgA=/400x400/smart/834807.jpg",
+              "imagePath": "images/unpopular/nirvana",
               "width":600,
-              "height":422,
+              "height":600,
               "caption":null
             },
             "tracks":[
@@ -205,11 +208,12 @@
             "mainImage":{
               "id":918189,
               "refId":"TXVsdGltZWRpYTo2MmNjZGQxYTRmOTkxZDNhMTc0M2U1NzQ=",
-              "filename":"0604707_0001_m_Retouched Lynne Franks.jpg",
+              "filename":"Pavement-Live-at-Wireless-tape-cover.jpg",
               "url":"https://d3ecqbn6etsqar.cloudfront.net/DsIFFXinjONT97JP_e3lXouClnY=/918189.jpg",
               "thumbnailURL":"https://d3ecqbn6etsqar.cloudfront.net/G2cN2q9ipecj-_piUBKPiZLfR_8=/70x70/smart/918189.jpg",
               "serverCropURL":"https://d3ecqbn6etsqar.cloudfront.net/EO_BHkbo6Tpdd_P3jW-B_i7FiEk=/400x400/smart/918189.jpg",
-              "width":454,
+              "imagePath": "images/unpopular/pavement",
+              "width":600,
               "height":600,
               "caption":null
             },

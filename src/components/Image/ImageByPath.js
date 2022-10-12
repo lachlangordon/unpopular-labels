@@ -2,7 +2,10 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from './Image';
 
-const ImageByPath = ({ path, filename }) => (
+// import noImage from '../../assets/images/no-img-found.svg';
+const __regexPattern = /(.jpg)|(.png)|(.tif)|(.tiff)|(.webp)|(.jpeg)/i;
+
+const ImageByPath = ({ imgClassName, path, filename }) => (
    <StaticQuery
      query={localImgQuery}
      render={data => {
@@ -14,20 +17,24 @@ const ImageByPath = ({ path, filename }) => (
          });
        }
 
+       // console.log( data.localImages.edges );
+       let imgname = filename.replace( __regexPattern, '' );
+
        if (filteredImgs) {
          imageFound = filteredImgs.find(image => {
-           return image.node.name === `${filename}`;
+           return image.node.name === `${imgname}`;
          });
        } else {
-         imageFound = data.localImages.edges.find(image => image.node.name === `${filename}`);
+         imageFound = data.localImages.edges.find(image => image.node.name === `${imgname}`);
        }
 
        if (!imageFound) {
-         return null;
+         // return <img alt="No image found." src={ noImage }/>;
+         return "No image found.";
        }
 
        const { name } = imageFound.node;
-       return <Image imgObject={imageFound.node} title={name} />
+       return <Image className={imgClassName || ''} imgObject={imageFound.node} title={name} />
      }}
    />
  );
