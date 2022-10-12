@@ -10,14 +10,15 @@ class SongList extends Component {
     }
 
     render() {
+      console.log(this.props);
         return (
                 <AlbumContext.Consumer>
                   {context => {
                       return (
                         <div className="album-listing">
-                            {this.props.album.songs.map((song, i) => {
+                            {this.props.album.tracks.map((track, i) => {
                                 return (
-                                  <SongListing key={i} title={song.title} onClick={() => this.handleClick(this.props.album, i, context)}/>
+                                  <SongListing key={i} title={track.title} subtitle={track.description} onClick={() => this.handleClick(this.props.album, i, context)}/>
                                 )
                             })}
                         </div>

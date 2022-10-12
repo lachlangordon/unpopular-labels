@@ -42,6 +42,11 @@ query NodeSets {
       object {
         id: _id
         displayTitle
+        tracks {
+          title
+          description
+          url
+        }
         mainImage {
           id: _id
           refId: id
@@ -94,6 +99,11 @@ const GatsbyAllSetObjectQuery = `
         object {
           name
           mainImage {
+            url
+          }
+            tracks {
+            title
+            description
             url
           }
         }

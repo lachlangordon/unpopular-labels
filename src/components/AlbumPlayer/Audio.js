@@ -99,7 +99,7 @@ class Audio extends Component {
 
     return (
       <React.Fragment>
-        <button disabled={this.context.currentSong-1 < 0} onClick={() => this.props.previousSong(this.changeSong)}>Previous</button>
+        <button onClick={() => this.props.previousSong(this.changeSong)}>Previous</button>
         <button onClick={this.playPauseSong}>{this.state.playing ? 'Pause': 'Play'}</button>
         <button onClick={() => this.props.nextSong(this.changeSong)}>Next</button>
         <div className="elapsed">

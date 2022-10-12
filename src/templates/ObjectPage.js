@@ -46,35 +46,6 @@ class ObjectPage extends Component {
 
   render() {
 
-    const album = {
-      title: "Robert Rosen: Glitterati",
-      subtitle: "Podcast, 2021",
-      attribution: "Recorded somewhere in the Powerhouse Museum by someone who works here",
-      licensing: "Licensed by PHM",
-      songs: [
-        {
-          title: "Paul and Linda McCartney, Abbey Road Studios",
-          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
-        },
-        {
-          title: "Richard & Jane O'Brien at the Embassy Club",
-          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/02.+S8+-+Richard+%26+Jane+O'Brien+at+the+Embassy+Club.mp3"
-        },
-        {
-          title: "Lynne Franks",
-          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/03.+S2+-+Lynne+Franks.mp3"
-        },
-        {
-          title: "Zandra Rhodes",
-          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/04.+S2+-+Zandra+Rhodes.mp3"
-        },
-        {
-          title: "Anna Piaggi",
-          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/05.+S3+Anna+Piaggi.mp3"
-        },
-      ]
-    }
-
     const {
       data,
       location,
@@ -95,7 +66,7 @@ class ObjectPage extends Component {
     } else {
       transcript = object.notes3;
     }
-
+    console.log(object);
     return (
       <Layout location={location}>
         <SEO title={object.object.name} keywords={[`gatsby`, `application`, `react`]} />
@@ -134,7 +105,7 @@ class ObjectPage extends Component {
                 }
               </div>
 
-              <SongList album={album}/>
+              <SongList album={object.object}/>
             </section>
           </div>
 
@@ -161,6 +132,11 @@ export const pageQuery = graphql`
           id
           url
           thumbnailURL
+            tracks {
+            title
+            description
+            url
+          }
         }
       }
       parent {
