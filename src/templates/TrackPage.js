@@ -13,6 +13,7 @@ import {convertToSID, getBannerSize} from '../lib/utils';
 import transcripts from "../lib/transcripts";
 
 import withViewport from "../decorators/withViewport";
+import SongList from "../components/SongListing/SongList";
 
 class TrackPage extends Component {
 
@@ -84,12 +85,7 @@ class TrackPage extends Component {
                 }
                 <small className="object-page__notes4" dangerouslySetInnerHTML={{ __html: object.notes4 }} />
               </div>
-              <div className="audio-container">
-                  <audio controls muted={isMuted} src={object.notes4} onVolumeChange={this.handleVolumeChange}>
-                    Your browser does not support HTML audio.
-                  </audio>
-
-              </div>
+              <SongList album={object.object}/>
             </section>
           </div>
 
