@@ -45,9 +45,8 @@ const IndexPage = ({
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <div className="index-page">
           <h1>{site.siteMetadata.shortTitle}</h1>
-          <Link to="/objects" className="container container--lg no-padding">
-              <h2>Audio files</h2>
-              <h3>Audio and Transcripts</h3>
+          <Link to="/tracks" className="container container--lg no-padding">
+              <h3>Audio tracks</h3>
           </Link>
       </div>
     </Layout>

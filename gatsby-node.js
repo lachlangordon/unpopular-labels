@@ -117,21 +117,10 @@ exports.createResolvers = ({
 }
 
 exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions;
-
-  // setTemplate
-  // const setTemplate = require.resolve('./src/templates/SetPage.js');
+  const { createPage, createRedirect } = actions;
 
   // trackTemplate
   const trackTemplate = require.resolve('./src/templates/TrackPage.js');
-
-  // const sets = await GQLGatsbyWrapper(
-  //   graphql(`
-  //     ${ GatsbyAllSetQuery }
-  //   `)
-  // );
-
-  // const { allSet } = sets.data;
 
   const objects = await GQLGatsbyWrapper(
     graphql(`
@@ -140,6 +129,13 @@ exports.createPages = async ({ actions, graphql }) => {
   );
   const { allSetObject } = objects.data;
 
-  // createDynamicPages('set', allSet.edges, createPage, setTemplate );
   createDynamicPages('track', allSetObject.edges, createPage, trackTemplate );
+
+  // redirect index
+  createRedirect({
+    fromPath: `/`,
+    toPath: `/tracks`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  })
 }

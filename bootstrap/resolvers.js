@@ -8,10 +8,6 @@ const { paginate } = require('gatsby/dist/schema/resolvers');
 // load narrative from env
 const __MASTER_NARRATIVE = process.env.MASTER_NARRATIVE;
 
-// console.log("================= resolvers.js =================");
-// console.log( __MASTER_NARRATIVE + "\n\r");
-// console.log("================= resolvers.js =================");
-
 const GatsbyResolvers = {
   // Create a new root query field.
   // Field resolvers can use all of Gatsby's querying capabilities
