@@ -67,35 +67,17 @@ class Audio extends Component {
   }
 
   updateSeekerWhilePlaying = () => {
-    if (this.player.current) {
-      this.setState({
-        elapsed: Math.floor(this.player.current.currentTime),
-        elapsedString: getTimeString(this.player.current.currentTime)
-      });
+    if (this.player.current && !this.player.current.paused) {
+      const currentElapsed = getTimeString(this.player.current.currentTime);
+      if (this.state.elapsedString !== currentElapsed) {
+        this.setState({
+          elapsed: Math.floor(this.player.current.currentTime),
+          elapsedString: currentElapsed
+        });
+      }
       this.raf = requestAnimationFrame(this.updateSeekerWhilePlaying);
     }
   }
-
-  previousSong = () => {
-    const { currentSong, setSong } = this.context;
-    const newSong = currentSong - 1;
-    if (newSong >= 0) {
-      setSong(newSong);
-      this.changeSong(true);
-    }
-  };
-
-  nextSong = () => {
-    const { currentAlbum, currentSong, setSong } = this.context;
-    const newSong = currentSong + 1;
-    if (currentAlbum.songs[newSong] === undefined) {
-      setSong(0);
-      this.changeSong();
-    } else {
-      setSong(newSong);
-      this.changeSong(true);
-    }
-  };
 
   changeSong = (playOnLoad = false) => {
     this.setState({
@@ -103,7 +85,6 @@ class Audio extends Component {
       elapsed: 0,
       elapsedString: '0:00'
     }, () => {
-      this.player.current.load();
       if (playOnLoad) {
         this.player.current.play();
         requestAnimationFrame(this.updateSeekerWhilePlaying);
@@ -112,17 +93,15 @@ class Audio extends Component {
   };
 
   render() {
-    console.log(this.props.src);
-
     if (!this.props.src) {
       return null;
     }
 
     return (
       <React.Fragment>
-        <button disabled={this.context.currentSong-1 < 0} onClick={this.previousSong}>Previous</button>
+        <button disabled={this.context.currentSong-1 < 0} onClick={() => this.props.previousSong(this.changeSong)}>Previous</button>
         <button onClick={this.playPauseSong}>{this.state.playing ? 'Pause': 'Play'}</button>
-        <button onClick={this.nextSong}>Next</button>
+        <button onClick={() => this.props.nextSong(this.changeSong)}>Next</button>
         <div className="elapsed">
           {this.state.elapsedString}
         </div>
@@ -130,7 +109,7 @@ class Audio extends Component {
         <div className="duration">
           {this.state.durationString}
         </div>
-        <audio ref={this.player} src={this.props.src} onEnded={this.props.nextSong} onLoadedMetadata={this.setDuration}>
+        <audio ref={this.player} src={this.props.src} onEnded={() => this.props.nextSong(this.changeSong)} onLoadedMetadata={this.setDuration}>
           Your browser does not support HTML audio.
         </audio>
       </React.Fragment>

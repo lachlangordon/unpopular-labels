@@ -9,6 +9,27 @@ class AlbumPlayer extends Component {
         super(props);
     }
 
+    previousSong = (callback) => {
+        const { currentSong, setSong } = this.context;
+        const newSong = currentSong - 1;
+        if (newSong >= 0) {
+            setSong(newSong);
+            callback(true);
+        }
+    };
+
+    nextSong = (callback) => {
+        const { currentAlbum, currentSong, setSong } = this.context;
+        const newSong = currentSong + 1;
+        if (currentAlbum.songs[newSong] === undefined) {
+            setSong(0);
+            callback();
+        } else {
+            setSong(newSong);
+            callback(true);
+        }
+    };
+
     render() {
 
         const title = this.context.currentAlbum && this.context.currentAlbum.songs[this.context.currentSong].title || null;
@@ -16,7 +37,7 @@ class AlbumPlayer extends Component {
         return (
               <div className="audio-container">
                   {title}
-                  <Audio src={src}/>
+                  <Audio src={src} previousSong={this.previousSong} nextSong={this.nextSong}/>
               </div>
         )
     }
