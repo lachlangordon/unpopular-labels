@@ -196,18 +196,6 @@
       font-weight: normal;
     }
 
-    .audio-container {
-      position: fixed;
-      bottom: 0;
-      background: $colour-dark;
-      width: 100%;
-      left: 0;
-
-      audio {
-        width: 100%;
-      }
-    }
-
     //Related content
     .object-page__related-items__title {
       margin-bottom: $spacing-xxxxs;

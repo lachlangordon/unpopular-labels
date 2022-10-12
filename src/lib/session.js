@@ -6,15 +6,7 @@ const objectsLocalStorageName = 'rosen.seenObjects';
 const mutedLocalStorageName = 'rosen.audioMuted';
 
 const shouldShowSeenIcon = () => {
-
-  try {
-    localStorage.setItem('test', 'test');
-    localStorage.removeItem('test');
-
-    return window.source !== 'kiosk';
-  } catch(e) {
-    return false;
-  }
+  return false;
 };
 
 const isObjectSeen = (id) => {

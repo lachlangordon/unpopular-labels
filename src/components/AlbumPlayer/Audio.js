@@ -99,16 +99,25 @@ class Audio extends Component {
 
     return (
       <React.Fragment>
-        <button onClick={() => this.props.previousSong(this.changeSong)}>Previous</button>
-        <button onClick={this.playPauseSong}>{this.state.playing ? 'Pause': 'Play'}</button>
-        <button onClick={() => this.props.nextSong(this.changeSong)}>Next</button>
-        <div className="elapsed">
-          {this.state.elapsedString}
+        <div className="controls-container">
+          <button onClick={() => this.props.previousSong(this.changeSong)}><span className="sr-only">Previous</span></button>
+          <button onClick={this.playPauseSong}>{this.state.playing ? (
+            <span className="sr-only">Pause</span>
+          ): (
+            <span className="sr-only">Play</span>
+            )}</button>
+          <button onClick={() => this.props.nextSong(this.changeSong)}><span className="sr-only">Next</span></button>
         </div>
-        <input type="range" max={this.state.duration} value={this.state.elapsed} onInput={this.moveSeeker} onChange={this.changeSeeker}/>
-        <div className="duration">
-          {this.state.durationString}
+        <div className="seeker-container">
+          <span className="elapsed">
+            {this.state.elapsedString}
+          </span>
+          <input type="range" max={this.state.duration} value={this.state.elapsed} onInput={this.moveSeeker} onChange={this.changeSeeker}/>
+          <span className="duration">
+            {this.state.durationString}
+          </span>
         </div>
+
         <audio ref={this.player} src={this.props.src} onEnded={() => this.props.nextSong(this.changeSong)} onLoadedMetadata={this.setDuration}>
           Your browser does not support HTML audio.
         </audio>
