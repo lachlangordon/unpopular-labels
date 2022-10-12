@@ -206,7 +206,7 @@ const setObject = ( _object ) => {
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],
     mainImage: _object.mainImage || null,
-    tracks: _object.tracks,
+    tracks: _object.tracks || [],
   }
 };
 

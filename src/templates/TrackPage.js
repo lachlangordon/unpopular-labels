@@ -52,8 +52,8 @@ class TrackPage extends Component {
       transcript = object.notes3;
     }
 
-    // console.log( object.object.mainImage );
     const imgCheck = object.object.mainImage.imagePath && object.object.mainImage.filename;
+    console.log( object.object.tracks );
 
     return (
       <Layout location={location}>
@@ -118,6 +118,11 @@ export const pageQuery = graphql`
           thumbnailURL
           imagePath
           filename
+        }
+        tracks {
+          title
+          description
+          url
         }
       }
     }

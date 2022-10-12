@@ -25,7 +25,7 @@ const allTracksPage = ({
                       {
                           Set.setObjects.map((object, i) => {
                               if (object.object) {
-                                  // console.log(object.object.mainImage);
+
                                   const imgCheck = object.object.mainImage.imagePath && object.object.mainImage.filename;
                                   return imgCheck && (
                                       <ItemTileByPath
