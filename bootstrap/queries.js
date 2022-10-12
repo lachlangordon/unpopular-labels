@@ -101,7 +101,7 @@ const GatsbyAllSetObjectQuery = `
           mainImage {
             url
           }
-            tracks {
+          tracks {
             title
             description
             url

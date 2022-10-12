@@ -187,7 +187,6 @@ const setNodeSetObject = ( _set_obj ) => {
     notes2: _set_obj.notes2,
     notes3: _set_obj.notes3,
     notes4: _set_obj.notes4,
-    tracks: _set_obj.tracks,
     // object: this is an object instead of Array
     object : _set_obj.object ? setObject(_set_obj.object) : null,
   }
@@ -207,6 +206,7 @@ const setObject = ( _object ) => {
     // images: an array of images
     images: _object.images ? getIds(_object.images) : [],
     mainImage: _object.mainImage || null,
+    tracks: _object.tracks,
   }
 };
 

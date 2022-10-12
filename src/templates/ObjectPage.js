@@ -132,11 +132,11 @@ export const pageQuery = graphql`
           id
           url
           thumbnailURL
-            tracks {
-            title
-            description
-            url
-          }
+        }
+        tracks {
+          title
+          description
+          url
         }
       }
       parent {
