@@ -29,7 +29,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
       ),
     );
-
 })
 
 // { dataIdFromObject: o => (o.id ? `${o.__typename}:${o.id}` : null) }
@@ -43,12 +42,6 @@ if (process.browser) {
   });
   persistor.restore();
 }
-
-const GET_MENU = gql`
-  query getMenu {
-    showMenu
-  }
-`;
 
 const resolvers = {
   Mutation: {
@@ -97,6 +90,7 @@ const defaults = {
   showMenu: false,
   darkMode: false,
   NetworkStatus: false,
+  currentAlbum: [],
 };
 
 const stateLink = withClientState({

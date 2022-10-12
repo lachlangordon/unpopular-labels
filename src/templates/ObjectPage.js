@@ -6,12 +6,12 @@ import Image from '../components/Image/Image';
 import SEO from '../components/seo';
 import Banner from '../components/Banner/Banner';
 
-import { saveSeenObject, isAudioMuted, saveAudioMuteState } from '../lib/session';
 import {convertToSID, getBannerSize} from '../lib/utils';
 
 import transcripts from "../lib/transcripts";
 
 import withViewport from "../decorators/withViewport";
+import SongList from "../components/SongListing/SongList";
 
 class ObjectPage extends Component {
 
@@ -44,11 +44,36 @@ class ObjectPage extends Component {
     }
   }
 
-  handleVolumeChange = (e) => {
-    saveAudioMuteState(e.target.muted);
-  }
-
   render() {
+
+    const album = {
+      title: "Robert Rosen: Glitterati",
+      subtitle: "Podcast, 2021",
+      attribution: "Recorded somewhere in the Powerhouse Museum by someone who works here",
+      licensing: "Licensed by PHM",
+      songs: [
+        {
+          title: "Paul and Linda McCartney, Abbey Road Studios",
+          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/01.+S1+-+Paul+and+Linda+McCartney%2C+Abbey+Road+Studios.mp3"
+        },
+        {
+          title: "Richard & Jane O'Brien at the Embassy Club",
+          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/02.+S8+-+Richard+%26+Jane+O'Brien+at+the+Embassy+Club.mp3"
+        },
+        {
+          title: "Lynne Franks",
+          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/03.+S2+-+Lynne+Franks.mp3"
+        },
+        {
+          title: "Zandra Rhodes",
+          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/04.+S2+-+Zandra+Rhodes.mp3"
+        },
+        {
+          title: "Anna Piaggi",
+          src: "https://maas-podcasts.s3.ap-southeast-2.amazonaws.com/glitterati/05.+S3+Anna+Piaggi.mp3"
+        },
+      ]
+    }
 
     const {
       data,
@@ -63,10 +88,6 @@ class ObjectPage extends Component {
     if (!object.object) {
       return (<div>Not Web Published</div>);
     }
-
-    saveSeenObject(`${object.id}`);
-
-    const isMuted = isAudioMuted();
 
     let transcript = null;
     if (transcripts.hasOwnProperty(object.id)) {
@@ -112,12 +133,8 @@ class ObjectPage extends Component {
                      dangerouslySetInnerHTML={{ __html: transcript }} />
                 }
               </div>
-              <div className="audio-container">
-                  <audio controls muted={isMuted} src={object.notes4} onVolumeChange={this.handleVolumeChange}>
-                    Your browser does not support HTML audio.
-                  </audio>
 
-              </div>
+              <SongList album={album}/>
             </section>
           </div>
 

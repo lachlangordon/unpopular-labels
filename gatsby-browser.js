@@ -6,7 +6,7 @@
 
 // m = module
  const preferDefault = m => (m && m.default) || m;
- exports.wrapRootElement = preferDefault(require(`./src/decorators/withData`));
+ exports.wrapRootElement = preferDefault(require(`./src/providers/currentAlbum`));
 
  exports.onInitialClientRender = () => {
    window.___MAAS_GUIDE_INITIAL_RENDER_COMPLETE = true;
