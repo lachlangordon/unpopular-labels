@@ -54,7 +54,6 @@ class TrackPage extends Component {
     }
 
     const imgCheck = object.object.mainImage.imagePath && object.object.mainImage.filename;
-    console.log( object.object.tracks );
 
     return (
       <Layout location={location}>
@@ -85,10 +84,9 @@ class TrackPage extends Component {
                 }
                 <small className="object-page__notes4" dangerouslySetInnerHTML={{ __html: object.notes4 }} />
               </div>
-              <SongList album={object.object}/>
+              <SongList album={object}/>
             </section>
           </div>
-
         </div>
       </Layout>
     )

@@ -21,9 +21,9 @@ class AlbumPlayer extends Component {
     nextSong = (callback) => {
         const { currentAlbum, currentSong, setSong } = this.context;
         const newSong = currentSong + 1;
-        if (currentAlbum.tracks[newSong] === undefined) {
+        if (currentAlbum.object.tracks[newSong] === undefined) {
             setSong(0);
-            callback();
+            callback(false);
         } else {
             setSong(newSong);
             callback(true);
@@ -32,12 +32,12 @@ class AlbumPlayer extends Component {
 
     render() {
 
-        const title = this.context.currentAlbum && this.context.currentAlbum.tracks[this.context.currentSong].title || null;
-        const src = this.context.currentAlbum && this.context.currentAlbum.tracks[this.context.currentSong].url || null;
+        const artist = this.context.currentAlbum && this.context.currentAlbum.notes2 || null;
+        const title = this.context.currentAlbum && this.context.currentAlbum.object.tracks[this.context.currentSong].title || null;
+        const src = this.context.currentAlbum && this.context.currentAlbum.object.tracks[this.context.currentSong].url || null;
         return (
               <div className="audio-container">
-                  <div className="song-title">{title}</div>
-                  <Audio src={src} previousSong={this.previousSong} nextSong={this.nextSong}/>
+                  <Audio src={src} previousSong={this.previousSong} nextSong={this.nextSong} title={title} artist={artist}/>
               </div>
         )
     }
