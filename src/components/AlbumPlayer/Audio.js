@@ -21,7 +21,8 @@ class Audio extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.src !== this.props.src) {
+    console.log(prevState, this.state);
+    if (prevProps.src !== this.props.src && this.state.playing === prevState.playing) {
       this.changeSong(true);
     }
   }
