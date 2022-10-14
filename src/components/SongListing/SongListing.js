@@ -4,7 +4,7 @@ class SongListing extends Component {
 
     render() {
         return (
-            <div className="song-listing">
+            <div className={`song-listing ${this.props.active ? 'active': ''}`}>
               <a onClick={this.props.onClick}>
                   <div className="track">{this.props.track}</div>
                   <div>

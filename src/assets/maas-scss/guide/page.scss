@@ -377,7 +377,9 @@
     .subtitle {
       color: $colour-grey;
     }
+  }
 
-
+  &.active {
+    font-weight: bold;
   }
 }

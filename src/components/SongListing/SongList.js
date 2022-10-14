@@ -16,8 +16,9 @@ class SongList extends Component {
                         return (
                             <div className="album-listing">
                                 {this.props.album.tracks.map((track, i) => {
+                                    const currentlyPlaying = context.currentAlbum && context.currentAlbum.id === this.props.album.id && context.currentSong === i;
                                     return (
-                                      <SongListing key={i} track={i+1} title={track.title} subtitle={track.description} onClick={() => this.handleClick(this.props.album, i, context)}/>
+                                      <SongListing key={i} track={i+1} title={track.title} active={currentlyPlaying} subtitle={track.description} onClick={() => this.handleClick(this.props.album, i, context)}/>
                                     )
                                 })}
                             </div>
