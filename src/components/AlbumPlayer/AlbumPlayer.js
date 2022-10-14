@@ -36,7 +36,7 @@ class AlbumPlayer extends Component {
         const title = this.context.currentAlbum && this.context.currentAlbum.tracks[this.context.currentSong].title || null;
         const src = this.context.currentAlbum && this.context.currentAlbum.tracks[this.context.currentSong].url || null;
         return (
-          <div className="audio-container">
+          <div className={`audio-container ${!this.context.currentAlbum ? 'inactive' : ''}`}>
               <Audio src={src} nextSong={this.nextSong} title={title} artist={artist}/>
           </div>
         )

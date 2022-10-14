@@ -83,9 +83,10 @@ class TrackPage extends Component {
                 <div className="object-page__notes3"
                      dangerouslySetInnerHTML={{ __html: transcript }} />
                 }
+                <small className="object-page__notes4" dangerouslySetInnerHTML={{ __html: object.notes4 }} />
               </div>
               <div className="object-page__bottom-content">
-                <small className="object-page__notes4" dangerouslySetInnerHTML={{ __html: object.notes4 }} />
+
               </div>
             </section>
           </div>

@@ -185,11 +185,12 @@
     .object-page__title {
       font-size: $font-size-xlg;
       text-transform: uppercase;
-      margin-bottom: $spacing-xxxxs;
+      margin-bottom: 0;
     }
 
     .object-page__subtitle {
       color: $colour-grey;
+      margin-bottom: $spacing-md;
     }
 
     .object-page__notes2, .object-page__credit-line {
@@ -368,9 +369,15 @@
   a {
     display: flex;
     align-items: center;
-  }
 
-  .subtitle {
-    color: $colour-grey;
+    .track {
+      padding: $spacing-md;
+    }
+
+    .subtitle {
+      color: $colour-grey;
+    }
+
+
   }
 }

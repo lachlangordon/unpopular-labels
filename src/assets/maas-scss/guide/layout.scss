@@ -115,6 +115,11 @@ $colour-black: #000;
   padding: $spacing-xs;
   height: 114px;
 
+  &.inactive {
+    height: 0;
+    background: none;
+  }
+
   .controls-container {
     position: relative;
     display: flex;
@@ -139,7 +144,7 @@ $colour-black: #000;
           }
 
           &.play {
-            padding-top: 6px;
+            padding-top: 3px;
           }
         }
       }
