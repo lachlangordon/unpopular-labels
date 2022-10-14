@@ -74,17 +74,19 @@ class TrackPage extends Component {
             <section className="section main-content">
 
               <div className="object-page__content">
-                <h1 className="object-page__title" dangerouslySetInnerHTML={{__html: object.notes2}}>
+                <h1 className="object-page__title" dangerouslySetInnerHTML={{__html: object.object.name}}>
                 </h1>
-              </div>
-              <div className="object-page__bottom-content">
+                <div className="object-page__subtitle" dangerouslySetInnerHTML={{__html: object.object.subtitle}}>
+                </div>
+                <SongList album={object.object}/>
                 { transcript &&
                 <div className="object-page__notes3"
                      dangerouslySetInnerHTML={{ __html: transcript }} />
                 }
+              </div>
+              <div className="object-page__bottom-content">
                 <small className="object-page__notes4" dangerouslySetInnerHTML={{ __html: object.notes4 }} />
               </div>
-              <SongList album={object}/>
             </section>
           </div>
         </div>
@@ -106,6 +108,7 @@ export const pageQuery = graphql`
       notes4
       object {
         name
+        subtitle
         mainImage {
           id
           url

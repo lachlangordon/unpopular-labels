@@ -184,8 +184,12 @@
 
     .object-page__title {
       font-size: $font-size-xlg;
-      font-weight: bold;
+      text-transform: uppercase;
       margin-bottom: $spacing-xxxxs;
+    }
+
+    .object-page__subtitle {
+      color: $colour-grey;
     }
 
     .object-page__notes2, .object-page__credit-line {
@@ -358,4 +362,15 @@
 .mobile-link {
   font-size: 30px;
   margin-left: 30px;
+}
+
+.song-listing {
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  .subtitle {
+    color: $colour-grey;
+  }
 }

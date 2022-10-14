@@ -196,6 +196,7 @@ const setNodeSetObject = ( _set_obj ) => {
 const setObject = ( _object ) => {
   return {
     name: _object.displayTitle || '',
+    subtitle: _object.subtitle || '',
     summary: _object.summary || '',
     recordType: _object.recordType || '',
     productionNotes: _object.productionNotes || '',

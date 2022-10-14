@@ -113,7 +113,7 @@ $colour-black: #000;
   align-items: center;
   justify-content: center;
   padding: $spacing-xs;
-  height: 175px;
+  height: 114px;
 
   .controls-container {
     position: relative;
@@ -129,24 +129,19 @@ $colour-black: #000;
       border: 1px solid $colour-white;
 
       &.play-pause {
-        border-bottom: 0;
         padding: $spacing-xs $spacing-md;
-      }
-    }
 
-    .previous-next-container {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
+        img {
+          width: 40px;
 
-      button {
-        width: 100%;
-      }
+          &.pause {
+            padding: 6px;
+          }
 
-      button:first-child {
-        border-right: 0;
+          &.play {
+            padding-top: 6px;
+          }
+        }
       }
     }
   }

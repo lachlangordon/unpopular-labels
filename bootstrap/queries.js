@@ -38,6 +38,7 @@ query NodeSets {
       object {
         id: _id
         displayTitle
+        subtitle
         tracks {
           title
           description
@@ -73,6 +74,7 @@ const GatsbyAllSetQuery = `
         setObjects {
           object {
             displayTitle
+            subtitle
             mainImage {
               url
               width

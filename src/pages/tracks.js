@@ -16,10 +16,7 @@ const allTracksPage = ({
 
           <div className="all-page">
               <section className="all-page__body container container--lg">
-                  <h1>{site.siteMetadata.shortTitle}
-                      <br/>
-                      <span>audio files</span>
-                  </h1>
+                  <h1>{site.siteMetadata.shortTitle}</h1>
                   <div className="description" dangerouslySetInnerHTML={{__html: Set.description}}/>
                   <div className="objects">
                       {
@@ -35,7 +32,8 @@ const allTracksPage = ({
                                           imgPath={object.object.mainImage.imagePath}
                                           imgFilename={object.object.mainImage.filename}
                                           objectId={`${object.id}`}
-                                          title={object.notes2}
+                                          title={object.object.displayTitle}
+                                          subtitle={object.object.subtitle}
                                       />
                                   )
                               }
@@ -60,6 +58,8 @@ export const pageQuery = graphql`
             id
             notes2
             object {
+                displayTitle
+                subtitle
                 mainImage {
                     id
                     imagePath

@@ -6,8 +6,12 @@ class SongListing extends Component {
         return (
             <div className="song-listing">
               <a onClick={this.props.onClick}>
-                  <span>{this.props.title}</span>
-                  <span>{this.props.subtitle}</span>
+                  <div className="track">{this.props.track}</div>
+                  <div>
+                    <div className="title">{this.props.title}</div>
+                    <div className="subtitle">{this.props.subtitle}</div>
+                  </div>
+
               </a>
             </div>
         )

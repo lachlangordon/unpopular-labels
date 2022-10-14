@@ -1,15 +1,15 @@
 import React from 'react';
 
 export const Play = () => (
-  <svg width="40" height="55" viewBox="0 0 40 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0.964905 27.4999V53.842L38.7895 27.4999L0.964905 1.15784V27.4999Z" stroke="white" strokeWidth="1"/>
+  <svg width="51" height="52" viewBox="0 0 51 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 22V43L45 22L5 1V22Z" stroke="white"/>
   </svg>
 );
 
 export const Pause = () => (
-  <svg width="40" height="52" viewBox="0 0 40 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0.61377" y="1.23572" width="16.5824" height="49.7471" stroke="white" strokeWidth="1"/>
-    <rect x="22.2985" y="1.23572" width="16.5824" height="49.7471" stroke="white" strokeWidth="1"/>
+  <svg width="32" height="41" viewBox="0 0 32 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 0V41" stroke="white"/>
+    <path d="M31.2671 0V41" stroke="white"/>
   </svg>
 );
 

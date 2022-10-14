@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {getTimeString} from "../../lib/player";
-import {Next, Play, Pause, Previous} from "./Icons";
+
+import playIcon from "../../assets/maas-scss/svg/player/play.svg"
+import pauseIcon from "../../assets/maas-scss/svg/player/pause.svg"
 
 class Audio extends Component {
 
@@ -21,7 +23,6 @@ class Audio extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(prevState, this.state);
     if (prevProps.src !== this.props.src && this.state.playing === prevState.playing) {
       this.changeSong(true);
     }
@@ -117,27 +118,14 @@ class Audio extends Component {
           <button className="play-pause" onClick={this.playPauseSong}>{this.state.playing ? (
             <span>
               <span className="sr-only">Pause</span>
-              <Pause/>
+              <img className="pause" src={pauseIcon}/>
             </span>
           ): (
             <span>
               <span className="sr-only">Play</span>
-              <Play/>
+              <img className="play" src={playIcon}/>
             </span>
           )}</button>
-
-          <div className="previous-next-container">
-            <button className="previous" onClick={() => this.props.previousSong(this.changeSong)}>
-            <span className="sr-only">
-              Previous
-            </span>
-              <Previous/>
-            </button>
-            <button className="next" onClick={() => this.props.nextSong(this.changeSong)}>
-              <span className="sr-only">Next</span>
-              <Next/>
-            </button>
-          </div>
 
         </div>
         <div className="seeker-container">

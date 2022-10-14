@@ -34,18 +34,28 @@
 	border-bottom: 1px solid $colour-black;
 	padding-bottom: $spacing-md;
 	padding-top: $spacing-md;
+	//flex-direction: column;
 
 	&:first-child {
 		border-top: 1px solid $colour-black;
 	}
 
 	.item-tile-img {
-		width: 50%;
+		width: 100%;
 	}
 
 	.item-tile-info {
-		width: 50%;
+		width: 100%;
 		margin-left: $spacing-md;
+
+		.title {
+			font-size: $font-size-xlg;
+			text-transform: uppercase;
+		}
+
+		.subtitle {
+			color: $colour-grey;
+		}
 	}
 }
 

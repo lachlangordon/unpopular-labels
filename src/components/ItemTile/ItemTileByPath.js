@@ -11,7 +11,7 @@ class ItemTileByPath extends Component {
 
 	render() {
     const itemTileClass = this.props.className || 'item-tile';
-		const { style, url, imgPath, imgFilename, imageTag, objectId, hasQuote, title } = this.props;
+		const { style, url, imgPath, imgFilename, imageTag, objectId, hasQuote, title, subtitle } = this.props;
 
 		return (
 			<Link to={url} className={`item-tile__image-holder ${itemTileClass}`} style={style}>
@@ -19,7 +19,8 @@ class ItemTileByPath extends Component {
 					<ImageByPath path={imgPath} filename={imgFilename} />
 				</div>
 				<div className="item-tile-info">
-					<div dangerouslySetInnerHTML={{__html: title}}/>
+					<div className="title" dangerouslySetInnerHTML={{__html: title}}/>
+					<div className="subtitle" dangerouslySetInnerHTML={{__html: subtitle}}/>
 					{ shouldShowSeenIcon() && isObjectSeen(objectId) && <SeenIcon/> }
 				</div>
 			</Link>

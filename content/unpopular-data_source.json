@@ -22,12 +22,13 @@
       "narrativeObjects":[
         {
           "id":622403,
-          "notes2":"Evan Dando [Loaded from JSON]",
+          "notes2":"Evan Dando",
           "notes3":"Tracks digitised from a cassette tape Evan Dando recorded in his hotel room for Stephen Pavlovic",
           "notes4":"All songs licensed by OneMusic Australia",
           "object":{
             "id":622403,
-            "displayTitle":"Evan Dando | Demo, 1994",
+            "displayTitle": "Evan Dando",
+            "subtitle": "Demo, 1994",
             "mainImage":{
               "id":817276,
               "refId":"TXVsdGltZWRpYTo2MmNjZGQwZjRmOTkxZDNhMTc0M2U1NmM=",
@@ -106,7 +107,8 @@
           "notes4":"All songs licensed by OneMusic Australia",
           "object":{
             "id":622493,
-            "displayTitle":"Photograph of model wearing Zandra Rhodes garment by Robert Rosen",
+            "displayTitle":"The Lemonheads",
+            "subtitle": "Live at the Phoenician Club, 1991",
             "mainImage":{
               "id":918193,
               "refId":"TXVsdGltZWRpYTo2MmNjZGQxMjRmOTkxZDNhMTc0M2U1NmU=",
@@ -145,7 +147,8 @@
           "notes4":"All songs licensed by OneMusic Australia",
           "object":{
             "id":645817,
-            "displayTitle":"Nirvana | Demo, 1994",
+            "displayTitle":"Nirvana",
+            "subtitle": "Demo, 1994",
             "mainImage":{
               "id":834807,
               "refId":"TXVsdGltZWRpYTo2MmNiNGY0N2VlZDllZDE0MjAzNjc2MDI=",
@@ -204,7 +207,8 @@
           "notes4":"All songs licensed by OneMusic Australia",
           "object":{
             "id":622552,
-            "displayTitle":"Pavement | Live at the Wireless, 1994",
+            "displayTitle":"Pavement",
+            "subtitle": "Live at the Wireless, 1994",
             "mainImage":{
               "id":918189,
               "refId":"TXVsdGltZWRpYTo2MmNjZGQxYTRmOTkxZDNhMTc0M2U1NzQ=",

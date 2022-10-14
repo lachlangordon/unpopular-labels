@@ -9,6 +9,10 @@
     #blockquote
 \*------------------------------------*/
 
+.object-page__notes3, .object-page__notes4 {
+  color: $colour-grey;
+}
+
 .object-page__notes3 {
   padding-top: 0.6em;
   blockquote {
@@ -16,7 +20,7 @@
     display: inline-block;
     padding: 0.2em 0 0 0.6em;
     margin: 0.6em 0 0.8em 0;
-    background: $colour-white;
+    background: $colour-black;
     &::before {
       top: 0;
       left: -5px;
@@ -40,8 +44,7 @@
 
 .object-page__notes4 {
   font-family:  $font-family-bold;
-  font-size: $font-size-lg;
-  padding-left: 0.6em;
+  font-size: $font-size-md;
   p {
     font-family: $font-family-base;
     font-size: $font-size-sm;
