@@ -127,28 +127,6 @@ $colour-black: #000;
     justify-content: space-evenly;
     align-items: center;
     margin-right: $spacing-sm;
-
-    button {
-      padding: 0;
-      height: auto;
-      border: 1px solid $colour-white;
-
-      &.play-pause {
-        padding: $spacing-xs $spacing-md;
-
-        img {
-          width: 40px;
-
-          &.pause {
-            padding: 6px;
-          }
-
-          &.play {
-            padding-top: 3px;
-          }
-        }
-      }
-    }
   }
 
   .seeker-container {
@@ -205,6 +183,24 @@ $colour-black: #000;
 
     .duration {
       right: 0
+    }
+  }
+}
+
+.play-pause {
+  padding: $spacing-xs $spacing-md;
+  height: auto;
+  border: 1px solid $colour-white;
+
+  img {
+    width: 40px;
+
+    &.pause {
+      padding: 6px;
+    }
+
+    &.play {
+      padding-top: 3px;
     }
   }
 }

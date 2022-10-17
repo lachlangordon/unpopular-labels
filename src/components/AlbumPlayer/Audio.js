@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {getTimeString} from "../../lib/player";
 
-import playIcon from "../../assets/maas-scss/svg/player/play.svg"
-import pauseIcon from "../../assets/maas-scss/svg/player/pause.svg"
+import PlayPauseButton from "./PlayPauseButton";
+import {AlbumContext} from "../../providers/AlbumContext";
 
 class Audio extends Component {
 
@@ -114,19 +114,7 @@ class Audio extends Component {
     return (
       <React.Fragment>
         <div className="controls-container">
-
-          <button className="play-pause" onClick={this.playPauseSong}>{this.state.playing ? (
-            <span>
-              <span className="sr-only">Pause</span>
-              <img className="pause" src={pauseIcon}/>
-            </span>
-          ): (
-            <span>
-              <span className="sr-only">Play</span>
-              <img className="play" src={playIcon}/>
-            </span>
-          )}</button>
-
+          <PlayPauseButton onClick={this.playPauseSong} playing={this.state.playing}/>
         </div>
         <div className="seeker-container">
           <span className="elapsed">

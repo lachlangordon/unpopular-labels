@@ -182,6 +182,17 @@
       font-size: 0.8rem;
     }
 
+    .object-page__title-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: $spacing-md;
+
+      .play-pause {
+        margin-right: $spacing-md;
+      }
+    }
+
     .object-page__title {
       font-size: $font-size-xlg;
       text-transform: uppercase;
@@ -190,7 +201,6 @@
 
     .object-page__subtitle {
       color: $colour-grey;
-      margin-bottom: $spacing-md;
     }
 
     .object-page__notes2, .object-page__credit-line {

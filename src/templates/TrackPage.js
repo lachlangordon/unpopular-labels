@@ -14,6 +14,8 @@ import transcripts from "../lib/transcripts";
 
 import withViewport from "../decorators/withViewport";
 import SongList from "../components/SongListing/SongList";
+import PlayPauseButton from "../components/AlbumPlayer/PlayPauseButton";
+import {AlbumContext} from "../providers/AlbumContext";
 
 class TrackPage extends Component {
 
@@ -74,10 +76,22 @@ class TrackPage extends Component {
             <section className="section main-content">
 
               <div className="object-page__content">
-                <h1 className="object-page__title" dangerouslySetInnerHTML={{__html: object.object.name}}>
-                </h1>
-                <div className="object-page__subtitle" dangerouslySetInnerHTML={{__html: object.object.subtitle}}>
+                <div className="object-page__title-container">
+                  <AlbumContext.Consumer>
+                    { context => (
+                      <PlayPauseButton onClick={() => {context.setAlbum(object.object); context.setSong(0)}} playing={false}/>
+                    )
+                    }
+                  </AlbumContext.Consumer>
+                  <div>
+                    <h1 className="object-page__title" dangerouslySetInnerHTML={{__html: object.object.name}}>
+                    </h1>
+                    <div className="object-page__subtitle" dangerouslySetInnerHTML={{__html: object.object.subtitle}}>
+                    </div>
+                  </div>
+
                 </div>
+
                 <SongList album={object.object}/>
                 { transcript &&
                 <div className="object-page__notes3"
