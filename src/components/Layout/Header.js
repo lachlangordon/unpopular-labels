@@ -20,7 +20,9 @@ const Header = (props) => {
                 }
                 {
                   (props.location.includes('/track/') || props.location.includes('/credits')) && (
+                    <a onClick={handleBack} to="/tracks">
                       <div className="header-title">{ props.siteTitle }</div>
+                    </a>
                   )
                 }
               </nav>

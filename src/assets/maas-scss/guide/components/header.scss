@@ -21,9 +21,11 @@
     font-family: $font-family-header;
     display: flex;
 
+    a {
+      display: flex;
+    }
 
     a.menu-links {
-      display: inline-block;
       float: left;
       text-decoration: none;
       padding: 17px 22px;
