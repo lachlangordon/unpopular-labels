@@ -14,7 +14,7 @@
 }
 
 .object-page__notes3 {
-  padding-top: 0.6em;
+  padding-top: $spacing-md;
   blockquote {
     position: relative;
     display: inline-block;
@@ -44,7 +44,7 @@
 
 .object-page__notes4 {
   font-family:  $font-family-bold;
-  font-size: $font-size-sm;
+  font-size: $font-size-xs;
   p {
     font-family: $font-family-base;
     font-size: $font-size-sm;

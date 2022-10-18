@@ -63,8 +63,6 @@ class Layout extends Component {
 
                   <main className={`${appClassName}__content`}>
                     {children}
-
-                    <Footer/>
                   </main>
 
 

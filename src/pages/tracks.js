@@ -17,7 +17,6 @@ const allTracksPage = ({
           <div className="all-page">
               <section className="all-page__body container container--lg">
                   <h1>{site.siteMetadata.shortTitle}</h1>
-                  <div className="description" dangerouslySetInnerHTML={{__html: Set.description}}/>
                   <div className="objects">
                       {
                           Set.setObjects.map((object, i) => {
