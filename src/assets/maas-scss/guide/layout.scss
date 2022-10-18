@@ -113,7 +113,8 @@ $colour-black: #000;
   align-items: center;
   justify-content: center;
   padding: $spacing-xs;
-  height: 114px;
+  padding-bottom: $spacing-md;
+  height: 120px;
 
   &.inactive {
     height: 0;
