@@ -112,8 +112,7 @@ $colour-black: #000;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: $spacing-xs;
-  padding-bottom: $spacing-md;
+  padding: $spacing-xs $spacing-xs $spacing-md;
   height: 120px;
 
   &.inactive {

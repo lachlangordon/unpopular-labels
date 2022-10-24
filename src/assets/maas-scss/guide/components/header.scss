@@ -21,6 +21,10 @@
     font-family: $font-family-header;
     display: flex;
 
+    margin-left: $spacing-md;
+    margin-top: $spacing-xxlg;
+    margin-bottom: $spacing-xxlg;
+
     a {
       display: flex;
     }
@@ -32,6 +36,24 @@
 
       &.back {
         align-self: flex-start;
+        padding-left: 0;
+        position: relative;
+
+        border: 1px solid $colour-white;
+        border-left: none;
+        margin-left: 20px;
+
+        &::before {
+          content: '';
+          height: 40px;
+          width: 40px;
+          position: absolute;
+          top: 7px;
+          left: -20px;
+          border-top: 1px solid $colour-white;
+          border-left: 1px solid $colour-white;
+          transform: rotate(-45deg);
+        }
       }
 
       &.home {
